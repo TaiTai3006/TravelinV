@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+@font-face {
+  font-family: headings;
+  font-display: swap;
+  font-weight: 700;
+  src: url(https://static.saltinourhair.com/build/fonts/SaltHeading.woff2)
+      format("woff2"),
+    url(https://static.saltinourhair.com/build/fonts/SaltHeading.woff)
+      format("woff");
+}
+/* * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+} */
+:root {
+  --lightblue: #d8c4c3;
+  --darkpink: #c0e2e2;
+}
+header {
+  height: 60px;
+  font-family: headings;
+}
+#nav {
+  display: inline-block;
+}
+a {
+  color: #353535;
+  font-size: 16px;
+  text-decoration: none;
+}
+#nav a {
+  padding: 0 25px;
+  line-height: 60px;
+}
+#nav a:hover {
+  background-color: #d2d2d2;
+  border-radius: 10px;
+}
+
+/* @media screen and (max-width: 800px) {
+  header {
+    display: none;
+  }
+} */
+
+#nav1 {
+  line-height: 60px;
+  float: right;
+  display: inline-flex;
+}
+
+#nav1 .image {
+  margin: 10px 25px;
+}
+.image img {
+  width: 32px;
+  height: 32px;
+  border-radius: 100px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.avatar li:hover {
+  transform: scale(1.1);
+}
+.avatar li:hover a{
+  color: #353535;
+}
+#nav1 li:hover .avatar {
+  display: block;
+}
+.avatar {
+  text-align: center;
+  line-height: 30px;
+  display: none;
+  box-shadow: 0px 0px 5px 2px #d2d2d2;
+  border-radius: 10px;
+  position: relative;
+  bottom: 20px;
+  right: 10px;
+}
+.avatar a {
+  color: #807e7e;
+}
+.icon_shop {
+  position: relative;
+  bottom: -2px;
+}
+
+.search a {
+  padding: 0 25px;
+  border: 1px solid #d2d2d2;
+  height: 26px;
+  border-radius: 20px;
+}
+
+#nav1 .icon_chevDown {
+  position: relative;
+  bottom: -4px;
+  right: -10px;
+}
