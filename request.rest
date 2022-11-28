@@ -1,0 +1,11 @@
+GET http://localhost:8800/account/meomeo
+
+###
+POST http://localhost:8800/account
+Content-Type: application/json
+
+{
+    "userName": "taitai",
+    "password": "12345",
+    "accountType": "user"
+}
