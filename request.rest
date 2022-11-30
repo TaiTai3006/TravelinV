@@ -1,4 +1,4 @@
-GET http://localhost:8800/account/meomeo
+GET http://localhost:8800/account
 
 ###
 POST http://localhost:8800/account

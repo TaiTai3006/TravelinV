@@ -7,50 +7,47 @@ import { ImNotification } from "react-icons/im";
 import loginImage from "../image/loginImage.png";
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
+import useForm from "../components/useForm";
 
 function Register() {
-  const [checkConfirmPw, setCheckConfirmPw] = useState();
-  const [checkAccounts, setCheckAccount] = useState({});
-  const [confirmPassword, setConfirmPassword] = useState();
-  const [account, setAccount] = useState({
-    userName: "",
-    password: "",
-    accountType: "user",
-  });
-  const handleChange = (e) => {
-    setAccount((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-  const handleCreateAccount = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post("http://localhost:8800/account", account);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  useEffect(() => {
-    const fecthCheckAccout = async () => {
-      try {
-        const res = await axios.get(
-          "http://localhost:8800/account/" + account.userName
-        );
-        setCheckAccount(
-          res.data.reduce((t, v) => {
-            const { name, ...rest } = v;
-            t = rest;
-            return t;
-          }, {})
-        );
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    account.userName && fecthCheckAccout();
-  }, [account.userName]);
-  console.log(account)
+  // const [checkConfirmPw, setCheckConfirmPw] = useState();
+  // const [checkAccounts, setCheckAccount] = useState({});
+  // const [confirmPassword, setConfirmPassword] = useState();
+  // const handleChange = (e) => {
+  //   setAccount((prev) => ({
+  //     ...prev,
+  //     [e.target.name]: e.target.value,
+  //   }));
+  // };
+  // const handleCreateAccount = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await axios.post("http://localhost:8800/account", account);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  // useEffect(() => {
+  //   const fecthCheckAccout = async () => {
+  //     try {
+  //       const res = await axios.get(
+  //         "http://localhost:8800/account/" + account.userName
+  //       );
+  //       setCheckAccount(
+  //         res.data.reduce((t, v) => {
+  //           const { name, ...rest } = v;
+  //           t = rest;
+  //           return t;
+  //         }, {})
+  //       );
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   account.userName && fecthCheckAccout();
+  // }, [account.userName]);
+  // console.log(account)
+  const {handleChange, account, handleCreateAccount, errors} = useForm()
   const [passwordType, setPasswordType] = useState("password");
   const [passwordIcon, setPasswordIcon] = useState(<FaEyeSlash />);
   const handelToggle = () => {
@@ -74,7 +71,6 @@ function Register() {
       setPasswordIconCon(FaEyeSlash);
     }
   };
-  console.log(checkAccounts, Object.keys(checkAccounts));
   return (
     <div>
       <img src={loginImage} height="auto" />
@@ -97,7 +93,7 @@ function Register() {
                 onChange={handleChange}
                 required
               ></input>
-              {Object.keys(checkAccounts).length !== 0 && (
+              {errors.userName && (
                 <p className="notification">
                   Username already exists{" "}
                   <IconContext.Provider
@@ -125,14 +121,14 @@ function Register() {
                 <input
                   type={confirmPasswordType}
                   placeholder="Confirm your password"
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  // onChange={(e) => setConfirmPassword(e.target.value)}
                   required
                 ></input>
                 <span className="icons-span-2" onClick={handelToggleCon}>
                   {passwordIconCon}
                 </span>
               </div>
-              {checkConfirmPw && (
+              {/* {checkConfirmPw && (
                 <p className="notification">
                   Username already exists{" "}
                   <IconContext.Provider
@@ -141,7 +137,7 @@ function Register() {
                     <ImNotification />
                   </IconContext.Provider>
                 </p>
-              )}
+              )} */}
             </div>
             <div class="flex2">
               <input type="checkbox" required></input>
