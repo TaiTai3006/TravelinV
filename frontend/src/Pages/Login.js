@@ -31,10 +31,10 @@ function Login () {
                 <form>
                     <div class="Info">
                     <p class="useDis">Usename</p>
-                    <input type="text" placeholder="Enter your usename"></input>
+                    <input type="text" placeholder="Enter your usename" required ></input>
                     <p class="passDis">Password</p>
                     <div class="Input">
-                    <input type={passwordType} placeholder="Enter your password"></input>
+                    <input type={passwordType} placeholder="Enter your password" required></input>
                     <span className="icons-span" onClick={handelToggle}>{passwordIcon}</span>
                     </div>
                     </div>

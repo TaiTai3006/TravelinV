@@ -18,7 +18,7 @@
   display: flex;
   /* font-family: "Merriweather Sans"; */
   font-family: headings;
-  margin: 30px 150px;
+  margin: 10px 150px;
 }
 .nav-container a {
   /* display: flex; */
@@ -46,7 +46,7 @@
     linear-gradient(transparent calc(100% - 0.45em), var(--darkpink) 0);
 }
 .heading {
-  margin: 50px 150px;
+  margin: 20px 150px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -103,7 +103,7 @@
 }
 .input {
   width: 700px;
-  height: 700px;
+  height: 750px;
   overflow: scroll;
 }
 .input::-webkit-scrollbar {
@@ -129,6 +129,7 @@
   margin: 10px 0;
   letter-spacing: 0.7px;
   font-family: "Merriweather", serif;
+  max-width:100%
 }
 .image-item {
   display: flex;
@@ -255,6 +256,7 @@
 }
 .palace-list {
   text-align: right;
+  
 }
 .palace-list option {
   padding: 10px 0;
@@ -297,4 +299,28 @@
   transform: scale(1.08);
   background-color: indianred;
   color: #ffff;
+}
+.des-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  padding: 0 10px;
+  color: #353535;
+  cursor: pointer;
+}
+.remove {
+  font-size: 14px;
+  padding: 0 10px;
+  color: #353535;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-family: "Merriweather Sans";
+  font-style: italic;
+  /* justify-content: space-between; */
+}
+.remove-icon {
+  font-size: 20px;
+ padding: 5px;
 }

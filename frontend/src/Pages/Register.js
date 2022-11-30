@@ -47,7 +47,7 @@ function Register() {
   //   account.userName && fecthCheckAccout();
   // }, [account.userName]);
   // console.log(account)
-  const {handleChange, account, handleCreateAccount, errors} = useForm()
+  const { handleChange, account, handleCreateAccount, errors } = useForm();
   const [passwordType, setPasswordType] = useState("password");
   const [passwordIcon, setPasswordIcon] = useState(<FaEyeSlash />);
   const handelToggle = () => {
@@ -147,7 +147,8 @@ function Register() {
               type="submit"
               value="Sign up"
               class="IP1"
-              onClick={handleCreateAccount}
+              // onClick={handleCreateAccount}
+              onClick={console.log(1)}
             ></input>
             <p class="A5">Or</p>
             <input
