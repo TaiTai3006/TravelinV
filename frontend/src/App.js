@@ -18,7 +18,7 @@ import FormBlog from "./Pages/FormBlog";
 export const UserContext = createContext();
 
 function App() {
-  const [user, setUser] = useState({ loggedIn: false });
+  const [user, setUser] = useState({ userName: '' ,loggedIn: false });
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <Routes>

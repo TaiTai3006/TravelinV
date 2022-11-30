@@ -1,53 +1,25 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../Register.css";
 import { IconContext } from "react-icons";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ImNotification } from "react-icons/im";
 import loginImage from "../image/loginImage.png";
 import { FcGoogle } from "react-icons/fc";
-import axios from "axios";
 import useForm from "../components/useForm";
 
 function Register() {
-  // const [checkConfirmPw, setCheckConfirmPw] = useState();
-  // const [checkAccounts, setCheckAccount] = useState({});
-  // const [confirmPassword, setConfirmPassword] = useState();
-  // const handleChange = (e) => {
-  //   setAccount((prev) => ({
-  //     ...prev,
-  //     [e.target.name]: e.target.value,
-  //   }));
-  // };
-  // const handleCreateAccount = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios.post("http://localhost:8800/account", account);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-  // useEffect(() => {
-  //   const fecthCheckAccout = async () => {
-  //     try {
-  //       const res = await axios.get(
-  //         "http://localhost:8800/account/" + account.userName
-  //       );
-  //       setCheckAccount(
-  //         res.data.reduce((t, v) => {
-  //           const { name, ...rest } = v;
-  //           t = rest;
-  //           return t;
-  //         }, {})
-  //       );
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   account.userName && fecthCheckAccout();
-  // }, [account.userName]);
+  
+  const {
+    handleChange,
+    checkAccounts,
+    handleCreateAccount,
+    errors,
+    handleChangeConfirmPw,
+    handleCheckBox
+  } = useForm();
+  
   // console.log(account)
-  const { handleChange, account, handleCreateAccount, errors } = useForm();
   const [passwordType, setPasswordType] = useState("password");
   const [passwordIcon, setPasswordIcon] = useState(<FaEyeSlash />);
   const handelToggle = () => {
@@ -93,9 +65,19 @@ function Register() {
                 onChange={handleChange}
                 required
               ></input>
-              {errors.userName && (
+              {Object.keys(checkAccounts).length !== 0 && (
                 <p className="notification">
                   Username already exists{" "}
+                  <IconContext.Provider
+                    value={{ className: "icon_ImNotification" }}
+                  >
+                    <ImNotification />
+                  </IconContext.Provider>
+                </p>
+              )}
+              {errors.userName && (
+                <p className="notification">
+                  {errors.userName}{" "}
                   <IconContext.Provider
                     value={{ className: "icon_ImNotification" }}
                   >
@@ -115,40 +97,59 @@ function Register() {
                 <span className="icons-span-1" onClick={handelToggle}>
                   {passwordIcon}
                 </span>
+                {errors.password && (
+                  <p className="notification">
+                    {errors.password}{" "}
+                    <IconContext.Provider
+                      value={{ className: "icon_ImNotification" }}
+                    >
+                      <ImNotification />
+                    </IconContext.Provider>
+                  </p>
+                )}
               </div>
               <p class="confDis">Confirm Password</p>
               <div class="InputCon">
                 <input
                   type={confirmPasswordType}
                   placeholder="Confirm your password"
-                  // onChange={(e) => setConfirmPassword(e.target.value)}
+                  onChange={handleChangeConfirmPw}
                   required
                 ></input>
                 <span className="icons-span-2" onClick={handelToggleCon}>
                   {passwordIconCon}
                 </span>
+                {errors.confirmPw && (
+                  <p className="notification">
+                    {errors.confirmPw}{" "}
+                    <IconContext.Provider
+                      value={{ className: "icon_ImNotification" }}
+                    >
+                      <ImNotification />
+                    </IconContext.Provider>
+                  </p>
+                )}
               </div>
-              {/* {checkConfirmPw && (
-                <p className="notification">
-                  Username already exists{" "}
-                  <IconContext.Provider
-                    value={{ className: "icon_ImNotification" }}
-                  >
-                    <ImNotification />
-                  </IconContext.Provider>
-                </p>
-              )} */}
             </div>
             <div class="flex2">
-              <input type="checkbox" required></input>
+              <input type="checkbox" required onClick={handleCheckBox}></input>
               <p class="A3">I accepted with terms and conditions</p>
             </div>
+            {errors.checkBox && (
+                  <p className="notification">
+                    {errors.checkBox}{" "}
+                    <IconContext.Provider
+                      value={{ className: "icon_ImNotification" }}
+                    >
+                      <ImNotification />
+                    </IconContext.Provider>
+                  </p>
+                )}
             <input
               type="submit"
               value="Sign up"
               class="IP1"
-              // onClick={handleCreateAccount}
-              onClick={console.log(1)}
+              onClick={handleCreateAccount}
             ></input>
             <p class="A5">Or</p>
             <input

@@ -1,16 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { omit } from "lodash";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../App";
 
 const useForm = (callback) => {
-  const [checkAccounts, setCheckAccount] = useState({});
+  const navigate = useNavigate();
+
+  const { user, setUser } = useContext(UserContext);
+
+  const [checkConfirmPw, setCheckConfirmPw] = useState();
+
   const [account, setAccount] = useState({
     userName: "",
     password: "",
     accountType: "user",
   });
+
   const [errors, setErrors] = useState({});
-  console.log(checkAccounts, account,'1');
+
+  const [checkBox, setCheckBox] = useState();
+
+  const [checkAccounts, setCheckAccount] = useState({});
   useEffect(() => {
     const fecthCheckAccout = async () => {
       try {
@@ -30,71 +41,81 @@ const useForm = (callback) => {
     };
     account.userName && fecthCheckAccout();
   }, [account.userName]);
-  
-  const validate = (name, value) => {
-    switch (name) {
-      case "userName":
-        console.log(checkAccounts, account,'3')
-        // if(value.length <= 4){
-        //     // we will set the error state
 
-        // setErrors({
-        //     ...errors,
-        //     username:'Username atleast have 5 letters'
-        // })
-        // }else{
-        //     // set the error state empty or remove the error for username input
-
-        //     //omit function removes/omits the value from given object and returns a new object
-        //     let newObj = omit(errors, "username");
-        //     setErrors(newObj);
-
-        // }
-        if (Object.keys(checkAccounts).length !== 0) {
-          setErrors({
+  useEffect(() => {
+    const CheckConfirmPw = () => {
+      checkConfirmPw !== "" && checkConfirmPw !== account.password
+        ? setErrors({
             ...errors,
-            userName: "Username alreadly exists",
-          });
-        } else {
-          let newObj = omit(errors, "userName");
-          setErrors(newObj);
-        }
-        break;
+            confirmPw: "Confirm Password must be the same as entered password.",
+          })
+        : setErrors(omit(errors, "confirmPw"));
+    };
+    checkConfirmPw ? CheckConfirmPw() : setErrors(omit(errors, "confirmPw"));
+  }, [checkConfirmPw]);
 
-      case "email":
-        if (
-          !new RegExp(
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-          ).test(value)
-        ) {
-          setErrors({
-            ...errors,
-            email: "Enter a valid email address",
-          });
-        } else {
-          let newObj = omit(errors, "email");
-          setErrors(newObj);
-        }
-        break;
+  const handleChangeConfirmPw = (e) => {
+    setCheckConfirmPw(e.target.value);
+  };
 
-      case "password":
-        if (
-          !new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/).test(value)
-        ) {
-          setErrors({
-            ...errors,
-            password:
-              "Password should contains atleast 8 charaters and containing uppercase,lowercase and numbers",
-          });
-        } else {
-          let newObj = omit(errors, "password");
-          setErrors(newObj);
-        }
-        break;
-
-      default:
-        break;
+  const handleCheckBox = () => {
+    if (checkBox) setCheckBox();
+    else {
+      setCheckBox(true);
+      setErrors(omit(errors, "checkBox"));
     }
+  };
+
+  const validate = (name, value) => {
+    if (value) {
+      switch (name) {
+        case "userName":
+          if (value.length <= 4) {
+            setErrors({
+              ...errors,
+              userName: "Username atleast have 5 letters.",
+            });
+          } else {
+            let newObj = omit(errors, "userName");
+            setErrors(newObj);
+          }
+          break;
+
+        case "email":
+          if (
+            !new RegExp(
+              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            ).test(value)
+          ) {
+            setErrors({
+              ...errors,
+              email: "Enter a valid email address.",
+            });
+          } else {
+            let newObj = omit(errors, "email");
+            setErrors(newObj);
+          }
+          break;
+
+        case "password":
+          if (
+            // !new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/).test(value)
+            value.length < 8
+          ) {
+            setErrors({
+              ...errors,
+              password: "Password should contains atleast 8 charaters.",
+            });
+          } else {
+            let newObj = omit(errors, "password");
+            setErrors(newObj);
+          }
+          break;
+
+        default:
+          break;
+      }
+    } else setErrors(omit(errors, name));
   };
 
   const handleChange = (event) => {
@@ -103,34 +124,63 @@ const useForm = (callback) => {
       [event.target.name]: event.target.value,
     });
     validate(event.target.name, event.target.value);
-    console.log(checkAccounts, account,'2');
   };
 
-  // const handleSubmit = (event) => {
-  //     if(event) event.preventDefault();
-
-  //     if(Object.keys(errors).length === 0 && Object.keys(account).length !==0 ){
-  //         callback();
-
-  //     }else{
-  //         alert("There is an Error!");
-  //     }
-  // }
+  const handleChangeLogin = (e) => {
+    setAccount({
+      ...account,
+      [e.target.name]: e.target.value,
+    });
+    setErrors(omit(errors,'login'))
+  };
 
   const handleCreateAccount = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8800/account", account);
+      if (
+        Object.keys(errors).length === 0 &&
+        Object.keys(account).length !== 0 &&
+        checkBox
+      ) {
+        await axios.post("http://localhost:8800/account", account);
+        setUser({ ...user, userName: account.userName });
+        navigate("/Login");
+      } else {
+        !checkBox &&
+          setErrors({
+            ...errors,
+            checkBox: "You must accepted with terms and conditions.",
+          });
+      }
     } catch (err) {
       console.log(err);
     }
   };
 
+  const handelLogin = (e) => {
+    e.preventDefault();
+    if (
+      account.userName === checkAccounts.userName &&
+      account.password === checkAccounts.password
+    ) {
+      setUser({ userName: account.userName, loggedIn: true });
+      navigate("/");
+    } else {
+      setErrors({ ...errors, login: "Incorrect username or password." });
+    }
+  };
+console.log(account, checkAccounts, errors)
   return {
+    checkAccounts,
+    user,
     account,
     errors,
     handleChange,
     handleCreateAccount,
+    handleChangeConfirmPw,
+    handleCheckBox,
+    handleChangeLogin,
+    handelLogin,
   };
 };
 
