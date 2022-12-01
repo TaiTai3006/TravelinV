@@ -5,7 +5,7 @@ POST http://localhost:8800/account
 Content-Type: application/json
 
 {
-    "userName": "taitai30",
+    "userName": "taitai31",
     "password": "12345",
     "accountType": "user",
     "image": "./sfgfg/sfg.png"

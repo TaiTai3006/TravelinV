@@ -11,12 +11,14 @@ export const getAccount = (req, res) => {
 
 export const CreateAccount = async (req, res) => {
   const q =
-    "INSERT INTO account (`userName`, `password`, `accountType`, `image`) VALUES (?)";
+    "INSERT INTO account (`userName`, `password`, `name`, `gmail`, `accountType`, `image`) VALUES (?)";
   const salt = await bcrypt.genSalt(10);
   req.body.password = await bcrypt.hash(req.body.password, salt);
   const values = [
     req.body.userName,
     req.body.password,
+    req.body.name,
+    req.body.gmail,
     req.body.accountType,
     req.body.image,
   ];

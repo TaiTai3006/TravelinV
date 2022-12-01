@@ -16,7 +16,8 @@ function Register() {
     handleCreateAccount,
     errors,
     handleChangeConfirmPw,
-    handleCheckBox
+    handleCheckBox,
+    handleLoginGoogle
   } = useForm();
   
   const [passwordType, setPasswordType] = useState("password");
@@ -151,15 +152,16 @@ function Register() {
               onClick={handleCreateAccount}
             ></input>
             <p class="A5">Or</p>
-            <input
+          </form>
+          <input
               type="submit"
               value="Sign in with Google"
               class="IP2"
+              onClick={handleLoginGoogle}
             ></input>
             <div class="icon">
               <FcGoogle />
             </div>
-          </form>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { useGoogleLogin } from "@react-oauth/google";
 import { omit } from "lodash";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -130,7 +131,7 @@ const useForm = (callback) => {
     });
     setErrors(omit(errors, "login"));
   };
-
+  console.log(user);
   const handleCreateAccount = async (e) => {
     e.preventDefault();
     try {
@@ -140,7 +141,12 @@ const useForm = (callback) => {
         checkBox
       ) {
         await axios.post("http://localhost:8800/account", account);
-        setUser({ ...user, userName: account.userName });
+        setUser((user) => {
+          const newSetUser = { ...user, userName: account.userName };
+          const jsonUser = JSON.stringify(newSetUser);
+          localStorage.setItem("user", jsonUser);
+          return newSetUser;
+        });
         navigate("/Login");
       } else {
         !checkBox &&
@@ -163,7 +169,17 @@ const useForm = (callback) => {
           account
         );
         if (res.data) {
-          setUser({ userName: account.userName, loggedIn: true, accountType: account.accountType });
+          setUser((user) => {
+            const newSetUser = {
+              ...user,
+              userName: account.userName,
+              loggedIn: true,
+              accountType: account.accountType,
+            };
+            const jsonUser = JSON.stringify(newSetUser);
+            localStorage.setItem("user", jsonUser);
+            return newSetUser;
+          });
           navigate("/");
         } else {
           setErrors({ ...errors, login: "Incorrect username or password." });
@@ -174,6 +190,49 @@ const useForm = (callback) => {
     }
   };
 
+  const handleLoginGoogle = useGoogleLogin({
+    onSuccess: async (respose) => {
+      try {
+        const res = await axios.get(
+          "https://www.googleapis.com/oauth2/v3/userinfo",
+          {
+            headers: {
+              Authorization: `Bearer ${respose.access_token}`,
+            },
+          }
+        );
+        console.log(res.data)
+        if (res.data.email_verified) {
+          let objectAccount = {
+            userName: res.data.email,
+            password: res.data.sub,
+            name: res.data.name,
+            gmail: res.data.email,
+            accountType: "user",
+            image: res.data.picture,
+          };
+          await axios.post("http://localhost:8800/account", objectAccount);
+          setUser((user) => {
+            const newSetUser = {
+              ...user,
+              userName: res.data.email,
+              loggedIn: true,
+              image: res.data.picture,
+            };
+            const jsonUser = JSON.stringify(newSetUser);
+            localStorage.setItem("user", jsonUser);
+            return newSetUser;
+          });
+          navigate("/");
+        }
+        else{
+
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  });
   return {
     checkAccounts,
     user,
@@ -185,6 +244,7 @@ const useForm = (callback) => {
     handleCheckBox,
     handleChangeLogin,
     handelLogin,
+    handleLoginGoogle,
   };
 };
 
