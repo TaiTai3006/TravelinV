@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { UserContext } from "../App";
 import "../Login.css";
 import { IconContext } from "react-icons";
 import { ImNotification } from "react-icons/im";
@@ -21,7 +20,7 @@ function Login() {
       setPasswordIcon(FaEyeSlash);
     }
   };
-  console.log(errors)
+
   return (
     <div>
       <img src={loginImage} height="auto" />

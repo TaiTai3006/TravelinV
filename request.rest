@@ -1,11 +1,19 @@
-GET http://localhost:8800/account
+GET http://localhost:8800/register/taitai12345
 
 ###
 POST http://localhost:8800/account
 Content-Type: application/json
 
 {
-    "userName": "taitai",
+    "userName": "taitai30",
     "password": "12345",
-    "accountType": "user"
+    "accountType": "user",
+    "image": "./sfgfg/sfg.png"
 }
+###
+GET http://localhost:8800/login/taitai12345
+# Content-Type: application/json
+
+# {
+#     "password": "12345",
+# }

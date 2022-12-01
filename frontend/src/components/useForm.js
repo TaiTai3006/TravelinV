@@ -3,6 +3,7 @@ import { omit } from "lodash";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
+import defaultAvatar from "../image/default_avatar.png";
 
 const useForm = (callback) => {
   const navigate = useNavigate();
@@ -15,26 +16,22 @@ const useForm = (callback) => {
     userName: "",
     password: "",
     accountType: "user",
+    image: defaultAvatar,
   });
 
   const [errors, setErrors] = useState({});
 
   const [checkBox, setCheckBox] = useState();
 
-  const [checkAccounts, setCheckAccount] = useState({});
+  const [checkAccounts, setCheckAccount] = useState();
+
   useEffect(() => {
     const fecthCheckAccout = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8800/account/" + account.userName
+          "http://localhost:8800/register/" + account.userName
         );
-        setCheckAccount(
-          res.data.reduce((t, v) => {
-            const { name, ...rest } = v;
-            t = rest;
-            return t;
-          }, {})
-        );
+        setCheckAccount(res.data);
       } catch (err) {
         console.log(err);
       }
@@ -131,7 +128,7 @@ const useForm = (callback) => {
       ...account,
       [e.target.name]: e.target.value,
     });
-    setErrors(omit(errors,'login'))
+    setErrors(omit(errors, "login"));
   };
 
   const handleCreateAccount = async (e) => {
@@ -157,19 +154,26 @@ const useForm = (callback) => {
     }
   };
 
-  const handelLogin = (e) => {
+  const handelLogin = async (e) => {
     e.preventDefault();
-    if (
-      account.userName === checkAccounts.userName &&
-      account.password === checkAccounts.password
-    ) {
-      setUser({ userName: account.userName, loggedIn: true });
-      navigate("/");
-    } else {
-      setErrors({ ...errors, login: "Incorrect username or password." });
+    try {
+      if (account.userName.length !== 0 && account.password.length !== 0) {
+        const res = await axios.post(
+          `http://localhost:8800/login/${account.userName}`,
+          account
+        );
+        if (res.data) {
+          setUser({ userName: account.userName, loggedIn: true, accountType: account.accountType });
+          navigate("/");
+        } else {
+          setErrors({ ...errors, login: "Incorrect username or password." });
+        }
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
-console.log(account, checkAccounts, errors)
+
   return {
     checkAccounts,
     user,

@@ -19,7 +19,6 @@ function Register() {
     handleCheckBox
   } = useForm();
   
-  // console.log(account)
   const [passwordType, setPasswordType] = useState("password");
   const [passwordIcon, setPasswordIcon] = useState(<FaEyeSlash />);
   const handelToggle = () => {
@@ -65,7 +64,7 @@ function Register() {
                 onChange={handleChange}
                 required
               ></input>
-              {Object.keys(checkAccounts).length !== 0 && (
+              {checkAccounts && (
                 <p className="notification">
                   Username already exists{" "}
                   <IconContext.Provider

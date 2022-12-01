@@ -9,16 +9,14 @@ import Register from "./Pages/Register"
 import Blogs from "./Pages/Blogs";
 import PersonalPage from "./Pages/PersonalPage";
 import Footer from "./components/Footer";
+import Logout from "./Pages/Logout";
 import FormBlog from "./Pages/FormBlog";
-// import PrivateRoutes from "./PrivateRoutes";
-// import ProtectedRoutes from "./PrivateRouter";
-// import Personal from "./Personal";
-// import LoginPage from "./Login";
-// import Register from "./Register";
+
+
 export const UserContext = createContext();
 
 function App() {
-  const [user, setUser] = useState({ userName: '' ,loggedIn: false });
+  const [user, setUser] = useState({ userName: '' ,loggedIn: false, accountType: '', imgae: ''});
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <Routes>
@@ -30,7 +28,8 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
           <Route element={<ProtectedRoutes />}>
-            {/* <Route path="/personal" element={<Personal />} /> */}
+            <Route path="/Personal" element={<PersonalPage />} />
+            <Route path="/Logout" element={<Logout />} />
           </Route>
         </Route>
       </Routes>

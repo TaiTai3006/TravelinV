@@ -1,13 +1,14 @@
 import { Outlet, Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext } from "react";
 import { RiShoppingBasket2Line } from "react-icons/ri";
 import { HiChevronDown } from "react-icons/hi";
 import { IconContext } from "react-icons";
+import { UserContext } from "../App";
+import defaultAvatar from "../image/default_avatar.png";
 import "../App.css";
 const Header = () => {
-  const [str, setStr] = useState(
-    "https://vivureviews.com/wp-content/uploads/2022/08/avatar-vo-danh-9.png"
-  );
+  const { user } = useContext(UserContext);
+
   return (
     <>
       <header>
@@ -35,13 +36,15 @@ const Header = () => {
           <li>
             <a href="http://localhost:3000">
               <div className="image">
-                <img  src={str} alt="avatar"></img>
+                <img
+                  src={user.image ? user.image : defaultAvatar}
+                  alt="avatar"
+                ></img>
                 <HiChevronDown />
               </div>
             </a>
             <ul className="avatar">
-              {str ===
-              "https://vivureviews.com/wp-content/uploads/2022/08/avatar-vo-danh-9.png" ? (
+              {!user.loggedIn ? (
                 <div>
                   <li>
                     <Link to="/Login">Login</Link>
@@ -55,6 +58,11 @@ const Header = () => {
                   <li>
                     <Link to="/Personal">Personal</Link>
                   </li>
+                  {user.accountType === "admin" && (
+                    <li>
+                      <Link to="/Dashboard">Dashboard</Link>
+                    </li>
+                  )}
                   <li>
                     <Link to="/Logout">Logout</Link>
                   </li>
