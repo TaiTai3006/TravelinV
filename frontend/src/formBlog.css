@@ -311,7 +311,7 @@
 }
 .remove {
   font-size: 14px;
-  padding: 0 10px;
+  /* padding: 0 10px; */
   color: #353535;
   cursor: pointer;
   display: flex;
@@ -319,6 +319,7 @@
   font-family: "Merriweather Sans";
   font-style: italic;
   /* justify-content: space-between; */
+  text-decoration: underline;
 }
 .remove-icon {
   font-size: 20px;

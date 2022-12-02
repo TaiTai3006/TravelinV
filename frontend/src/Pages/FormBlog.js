@@ -9,22 +9,20 @@ import Input from "../components/Input";
 import dataProvince from "../dataProvince";
 import { AiOutlineClose } from "react-icons/ai";
 
-
 function FormBlog() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const [inputList, setInputList] = useState([<Input />]);
   const onAddBtnClick = (event) => {
     setInputList(inputList.concat(<Input key={inputList.length} />));
-    
   };
-  const onRemoveBtnClick = (event,index) => {
-
-    setInputList(inputList.filter((input) => 
-      input.key == index || input.key == 'null' && index == 0
-    ));
-    
-  }
+  const onRemoveBtnClick = (event, index) => {
+    setInputList(
+      inputList.filter(
+        (input) => input.key == index || (input.key == "null" && index == 0)
+      )
+    );
+  };
 
   const [provinces, setProvinces] = useState(dataProvince);
 
@@ -73,7 +71,7 @@ function FormBlog() {
             </div>
             {/* <button className="submit">Submit</button> */}
           </div>
-          <div class="input">
+          <div className="input-container">
             <div className="palace-list">
               {" "}
               <label for="palace">Choose palace:</label>
@@ -89,40 +87,46 @@ function FormBlog() {
                 })}
               </select>
             </div>
+            <div class="input">
+              <h3>Title </h3>
+              <input
+                type="text"
+                class="title"
+                placeholder="Write the title of your blog ....."
+                required
+              ></input>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Write the title of your blog ....."
+                required
+              />
+              <div className="description">
+                {inputList.map((input, id) => {
+                  return (
+                    <>
+                      <div
+                        className="remove"
+                        onClick={(e) => onRemoveBtnClick(e, id)}
+                      >
+                        <AiOutlineClose className="remove-icon" /> Click here to
+                        remove this description
+                      </div>
+                      <Input />
+                    </>
+                  );
+                })}
 
-            <h3>Title </h3>
-            <input
-              type="text"
-              class="title"
-              placeholder="Write the title of your blog ....."
-              required
-            ></input>
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Write the title of your blog ....."
-              required
-            />
-            <div className="description">
-              {inputList.map((input,id) => {
-                return <>
-                <div className="remove" onClick={(e) => onRemoveBtnClick(e,id)}>
-                  <AiOutlineClose className="remove-icon"/> Click here to remove this description
-                </div>
-                <Input/>
-
-                </>;
-              })}
-
-              {/* <Input inputList = {inputList}/> */}
-            </div>
-            <div className="addDesc">
-              <h3>Add more description</h3>
-            </div>
-            <div>
-              <button onClick={onAddBtnClick} className="add-btn">
-                <BiPlus className="addDesc--icon" />
-              </button>
+                {/* <Input inputList = {inputList}/> */}
+              </div>
+              <div className="addDesc">
+                <h3>Add more description</h3>
+              </div>
+              <div>
+                <button onClick={onAddBtnClick} className="add-btn">
+                  <BiPlus className="addDesc--icon" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
