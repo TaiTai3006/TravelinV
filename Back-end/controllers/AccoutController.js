@@ -1,8 +1,9 @@
 import { db } from "../index.js";
 import bcrypt from "bcrypt";
 
-export const getAccount = (req, res) => {
-  const q = "SELECT * FROM account";
+export const CreateTableAccount = (req, res) => {
+  const q =
+    "create table `account` (`userName` varchar(24) NOT NULL, `password` varchar(225) NOT NULL, `name` varchar(50), `gender` varchar(4), `gmail` varchar(24), `phoneNumber` varchar(10),`accountType` varchar(10), `image` varchar(225),primary key (`userName`))";
   db.query(q, (err, data) => {
     if (err) return res.json(err);
     return res.json(data);
@@ -43,7 +44,10 @@ export const Login = (req, res) => {
   db.query(q, [userNameId], async (err, data) => {
     if (err) return res.json(err);
     if (Object.keys(data).length !== 0) {
-      const validPassword = await bcrypt.compare(req.body.password, data[0].password);
+      const validPassword = await bcrypt.compare(
+        req.body.password,
+        data[0].password
+      );
       if (validPassword) return res.json(true);
       else return res.json(false);
     } else return res.json(false);

@@ -147,7 +147,7 @@ const useForm = (callback) => {
           localStorage.setItem("user", jsonUser);
           return newSetUser;
         });
-        navigate("/Login");
+        navigate("/Profile");
       } else {
         !checkBox &&
           setErrors({

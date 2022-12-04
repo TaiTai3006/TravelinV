@@ -11,6 +11,7 @@ import Blogs from "./Pages/Blogs";
 import PersonalPage from "./Pages/PersonalPage";
 import Footer from "./components/Footer";
 import Logout from "./Pages/Logout";
+import ProfileInput from "./Pages/ProfileInput";
 import FormBlog from "./Pages/FormBlog";
 
 export const UserContext = createContext();
@@ -38,6 +39,7 @@ function App() {
           <Route path="/Blogs" element={<Blogs />} />
           {/* <Route path="/Blogs/:relatedPostID" element={<Blogs />} /> */}
           <Route path="/Shop" element={<ReadBlogs />} />
+          <Route path="/Profile" element={<ProfileInput />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
           <Route element={<ProtectedRoutes />}>
@@ -47,7 +49,7 @@ function App() {
         </Route>
       </Routes>
       <Footer />
-      </GoogleOAuthProvider>;
+      </GoogleOAuthProvider>
     </UserContext.Provider>
   );
 }
