@@ -1,24 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsFileImage } from "react-icons/bs";
 import "../ProfileInput.css";
+import useForm from "../components/useForm";
+import axios from "axios";
 
 function ProfileInput() {
-  const [selectedImageProfile, setSelectedImageProfile] = useState(null);
+  const { handleChange, account, handleImage, user, setAccount, handleUpdateAccount} = useForm();
+  // useEffect(()=>{
+  //   const fecthGetAccount = async () => {
+  //     try {
+  //       const res = await axios.get(
+  //         "http://localhost:8800/account/" + user.userName
+  //       );
+  //       setAccount(res.data);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   fecthGetAccount()
+  // },[])
 
+  console.log(account)
   return (
     <div className="profile-container">
-        <h1 className="profile-title">Profile</h1>
+      <h1 className="profile-title">Profile</h1>
       <form className="profile-form">
         <div className="profile-image">
           <label for="input-profileimg" className="profile-img">
             <BsFileImage className="preview--icon" />
 
-            {selectedImageProfile && (
+            {account.imagePreview  && (
               <div>
                 <img
                   alt="not fount"
                   width={"100%"}
-                  src={URL.createObjectURL(selectedImageProfile)}
+                  src={account.imagePreview}
                 />
               </div>
             )}
@@ -29,23 +45,37 @@ function ProfileInput() {
             type="file"
             hidden
             id="input-profileimg"
-            onChange={(event) => {
-              setSelectedImageProfile(event.target.files[0]);
-            }}
+            name="image"
+            onChange={handleImage}
           />
         </div>
-        
-        
 
-      
         <div className="profile-input">
-          
-          <span> Usename </span>
-          <input type="text" placeholder="Enter your usename "required></input>
+          <span> Name </span>
+          <input
+            type="text"
+            placeholder="Enter your Name "
+            name="name"
+            defaultValue={account.name}
+            onChange={handleChange}
+            required
+          ></input>
           <span> Email </span>
-          <input type="text" placeholder="Enter your email "required></input>
+          <input
+            type="text"
+            placeholder="Enter your email "
+            name="gmail"
+            onChange={handleChange}
+            required
+          ></input>
           <span> Phone </span>
-          <input type="text" placeholder="Enter your phone "required></input>
+          <input
+            type="text"
+            placeholder="Enter your phone "
+            name="phoneNumber"
+            onChange={handleChange}
+            required
+          ></input>
           <span> Gender </span>
           <div className="choice-gender-container">
             <div className="choice-gender">
@@ -54,6 +84,7 @@ function ProfileInput() {
                 id="genderChoice1"
                 name="gender"
                 value="male"
+                onChange={handleChange}
                 required
               />
               <label for="genderChoice1">Male</label>
@@ -64,16 +95,16 @@ function ProfileInput() {
                 id="genderChoice2"
                 name="gender"
                 value="female"
+                onChange={handleChange}
                 required
               />
               <label for="genderChoice2">Female</label>
             </div>
           </div>
           <div className="submit-profile">
-              <input type="submit" className="submit" value="SUBMIT"></input>
-            </div>
+            <input type="submit" className="submit" value="SUBMIT" onClick={handleUpdateAccount}></input>
+          </div>
         </div>
-        
       </form>
     </div>
   );
