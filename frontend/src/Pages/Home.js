@@ -5,6 +5,7 @@ import GoNext from "../components/GoNext";
 import Slider from "../components/Slider";
 import RelatedPost from "../components/RelatedPost";
 import FormBlog from "./FormBlog"; 
+import ProfileInput from "./ProfileInput";
 
 function Home() {
   return (
@@ -18,6 +19,7 @@ function Home() {
       <Slider/>
       <RelatedPost />
       <FormBlog/>
+      <ProfileInput/>
     </div>
   );
 }

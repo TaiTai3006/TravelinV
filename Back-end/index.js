@@ -2,6 +2,7 @@ import express from "express";
 import mysql from "mysql";
 import cors from "cors";
 import routerAccount from "./routes/AccountRouter.js";
+import "./configs/Database.js"
 const app = express();
 
 export const db = mysql.createConnection({
@@ -25,19 +26,19 @@ app.use(routerAccount);
 //     });
 //   });
 
-//   app.put("/account/:userName", (req, res) => {
-//     const userNameId = req.params.userName;
-//     const q = "UPDATE account SET `password` = ? WHERE userName = ?";
+  // app.put("/account/:userName", (req, res) => {
+  //   const userNameId = req.params.userName;
+  //   const q = "UPDATE account SET `password` = ? WHERE userName = ?";
 
-//     const values = [
-//       req.body.password
-//     ];
+  //   const values = [
+  //     req.body.password
+  //   ];
 
-//     db.query(q, [...values,userNameId], (err, data) => {
-//       if (err) return res.send(err);
-//       return res.json(data);
-//     });
-//   });
+  //   db.query(q, [...values,userNameId], (err, data) => {
+  //     if (err) return res.send(err);
+  //     return res.json(data);
+  //   });
+  // });
 app.listen(8800, () => {
   console.log("Connected ...");
 });

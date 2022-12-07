@@ -14,8 +14,6 @@ const useForm = (callback) => {
   const [checkConfirmPw, setCheckConfirmPw] = useState();
 
   const [account, setAccount] = useState({
-    userName: "",
-    password: "",
     accountType: "user",
     image: defaultAvatar,
   });
@@ -39,6 +37,12 @@ const useForm = (callback) => {
     };
     account.userName && fecthCheckAccout();
   }, [account.userName]);
+
+  useEffect(() => {
+    checkAccounts
+      ? setErrors({ ...errors, checkExist: "Username already exists" })
+      : setErrors(omit(errors, "checkExist"));
+  }, [checkAccounts]);
 
   useEffect(() => {
     const CheckConfirmPw = () => {
@@ -79,7 +83,31 @@ const useForm = (callback) => {
           }
           break;
 
-        case "email":
+        case "name":
+          if (value.length <= 4) {
+            setErrors({
+              ...errors,
+              name: "Name atleast have 5 letters.",
+            });
+          } else {
+            let newObj = omit(errors, "name");
+            setErrors(newObj);
+          }
+          break;
+
+        case "phoneNumber":
+          if (value.length !== 10) {
+            setErrors({
+              ...errors,
+              phoneNumber: "Phone number must have 10 digits",
+            });
+          } else {
+            let newObj = omit(errors, "phoneNumber");
+            setErrors(newObj);
+          }
+          break;
+
+        case "gmail":
           if (
             !new RegExp(
               /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -87,10 +115,10 @@ const useForm = (callback) => {
           ) {
             setErrors({
               ...errors,
-              email: "Enter a valid email address.",
+              gmail: "Enter a valid email address.",
             });
           } else {
-            let newObj = omit(errors, "email");
+            let newObj = omit(errors, "gmail");
             setErrors(newObj);
           }
           break;
@@ -115,7 +143,7 @@ const useForm = (callback) => {
       }
     } else setErrors(omit(errors, name));
   };
-
+  console.log(errors);
   const handleChange = (event) => {
     setAccount({
       ...account,
@@ -131,7 +159,21 @@ const useForm = (callback) => {
     });
     setErrors(omit(errors, "login"));
   };
-  console.log(user);
+
+  useEffect(() => {
+    return () => {
+      URL.revokeObjectURL(account.imagePreview);
+    };
+  }, [account.image]);
+
+  const handleImage = (e) => {
+    setAccount({
+      ...account,
+      [e.target.name]: e.target.files[0],
+      imagePreview: URL.createObjectURL(e.target.files[0]),
+    });
+  };
+
   const handleCreateAccount = async (e) => {
     e.preventDefault();
     try {
@@ -147,7 +189,7 @@ const useForm = (callback) => {
           localStorage.setItem("user", jsonUser);
           return newSetUser;
         });
-        navigate("/Login");
+        navigate("/Profile");
       } else {
         !checkBox &&
           setErrors({
@@ -201,7 +243,6 @@ const useForm = (callback) => {
             },
           }
         );
-        console.log(res.data)
         if (res.data.email_verified) {
           let objectAccount = {
             userName: res.data.email,
@@ -224,20 +265,41 @@ const useForm = (callback) => {
             return newSetUser;
           });
           navigate("/");
-        }
-        else{
-
+        } else {
         }
       } catch (err) {
         console.log(err);
       }
     },
   });
+  console.log(account);
+  const handleUpdateAccount = async (e) => {
+    e.preventDefault();
+
+    try {
+      if (Object.keys(errors).length === 0) {
+        const uploadData = new FormData();
+        uploadData.append("image", account.image, "image");
+        uploadData.append("name",account.name)
+        uploadData.append("gmail",account.gmail)
+        uploadData.append("phoneNumber",account.phoneNumber)
+        uploadData.append("gender",account.gender)
+        await axios.put(
+          `http://localhost:8800/account/${user.userName}`,
+          uploadData
+        );
+        // navigate("/Login");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return {
     checkAccounts,
     user,
     account,
     errors,
+    setAccount,
     handleChange,
     handleCreateAccount,
     handleChangeConfirmPw,
@@ -245,6 +307,8 @@ const useForm = (callback) => {
     handleChangeLogin,
     handelLogin,
     handleLoginGoogle,
+    handleImage,
+    handleUpdateAccount,
   };
 };
 

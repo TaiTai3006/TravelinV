@@ -8,7 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import useForm from "../components/useForm";
 
 function Login() {
-  const {user,handleChangeLogin, errors, handelLogin} = useForm()
+  const {user,handleChangeLogin, errors, handelLogin, handleLoginGoogle} = useForm()
   const [passwordType, setPasswordType] = useState("password");
   const [passwordIcon, setPasswordIcon] = useState(<FaEyeSlash />);
   const handelToggle = () => {
@@ -75,15 +75,16 @@ function Login() {
                 )}
             <input type="submit" value="Sign in" class="IP1" onClick={handelLogin}></input>
             <p class="A5">Or</p>
-            <input
-              type="submit"
-              value="Sign in with Google"
-              class="IP2"
-            ></input>
             <div class="icon1">
               <FcGoogle />
             </div>
           </form>
+          <input
+              type="submit"
+              value="Sign in with Google"
+              class="IP2"
+              onClick={handleLoginGoogle}
+            ></input>
         </div>
       </div>
     </div>

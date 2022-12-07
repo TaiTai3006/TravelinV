@@ -12,7 +12,6 @@ function Register() {
   
   const {
     handleChange,
-    checkAccounts,
     handleCreateAccount,
     errors,
     handleChangeConfirmPw,
@@ -43,6 +42,7 @@ function Register() {
       setPasswordIconCon(FaEyeSlash);
     }
   };
+  
   return (
     <div>
       <img src={loginImage} height="auto" />
@@ -65,9 +65,9 @@ function Register() {
                 onChange={handleChange}
                 required
               ></input>
-              {checkAccounts && (
+              {errors.checkExist && (
                 <p className="notification">
-                  Username already exists{" "}
+                  {errors.checkExist}{" "}
                   <IconContext.Provider
                     value={{ className: "icon_ImNotification" }}
                   >
