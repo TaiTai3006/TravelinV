@@ -1,7 +1,9 @@
+import post from './post';
 'use strict';
 const {
   Model
 } = require('sequelize');
+const post = require('./post');
 module.exports = (sequelize, DataTypes) => {
   class account extends Model {
     /**
