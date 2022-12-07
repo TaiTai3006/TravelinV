@@ -15,7 +15,7 @@ function Slider() {
   useEffect(()=>{
     Axios.get('http://localhost:8800/home/slider').then((response) => {
       setSlide(response.data)
-    })
+    }) 
   },[])
   console.log(slide)
   const [currentSlide, setCurrentSlide] = useState(0);
