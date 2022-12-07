@@ -3,7 +3,7 @@ import Axios, * as others from 'axios';
 
 
 function Slider() {
-  const [slide, setSlide] = useState([{userName: '', postName: '',  demoDescription: '', image: ''}]
+  const [slide, setSlide] = useState([{userName: '', postName: '',  demoDescription: '', image: '',}]
   //   try{
   //     const res = await Axios.get('http://localhost:8800/home/slider')
   //     return res.data
@@ -15,7 +15,6 @@ function Slider() {
   useEffect(()=>{
     Axios.get('http://localhost:8800/home/slider').then((response) => {
       setSlide(response.data)
-      console.log("hello")
     })
   },[])
   console.log(slide)
