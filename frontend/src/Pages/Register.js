@@ -7,18 +7,18 @@ import { ImNotification } from "react-icons/im";
 import loginImage from "../image/loginImage.png";
 import { FcGoogle } from "react-icons/fc";
 import useForm from "../components/useForm";
+import Errs from "../components/errors";
 
 function Register() {
-  
   const {
     handleChange,
     handleCreateAccount,
     errors,
     handleChangeConfirmPw,
     handleCheckBox,
-    handleLoginGoogle
+    handleLoginGoogle,
   } = useForm();
-  
+
   const [passwordType, setPasswordType] = useState("password");
   const [passwordIcon, setPasswordIcon] = useState(<FaEyeSlash />);
   const handelToggle = () => {
@@ -42,7 +42,7 @@ function Register() {
       setPasswordIconCon(FaEyeSlash);
     }
   };
-  
+
   return (
     <div>
       <img src={loginImage} height="auto" />
@@ -65,26 +65,8 @@ function Register() {
                 onChange={handleChange}
                 required
               ></input>
-              {errors.checkExist && (
-                <p className="notification">
-                  {errors.checkExist}{" "}
-                  <IconContext.Provider
-                    value={{ className: "icon_ImNotification" }}
-                  >
-                    <ImNotification />
-                  </IconContext.Provider>
-                </p>
-              )}
-              {errors.userName && (
-                <p className="notification">
-                  {errors.userName}{" "}
-                  <IconContext.Provider
-                    value={{ className: "icon_ImNotification" }}
-                  >
-                    <ImNotification />
-                  </IconContext.Provider>
-                </p>
-              )}
+              {errors.checkExist && <Errs err={errors.checkExist} />}
+              {errors.userName && <Errs err={errors.userName} />}
               <p class="passDis">Password</p>
               <div class="Input">
                 <input
@@ -97,16 +79,7 @@ function Register() {
                 <span className="icons-span-1" onClick={handelToggle}>
                   {passwordIcon}
                 </span>
-                {errors.password && (
-                  <p className="notification">
-                    {errors.password}{" "}
-                    <IconContext.Provider
-                      value={{ className: "icon_ImNotification" }}
-                    >
-                      <ImNotification />
-                    </IconContext.Provider>
-                  </p>
-                )}
+                {errors.password && <Errs err={errors.password} />}
               </div>
               <p class="confDis">Confirm Password</p>
               <div class="InputCon">
@@ -119,32 +92,14 @@ function Register() {
                 <span className="icons-span-2" onClick={handelToggleCon}>
                   {passwordIconCon}
                 </span>
-                {errors.confirmPw && (
-                  <p className="notification">
-                    {errors.confirmPw}{" "}
-                    <IconContext.Provider
-                      value={{ className: "icon_ImNotification" }}
-                    >
-                      <ImNotification />
-                    </IconContext.Provider>
-                  </p>
-                )}
+                {errors.confirmPw && <Errs err={errors.confirmPw} />}
               </div>
             </div>
             <div class="flex2">
               <input type="checkbox" required onClick={handleCheckBox}></input>
               <p class="A3">I accepted with terms and conditions</p>
             </div>
-            {errors.checkBox && (
-                  <p className="notification">
-                    {errors.checkBox}{" "}
-                    <IconContext.Provider
-                      value={{ className: "icon_ImNotification" }}
-                    >
-                      <ImNotification />
-                    </IconContext.Provider>
-                  </p>
-                )}
+            {errors.checkBox && <Errs err={errors.checkBox} />}
             <input
               type="submit"
               value="Sign up"
@@ -154,14 +109,14 @@ function Register() {
             <p class="A5">Or</p>
           </form>
           <input
-              type="submit"
-              value="Sign in with Google"
-              class="IP2"
-              onClick={handleLoginGoogle}
-            ></input>
-            <div class="icon">
-              <FcGoogle />
-            </div>
+            type="submit"
+            value="Sign in with Google"
+            class="IP2"
+            onClick={handleLoginGoogle}
+          ></input>
+          <div class="icon">
+            <FcGoogle />
+          </div>
         </div>
       </div>
     </div>
