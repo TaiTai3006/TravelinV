@@ -2,6 +2,7 @@ import express from "express";
 import mysql from "mysql";
 import cors from "cors";
 import routerAccount from "./routes/AccountRouter.js";
+import homeRouter from "./routes/homeRoute.js";
 // import "./configs/Database.js"
 const app = express();
 
@@ -20,6 +21,7 @@ db.connect((err)=>{
 app.use(express.json());
 app.use(cors());
 app.use(routerAccount);
+app.use(homeRouter)
 
 
 // app.delete("/account/:userName", (req, res) => {
@@ -45,6 +47,7 @@ app.use(routerAccount);
   //     return res.json(data);
   //   });
   // });
+
 app.listen(8800, () => {
   console.log("Connected ...");
 });
