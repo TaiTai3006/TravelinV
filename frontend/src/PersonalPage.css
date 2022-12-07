@@ -139,7 +139,7 @@
   }
   
   .Thang_tab_content {
-    margin: 30px 40px;
+    margin: 30px 100px;
     font-size: 23px;
     font-family: headings;
   }
@@ -160,13 +160,13 @@
   }
   
   #Thang_content button {
-    width: 190px;
+    width: 250px;
     height: 60px;
     display: inline;
     font-size: 27px;
     border:none;
     background-color: inherit;
-    margin: 0 90px;
+    margin: 0 95px;
     color: rgb(117, 115, 115);
     text-align: center;
     font-family: headings;
