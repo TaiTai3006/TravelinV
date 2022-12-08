@@ -2,7 +2,7 @@ import "../PersonalPage.css";
 import { BsBookmarkHeartFill } from "react-icons/bs";
 import { BsFillHandbagFill } from "react-icons/bs";
 import { BsFillFilterSquareFill } from "react-icons/bs";
-import {useEffect} from 'react';
+import {useEffect, useContext} from 'react';
 import {useState} from 'react';
 import { FaEdit } from "react-icons/fa";
 import { BsTextRight } from "react-icons/bs";
@@ -10,17 +10,16 @@ import { MdEdit } from "react-icons/md";
 import { MdOutlineBookmarkRemove } from "react-icons/md";
 import { RiDislikeLine } from "react-icons/ri";
 import axios from "axios"
+import { UserContext } from "../App";
 
-
-const USERNAME = 'taitai'
+const User={userName:'taitai', name:'Trần Võ Tấn Tài', image:'https://daohieu.com/wp-content/uploads/2020/05/meo-con.jpg'}
 
 const tabs=[{name:'Post', style:<BsFillFilterSquareFill className='Thang_a'></BsFillFilterSquareFill>},{name:'PostLike', style: <BsBookmarkHeartFill className='Thang_'></BsBookmarkHeartFill>}]
 
 export default function PersonalPage() {
-
+    // const [User, setUser] = useContext(UserContext);
     const [type, setType] = useState('Post')
     const [Content, setContent] = useState([{}])
-    const [Name, setName] = useState([{}])
     const [CountPost, setCountPost] = useState();
     const [CountPostLike, setCountPostLike] = useState();
 
@@ -28,24 +27,24 @@ export default function PersonalPage() {
     useEffect(()=>{
         const FecthCountPostLike = async ()=>{
             try{
-                await axios.get(`http://localhost:8800/${USERNAME}/Personal/PostLike`).then((response) =>{
+                await axios.get(`http://localhost:8800/${User.userName}/Personal/PostLike`).then((response) =>{
                     setCountPostLike(response.data.length)
                 })
             } catch (err) {
                 console.log(err)
             }
         };
-        const FecthName = async ()=>{
-            try{
-                await axios.get(`http://localhost:8800/${USERNAME}/Personal`).then((response) =>{
-                    setName(response.data)
-                })
-            } catch (err) {
-                console.log(err)
-            }
-        };
+        // const FecthName = async ()=>{
+        //     try{
+        //         await axios.get(`http://localhost:8800/${User.userName}/Personal`).then((response) =>{
+        //             setName(response.data)
+        //         })
+        //     } catch (err) {
+        //         console.log(err)
+        //     }
+        // };
         FecthCountPostLike()
-        FecthName()
+        // FecthName()
     },[])
     // console.log(PostPersonal)
     // const FecthAllPersonal = async ()=>{
@@ -65,7 +64,7 @@ export default function PersonalPage() {
     useEffect(() => {
         const FecthAllPost = async ()=>{
             try{
-                await axios.get(`http://localhost:8800/${USERNAME}/Personal/${type}`).then((response) =>{
+                await axios.get(`http://localhost:8800/${User.userName}/Personal/${type}`).then((response) =>{
                    response.data && setContent(response.data)
                    if(type === 'Post')
                     setCountPost(response.data.length)
@@ -79,32 +78,24 @@ export default function PersonalPage() {
         FecthAllPost()
     },[type])
 
-    // function handleDelete(id){
-    //     console.log(id)
-    //     axios.delete("http://localhost:8800/delete/" + id)
-    // }
-
     const handleDeletePost = async (id) => {
         try {
-          await axios.delete(`http://localhost:8800/${USERNAME}/Personal/DeleteLike/${id}`);
-          await axios.delete(`http://localhost:8800/${USERNAME}/Personal/DeletePostDes/${id}`);
-          await axios.delete(`http://localhost:8800/${USERNAME}/Personal/DeletePost/${id}`);
-        //   await axios.get(`http://localhost:8800/${USERNAME}/Personal/${type}`).then((response) =>{
-        //            response.data && setContent(response.data)
-        //            if(type === 'Post')
-        //             setCountPost(response.data.length)
-        //             else if(type === 'PostLike')
-        //                     setCountPostLike(response.data.length)
-        //         })
-          window.location.reload()
+          await axios.delete(`http://localhost:8800/${User.userName}/Personal/DeleteLike/${id}`);
+          await axios.delete(`http://localhost:8800/${User.userName}/Personal/DeletePostDes/${id}`);
+          await axios.delete(`http://localhost:8800/${User.userName}/Personal/DeletePost/${id}`);
+          await axios.get(`http://localhost:8800/${User.userName}/Personal/${type}`).then((response) =>{
+                   response.data && setContent(response.data)
+                    setCountPost(response.data.length)
+                })
+        //   window.location.reload()
         } catch (err) {
           console.log(err);
         }
       };
       const handleDeletePostLike = async (id) => {
         try {
-          await axios.delete(`http://localhost:8800/${USERNAME}/Personal/DeleteLike/${id}`);
-          await axios.get(`http://localhost:8800/${USERNAME}/Personal/${type}`).then((response) =>{
+          await axios.delete(`http://localhost:8800/${User.userName}/Personal/DeleteLike/${id}`);
+          await axios.get(`http://localhost:8800/${User.userName}/Personal/${type}`).then((response) =>{
                    response.data && setContent(response.data)
                     setCountPostLike(response.data.length)
                 })
@@ -140,7 +131,7 @@ function HandlCoutEvent(type, id)
     {/* {setType('Post')} */}
     {/* {console.log(PostPersonal)} */}
         <div id='Thang_avatar_child'>
-            <img src={Name[0].image}/>  
+            <img src={User.image}/>  
         </div>
         <div id='Thang_card'>
             </div>
@@ -150,7 +141,7 @@ function HandlCoutEvent(type, id)
                 <button id='Thang_setting'> <FaEdit></FaEdit></button>
                 <button id="Thang_edit">Chỉnh sửa thông tin cá nhân</button>
             </ul>
-            <p className='Thang_name'>{Name[0].name}</p>  
+            <p className='Thang_name'>{User.name}</p>  
             <div id='Thang_tab'>
                 <p className="Thang_tab_content"><span>{CountPost}</span> {tabs[0].name}</p>
                 <p className="Thang_tab_content"><span>{CountPostLike}</span> {tabs[1].name}</p>
