@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       dateTime: {
-        type: Sequelize.STRING
+        allowNull: false, type: 'TIMESTAMP', defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       image: {
         type: Sequelize.STRING

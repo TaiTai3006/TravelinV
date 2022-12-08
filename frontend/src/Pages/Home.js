@@ -18,8 +18,6 @@ function Home() {
       <GoNext />
       <Slider/>
       <RelatedPost />
-      <FormBlog/>
-      <ProfileInput/>
     </div>
   );
 }

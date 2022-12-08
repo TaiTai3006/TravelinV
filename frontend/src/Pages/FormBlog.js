@@ -1,39 +1,44 @@
 import React from "react";
 import "../formBlog.css";
-import { useState, useRef, useMemo } from "react";
+import { useState } from "react";
 import { HiChevronRight } from "react-icons/hi";
 import { BsFileImage } from "react-icons/bs";
 import { BiPlus } from "react-icons/bi";
-import Header from "../components/Header";
 import Input from "../components/Input";
-import dataProvince from "../dataProvince";
 import { AiOutlineClose } from "react-icons/ai";
+import useFormPost from "../components/useFormPost";
+import { Link } from "react-router-dom";
 
 function FormBlog() {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const {
+    handleChangeTitle,
+    handleTitleImage,
+    handleCreatePost,
+    descriptions,
+    setDescriptions,
+    title,
+    provinces,
+  } = useFormPost();
 
-  const [inputList, setInputList] = useState([<Input />]);
+  const [inputList, setInputList] = useState([0]);
+  const [id, setId] = useState(0);
+
   const onAddBtnClick = (event) => {
-    setInputList(inputList.concat(<Input key={inputList.length} />));
+    setId((id) => id + 1);
+    setInputList([...inputList, id + 1]);
   };
-  const onRemoveBtnClick = (event, index) => {
-    setInputList(
-      inputList.filter(
-        (input) => input.key == index || (input.key == "null" && index == 0)
-      )
-    );
+  const onRemoveBtnClick = (id) => {
+    setInputList(inputList.filter((input)=> input !== id))
+
   };
-
-  const [provinces, setProvinces] = useState(dataProvince);
-
+  console.log(inputList);
   return (
     <>
-      <Header />
       <div className="nav-container">
         {/* Thanh địa chỉ */}
-        <a href="#">Home</a>
+        <Link to="/">Home</Link>
         <HiChevronRight />
-        <a href="#">Blogs</a>
+        <Link to="/Blogs">Blogs</Link>
         <HiChevronRight />
         <a href="#">Create</a>
       </div>
@@ -48,12 +53,12 @@ function FormBlog() {
               <BsFileImage className="preview--icon" />
 
               <span>Upload your image for post here </span>
-              {selectedImage && (
+              {title.imagePreview && (
                 <div>
                   <img
                     alt="not fount"
                     width={"100%"}
-                    src={URL.createObjectURL(selectedImage)}
+                    src={title.imagePreview}
                   />
                 </div>
               )}
@@ -61,13 +66,17 @@ function FormBlog() {
             <input
               type="file"
               hidden
+              name="image"
               id="input-img"
-              onChange={(event) => {
-                setSelectedImage(event.target.files[0]);
-              }}
+              onChange={handleTitleImage}
             />
             <div className="submit">
-              <input type="submit" className="submit" value="POST"></input>
+              <input
+                type="submit"
+                className="submit"
+                value="POST"
+                onClick={handleCreatePost}
+              ></input>
             </div>
             {/* <button className="submit">Submit</button> */}
           </div>
@@ -75,13 +84,20 @@ function FormBlog() {
             <div className="palace-list">
               {" "}
               <label for="palace">Choose palace:</label>
-              <select name="palace" id="palace" required>
+              <select
+                name="idProvince"
+                id="palace"
+                onChange={handleChangeTitle}
+                required
+              >
                 <option value="">None</option>
                 {provinces.map((province) => {
                   // console.log(province)
                   return (
                     <>
-                      <option value={province.slug}>{province.name}</option>
+                      <option value={province.idProvince}>
+                        {province.provinceName}
+                      </option>
                     </>
                   );
                 })}
@@ -92,28 +108,36 @@ function FormBlog() {
               <input
                 type="text"
                 class="title"
+                name="postName"
                 placeholder="Write the title of your blog ....."
+                onChange={handleChangeTitle}
                 required
               ></input>
               <textarea
                 id="message"
-                name="message"
+                name="demoDescription"
                 placeholder="Write the title of your blog ....."
+                onChange={handleChangeTitle}
                 required
               />
               <div className="description">
-                {inputList.map((input, id) => {
+                {inputList.map((input) => {
                   return (
-                    <>
+                    <div key={input}>
                       <div
                         className="remove"
-                        onClick={(e) => onRemoveBtnClick(e, id)}
+                        onClick={()=>onRemoveBtnClick(input)}
                       >
                         <AiOutlineClose className="remove-icon" /> Click here to
                         remove this description
                       </div>
-                      <Input />
-                    </>
+                      <Input
+                        id={input}
+                        descriptions={descriptions}
+                        setDescriptions={setDescriptions}
+                        idPost={title.idPost}
+                      />
+                    </div>
                   );
                 })}
 

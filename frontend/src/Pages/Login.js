@@ -1,14 +1,14 @@
 import React, { useState, useContext } from "react";
 import "../Login.css";
-import { IconContext } from "react-icons";
-import { ImNotification } from "react-icons/im";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import loginImage from "../image/loginImage.png";
 import { FcGoogle } from "react-icons/fc";
 import useForm from "../components/useForm";
+import Errs from "../components/errors";
 
 function Login() {
-  const {user,handleChangeLogin, errors, handelLogin, handleLoginGoogle} = useForm()
+  const { user, handleChangeLogin, errors, handelLogin, handleLoginGoogle } =
+    useForm();
   const [passwordType, setPasswordType] = useState("password");
   const [passwordIcon, setPasswordIcon] = useState(<FaEyeSlash />);
   const handelToggle = () => {
@@ -40,7 +40,7 @@ function Login() {
                 type="text"
                 placeholder="Enter your usename"
                 defaultValue={user.userName}
-                name='userName'
+                name="userName"
                 onChange={handleChangeLogin}
                 required
               ></input>
@@ -63,28 +63,24 @@ function Login() {
               <p class="A3">Remember me</p>
               <p class="A4">Forgot Password</p>
             </div>
-            {errors.login && (
-                  <p className="notification">
-                    {errors.login}{" "}
-                    <IconContext.Provider
-                      value={{ className: "icon_ImNotification" }}
-                    >
-                      <ImNotification />
-                    </IconContext.Provider>
-                  </p>
-                )}
-            <input type="submit" value="Sign in" class="IP1" onClick={handelLogin}></input>
+            {errors.login && <Errs err={errors.login} />}
+            <input
+              type="submit"
+              value="Sign in"
+              class="IP1"
+              onClick={handelLogin}
+            ></input>
             <p class="A5">Or</p>
             <div class="icon1">
               <FcGoogle />
             </div>
           </form>
           <input
-              type="submit"
-              value="Sign in with Google"
-              class="IP2"
-              onClick={handleLoginGoogle}
-            ></input>
+            type="submit"
+            value="Sign in with Google"
+            class="IP2"
+            onClick={handleLoginGoogle}
+          ></input>
         </div>
       </div>
     </div>

@@ -144,6 +144,7 @@ const useForm = (callback) => {
     } else setErrors(omit(errors, name));
   };
   console.log(errors);
+  
   const handleChange = (event) => {
     setAccount({
       ...account,
@@ -288,7 +289,7 @@ const useForm = (callback) => {
           `http://localhost:8800/account/${user.userName}`,
           uploadData
         );
-        // navigate("/Login");
+        navigate("/Login");
       }
     } catch (err) {
       console.log(err);
