@@ -2,33 +2,58 @@ import React from "react";
 import "../formBlog.css";
 import { useState, useRef, useMemo } from "react";
 import { HiChevronRight } from "react-icons/hi";
-import { BsFileImage } from "react-icons/bs";
+import { BsFileImage, BsInputCursor } from "react-icons/bs";
 import { BiPlus } from "react-icons/bi";
-import Header from "../components/Header";
+
 import Input from "../components/Input";
 import dataProvince from "../dataProvince";
 import { AiOutlineClose } from "react-icons/ai";
 
 function FormBlog() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [key, setKey]= useState(0);
+  const [input, setInput] = useState("");
+  
+  const [inputList, setInputList] = useState([<Input key={key}/>]);
+    
 
-  const [inputList, setInputList] = useState([<Input />]);
-  const onAddBtnClick = (event) => {
-    setInputList(inputList.concat(<Input key={inputList.length} />));
+  const onAddBtnClick = (event,key) => {
+    key = key+1
+    setKey(key)
+    setInputList(inputList.concat(<Input key={key} />));
+    
   };
-  const onRemoveBtnClick = (event, index) => {
-    setInputList(
-      inputList.filter(
-        (input) => input.key == index || (input.key == "null" && index == 0)
-      )
-    );
-  };
+  
+  
+  // const onRemoveBtnClick = (event, index) => {
+  //   console.log(index)
+    
+  //   const list = [...inputList];
+  //   console.log(list)
+  //   list.splice(index, 1);
+  //   setInputList(list);
+  //   setInputList(
+    
+
+      
+  //     inputList.filter(
+        
+
+  //       (input) => input.key !== index || (input.key !== "null" && index !== 0)
+  //     )
+  //   );
+    
+  // };
+  const deleteByIndex = id => {
+    setInputList(oldInputList => {
+      return oldInputList.filter((_, i) => i !== id)
+    })
+  }
 
   const [provinces, setProvinces] = useState(dataProvince);
 
   return (
     <>
-      <Header />
       <div className="nav-container">
         {/* Thanh địa chỉ */}
         <a href="#">Home</a>
@@ -66,9 +91,7 @@ function FormBlog() {
                 setSelectedImage(event.target.files[0]);
               }}
             />
-            <div className="submit">
-              <input type="submit" className="submit" value="POST"></input>
-            </div>
+
             {/* <button className="submit">Submit</button> */}
           </div>
           <div className="input-container">
@@ -87,7 +110,7 @@ function FormBlog() {
                 })}
               </select>
             </div>
-            <div class="input">
+            <div className="input">
               <h3>Title </h3>
               <input
                 type="text"
@@ -107,7 +130,8 @@ function FormBlog() {
                     <>
                       <div
                         className="remove"
-                        onClick={(e) => onRemoveBtnClick(e, id)}
+                        // onClick={(e) => onRemoveBtnClick(e, id)}
+                        onClick={() => deleteByIndex(id)}
                       >
                         <AiOutlineClose className="remove-icon" /> Click here to
                         remove this description
@@ -123,10 +147,13 @@ function FormBlog() {
                 <h3>Add more description</h3>
               </div>
               <div>
-                <button onClick={onAddBtnClick} className="add-btn">
+                <button onClick={() => onAddBtnClick()} className="add-btn">
                   <BiPlus className="addDesc--icon" />
                 </button>
               </div>
+            </div>
+            <div className="submit">
+              <input type="submit" className="submit" value="POST"></input>
             </div>
           </div>
         </div>

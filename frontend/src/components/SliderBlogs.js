@@ -21,42 +21,43 @@ const relatedPosts = [
   },
 ];
 
-
 const slideImages = [
-    {
-      url: 'https://www.sbb.ch/content/dam/internet/sharedimages/objekte/Swiss-Bankers-Travel.jpg/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg',
-      titile:'Sustainable Travel',
-      des: 'de di da lat thi ban can nhung gi1 co con chim vanh khuyen nho sac long muot nhu to ong goi da bao vang ay the ngoan nhat nha'
-    },
-    {
-      url: 'https://v-biz.vn/static/media/Travel.ff88c854.jpg',
-      titile:'chim chich bong',
-      des: 'chim chich bong rat hay treo tu canh na sang canh buoi'
-    },
-    {
-      url: 'https://e4life.vn/wp-content/uploads/2021/09/tu-vung-ielts-chu-de-travel.png',
-      titile:'con co',
-      des: 'con co may di an dem dau phai canh mem lon co xuong ao'
-    },
-    {
-      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbK9ZHYnPY39soqR7NBQjuvykQwq2JSy1RuA&usqp=CAU',
-      titile:'da la ne4',
-      des: 'de di da lat thi ban can nhung gi4'
-    }
-  ];
+  {
+    url: "https://www.sbb.ch/content/dam/internet/sharedimages/objekte/Swiss-Bankers-Travel.jpg/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg",
+    titile: "Sustainable Travel",
+    des: "de di da lat thi ban can nhung gi1 co con chim vanh khuyen nho sac long muot nhu to ong goi da bao vang ay the ngoan nhat nha",
+  },
+  {
+    url: "https://v-biz.vn/static/media/Travel.ff88c854.jpg",
+    titile: "chim chich bong",
+    des: "chim chich bong rat hay treo tu canh na sang canh buoi",
+  },
+  {
+    url: "https://e4life.vn/wp-content/uploads/2021/09/tu-vung-ielts-chu-de-travel.png",
+    titile: "con co",
+    des: "con co may di an dem dau phai canh mem lon co xuong ao",
+  },
+  {
+    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbK9ZHYnPY39soqR7NBQjuvykQwq2JSy1RuA&usqp=CAU",
+    titile: "da la ne4",
+    des: "de di da lat thi ban can nhung gi4",
+  },
+];
 const Slider = () => {
-const [currentSlide, setCurrentSlide] = useState(0)
-    const slideLengh = slideImages.length;
-    const nextSlide = () => {
-      setCurrentSlide(currentSlide === slideLengh - 1 ? 0 : currentSlide + 1);
-    }
-    const prevSlide = () => {
-      setCurrentSlide(currentSlide === 0 ? slideLengh - 1: currentSlide - 1);
-    }
-    return(
-      <div className="">
-          <div className="realated-post-ctn">
-          <div className="sidebar-articles">
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideLengh = slideImages.length;
+  const nextSlide = () => {
+    setCurrentSlide(currentSlide === slideLengh - 1 ? 0 : currentSlide + 1);
+  };
+  const prevSlide = () => {
+    setCurrentSlide(currentSlide === 0 ? slideLengh - 1 : currentSlide - 1);
+  };
+  return (
+    <div className="">
+      
+      <div className="slider-container" > 
+      <div className="realated-post-ctn">
+        <div className="sidebar-articles">
           <div className="sidebar-articles_container_blogs">
             {relatedPosts.map((relatedPost, index) => (
               <Link className="article-text-block" to="/Blogs/Dalat">
@@ -69,25 +70,34 @@ const [currentSlide, setCurrentSlide] = useState(0)
               </Link>
             ))}
           </div>
-          </div>
-          </div>
-          <button className=" slider-btn" id="left" onClick={prevSlide} ><HiChevronLeft/></button>
-          <button className=" slider-btn" id="right" onClick={nextSlide} ><HiChevronRight/></button>
-          <span className="slider-title">{slideImages[currentSlide].titile}</span>
-          <span className="slider-des">{slideImages[currentSlide].des}</span>
-          <div className='button-ctn'>
-            <a className="slider-button" href={slideImages.titile}>GO TO POST</a>
-          </div>
-          {slideImages.map((slideImage, index) =>(
-                <div key={index} className="slide.active">
-                  {index === currentSlide && (
-                      <img className="slider-img" src={slideImage.url} ></img>)}
-                  </div>
-            )
+        </div>
+      </div>
+      <div className=" slider-content">
+        <span className="slider-title">{slideImages[currentSlide].titile}</span>
+        <span className="slider-des">{slideImages[currentSlide].des}</span>
+        <div className="button-ctn">
+          <a className="slider-button" href={slideImages.titile}>
+            GO TO POST
+          </a>
+        </div>
+        {slideImages.map((slideImage, index) => (
+          <div key={index} className="slide.active">
+            {index === currentSlide && (
+              <img className="slider-img" src={slideImage.url}></img>
             )}
           </div>
-
-
-    );
-}
-export default Slider
+        ))}
+      </div>
+      </div>
+      
+      
+      <button className=" slider-btn" id="left" onClick={prevSlide}>
+        <HiChevronLeft />
+      </button>
+      <button className=" slider-btn" id="right" onClick={nextSlide}>
+        <HiChevronRight />
+      </button>
+    </div>
+  );
+};
+export default Slider;

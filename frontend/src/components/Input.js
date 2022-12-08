@@ -20,8 +20,9 @@ function Input() {
     // console.log(imageList.length, addUpdateIndex);
 
     setImages(imageList);
+    
   };
-
+  
 
 
   return (
@@ -56,6 +57,7 @@ function Input() {
               {imageList.map((image, index) => (
                 <div key={index} className="image-item">
                   <img src={image.data_url} alt="" width="100" />
+                  
                 </div>
               ))}
               <button className="add-img-btn" onClick={onImageUpload}>
