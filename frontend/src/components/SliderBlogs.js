@@ -48,7 +48,13 @@ const [relatedPosts, setRelatePosts] = useState([{}])
       {/* {console.log(slideImages)} */}
         <div className="realated-post-ctn">
         <div className="sidebar-articles">
-        <div className="sidebar-articles_container_blogs">
+        <div className="sidebar-articles_container_blogs" 
+          style={relatedPosts.length === 0 ? 
+          {} : 
+          {
+            backgroundColor: '#f5f5f5',
+            padding: '20px',
+          }}>
           {relatedPosts.map((relatedPost, index) => (
             <Link className="article-text-block" to="/Blogs/Dalat">
               <div className="article-text-block_image" key={index}>

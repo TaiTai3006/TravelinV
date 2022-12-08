@@ -18,7 +18,7 @@ export default function Blogs() {
   useEffect(()=>{
     const FecthFeaturePost = async ()=>{
         try{
-            await axios.get(`http://localhost:8800/${USERNAME}/Blogs/FeaturedPost`).then((response) =>{
+            await axios.get(`http://localhost:8800/Blogs/FeaturedPost`).then((response) =>{
                 setFeaturePost(response.data)
                 // console.log(response.data)
             })
@@ -28,7 +28,7 @@ export default function Blogs() {
     };
     const FecthRecentPost = async ()=>{
         try{
-            await axios.get(`http://localhost:8800/${USERNAME}/Blogs/RecentPost`).then((response) =>{
+            await axios.get(`http://localhost:8800/Blogs/RecentPost`).then((response) =>{
                 setRecentPost(response.data)
                 // console.log(response.data)
             })
