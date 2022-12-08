@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import Logout from "./Pages/Logout";
 import ProfileInput from "./Pages/ProfileInput";
 import FormBlog from "./Pages/FormBlog";
+import Admin from "./Pages/admin"
 
 export const UserContext = createContext();
 
