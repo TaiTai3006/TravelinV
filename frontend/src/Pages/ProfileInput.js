@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { BsFileImage } from "react-icons/bs";
 import "../ProfileInput.css";
 import useForm from "../components/useForm";
+import Errs from "../components/errors";
 import axios from "axios";
 
 function ProfileInput() {
-  const { handleChange, account, handleImage, user, setAccount, handleUpdateAccount} = useForm();
+  const { handleChange, account, handleImage, user, setAccount, errors, handleUpdateAccount} = useForm();
   // useEffect(()=>{
   //   const fecthGetAccount = async () => {
   //     try {
@@ -60,6 +61,9 @@ function ProfileInput() {
             onChange={handleChange}
             required
           ></input>
+          {errors.name && (
+            <Errs err={errors.name}/>
+          )}
           <span> Email </span>
           <input
             type="text"
@@ -68,6 +72,9 @@ function ProfileInput() {
             onChange={handleChange}
             required
           ></input>
+          {errors.gmail && (
+            <Errs err={errors.gmail}/>
+          )}
           <span> Phone </span>
           <input
             type="text"
@@ -76,6 +83,9 @@ function ProfileInput() {
             onChange={handleChange}
             required
           ></input>
+          {errors.phoneNumber && (
+            <Errs err={errors.phoneNumber}/>
+          )}
           <span> Gender </span>
           <div className="choice-gender-container">
             <div className="choice-gender">

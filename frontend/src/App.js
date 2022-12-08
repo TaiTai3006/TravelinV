@@ -14,6 +14,7 @@ import Logout from "./Pages/Logout";
 import ProfileInput from "./Pages/ProfileInput";
 import FormBlog from "./Pages/FormBlog";
 import AboutUs from "./Pages/AboutUs";
+import Admin from "./Pages/admin"
 
 export const UserContext = createContext();
 
@@ -45,6 +46,7 @@ function App() {
 
           <Route path="/Login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
+          <Route path="/Blogs/CreactPost" element={<FormBlog />} />
           <Route element={<ProtectedRoutes />}>
             <Route path="/Personal" element={<PersonalPage />} />
             <Route path="/Logout" element={<Logout />} />

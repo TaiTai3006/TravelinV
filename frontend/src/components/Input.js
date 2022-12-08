@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "../formBlog.css";
 
 import { BiPlus } from "react-icons/bi";
 
 import ImageUploading from "react-images-uploading";
 
-function Input() {
+function Input({ id, descriptions, setDescriptions, idPost  }) {
+
+  const [description, setDescription] = useState({idPost: idPost, id: id});
+
   const [images, setImages] = React.useState([]);
   const maxNumber = 2;
 
@@ -22,12 +25,18 @@ function Input() {
     setImages(imageList);
     
   };
-  
 
+  const handleChangeDes = (e) => {
+    console.log("handle");
+    setDescription({ ...description, [e.target.name]: e.target.value });
+    descriptions[id] = { ...description, [e.target.name]: e.target.value };
+    setDescriptions(descriptions);
+  };
+
+  console.log(descriptions, "hello");
 
   return (
     <div className="input-container ">
-     
       <div className="des-head">
         <h3>Description </h3>
         {/* <AiOutlineClose/> */}
@@ -35,11 +44,14 @@ function Input() {
       <input
         type="text"
         class="title-description"
+        name="title"
+        onChange={handleChangeDes}
         placeholder="Write the title  of your description  ....."
       ></input>
       <textarea
         id="message"
-        name="message"
+        name="des"
+        onChange={handleChangeDes}
         placeholder="Write the description of your blog...."
       />
       <div className="App">

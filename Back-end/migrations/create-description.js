@@ -14,6 +14,7 @@ module.exports = {
       },
       idPost: {
         allowNull: false,
+        primaryKey: true,
         type: Sequelize.STRING
       },
       image1: {
