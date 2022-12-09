@@ -4,11 +4,11 @@ import "../Blogs.css"
 import SliderBlogs from "../components/SliderBlogs";
 import { useEffect, useState } from 'react';
 import axios from "axios"
-
+import { Link } from 'react-router-dom';
 import Goto from "../components/Goto"
 
 // const USERNAME = 'taitai'
-
+// hello
 export default function Blogs() {
   const [FeaturedPost, setFeaturePost] = useState([{Year:'2022', image:''}, {Year:'2022', image:''}])
   const [RecentPost, setRecentPost] = useState([{postName:'2022', image:''}, {postName:'2022', image:''}, {postName:'2022', image:''}])
