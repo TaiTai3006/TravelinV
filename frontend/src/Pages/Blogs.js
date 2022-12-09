@@ -7,11 +7,10 @@ import axios from "axios"
 import { Link } from 'react-router-dom';
 import Goto from "../components/Goto"
 
-// const USERNAME = 'taitai'
-// hello
+
 export default function Blogs() {
-  const [FeaturedPost, setFeaturePost] = useState([{Year:'2022', image:''}, {Year:'2022', image:''}])
-  const [RecentPost, setRecentPost] = useState([{postName:'2022', image:''}, {postName:'2022', image:''}, {postName:'2022', image:''}])
+  const [FeaturedPost, setFeaturePost] = useState([{}])
+  const [RecentPost, setRecentPost] = useState([{}])
 
   useEffect(()=>{
     const FecthFeaturePost = async ()=>{
@@ -37,20 +36,7 @@ export default function Blogs() {
     FecthFeaturePost()
     FecthRecentPost()
 },[])
-const [test,settest] = useState([
-  {
-    name: "post 1",
-    img:"https://www.rmit.edu.vn/content/dam/rmit/vn/en/assets-for-production/images/vietnam/hanoi-lake.jpg/stock-vietnam-danang-hands-bridge.jpg"
-  },
-  {
-    name: "post 2",
-    img: "https://thumbs.dreamstime.com/z/golden-bridge-hand-god-da-nang-vietnam-january-golden-bridge-hand-god-da-nang-vietnam-january-173306998.jpg"
-  },
-  {
-    name: "post 3",
-    img:"https://thumbs.dreamstime.com/z/golden-bridge-hand-god-da-nang-vietnam-january-golden-bridge-hand-god-da-nang-vietnam-january-173306998.jpg"
-  }
-])
+
   return ( 
   <div>
     {/* {console.log(FeaturedPost)} */}
@@ -70,12 +56,12 @@ const [test,settest] = useState([
     <h2>Featured Posts</h2>
     <div className="featured-post-ctn">
 
-      {test.map((tests, index)=>{
+      {FeaturedPost.map((FeaturedPosts, index)=>{
         return(
           <div class="image-ctn" >
           <a href = "">
-            <span className="post-name" >{tests.name}</span>
-            <img className = "featured-img" src={tests.img} ></img>
+            <span className="post-name" >{FeaturedPosts.postName}</span>
+            <img className = "featured-img" src={FeaturedPosts.image} ></img>
           </a>
           </div>
         )
@@ -91,12 +77,12 @@ const [test,settest] = useState([
     <div class="recent">
     <h2>Recent Posts</h2>
       <div className="recent-post-ctn" >
-        {test.map((tests,index)=>{
+        {RecentPost.map((RecentPosts,index)=>{
           return(
             <div className="img-recent-ctn1" >
             <a href="" >
-              <span className="post-name-recent" >{tests.name}</span>
-              <img className="recent-img" src={tests.img} ></img>
+              <span className="post-name-recent" >{RecentPosts.postName}</span>
+              <img className="recent-img" src={RecentPosts.image} ></img>
             </a>
           </div>
           )
