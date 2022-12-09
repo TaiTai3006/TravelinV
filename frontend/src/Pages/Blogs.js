@@ -37,7 +37,20 @@ export default function Blogs() {
     FecthFeaturePost()
     FecthRecentPost()
 },[])
-
+const [test,settest] = useState([
+  {
+    name: "post 1",
+    img:"https://www.rmit.edu.vn/content/dam/rmit/vn/en/assets-for-production/images/vietnam/hanoi-lake.jpg/stock-vietnam-danang-hands-bridge.jpg"
+  },
+  {
+    name: "post 2",
+    img: "https://thumbs.dreamstime.com/z/golden-bridge-hand-god-da-nang-vietnam-january-golden-bridge-hand-god-da-nang-vietnam-january-173306998.jpg"
+  },
+  {
+    name: "post 3",
+    img:"https://thumbs.dreamstime.com/z/golden-bridge-hand-god-da-nang-vietnam-january-golden-bridge-hand-god-da-nang-vietnam-january-173306998.jpg"
+  }
+])
   return ( 
   <div>
     {/* {console.log(FeaturedPost)} */}
@@ -56,21 +69,39 @@ export default function Blogs() {
   <div class=" featured-container">  
     <h2>Featured Posts</h2>
     <div className="featured-post-ctn">
-    <div class="image-ctn" >
-      <span className="post-name" > {FeaturedPost[0].postName}</span>
-        <img className="featured-img" src={FeaturedPost[0].image} alt="image not found"></img>
 
-      </div>
-      <div class="image-ctn2" >
+      {test.map((tests, index)=>{
+        return(
+          <div class="image-ctn" >
+          <a href = "">
+            <span className="post-name" >{tests.name}</span>
+            <img className = "featured-img" src={tests.img} ></img>
+          </a>
+          </div>
+        )
+      })}
+      {/* <div class="image-ctn2" >
+      <a href="">
       <span className="post-name" > {FeaturedPost[1].postName}</span>
         <img className="featured-img" src={FeaturedPost[1].image} alt="image not found"></img>
-      </div>
+      </a>
+      </div> */}
     </div>
     </div>
     <div class="recent">
     <h2>Recent Posts</h2>
       <div className="recent-post-ctn" >
-        <div className="img-recent-ctn1">
+        {test.map((tests,index)=>{
+          return(
+            <div className="img-recent-ctn1" >
+            <a href="" >
+              <span className="post-name-recent" >{tests.name}</span>
+              <img className="recent-img" src={tests.img} ></img>
+            </a>
+          </div>
+          )
+        })}
+        {/* <div className="img-recent-ctn1">
           <span className="post-name-recent">{RecentPost[0].postName}</span>
           <img className="recent-img" src={RecentPost[0].image} class="recent-img" alt=""></img>
         </div>
@@ -81,7 +112,7 @@ export default function Blogs() {
         <div className="img-recent-ctn3">
           <span className="post-name-recent">{RecentPost[2].postName}</span>
         <img class="recent-img" src={RecentPost[2].image} alt=""></img>
-        </div>
+        </div> */}
       </div>
   </div>
 
