@@ -2,7 +2,7 @@ import React from "react";
 import "../formBlog.css";
 import { useState } from "react";
 import { HiChevronRight } from "react-icons/hi";
-import { BsFileImage } from "react-icons/bs";
+import { BsFileImage, BsInputCursor } from "react-icons/bs";
 import { BiPlus } from "react-icons/bi";
 import Input from "../components/Input";
 import { AiOutlineClose } from "react-icons/ai";
@@ -103,7 +103,7 @@ function FormBlog() {
                 })}
               </select>
             </div>
-            <div class="input">
+            <div className="input">
               <h3>Title </h3>
               <input
                 type="text"
@@ -147,10 +147,13 @@ function FormBlog() {
                 <h3>Add more description</h3>
               </div>
               <div>
-                <button onClick={onAddBtnClick} className="add-btn">
+                <button onClick={() => onAddBtnClick()} className="add-btn">
                   <BiPlus className="addDesc--icon" />
                 </button>
               </div>
+            </div>
+            <div className="submit">
+              <input type="submit" className="submit" value="POST"></input>
             </div>
           </div>
         </div>

@@ -23,6 +23,7 @@ function Input({ id, descriptions, setDescriptions, idPost  }) {
     // console.log(imageList.length, addUpdateIndex);
 
     setImages(imageList);
+    
   };
 
   const handleChangeDes = (e) => {
@@ -68,6 +69,7 @@ function Input({ id, descriptions, setDescriptions, idPost  }) {
               {imageList.map((image, index) => (
                 <div key={index} className="image-item">
                   <img src={image.data_url} alt="" width="100" />
+                  
                 </div>
               ))}
               <button className="add-img-btn" onClick={onImageUpload}>

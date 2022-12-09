@@ -12,8 +12,12 @@ footer {
 }
 .page-foot_container {
   width: 60%;
+ 
   margin: 0 auto;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  
 }
 .newsletter_title {
   display: inline-block;
@@ -110,6 +114,7 @@ footer {
     position: absolute;
     bottom: 80px;
     left: 610px;
+    -webkit-mask-image: url('./image/download.svg');
 }
 .img_ins_custom{
     width: 101%;

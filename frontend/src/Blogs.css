@@ -1,5 +1,4 @@
-
-@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300;1,400&display=swap"); 
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 @font-face {
   font-family: headings;
@@ -10,19 +9,19 @@
     url(https://static.saltinourhair.com/build/fonts/SaltHeading.woff)
       format("woff");
 }
-body{
+body {
   font-family: headings;
   align-items: center;
   color: #353535;
 }
-.h1-container{  
+.h1-container {
   line-height: 30px;
   text-align: center;
   width: 100%;
   height: 150px;
   margin: 20px 0 0;
 }
-.h1-container h1{
+.h1-container h1 {
   font-family: headings;
   font-weight: 700;
   font-size: 100px;
@@ -30,109 +29,81 @@ body{
   letter-spacing: -1.5px;
   line-height: 130px;
   margin: 100px 0px 10px;
-} 
-.goto-container{
-  width: 1100px;
-  height: 70px;
-  background-color: #FCFCFC;
+}
+.goto-container {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+  /* margin: 45px 100px; */
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+  background-color: #fcfcfc;
   border-radius: 20px;
   box-shadow: #cccccc 2px 2px 2px 0;
-  margin: auto;
   color: #353535;
+  height: 70px;
+  white-space: nowrap;
 }
-.goto-container p{
-  position: absolute;
-  width: auto;
-  height: 50px;
-  margin: 20px;
+.goto-li-ctn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
-.goto-container ul {
-  list-style-type: none;
-  margin: auto;
-  padding: 0;
-  height: 74px;
-}
-.goto-li{
- margin: 5px 5px 0 5px ; 
- height: 50px;
- width: auto;
- display: inline-block;
-}
-.goto-container span{
-  margin: 10px;
-  float: left;
-  margin-top: 20px;
-}
-.goto-a{
-  margin: 13px 3px 3px 0;
-  text-align: center;
-  display: inline-flex;
-  position: relative;
-  border-radius: 20px;
-  background-color: #C1E2E1;
-  padding:  4px 15px;
+.goto-li {
+  background-color: #c1e2e1;
+  padding: 4px 15px;
   font-size: 18px;
   font-family: "Merriweather Sans";
+  border-radius: 20px;
+  margin: 5px 10px;
+  cursor: pointer;
 }
-.goto-container a:hover{
+.goto-a {
+  margin: 5px 10px;
+  /* padding:  4px 15px; */
+}
+
+.goto-li:hover {
   background-color: #8febee;
 }
-.goto-li-ctn{
-  width: 1100px;
-  height: 70px;
-  position: absolute;
-  margin: auto;
-  padding-left: 70px;
-}
-.body-ctn{
-  width: 1100px;
-  height: 800px;
+
+.body-ctn {
+  /* width: 1100px; */
+
   line-height: 30px;
-  margin: auto;
+
+  margin: 45px;
 }
 .featured-container {
-  position: absolute;
-  width: 1100px;
-  height: auto;
-  top: 415px; 
+  /* height: 500px; */
 }
-.featured-post-ctn{
+.featured-post-ctn {
   display: flex;
-  width: inherit;
-  height: auto;
+
+  justify-content: space-between;
+  margin: 15px;
 }
-.featured-container h2{
-  font-size: 36px;
-  height: fit-content;
-  margin: 0 0 20px 0;
-  font-family: "Merriweather Sans";
-}
-.featured-img{
-  width: 540px;
-  height: 280px;
-}
-.image-ctn{
-  width: 540px;
-  height: 280px;
+
+.image-ctn {
+  width: 640px;
+  height: 380px;
   overflow: hidden;
   border-radius: 5px;
+  margin: 15px;
 }
-.image-ctn2{
-  width: 540px;
-  height: 280px;
-  overflow: hidden;
-  border-radius: 5px;
-  margin-left: 20px;
+.image-ctn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
-/* .featured-img{
-  transform: scale();
-  transition-duration: ;
-} */
-.post-name{
+
+.post-name {
   font-family: "Merriweather Sans";
   position: absolute;
   width: 300px;
-  border-radius: 1px;
+  border-radius: 6px;
   height: auto;
   display: inline;
   background-color: none;
@@ -147,17 +118,15 @@ body{
   z-index: 10;
 }
 
-.recent{
-  position: absolute;
-  width: 1100px;
-  height: 480px;
-  display: flex;
-  background-color: none;
-  top: 760px;
+
+.recent {
+  /* height: 480px; */
+  /* display: flex; */
+  width: 100%;
   font-family: "Merriweather Sans";
 }
-.recent h2{
-  position: absolute;
+.recent h2 {
+  /* position: absolute; */
   align-items: center;
   font-size: 36px;
   margin: 20px 0 20px 0;
@@ -165,7 +134,7 @@ body{
   color: #353535;
   font-family: "Merriweather Sans";
 }
-.recent p{
+.recent p {
   text-align: center;
   word-wrap: break-word;
   height: auto;
@@ -174,49 +143,44 @@ body{
   font-size: 20px;
   font-family: "Merriweather Sans";
 }
-.recent-post-ctn{
-  position: relative;
-  height: 300px;
+.recent-post-ctn {
+  /* position: relative; */
+  /* height: 300px; */
   width: inherit;
   display: flex;
-  top: 70px;
+  justify-content: space-between;
+  margin: 5px;
 }
-.img-recent-ctn1{
-  width: 353px;
+.img-recent-ctn {
+  width: 400px;
   height: 300px;
   border-radius: 5px;
   overflow: hidden;
   margin-right: 20px;
 }
-.img-recent-ctn2{
-  width: 353px;
-  height: 300px;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-right: 20px;
+.img-recent-ctn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
-.img-recent-ctn3{
-  width: 353px;
+
+.recent-img {
+  /* width: 450px;
   height: 300px;
-  border-radius: 5px;
-  overflow: hidden;
+  display: inline; */
 }
-.recent-img{
-  width: 354px;
-  height: 300px;
-  display: inline;
-}
-.recent img:hover{
+.recent img:hover {
   opacity: 1;
   transition-duration: 1s;
   transform: scale(1.08);
 }
-.featured-container img:hover{
+.featured-container img:hover {
   opacity: 1;
   transition-duration: 1s;
   transform: scale(1.08);
 }
-.post-name-recent{
+.post-name-recent {
   position: absolute;
   width: 200px;
   border-radius: 1px;
@@ -233,31 +197,32 @@ body{
   padding: 5px;
   z-index: 10;
 }
-.slider-ctn{
+.slider-ctn {
   position: relative;
   width: 100%;
-  height: 500px;
+  /* height: 500px; */
   border-radius: 5px;
-  background-color: #EDECEC;
+  background-color: #edecec;
   overflow: hidden;
 }
-.slider-img{
+.slider-img {
   width: 100%;
-  height: 500px;
-  background-size: auto;
+  height: 100%;
+  /* background-size: auto; */
+  /* opacity: 0.8; */
 }
-.slider-title{
- position: absolute;
- top: 25%;
- left: 15%;
- font-size: 50px;
- color: #ffffff;
- width: 500px;
- height: auto;
- word-wrap: break-word;
- font-family: "Merriweather Sans";
+.slider-title {
+  position: absolute;
+  top: 25%;
+  left: 15%;
+  font-size: 50px;
+  color: #ffffff;
+  width: 500px;
+  height: auto;
+  word-wrap: break-word;
+  font-family: "Merriweather Sans";
 }
-.slider-des{
+.slider-des {
   position: absolute;
   top: 35%;
   left: 15%;
@@ -268,26 +233,26 @@ body{
   word-wrap: break-word;
   font-family: "Merriweather Sans";
 }
-.slider-button{
+.slider-button {
   position: absolute;
   left: 15%;
   top: 60%;
-  color:black;
+  color: black;
   font-size: 15px;
   background-color: #f1bc68;
   padding: 8px 120px;
   border-radius: 30px;
 }
-.button-ctn a:hover{
+.button-ctn a:hover {
   opacity: 1;
   transition-duration: 1s;
   transform: scale(1.08);
   background-color: indianred;
   color: #ffff;
 }
-.slider-btn{
+.slider-btn {
   position: absolute;
-  top:50%;
+  top: 50%;
   background: none;
   font-size: 40px;
   border-radius: 100px;
@@ -296,13 +261,13 @@ body{
   cursor: pointer;
   user-select: none;
 }
-#right{
+#right {
   right: 32px;
 }
-#left{
+#left {
   left: 32px;
 }
-.realated-post-ctn{
+.realated-post-ctn {
   position: absolute;
   right: 15%;
   top: 20%;
@@ -310,14 +275,26 @@ body{
 .slide {
   opacity: 0;
   transition-duration: 1s ease;
- }
+}
 
 .slide.active {
   opacity: 1;
   transition-duration: 1s;
   transform: scale(1.08);
- }
- .sidebar-articles_container_blogs {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.slide.active img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+.sidebar-articles_container_blogs {
   width: 400px;
   background-color: red;
   border-radius: 15px;
@@ -327,6 +304,16 @@ body{
   box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
   justify-content: center;
 }
-.sidebar-articles_container_blogs a:hover{
+.sidebar-articles_container_blogs a:hover {
   background-color: #e6e6e6;
+}
+.slider-container {
+  width: 100%;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+.slider-content {
+  width: 100%;
+  height: 100%;
 }

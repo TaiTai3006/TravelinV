@@ -5,6 +5,7 @@ import { HiChevronDown } from "react-icons/hi";
 import { IconContext } from "react-icons";
 import { UserContext } from "../App";
 import defaultAvatar from "../image/default_avatar.png";
+import { VscListSelection} from "react-icons/vsc";
 import "../App.css";
 const Header = () => {
   const { user } = useContext(UserContext);
@@ -24,6 +25,9 @@ const Header = () => {
           </Link>
           <Link to="/AboutUs">About us</Link>
         </div>
+
+        
+        
         <ul id="nav1">
           <li className="search">
             <a href="">
@@ -72,6 +76,33 @@ const Header = () => {
           </li>
         </ul>
       </header>
+      <nav>
+        <div class="nav-column">
+          <input type="checkbox" class="nav__checkbox" id="nav-toggle" aria-label="checkBox"/>
+  
+          <label for="nav-toggle" class="nav__button">
+           
+            <VscListSelection/>
+
+          </label>
+          <div class="nav__background"></div>
+  
+          
+          <div id="nav-item">
+          <Link to="/">logo</Link>
+          <Link to="/">Home</Link>
+          <Link to="/Blogs">Blogs</Link>
+          <Link to="/Shop">
+            Shop
+            <IconContext.Provider value={{ className: "icon_shop" }}>
+              <RiShoppingBasket2Line />
+            </IconContext.Provider>
+          </Link>
+          <Link to="/AboutUs">About us</Link>
+        </div>
+        </div>
+        
+      </nav>
       <Outlet />
     </>
   );

@@ -1,6 +1,6 @@
 import "../Footer.css";
 import foot_background from "../image/background-footer.png";
-import img_ins_custom from "../image/img_ins_custom.png";
+
 import { BsInstagram, BsFacebook, BsGithub } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 import { AiOutlineCopyrightCircle } from "react-icons/ai";
@@ -14,41 +14,42 @@ export default function Footer() {
       </div>
       <div className="page-foot">
         <div className="page-foot_container">
-            <div className="foot-ins_image">
-                <a href="#">
-                <img
-                    className="img_ins"
-                    src="https://i.pinimg.com/564x/e7/1d/b9/e71db948a03c609d54c52ce32ffc2e06.jpg"
-                ></img>
-                <img className="img_ins_custom" src={img_ins_custom}></img>
-                <div className="foot-ins_content">
-                    <div>
-                    <IconContext.Provider value={{ className: "icon_Instagram" }}>
-                        <BsInstagram />
-                    </IconContext.Provider>
-                    </div>
-                    <p>
-                    Follow our travels daily on instagram together with 300k
-                    others.
-                    <IconContext.Provider
-                        value={{ className: "icon_arrowRight" }}
-                    >
-                        <FaArrowRight />
-                    </IconContext.Provider>
-                    </p>
+          <div className="foot-ins_image">
+            <a href="#">
+              <img
+                className="img_ins"
+                src="https://i.pinimg.com/564x/e7/1d/b9/e71db948a03c609d54c52ce32ffc2e06.jpg"
+              ></img>
+            
+              <div className="foot-ins_content">
+                <div>
+                  <IconContext.Provider value={{ className: "icon_Instagram" }}>
+                    <BsInstagram />
+                  </IconContext.Provider>
                 </div>
-                </a>
+                <p>
+                  Follow our travels daily on instagram together with 300k
+                  others.
+                  <IconContext.Provider
+                    value={{ className: "icon_arrowRight" }}
+                  >
+                    <FaArrowRight />
+                  </IconContext.Provider>
+                </p>
+              </div>
+            </a>
+          </div>
+          <div className ="page-foot-text">
+            <div className="newsletter_title">
+              The Travel
+              <span>letter</span>
             </div>
-          <div className="newsletter_title">
-            The Travel
-            <span>letter</span>
-          </div>
-          <div>
-            <p className="newsletter_text">
-              Want to learn more about tourist attractions in Vietnam?
-            </p>
-          </div>
-          <button className="newsletter_submit">read now</button>
+            <div>
+              <p className="newsletter_text">
+                Want to learn more about tourist attractions in Vietnam?
+              </p>
+            </div>
+            <button className="newsletter_submit">read now</button>
           <nav className="sitemap">
             <ul>
               <li>
@@ -86,6 +87,7 @@ export default function Footer() {
                           </IconContext.Provider>
                         </a>
                       </li>
+
                       <li className="contact_social_container">
                         <a href="https://github.com/leethiep/travelinV.git">
                           <IconContext.Provider
@@ -101,14 +103,13 @@ export default function Footer() {
               </li>
             </ul>
           </nav>
+          </div>
         </div>
         <div className="foot-text">
-        <IconContext.Provider
-                            value={{ className: "icon_CopyrightCircle" }}
-                          >
-                            <AiOutlineCopyrightCircle />
-                          </IconContext.Provider>
-            <Link to='/'>Travel in V</Link> - Website designed & built by group 6.
+          <IconContext.Provider value={{ className: "icon_CopyrightCircle" }}>
+            <AiOutlineCopyrightCircle />
+          </IconContext.Provider>
+          <Link to="/">Travel in V</Link> - Website designed & built by group 6.
         </div>
       </div>
     </footer>
