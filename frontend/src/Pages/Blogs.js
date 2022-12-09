@@ -57,12 +57,12 @@ export default function Blogs() {
     <h2>Featured Posts</h2>
     <div className="featured-post-ctn">
     <div class="image-ctn" >
-      <span className="post-name" >Best Travel Insurances in {FeaturedPost[0].Year}</span>
+      <span className="post-name" > {FeaturedPost[0].postName}</span>
         <img className="featured-img" src={FeaturedPost[0].image} alt="image not found"></img>
 
       </div>
       <div class="image-ctn2" >
-      <span className="post-name" >Best Travel Insurances in {FeaturedPost[1].Year}</span>
+      <span className="post-name" > {FeaturedPost[1].postName}</span>
         <img className="featured-img" src={FeaturedPost[1].image} alt="image not found"></img>
       </div>
     </div>

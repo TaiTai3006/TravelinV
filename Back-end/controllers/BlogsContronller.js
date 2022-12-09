@@ -2,7 +2,7 @@ import { db } from "../index.js";
 
 export const getFeaturedPost = (req, res) => {
 // const userNameId = req.params.userName;
-  const q = "SELECT image, YEAR(dateTime) as Year FROM `post` WHERE 1 ORDER by post.like DESC , post.dateTime DESC LIMIT 2";
+  const q = "SELECT image, YEAR(dateTime) as Year, postName FROM `post` WHERE 1 ORDER by post.dateTime DESC LIMIT 2";
   db.query(q, (err, data) => {
     if (err) return res.json(err);
     return res.json(data);
@@ -11,7 +11,7 @@ export const getFeaturedPost = (req, res) => {
 
 export const getRecentPost = (req, res) => {
   // const userNameId = req.params.userName;
-    const q = "SELECT image, postName FROM `post` WHERE 1 ORDER by post.dateTime DESC LIMIT 3";
+    const q = "SELECT image, postName FROM `post` WHERE 1 ORDER by post.like DESC, post.dateTime DESC LIMIT 3";
     db.query(q, (err, data) => {
       if (err) return res.json(err);
       return res.json(data);

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import './App.css';
-import {BsPersonCircle} from 'react-icons/bs'
+import '../admin.css';
 import {BsThreeDots} from 'react-icons/bs'
-import { red } from "@mui/material/colors";
 import {IoMdAddCircle} from 'react-icons/io'
 
 

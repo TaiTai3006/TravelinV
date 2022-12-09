@@ -13,7 +13,7 @@ export const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "travelinv",
+  database: "travelinvn",
 });
 
 db.connect((err)=>{

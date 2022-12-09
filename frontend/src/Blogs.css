@@ -134,11 +134,11 @@ body{
   border-radius: 1px;
   height: auto;
   display: inline;
-  background-color: none;
+  background-color:#ffffff;
   word-wrap: break-word;
   font-size: 20px;
   font-weight: 700;
-  color: white;
+  color: #353535;
   text-align: left;
   margin: 20px;
   padding: 5px;
@@ -222,11 +222,11 @@ body{
   height: auto;
   display: inline;
   line-height: 20px;
-  background-color: none;
+  background-color: #ffffff;
   word-wrap: break-word;
   font-size: 20px;
   font-weight: 700;
-  color: white;
+  color: #353535;
   text-align: left;
   margin: 20px;
   padding: 5px;
