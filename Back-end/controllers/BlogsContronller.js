@@ -38,7 +38,7 @@ export const getRelatedPost = (req, res) => {
 };
 
 export const getGoto = (req, res) => {
-  const q = "SELECT provinceName as data FROM `province` WHERE 1 LIMIT 8";
+  const q = "SELECT provinceName as data, idProvince FROM `province` WHERE 1 LIMIT 8";
   db.query(q, (err, data) => {
   if (err) return res.json(err);
   return res.json(data);
