@@ -1,21 +1,18 @@
-import '../App.css';
+import '../admin.css';
 import {MdOutlineArticle} from 'react-icons/md'
 import {AiFillCaretRight} from 'react-icons/ai'
 import {GrGroup} from 'react-icons/gr'
-// import DataPost from './dataAdmin';
+import DataPost from './adminMap';
 import { React, useState, useEffect } from "react";
-import {BiSearch} from 'react-icons/bi'
-import {GrUserAdmin} from 'react-icons/gr'
-import {BsPersonCircle} from 'react-icons/bs'
 import {BsThreeDots} from 'react-icons/bs'
 import {HiChevronRight} from 'react-icons/hi'
-// import { DataUser } from './dataAdmin';
+import { DataUser } from './adminMap';
 import {IoSearchCircle} from 'react-icons/io5'
 
 
 
 
-function App() {
+function Admin() {
 
  
   const [posts, setpost] = useState([
@@ -321,4 +318,4 @@ function App() {
   )
 }
 
-export default App;
+export default Admin;

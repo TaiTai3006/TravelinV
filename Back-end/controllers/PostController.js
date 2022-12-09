@@ -1,5 +1,7 @@
 import { db } from "../index.js";
 
+import { v4 as uuidv4 } from "uuid";
+
 const cloudinary = require("cloudinary").v2;
 
 export const getProvince = (req, res) => {
@@ -19,22 +21,69 @@ export const createPost = (req, res) => {
     today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
   const q =
     "INSERT INTO `post`(`idPost`, `idProvince`, `image`, `demoDescription`, `status`, `postName`, `userName`) VALUES (?)";
-    console.log(req.body)
+  console.log(req.body);
   const values = [
     req.body.idPost,
     req.body.idProvince,
-    req.body.image = image?.path,
+    (req.body.image = image?.path),
     req.body.demoDescription,
     (req.body.status = "pending"),
     req.body.postName,
-    req.body.userName = userNameId,
+    (req.body.userName = userNameId),
   ];
-  
+
   db.query(q, [values], (err, data) => {
     if (err) {
+      if (image) cloudinary.uploader.destroy(image.filename);
+      return res.json(err);
+    }
+    return res.json("Post has been created successfully");
+  });
+};
+
+export const createDes = (req, res) => {
+  const idPostId = req.params.idPost;
+  const image = req.files;
+  const q =
+    "INSERT INTO `description`(`idDes`, `idPost`, `image1`, `image2`, `description`, `title`) VALUES (?)";
+  console.log(req.body)
+  console.log(image)
+  const values = [
+    (req.body.idDes = uuidv4()),
+    (req.body.idPost = idPostId),
+    (req.body.image1 = image?.image1[0]?.path),
+    (req.body.image2 = image?.image2[0]?.path),
+    req.body.description,
+    req.body.title,
+  ];
+  db.query(q, [values], (err, data) => {
+    if (err) {
+      if (image) cloudinary.uploader.destroy(image.filename);
+      return res.json(err);
+    }
+    return res.json("Post has been created successfully");
+  });
+};
+
+export const createDes2 = (req, res) => {
+    const idPostId = req.params.idPost;
+    const image = req.file;
+    const q =
+      "INSERT INTO `description`(`idDes`, `idPost`, `image1`, `description`, `title`) VALUES (?)";
+    console.log(req.body)
+    console.log(image)
+    const values = [
+      (req.body.idDes = uuidv4()),
+      (req.body.idPost = idPostId),
+      (req.body.image1 = image?.path),
+      req.body.description,
+      req.body.title,
+    ];
+    db.query(q, [values], (err, data) => {
+      if (err) {
         if (image) cloudinary.uploader.destroy(image.filename);
         return res.json(err);
       }
-    return res.json('Post has been created successfully');
-  });
-};
+      return res.json("Post has been created successfully");
+    });
+  };

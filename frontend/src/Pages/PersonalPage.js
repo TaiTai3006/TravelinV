@@ -2,7 +2,7 @@ import "../PersonalPage.css";
 import { BsBookmarkHeartFill } from "react-icons/bs";
 import { BsFillHandbagFill } from "react-icons/bs";
 import { BsFillFilterSquareFill } from "react-icons/bs";
-import {useEffect} from 'react';
+import {useEffect, useContext} from 'react';
 import {useState} from 'react';
 import { FaEdit } from "react-icons/fa";
 import { BsTextRight } from "react-icons/bs";
@@ -10,17 +10,18 @@ import { MdEdit } from "react-icons/md";
 import { MdOutlineBookmarkRemove } from "react-icons/md";
 import { RiDislikeLine } from "react-icons/ri";
 import axios from "axios"
+import { UserContext } from "../App";
 
-
-const USERNAME = 'taitai'
+// const User={userName:'taitai', name:'Trần Võ Tấn Tài', image:'https://daohieu.com/wp-content/uploads/2020/05/meo-con.jpg'}
 
 const tabs=[{name:'Post', style:<BsFillFilterSquareFill className='Thang_a'></BsFillFilterSquareFill>},{name:'PostLike', style: <BsBookmarkHeartFill className='Thang_'></BsBookmarkHeartFill>}]
 
 export default function PersonalPage() {
-
+    const User = useContext(UserContext);
+    console.log(User.user)
     const [type, setType] = useState('Post')
-    const [Content, setContent] = useState([{}])
     const [Name, setName] = useState([{}])
+    const [Content, setContent] = useState([{}])
     const [CountPost, setCountPost] = useState();
     const [CountPostLike, setCountPostLike] = useState();
 
@@ -28,7 +29,7 @@ export default function PersonalPage() {
     useEffect(()=>{
         const FecthCountPostLike = async ()=>{
             try{
-                await axios.get(`http://localhost:8800/${USERNAME}/Personal/PostLike`).then((response) =>{
+                await axios.get(`http://localhost:8800/${User.user.userName}/Personal/PostLike`).then((response) =>{
                     setCountPostLike(response.data.length)
                 })
             } catch (err) {
@@ -37,7 +38,7 @@ export default function PersonalPage() {
         };
         const FecthName = async ()=>{
             try{
-                await axios.get(`http://localhost:8800/${USERNAME}/Personal`).then((response) =>{
+                await axios.get(`http://localhost:8800/${User.user.userName}/Personal`).then((response) =>{
                     setName(response.data)
                 })
             } catch (err) {
@@ -65,7 +66,7 @@ export default function PersonalPage() {
     useEffect(() => {
         const FecthAllPost = async ()=>{
             try{
-                await axios.get(`http://localhost:8800/${USERNAME}/Personal/${type}`).then((response) =>{
+                await axios.get(`http://localhost:8800/${User.user.userName}/Personal/${type}`).then((response) =>{
                    response.data && setContent(response.data)
                    if(type === 'Post')
                     setCountPost(response.data.length)
@@ -79,32 +80,24 @@ export default function PersonalPage() {
         FecthAllPost()
     },[type])
 
-    // function handleDelete(id){
-    //     console.log(id)
-    //     axios.delete("http://localhost:8800/delete/" + id)
-    // }
-
     const handleDeletePost = async (id) => {
         try {
-          await axios.delete(`http://localhost:8800/${USERNAME}/Personal/DeleteLike/${id}`);
-          await axios.delete(`http://localhost:8800/${USERNAME}/Personal/DeletePostDes/${id}`);
-          await axios.delete(`http://localhost:8800/${USERNAME}/Personal/DeletePost/${id}`);
-        //   await axios.get(`http://localhost:8800/${USERNAME}/Personal/${type}`).then((response) =>{
-        //            response.data && setContent(response.data)
-        //            if(type === 'Post')
-        //             setCountPost(response.data.length)
-        //             else if(type === 'PostLike')
-        //                     setCountPostLike(response.data.length)
-        //         })
-          window.location.reload()
+          await axios.delete(`http://localhost:8800/${User.user.userName}/Personal/DeleteLike/${id}`);
+          await axios.delete(`http://localhost:8800/${User.user.userName}/Personal/DeletePostDes/${id}`);
+          await axios.delete(`http://localhost:8800/${User.user.userName}/Personal/DeletePost/${id}`);
+          await axios.get(`http://localhost:8800/${User.user.userName}/Personal/${type}`).then((response) =>{
+                   response.data && setContent(response.data)
+                    setCountPost(response.data.length)
+                })
+        //   window.location.reload()
         } catch (err) {
           console.log(err);
         }
       };
       const handleDeletePostLike = async (id) => {
         try {
-          await axios.delete(`http://localhost:8800/${USERNAME}/Personal/DeleteLike/${id}`);
-          await axios.get(`http://localhost:8800/${USERNAME}/Personal/${type}`).then((response) =>{
+          await axios.delete(`http://localhost:8800/${User.user.userName}/Personal/DeleteLike/${id}`);
+          await axios.get(`http://localhost:8800/${User.user.userName}/Personal/${type}`).then((response) =>{
                    response.data && setContent(response.data)
                     setCountPostLike(response.data.length)
                 })
@@ -140,7 +133,7 @@ function HandlCoutEvent(type, id)
     {/* {setType('Post')} */}
     {/* {console.log(PostPersonal)} */}
         <div id='Thang_avatar_child'>
-            <img src={Name[0].image}/>  
+            <img src={User.user.image}/>  
         </div>
         <div id='Thang_card'>
             </div>

@@ -12,7 +12,6 @@ const useFormPost = (callback) => {
 
   const { user, setUser } = useContext(UserContext);
 
-
   useEffect(() => {
     axios
       .get("http://localhost:8800/Province")
@@ -39,13 +38,52 @@ const useFormPost = (callback) => {
 
   const handleCreatePost = (e) => {
     e.preventDefault();
-    const uploadDataTitle = new FormData();
-    uploadDataTitle.append("image", title.image, "image");
-    uploadDataTitle.append("idPost", title.idPost);
-    uploadDataTitle.append("idProvince", title.idProvince);
-    uploadDataTitle.append("demoDescription", title.demoDescription);
-    uploadDataTitle.append("postName", title.postName);
-    axios.post(`http://localhost:8800/Post/${user.userName}`, uploadDataTitle);
+    if (title.image) {
+      const uploadDataTitle = new FormData();
+      uploadDataTitle.append("image", title.image, "image");
+      uploadDataTitle.append("idPost", title.idPost);
+      uploadDataTitle.append("idProvince", title.idProvince);
+      uploadDataTitle.append("demoDescription", title.demoDescription);
+      uploadDataTitle.append("postName", title.postName);
+      axios.post(
+        `http://localhost:8800/Post/${user.userName}`,
+        uploadDataTitle
+      );
+    } else {
+      axios.post(`http://localhost:8800/Post/${user.userName}`, title);
+    }
+
+    for (let i = 0; i < descriptions.length; i++) {
+      if (descriptions[i]) {
+        console.log(descriptions[i]);
+        if (descriptions[i].image1 && descriptions[i].image2) {
+          const uploadDataTitle = new FormData();
+          uploadDataTitle.append("image1", descriptions[i].image1, "image1");
+          uploadDataTitle.append("image2", descriptions[i].image2, "image2");
+          uploadDataTitle.append("description", descriptions[i].description);
+          uploadDataTitle.append("title", descriptions[i].title);
+          axios.post(
+            `http://localhost:8800/CreatePost/${title.idPost}`,
+            uploadDataTitle
+          );
+        } else if (descriptions[i].image1) {
+          const uploadDataTitle = new FormData();
+          uploadDataTitle.append("image1", descriptions[i].image1, "image1");
+          uploadDataTitle.append("description", descriptions[i].description);
+          uploadDataTitle.append("title", descriptions[i].title);
+          axios.post(
+            `http://localhost:8800/CreatePost2\/${title.idPost}`,
+            uploadDataTitle
+          );
+        } else {
+          axios.post(
+           
+            `http://localhost:8800/CreatePost/${title.idPost}`,
+            descriptions[i]
+          );
+        }
+      }
+    }
   };
 
   console.log(provinces);
@@ -54,7 +92,7 @@ const useFormPost = (callback) => {
   return {
     title,
     provinces,
-    descriptions, 
+    descriptions,
     setDescriptions,
     handleChangeTitle,
     handleTitleImage,

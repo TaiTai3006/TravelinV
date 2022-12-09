@@ -29,7 +29,7 @@ function FormBlog() {
   };
   const onRemoveBtnClick = (id) => {
     setInputList(inputList.filter((input)=> input !== id))
-
+    setDescriptions(descriptions.filter((des)=> des.id !== id))
   };
   console.log(inputList);
   return (
@@ -46,7 +46,7 @@ function FormBlog() {
         <h1>Create post </h1>
       </div>
       {/* {inputList} */}
-      <form>
+      <div>
         <div className="form">
           <div className="container-image ">
             <label for="input-img" className="preview">
@@ -157,7 +157,7 @@ function FormBlog() {
             </div>
           </div>
         </div>
-      </form>
+      </div>
     </>
   );
 }

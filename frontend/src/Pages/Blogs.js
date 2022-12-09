@@ -2,47 +2,82 @@ import React from "react";
 import "../App.css";
 import "../Blogs.css";
 import SliderBlogs from "../components/SliderBlogs";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import img from "../image/dalat.jpg";
 import Goto from "../components/Goto";
-const content = [
-  {
-    title: "How to plan the trip: 7 Easy tips for your next adventure",
-    image:
-      "https://e4life.vn/wp-content/uploads/2021/09/tu-vung-ielts-chu-de-travel.png",
-  },
-  {
-    title: "How to plan the trip: 7 Easy tips for your next adventure",
-    image:
-      "https://e4life.vn/wp-content/uploads/2021/09/tu-vung-ielts-chu-de-travel.png",
-  },
-];
+
+// const USERNAME = 'taitai'
+// hello
 export default function Blogs() {
+  const [FeaturedPost, setFeaturePost] = useState([
+    { Year: "2022", image: { img } },
+  ]);
+  const [RecentPost, setRecentPost] = useState([
+    { postName: "2022", image: { img } },
+    { postName: "2022", image: { img } },
+    { postName: "2022", image: { img } },
+  ]);
+
+  useEffect(() => {
+    const FecthFeaturePost = async () => {
+      try {
+        await axios
+          .get(`http://localhost:8800/Blogs/FeaturedPost`)
+          .then((response) => {
+            setFeaturePost(response.data);
+            // console.log(response.data)
+          });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    const FecthRecentPost = async () => {
+      try {
+        await axios
+          .get(`http://localhost:8800/Blogs/RecentPost`)
+          .then((response) => {
+            setRecentPost(response.data);
+            // console.log(response.data);
+          });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    FecthFeaturePost();
+    FecthRecentPost();
+  }, []);
+
   return (
-    <div>
+    <div className="readblog-container">
+      {/* {console.log(FeaturedPost)} */}
       <div class=" h1-container">
         <h1>Travel Tips</h1>
       </div>
-      <Goto/>
-      {/* <nav class="goto-container">
-        <span>Go to:</span>
-        <Goto />
-      </nav> */}
+      <nav class="goto-container">
+        <ul>
+          <span>Go to:</span>
+          <Goto />
+        </ul>
+      </nav>
       <div className="body-ctn">
         <div class=" featured-container">
           <h2>Featured Posts</h2>
           <div className="featured-post-ctn">
             <div class="image-ctn">
-              <span className="post-name">Best Travel Insurances in 2022</span>
+              <span className="post-name"> {FeaturedPost[0].postName}</span>
               <img
                 className="featured-img"
-                src="https://e4life.vn/wp-content/uploads/2021/09/tu-vung-ielts-chu-de-travel.png"
+                src={FeaturedPost[0].image}
                 alt="image not found"
               ></img>
             </div>
-            <div class="image-ctn">
-              <span className="post-name">Best Travel Insurances in 2022</span>
+            <div class="image-ctn2">
+              {/* <span className="post-name"> {FeaturedPost[1].postName}</span> */}
               <img
                 className="featured-img"
-                src="http://vacationtravel.com.vn/images/photo/travel7.jpg"
+                // src={FeaturedPost[1].image}
                 alt="image not found"
               ></img>
             </div>
@@ -51,32 +86,26 @@ export default function Blogs() {
         <div class="recent">
           <h2>Recent Posts</h2>
           <div className="recent-post-ctn">
-            <div className="img-recent-ctn">
-              <span className="post-name-recent">con bo kiu meo meo </span>
+            <div className="img-recent-ctn1">
+              <span className="post-name-recent">{RecentPost[0].postName}</span>
               <img
                 className="recent-img"
-                src="http://vacationtravel.com.vn/images/photo/travel7.jpg"
+                // src={RecentPost[0].image}
                 class="recent-img"
                 alt=""
               ></img>
             </div>
-            <div className="img-recent-ctn">
-              <span className="post-name-recent">con cho kiu moo moo </span>
-              <img
-                class="recent-img"
-                src="https://imageio.forbes.com/specials-images/imageserve/62f2863deb9b0c0cd1fe6374/fall-travel-cheaper/0x0.jpg?format=jpg&width=960"
-                alt=""
-              ></img>
+            <div className="img-recent-ctn2">
+              {/* <span className="post-name-recent">{RecentPost[1].postName}</span> */}
+              <span className="post-name-recent">gdgdgdg</span>
+
+              <img class="recent-img" src={RecentPost[1].image} alt=""></img>
             </div>
-            <div className="img-recent-ctn">
-              <span className="post-name-recent">
-                con heo kiu cuc tac cuc tac{" "}
-              </span>
-              <img
-                class="recent-img"
-                src="https://www.sbb.ch/content/dam/internet/sharedimages/objekte/Swiss-Bankers-Travel.jpg/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg"
-                alt=""
-              ></img>
+            <div className="img-recent-ctn3">
+              {/* <span className="post-name-recent">{RecentPost[2].postName}</span> */}
+              <span className="post-name-recent">gfgfg</span>
+
+              {/* <img class="recent-img" src={RecentPost[2].image} alt=""></img> */}
             </div>
           </div>
         </div>

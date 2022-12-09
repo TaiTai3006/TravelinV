@@ -4,6 +4,8 @@ import cors from "cors";
 import routerAccount from "./routes/AccountRouter.js";
 import homeRouter from "./routes/homeRoute.js";
 import PostRouter from "./routes/PostRouter.js";
+import routerPersonal from "./routes/PersonalRouter"
+import routerBlogs from "./routes/BlogsRouter.js";
 // import "./configs/Database.js"
 const app = express();
 
@@ -11,7 +13,7 @@ export const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "TravelinV",
+  database: "travelinvn",
 });
 
 db.connect((err)=>{
@@ -24,6 +26,8 @@ app.use(cors());
 app.use(routerAccount);
 app.use(homeRouter)
 app.use(PostRouter)
+app.use(routerPersonal);
+app.use(routerBlogs);
 
 
 // app.delete("/account/:userName", (req, res) => {
