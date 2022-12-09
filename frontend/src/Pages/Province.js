@@ -1,6 +1,6 @@
 import '../Province.css';
-import img1 from "./image/AnGiangpic.jpg"
-import img2 from "./image/koki.png"
+import img1 from "../image/AnGiangpic.jpg"
+import img2 from "../image/koki.png"
 import {RiSearchLine} from 'react-icons/ri'
 import React, { useState, useMemo } from 'react';
 import Pagination from './Pagination';
@@ -129,7 +129,7 @@ const article = [
 
 ];
 
-function App() {
+function ProvincePost () {
   let PageSize = 9;
   const [search, setSearch] = useState (article)
   const [currentPage, setCurrentPage] = useState(1);
@@ -201,4 +201,4 @@ function App() {
   );
 }
 
-export default App;
+export default ProvincePost;

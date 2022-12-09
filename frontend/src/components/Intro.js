@@ -10,7 +10,8 @@ function Intro() {
       <div className="intro_container">
         <img
           className="intro_image"
-          src="https://i.pinimg.com/564x/c9/b6/49/c9b649e18cce2a328be1cfa02756b99b.jpg"
+          src="https://i.pinimg.com/564x/ab/2c/4f/ab2c4f19701c520b23844fc26e656d00.jpg"
+          alt="image_main"
         />
         <div className="intro_text--cover">
           <em className="welcome_text">

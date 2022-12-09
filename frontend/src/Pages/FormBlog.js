@@ -2,12 +2,14 @@ import React from "react";
 import "../formBlog.css";
 import { useState } from "react";
 import { HiChevronRight } from "react-icons/hi";
-import { BsFileImage, BsInputCursor } from "react-icons/bs";
+import { BsFileImage,} from "react-icons/bs";
 import { BiPlus } from "react-icons/bi";
 import Input from "../components/Input";
 import { AiOutlineClose } from "react-icons/ai";
 import useFormPost from "../components/useFormPost";
 import { Link } from "react-router-dom";
+import dataProvince from "../dataProvince";
+import removeVietnameseTones from "../components/removeVietnameseTones";
 
 function FormBlog() {
   const {
@@ -20,7 +22,10 @@ function FormBlog() {
     provinces,
   } = useFormPost();
 
+  dataProvince.map((data)=> console.log(removeVietnameseTones(data.name)))
+
   const [inputList, setInputList] = useState([0]);
+
   const [id, setId] = useState(0);
 
   const onAddBtnClick = (event) => {
