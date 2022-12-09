@@ -11,15 +11,15 @@ import Province from "./Province"
 function Home() {
   return (
     <div className="App">
-      {/* <Intro />
+      <Intro />
       <div className="list_post">
         <FeaturePost />
         
       </div>
       <GoNext />
       <Slider/>
-      <RelatedPost /> */}
-      <Province/>
+      <RelatedPost />
+      {/* <Province/> */}
     </div>
   );
 }
