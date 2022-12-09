@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios"
+import { Link } from "react-router-dom";
 
 const Goto = () =>{
 // const gotoDatas = [
@@ -48,7 +49,7 @@ const Goto = () =>{
         <div className='goto-li-ctn'>
             {gotoDatas.map((gotoData, index)=>
                     <li className="goto-li">
-                    <a className="goto-a" href={gotoData.data}>{gotoData.data}</a>
+                    <Link className="goto-a" to = {`/Blogs/${gotoData.idProvince}`}>{gotoData.data}</Link>
                     </li>
             )}
         </div>

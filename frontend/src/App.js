@@ -14,7 +14,9 @@ import Logout from "./Pages/Logout";
 import ProfileInput from "./Pages/ProfileInput";
 import FormBlog from "./Pages/FormBlog";
 import AboutUs from "./Pages/AboutUs";
-import Admin from "./Pages/admin"
+import ProvincePost from "./Pages/Province";
+import Admin from "./Pages/Admin";
+import ScrollToTop from "./components/ScrollToTop";
 
 export const UserContext = createContext();
 
@@ -35,10 +37,13 @@ function App() {
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <GoogleOAuthProvider clientId="840620172422-p0ioib0pk0ebu85k45f0jap5fmmvnukn.apps.googleusercontent.com">
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
           <Route path="/Blogs" element={<Blogs />} />
+          <Route path="/Blogs/:idProvince" element={<ProvincePost />} />
+          <Route path="/Blogs/:idProvince/:idPost" element={<ReadBlogs />} />
           {/* <Route path="/Blogs/:relatedPostID" element={<Blogs />} /> */}
           <Route path="/Shop" element={<ReadBlogs />} />
           <Route path="/Profile" element={<ProfileInput />} />
@@ -49,6 +54,7 @@ function App() {
           <Route path="/Blogs/CreactPost" element={<FormBlog />} />
           <Route element={<ProtectedRoutes />}>
             <Route path="/Personal" element={<PersonalPage />} />
+            <Route path="/Dashboard" element={<Admin />} />
             <Route path="/Logout" element={<Logout />} />
           </Route>
         </Route>

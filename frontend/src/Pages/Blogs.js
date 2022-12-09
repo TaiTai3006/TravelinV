@@ -7,8 +7,7 @@ import axios from "axios"
 import { Link } from 'react-router-dom';
 import Goto from "../components/Goto"
 
-// const USERNAME = 'taitai'
-// hello
+
 export default function Blogs() {
   const [FeaturedPost, setFeaturePost] = useState([{}])
   const [RecentPost, setRecentPost] = useState([{}])
