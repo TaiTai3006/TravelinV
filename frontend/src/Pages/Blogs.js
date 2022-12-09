@@ -21,10 +21,11 @@ export default function Blogs() {
       <div class=" h1-container">
         <h1>Travel Tips</h1>
       </div>
-      <nav class="goto-container">
+      <Goto/>
+      {/* <nav class="goto-container">
         <span>Go to:</span>
         <Goto />
-      </nav>
+      </nav> */}
       <div className="body-ctn">
         <div class=" featured-container">
           <h2>Featured Posts</h2>

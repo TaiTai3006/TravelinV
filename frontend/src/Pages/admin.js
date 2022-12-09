@@ -1,15 +1,15 @@
-import './App.css';
+import '../App.css';
 import {MdOutlineArticle} from 'react-icons/md'
 import {AiFillCaretRight} from 'react-icons/ai'
 import {GrGroup} from 'react-icons/gr'
-import DataPost from './dataAdmin';
+// import DataPost from './dataAdmin';
 import { React, useState, useEffect } from "react";
 import {BiSearch} from 'react-icons/bi'
 import {GrUserAdmin} from 'react-icons/gr'
 import {BsPersonCircle} from 'react-icons/bs'
 import {BsThreeDots} from 'react-icons/bs'
 import {HiChevronRight} from 'react-icons/hi'
-import { DataUser } from './dataAdmin';
+// import { DataUser } from './dataAdmin';
 import {IoSearchCircle} from 'react-icons/io5'
 
 
@@ -215,10 +215,10 @@ function App() {
   function handleEvent (type) {
     if (type==='blog')
     return  <div className="info data-item ">
-      <DataPost posts={search}/> 
+      {/* <DataPost posts={search}/>  */}
       </div>
     if (type==="user") return <div className='info-user' >
-      <DataUser user={searchUser}/>
+      {/* <DataUser user={searchUser}/> */}
     </div>
 
   }   

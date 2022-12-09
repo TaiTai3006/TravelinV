@@ -258,7 +258,7 @@ function ReadBlogs() {
       {/* Ảnh chính của bài post */}
       <div id="img_post">
         <img className="img_title" src={Post.img_post_author}></img>
-        <img className="img_custom" src={img_custom}></img>
+        {/* <img className="img_custom" src={img_custom}></img> */}
       </div>
 
       {/* Phần header cho bài post */}
@@ -382,7 +382,7 @@ function ReadBlogs() {
               src={Post.img_province}
               alt="image of province"
             ></img>
-            <img className="img_tilte_custom" src={img_custom_title}></img>
+            {/* <img className="img_tilte_custom" src={img_custom_title}></img> */}
           </a>
         </div>
       </div>

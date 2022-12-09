@@ -1,6 +1,6 @@
 import '../Province.css';
-import img1 from "./image/AnGiangpic.jpg"
-import img2 from "./image/koki.png"
+import img1 from "../image/AnGiangpic.jpg";
+import img2 from "../image/koki.png"
 import {RiSearchLine} from 'react-icons/ri'
 import React, { useState, useMemo } from 'react';
 import Pagination from './Pagination';
@@ -9,6 +9,7 @@ const Province = {
   description: "Vùng đất hiền hoà ôm trọn nét đẹp chân chất của Đồng Bằng Sông Cửu Long, với rừng ngập mặn, đường làng quanh co ngập bóng dừa nước hay bạt ngàn ruộng đồng cò bay thẳng cánh.",
   province_img: img1,
 };
+
 
 const option = [
   {
@@ -163,7 +164,7 @@ function App() {
       <div></div>
       <div id="parent">
         <img className="img1" src={Province.province_img}></img>
-        <img className="img2" src={img2}></img>
+        {/* <img className="img2" src={img2}></img> */}
       </div> 
       
     </div>
