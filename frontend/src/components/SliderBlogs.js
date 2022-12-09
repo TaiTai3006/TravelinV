@@ -61,7 +61,7 @@ const [relatedPosts, setRelatePosts] = useState([{}])
                 <img src={relatedPost.image} alt="image of post"></img>
               </div>
               <div className="article-text-block_content">
-                <h2>{relatedPost.title}</h2>
+                <h2>{relatedPost.postName}</h2>
               </div>
             </Link>
           ))}
@@ -70,10 +70,10 @@ const [relatedPosts, setRelatePosts] = useState([{}])
         </div>
         <button className=" slider-btn" id="left" onClick={prevSlide} ><HiChevronLeft/></button>
         <button className=" slider-btn" id="right" onClick={nextSlide} ><HiChevronRight/></button>
-        <span className="slider-title">{slideImages[currentSlide].title}</span>
-        <span className="slider-des">{slideImages[currentSlide].des}</span>
+        <span className="slider-title">{slideImages[currentSlide].postName}</span>
+        <span className="slider-des">{slideImages[currentSlide].demoDescription}</span>
         <div className='button-ctn'>
-          <a className="slider-button" href={slideImages.titile}>GO TO POST</a>
+          <a className="slider-button" href={slideImages.postName}>GO TO POST</a>
         </div>
         {slideImages.map((slideImage, index) =>(
               <div key={index} className="slide.active">
