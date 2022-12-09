@@ -13,8 +13,7 @@ import Footer from "./components/Footer";
 import Logout from "./Pages/Logout";
 import ProfileInput from "./Pages/ProfileInput";
 import FormBlog from "./Pages/FormBlog";
-import AboutUs from "./Pages/AboutUs";
-import Admin from "./Pages/admin"
+import Admin from "./Pages/Admin"
 
 export const UserContext = createContext();
 
@@ -42,11 +41,9 @@ function App() {
           {/* <Route path="/Blogs/:relatedPostID" element={<Blogs />} /> */}
           <Route path="/Shop" element={<ReadBlogs />} />
           <Route path="/Profile" element={<ProfileInput />} />
-          <Route path="/AboutUs" element={<AboutUs />} />
-
           <Route path="/Login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
-          <Route path="/Blogs/CreactPost" element={<FormBlog />} />
+          {/* <Route path="/Aboutus" element={<Admin />} /> */}
           <Route element={<ProtectedRoutes />}>
             <Route path="/Personal" element={<PersonalPage />} />
             <Route path="/Logout" element={<Logout />} />
