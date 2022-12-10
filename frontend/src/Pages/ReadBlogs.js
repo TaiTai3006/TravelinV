@@ -8,9 +8,7 @@ import { IconContext } from "react-icons";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BiChevronDown } from "react-icons/bi";
 import img_province from "../image/dalat_title.png";
-import img_custom_title from "../image/img_custom_title.png";
 import img_post_author from "../image/Dalat.png";
-import img_custom from "../image/img_custom.png";
 import CommentInput from "../components/commentInput";
 import CommentReply from "../components/commentReply";
 import { CommentCard } from "../components/commentCard";
@@ -235,11 +233,6 @@ function ReadBlogs() {
           className="img_title"
           src={authorPost.image}
           alt="img-main"
-        ></img>
-        <img
-          className="img_custom"
-          src={img_custom}
-          alt="custom-img-main"
         ></img>
       </div>
 
