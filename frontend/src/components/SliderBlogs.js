@@ -84,7 +84,10 @@ export default function Slider() {
       <button className=" slider-btn" id="right" onClick={nextSlide}>
         <HiChevronRight />
       </button>
+      <div className="slider-ctn-titile">
       <span className="slider-title">{slideImages[currentSlide].postName}</span>
+      </div>
+      
       <span className="slider-des">
         {slideImages[currentSlide].demoDescription}
       </span>

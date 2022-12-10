@@ -64,10 +64,10 @@ export default function Footer() {
               <li className="contact">
                 Contact
                 <ul>
-                  <li>
+                  <li className="link-gmail">
                     <a href="mailto:TravelinV@gmail.com">TravelinV@gmail.com</a>
                   </li>
-                  <li>
+                  <li className="link-social">
                     <ul className="contact_social">
                       <li className="contact_social_container">
                         <a href="https://www.instagram.com/taitai.cute/">
