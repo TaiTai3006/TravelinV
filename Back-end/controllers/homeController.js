@@ -4,7 +4,8 @@ import { db } from "../index.js";
 
 
 export const getFeatured = ((req,res)=>{
-    const sqlPost = "select * from `post` where post.status = 'aprroved' order by `like` desc limit 3;"
+    const sqlPost = "select * from `post` order by `like` desc limit 3;"
+    //where post.status = 'aprroved'
     db.query(sqlPost, (err, result) => {
       res.send(result)
     })
