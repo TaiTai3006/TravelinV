@@ -62,12 +62,12 @@ footer {
   transition: 0.5s;
 }
 .sitemap {
-  width: 50%;
+  /* width: 50%; */
   display: flex;
   justify-content: space-between;
   line-height: 26px;
   margin: 50px 0;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .sitemap > ul {
   display: flex;
@@ -78,6 +78,14 @@ footer {
 .sitemap > ul {
   font-size: 14px;
   letter-spacing: 1.1px;
+  margin: 0 10px;
+  white-space: nowrap;
+}
+.sitemap > ul li:hover {
+  text-decoration: underline;
+}
+.contact {
+  position: relative;
 }
 .contact > ul a {
   font-family: "Merriweather Sans";
@@ -87,8 +95,16 @@ footer {
 .contact a:hover {
   text-decoration: underline;
 }
+.link-gmail {
+  position: absolute;
+  margin: 10px 0;
+  top: 20px;
+}
 .contact_social {
   display: flex;
+    position: absolute;
+    top: 60px;
+
 }
 .contact_social_container a {
   display: flex;

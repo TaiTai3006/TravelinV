@@ -273,7 +273,6 @@ const useForm = (callback) => {
       }
     },
   });
-  console.log(account);
   const handleUpdateAccount = async (e) => {
     e.preventDefault();
 

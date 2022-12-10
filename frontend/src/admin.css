@@ -10,11 +10,11 @@
       format("woff");
 }
 
-div a {
+.flex-home a {
   text-decoration: none;
   color: #353535;
 }
-div a:hover {
+.flex-home a:hover {
   color: #807e7e;
   background-color: transparent;
   font-weight: bold;

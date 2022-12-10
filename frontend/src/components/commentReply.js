@@ -1,50 +1,51 @@
 export default function CommentReply({
-  focustInput,
-  typeComment,
-  post_key,
-  checkReply,
-  setContent,
-  setTypeComment,
-  setCheckReply,
-  content,
-  handleReply,
-  comment_post_key
+  setCheckReadBlog,
+  checkReadBlog,
+  comment,
+  commentInput,
+  setCommentInput,
+  handleReplys,
+  comment_post_key,
 }) {
   return (
     <div>
-      {!typeComment && post_key === checkReply && (
-        <div className="comments-reply">
-          <div className="comments-reply-title">Write a comment</div>
-          <div className="comments-form">
-            <label>Comment</label>
-            <div>
+      {!checkReadBlog.replyInput &&
+        comment.idComment === checkReadBlog.keyReply && (
+          <div className="comments-reply">
+            <div className="comments-reply-title">Write a comment</div>
+            <div className="comments-form">
+              <label>Comment</label>
+              <div>
+                <button
+                  className="cancel"
+                  onClick={() => {
+                    setCommentInput({...commentInput, description: ''})
+                    setCheckReadBlog({
+                      ...checkReadBlog,
+                      keyReply: "",
+                      replyInput: true,
+                    });
+                  }}
+                >
+                  Click here to cancel reply.
+                </button>
+              </div>
+              <textarea
+                value={commentInput.description}
+                onChange={(e) => {
+                setCommentInput({...commentInput, description: e.target.value})
+                }}
+              ></textarea>
               <button
-                className="cancel"
                 onClick={() => {
-                  setContent("");
-                  setTypeComment(true);
-                  setCheckReply(-1);
+                  commentInput.description && handleReplys(comment_post_key);
                 }}
               >
-                Click here to cancel reply.
+                Send comment
               </button>
             </div>
-            <textarea
-              value={content}
-              onChange={(e) => {
-                setContent(e.target.value);
-              }}
-            ></textarea>
-            <button
-              onClick={() => {
-                content && handleReply(comment_post_key);
-              }}
-            >
-              Send comment
-            </button>
           </div>
-        </div>
-      )}
+        )}
     </div>
   );
 }

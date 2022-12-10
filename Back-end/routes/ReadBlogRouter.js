@@ -1,20 +1,49 @@
 import express, { Router } from "express";
-import { getAuthorPost, getDesPost, checkLike, createLike, deleteLike, getRelatedPots, getComment} from "../controllers/ReadBlogController";
+import {
+  getAuthorPost,
+  getDesPost,
+  checkLike,
+  createLike,
+  deleteLike,
+  getRelatedPots,
+  getComment,
+  getReply,
+  createComment,
+  createReply,
+  deleteComment,
+  deleteReply,
+  editComment,
+  editReply
+} from "../controllers/ReadBlogController";
 
-const ReadBlogRouter = express.Router()
+const ReadBlogRouter = express.Router();
 
-ReadBlogRouter.get('/AuthorPost/:idPost', getAuthorPost)
+ReadBlogRouter.get("/AuthorPost/:idPost", getAuthorPost);
 
-ReadBlogRouter.get('/DesPost/:idPost', getDesPost)
+ReadBlogRouter.get("/DesPost/:idPost", getDesPost);
 
-ReadBlogRouter.post('/CheckLike/:userName', checkLike)
+ReadBlogRouter.post("/CheckLike/:userName", checkLike);
 
-ReadBlogRouter.post('/Like/:userName', createLike)
+ReadBlogRouter.post("/Like/:userName", createLike);
 
-ReadBlogRouter.post('/Unlike/:userName', deleteLike)
+ReadBlogRouter.post("/Unlike/:userName", deleteLike);
 
-ReadBlogRouter.post('/RelatedPots/:idPost', getRelatedPots)
+ReadBlogRouter.post("/RelatedPots/:idPost", getRelatedPots);
 
-ReadBlogRouter.get('/Comment/:idPost', getComment)
+ReadBlogRouter.get("/Comment/:idPost", getComment);
 
-export default ReadBlogRouter
+ReadBlogRouter.get("/Reply/:idPost", getReply);
+
+ReadBlogRouter.post("/CreateComment/:idPost", createComment);
+
+ReadBlogRouter.post("/CreateReply/:idComment", createReply);
+
+ReadBlogRouter.delete("/DeleteComment/:idComment", deleteComment)
+
+ReadBlogRouter.delete("/DeleteReply/:idComment", deleteReply)
+
+ReadBlogRouter.put("/EditComment/:idComment", editComment)
+
+ReadBlogRouter.put("/EditReply/:idReply", editReply)
+
+export default ReadBlogRouter;
