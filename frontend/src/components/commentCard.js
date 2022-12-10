@@ -4,35 +4,26 @@ import { FiCornerUpLeft } from "react-icons/fi";
 import { AiOutlineMore, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { useContext } from "react";
 import { UserContext } from "../App";
+import { omit } from "lodash";
 
 export function CommentCard({
+  setCheckReadBlog,
+  checkReadBlog,
   comment,
-  focustInput,
-  name_read,
-  name_author,
-  date,
-  content_comment,
-  setContent,
-  setTypeComment,
-  setCheckReply,
-  post_key,
+  commentInput,
+  setCommentInput,
   className,
-  handleDelete,
-  setCheckEdit,
-  checkEdit,
-  checkReply,
-  content,
-  handleEdit,
-  comment_post_key,
- ...Children
-}) {
+  handleDeleteComment,
+  handleEditComment,
+  ...Children
+}) { 
   const { user } = useContext(UserContext);
   return (
     <div>
       <div
         className="comment"
         style={{
-          ...Children
+          ...Children,
         }}
       >
         {user.userName === comment.userName && (
@@ -41,16 +32,19 @@ export function CommentCard({
               <AiOutlineMore />
             </IconContext.Provider>
             <div className="comment-edit-delete">
-              <button onClick={()=>{
-                setCheckEdit(true)
-                setCheckReply(post_key);
-                setContent(content_comment)
-              }}>
+              <button
+                onClick={() => {
+                  setCheckReadBlog({...checkReadBlog, checkEdit: true, checkReply: comment.idComment, replyInput: false})
+                  setCommentInput({...commentInput,description: comment.description, idReply: comment.idReply})
+                }}
+              >
                 <AiFillEdit /> Edit
               </button>
-              <button onClick={()=>{
-                handleDelete(className,post_key)
-              }}>
+              <button
+                onClick={() => {
+                  handleDeleteComment(className, comment.idComment);
+                }}
+              >
                 <AiFillDelete /> Delete
               </button>
             </div>
@@ -68,16 +62,19 @@ export function CommentCard({
           <button
             className={className}
             onClick={() => {
-              setContent(name_read !== name_author ?`@${name_author} `:'');
-              setTypeComment(false);
-              setCheckReply(post_key);
+              setCommentInput({...commentInput, description: user.userName !== comment.userName ?  `@${comment.userName} ` : ""})
+              setCheckReadBlog({
+                ...checkReadBlog,
+                keyReply: comment.idComment,
+                replyInput: false,
+              });
             }}
           >
             <FiCornerUpLeft /> Reply
           </button>
         </div>
       </div>
-      {checkEdit && post_key === checkReply && (
+      {checkReadBlog.checkEdit && comment.idComment === checkReadBlog.checkReply && (
         <div className="comments-reply">
           <div className="comments-reply-title">Write a comment</div>
           <div className="comments-form">
@@ -86,23 +83,24 @@ export function CommentCard({
               <button
                 className="cancel"
                 onClick={() => {
-                  setContent("");
-                  setCheckEdit(false);
-                  setCheckReply(-1);
+                  setCommentInput({...commentInput, description: ''})
+                  setCheckReadBlog({...checkReadBlog, checkEdit: false, checkReply: '', replyInput: true})
                 }}
               >
                 Click here to cancel edit.
               </button>
             </div>
             <textarea
-              value={content}
+              value={commentInput.description}
               onChange={(e) => {
-                setContent(e.target.value);
+                setCommentInput({...commentInput, description: e.target.value})
               }}
             ></textarea>
             <button
               onClick={() => {
-                content && content_comment !== content && handleEdit(className,post_key,content,comment_post_key)
+                commentInput.description &&
+                  comment.description !== commentInput.description &&
+                  handleEditComment(className, comment.idComment, commentInput.idReply)
               }}
             >
               Send comment

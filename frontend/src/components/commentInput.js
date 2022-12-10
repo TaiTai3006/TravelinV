@@ -1,27 +1,27 @@
 export default function CommentInput({
+  checkReadBlog,
   focustInput,
-  typeComment,
-  content,
-  setContent,
-  handleComment,
+  commentInput, 
+  setCommentInput,
+  handleComments
 }) {
   return (
     <div>
-      {typeComment && (
+      {checkReadBlog.replyInput && (
         <div>
           <div className="comments-reply-title">Write a comment</div>
           <div className="comments-form">
             <label>Comment</label>
             <textarea
               ref={focustInput}
-              value={content}
+              value={commentInput.description}
               onChange={(e) => {
-                setContent(e.target.value);
+                setCommentInput({...commentInput, description: e.target.value})
               }}
             ></textarea>
             <button
               onClick={() => {
-                content && handleComment();
+                commentInput.description && handleComments();
               }}
             >
               Send comment

@@ -1,4 +1,5 @@
 import { db } from "../index.js";
+import { v4 as uuidv4 } from "uuid";
 
 export const getAuthorPost = (req, res) => {
   const postId = req.params.idPost;
@@ -74,22 +75,133 @@ export const getRelatedPots = (req, res) => {
 
   db.query(q, [idPostId, ...values], (err, data) => {
     if (err) {
-        return res.send(err);
+      return res.send(err);
     }
     return res.json(data);
   });
 };
 
 export const getComment = (req, res) => {
-    const idPostId = req.params.idPost;
-  
-    const q =
-      "SELECT * FROM `comment` WHERE idPost = ?";
-  
-    db.query(q, [idPostId], (err, data) => {
-      if (err) {
-          return res.send(err);
-      }
-      return res.json(data);
-    });
-  };
+  const idPostId = req.params.idPost;
+
+  const q = "SELECT * FROM `comment` WHERE idPost = ? ORDER BY `dateTime` ASC";
+
+  db.query(q, [idPostId], (err, data) => {
+    if (err) {
+      return res.send(err);
+    }
+    return res.json(data);
+  });
+};
+
+export const getReply = (req, res) => {
+  const postId = req.params.idPost;
+
+  const q =
+    "SELECT reply.* FROM `reply`, comment  WHERE reply.idComment = comment.idComment and comment.idPost = ?";
+
+  db.query(q, [postId], (err, data) => {
+    if (err) {
+      return res.send(err);
+    }
+    return res.json(data);
+  });
+};
+
+export const createComment = (req, res) => {
+  const postId = req.params.idPost;
+
+  const q =
+    "INSERT INTO `comment`(`idComment`, `userName`, `description`, `idPost`) VALUES (?)";
+
+  const values = [
+    (req.body.idComment = uuidv4()),
+    req.body.userName,
+    req.body.description,
+    (req.body.idPost = postId),
+  ];
+
+  db.query(q, [values], (err, data) => {
+    if (err) {
+      return res.send(err);
+    }
+    return res.json("Thanh cong");
+  });
+};
+
+export const createReply = (req, res) => {
+  const commentId = req.params.idComment;
+
+  const q =
+    "INSERT INTO `reply`(`idReply`, `idComment`, `userName`, `description`) VALUES (?)";
+
+  const values = [
+    (req.body.idReply = uuidv4()),
+    (req.body.idReply = commentId),
+    req.body.userName,
+    req.body.description,
+  ];
+
+  db.query(q, [values], (err, data) => {
+    if (err) {
+      return res.send(err);
+    }
+    return res.json("Thanh cong");
+  });
+};
+
+export const deleteComment = (req, res) => {
+  const commentId = req.params.idComment;
+
+  const q = "DELETE FROM `comment` WHERE idComment = ?";
+
+  db.query(q, [commentId], (err, data) => {
+    if (err) {
+      return res.send(err);
+    }
+    return res.json("Thanh cong");
+  });
+};
+
+export const deleteReply = (req, res) => {
+  const commentId = req.params.idComment;
+
+  const q = "DELETE FROM `reply` WHERE idComment = ?";
+
+  db.query(q, [commentId], (err, data) => {
+    if (err) {
+      return res.send(err);
+    }
+    return res.json("Thanh cong");
+  });
+};
+
+export const editComment = (req, res) => {
+  const commentId = req.params.idComment;
+
+  const q = "UPDATE `comment` SET `description`= ? WHERE  idComment = ?";
+
+  const values = [req.body.description];
+
+  db.query(q, [...values, commentId], (err, data) => {
+    if (err) {
+      return res.send(err);
+    }
+    return res.json("Thanh cong");
+  });
+};
+
+export const editReply = (req, res) => {
+  const replyId = req.params.idReply;
+
+  const q = "UPDATE `reply` SET `description`= ? WHERE idReply = ?";
+
+  const values = [req.body.description];
+
+  db.query(q, [...values, replyId], (err, data) => {
+    if (err) {
+      return res.send(err);
+    }
+    return res.json("Thanh cong");
+  });
+};

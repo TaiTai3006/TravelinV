@@ -7,121 +7,36 @@ import { FiArrowRight } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BiChevronDown } from "react-icons/bi";
-import img_province from "../image/dalat_title.png";
-import img_post_author from "../image/Dalat.png";
 import CommentInput from "../components/commentInput";
 import CommentReply from "../components/commentReply";
 import { CommentCard } from "../components/commentCard";
 import useReadBlog from "../components/useReadBlog";
 import removeVietnameseTones from "../components/removeVietnameseTones";
 //Chứa thông tin cơ bản của tác giả và tiêu đề bài post
-const Post = {
-  authorBlog_name: "Chó thích Review",
-  authorBlog_img:
-    "https://i.pinimg.com/564x/78/78/e3/7878e3e64ecb4571802998a85048fc27.jpg",
-  date_update: "30/6/2002",
-  name_province: "Dalat",
-  img_province: img_province,
-  img_post_author: img_post_author,
-  title_post: "Top 10 địa điểm du lịch mới ở Đà Lạt",
-  describe:
-    "Địa điểm du lịch mới ở Đà Lạt năm 2022 sẽ đem đến cho bạn nhiều bất ngờ ấn tượng. Nếu như trước đây Đà Lạt nổi tiếng với những vườn hoa rực rỡ thì hiện tại, Đà Lạt sẽ cho bạn nhiều trải nghiệm hơn rất nhiều. Hãy cùng Cuồng Du Lịch điểm danh những địa điểm du lịch Đà Lạt mới nhất năm nay để note ngay vào sổ tay ăn chơi hết Đà Lạt nhé.",
-  likes: 100,
-  like_status: true,
-};
 
-//Các bài post liên quan
-const relatedPosts = [
-  {
-    image:
-      "https://i.pinimg.com/564x/da/ca/ec/dacaecc0b7fe84c6bebf8c142033f265.jpg",
-    title: "Địa điểm săn mây Đà Lạt",
-  },
-  {
-    image:
-      "https://i.pinimg.com/564x/6b/30/ef/6b30efc71a14e507e3821e5e6330ad30.jpg",
-    title: "Đà Lạt và những cung đường thơ mộng",
-  },
-  {
-    image:
-      "https://i.pinimg.com/564x/af/b6/bd/afb6bd2c6c3efcb3fec27362febb8a58.jpg",
-    title: "Bộ ảnh Đà Lạt qua đôi mắt của những “kẻ mộng mơ",
-  },
-];
-
-// const comment = [
-//   {
-//     post_key: 1,
-//     name_author: "Cậu Vàng",
-//     content_comment:
-//       "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
-//     date: "30/6/2002",
-//   },
-//   {
-//     post_key: 2,
-//     name_author: "Cậu Vàng",
-//     content_comment:
-//       "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
-//     date: "30/6/2002",
-//   },
-//   {
-//     post_key: 3,
-//     name_author: "Cậu Vàng",
-//     content_comment:
-//       "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
-//     date: "30/6/2002",
-//   },
-//   {
-//     post_key: 4,
-//     name_author: "Cậu Vàng",
-//     content_comment:
-//       "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
-//     date: "30/6/2002",
-//   },
-//   {
-//     post_key: 5,
-//     name_author: "Cậu Vàng",
-//     content_comment:
-//       "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
-//     date: "30/6/2002",
-//   },
-//   {
-//     post_key: 6,
-//     name_author: "Cậu Vàng",
-//     content_comment:
-//       "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
-//     date: "30/6/2002",
-//   },
-//   {
-//     post_key: 7,
-//     name_author: "Cậu Vàng",
-//     content_comment:
-//       "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
-//     date: "30/6/2002",
-//   },
-// ];
-const reply = [
-  {
-    post_key_reply: "R01",
-    post_key: 1,
-    name_author: "Cậu Vàng",
-    content_comment:
-      "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
-    date: "30/6/2002",
-  },
-];
 function ReadBlogs() {
   let PageSize = 3;
-  const { province, authorPost, desPost, checkReadBlog, related, comment, handleLike } =
-    useReadBlog();
-  const focustInput = useRef();
+  const {
+    province,
+    authorPost,
+    desPost,
+    checkReadBlog,
+    related,
+    comment,
+    commentInput,
+    setCommentInput,
+    handleLike,
+    setCheckReadBlog,
+    reply,
+    handleComments,
+    focustInput,
+    handleReplys,
+    handleDeleteComment,
+    handleEditComment,
+  } = useReadBlog();
   const [comments, setComments] = useState(comment);
   const [content, setContent] = useState("");
-  const [typeComment, setTypeComment] = useState(true);
   const [checkReply, setCheckReply] = useState(-1);
-  const [replys, setReplys] = useState(reply);
-  const [postKey, setPostKey] = useState(comment.length);
-  const [postKeyReply, setPostKeyReply] = useState("R0" + reply.length);
   const [checkEdit, setCheckEdit] = useState();
   const [checkReadMore, setCheckReadMore] = useState(
     comments.length >= PageSize ? true : false
@@ -133,107 +48,12 @@ function ReadBlogs() {
     fistIndex < 0 ? setCheckReadMore() : setCheckReadMore(true);
     return comment.slice(fistPageIndex, comment.length).reverse();
   }, [currentPage, comment]);
-  // console.log(comments);
-  // console.log(replys);
-  // console.log(typeComment, checkEdit);
-  const handleReply = (idPost) => {
-    var id = parseInt(postKeyReply.slice(-1));
-    setPostKeyReply("R0" + String(id + 1));
-    var today = new Date();
-    var date =
-      today.getDate() +
-      "/" +
-      (today.getMonth() + 1) +
-      "/" +
-      today.getFullYear();
-    setContent("");
-    setReplys([
-      ...replys,
-      {
-        post_key_reply: "R0" + String(id + 1),
-        post_key: idPost,
-        name_author: "Tai Tai",
-        content_comment: content,
-        date: date,
-      },
-    ]);
-    setTypeComment(true);
-    setCheckReply(-1);
-  };
-  const handleComment = () => {
-    var today = new Date();
-    var date =
-      today.getDate() +
-      "/" +
-      (today.getMonth() + 1) +
-      "/" +
-      today.getFullYear();
-    setPostKey((key) => key + 1);
-    setContent("");
-    setComments([
-      ...comments,
-      {
-        post_key: postKey + 1,
-        name_author: "Tai Tai",
-        content_comment: content,
-        date: date,
-      },
-    ]);
-    focustInput.current.focus();
-  };
-  const handleDelete = (type, id) => {
-    if (type === "comment-reply") {
-      let commentTemp = comments.filter((comment) => comment.post_key !== id);
-      let replyTemp = replys.filter((reply) => reply.post_key !== id);
-      setComments(commentTemp);
-      setReplys(replyTemp);
-    } else {
-      let replyTemp = replys.filter((reply) => reply.post_key_reply !== id);
-      setReplys(replyTemp);
-    }
-  };
-  const handleEdit = (type, id, content_new, comment_post_key) => {
-    var today = new Date();
-    var date =
-      today.getDate() +
-      "/" +
-      (today.getMonth() + 1) +
-      "/" +
-      today.getFullYear();
-    if (type === "comment-reply") {
-      let commentTemp = comments.filter((comment) => comment.post_key !== id);
-      commentTemp.splice(id - 1, 0, {
-        post_key: id,
-        name_author: "Tai Tai",
-        content_comment: content_new,
-        date: date,
-      });
-      setComments(commentTemp);
-    } else {
-      let replyTemp = replys.filter((reply) => reply.post_key_reply !== id);
-      replyTemp.splice(parseInt(id.slice(2, id.length)) - 1, 0, {
-        post_key_reply: id,
-        post_key: comment_post_key,
-        name_author: "Tai Tai",
-        content_comment: content,
-        date: date,
-      });
-      setReplys(replyTemp);
-    }
-    setContent("");
-    setCheckEdit(false);
-    setCheckReply(-1);
-  };
-  console.log(currentTableData, 'hello')
+
   return (
     <div>
       {/* Ảnh chính của bài post */}
       <div id="img_post">
-        <img
-          className="img_title"
-          src={authorPost.image}
-          alt="img-main"
-        ></img>
+        <img className="img_title" src={authorPost.image} alt="img-main"></img>
       </div>
 
       {/* Phần header cho bài post */}
@@ -262,7 +82,7 @@ function ReadBlogs() {
               </IconContext.Provider>
             </li>
           </ul>
-          {/* Phần chứa thông về tác giả */} {console.log(authorPost)}
+          {/* Phần chứa thông về tác giả */}
           <div className="header-author">
             <Link to={`/Personal/${authorPost.userName}`}>
               <img src={authorPost.avatar} alt="Author's avatar"></img>
@@ -326,7 +146,10 @@ function ReadBlogs() {
           <div className="sidebar-articles_title">Related Posts</div>
           <div className="sidebar-articles_container">
             {related.map((relate) => (
-              <Link className="article-text-block" to={`/Blogs/${relate.idProvince}/${relate.idPost}`}>
+              <Link
+                className="article-text-block"
+                to={`/Blogs/${relate.idProvince}/${relate.idPost}`}
+              >
                 <div className="article-text-block_image" key={relate.idPost}>
                   <img src={relate.image} alt="image of post"></img>
                 </div>
@@ -372,66 +195,47 @@ function ReadBlogs() {
           <div className="comments-title">Blog comments</div>
           <div className="comments-respond">
             <CommentInput
+              checkReadBlog={checkReadBlog}
               focustInput={focustInput}
-              typeComment={typeComment}
-              content={content}
-              setContent={setContent}
-              handleComment={handleComment}
+              commentInput={commentInput}
+              setCommentInput={setCommentInput}
+              handleComments={handleComments}
             ></CommentInput>
             <ul className="comments-list">
               {currentTableData.map((comment) => (
                 <li key={comment.idComment} className="parent">
                   <CommentCard
+                    setCheckReadBlog={setCheckReadBlog}
+                    checkReadBlog={checkReadBlog}
+                    handleDeleteComment={handleDeleteComment}
+                    handleEditComment={handleEditComment}
                     comment={comment}
-                    name_read="Tai Tai"
-                    name_author={comment.name_author}
-                    date={comment.date}
-                    content_comment={comment.content_comment}
-                    setContent={setContent}
-                    setTypeComment={setTypeComment}
-                    setCheckReply={setCheckReply}
-                    post_key={comment.post_key}
+                    commentInput={commentInput}
+                    setCommentInput={setCommentInput}
                     className="comment-reply"
-                    handleDelete={handleDelete}
-                    setCheckEdit={setCheckEdit}
-                    checkEdit={checkEdit}
-                    checkReply={checkReply}
-                    content={content}
-                    handleEdit={handleEdit}
                   ></CommentCard>
                   <CommentReply
-                    focustInput={focustInput}
-                    typeComment={typeComment}
-                    post_key={comment.post_key}
-                    checkReply={checkReply}
-                    setContent={setContent}
-                    setTypeComment={setTypeComment}
-                    setCheckReply={setCheckReply}
-                    content={content}
-                    handleReply={handleReply}
-                    comment_post_key={comment.post_key}
+                    setCheckReadBlog={setCheckReadBlog}
+                    checkReadBlog={checkReadBlog}
+                    comment={comment}
+                    commentInput={commentInput}
+                    setCommentInput={setCommentInput}
+                    handleReplys={handleReplys}
+                    comment_post_key={comment.idComment}
                   ></CommentReply>
-                  {replys.map(
+                  {reply.map(
                     (reply) =>
-                      comment.post_key === reply.post_key && (
+                      comment.idComment === reply.idComment && (
                         <div>
                           <CommentCard
-                            name_read="Tai Tai"
-                            name_author={reply.name_author}
-                            date={reply.date}
-                            content_comment={reply.content_comment}
-                            setContent={setContent}
-                            setTypeComment={setTypeComment}
-                            setCheckReply={setCheckReply}
-                            post_key={reply.post_key_reply}
+                            setCheckReadBlog={setCheckReadBlog}
+                            checkReadBlog={checkReadBlog}
+                            handleDeleteComment={handleDeleteComment}
+                            handleEditComment={handleEditComment}
+                            comment={reply}
+                            commentInput={commentInput}
+                            setCommentInput={setCommentInput}
                             className="comment-replyy"
-                            handleDelete={handleDelete}
-                            setCheckEdit={setCheckEdit}
-                            checkEdit={checkEdit}
-                            checkReply={checkReply}
-                            content={content}
-                            handleEdit={handleEdit}
-                            comment_post_key={comment.post_key}
                             backgroundColor="#ffff"
                             borderStyle="solid"
                             borderWidth="2px"
@@ -439,15 +243,13 @@ function ReadBlogs() {
                             marginLeft="30px"
                           ></CommentCard>
                           <CommentReply
-                            typeComment={typeComment}
-                            post_key={reply.post_key_reply}
-                            checkReply={checkReply}
-                            setContent={setContent}
-                            setTypeComment={setTypeComment}
-                            setCheckReply={setCheckReply}
-                            content={content}
-                            handleReply={handleReply}
-                            comment_post_key={comment.post_key}
+                            setCheckReadBlog={setCheckReadBlog}
+                            checkReadBlog={checkReadBlog}
+                            comment={reply}
+                            commentInput={commentInput}
+                            setCommentInput={setCommentInput}
+                            handleReplys={handleReplys}
+                            comment_post_key={comment.idComment}
                           ></CommentReply>
                         </div>
                       )
