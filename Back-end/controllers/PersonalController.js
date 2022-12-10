@@ -40,7 +40,7 @@ const PostId = req.params.idPost;
 
 export const DeletePostDes = (req, res) => {
 const PostId = req.params.idPost;
-  const q = "DELETE FROM `descriptionpost` WHERE descriptionpost.idPost=?"
+  const q = "DELETE FROM `description` WHERE description.idPost=?"
 
   db.query(q, [PostId], (err, data) => {
     if (err) return res.json(err);

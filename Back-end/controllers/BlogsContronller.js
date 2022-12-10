@@ -30,7 +30,7 @@ export const getSlideImage = (req, res) => {
 export const getRelatedPost = (req, res) => {
     const idProvince = req.params.idProvince;
     const idPost = req.params.idPost
-    const q = "SELECT postName, image, idPost, idProvince FROM `post` WHERE idPost!=? and idProvince=? ORDER by post.dateTime DESC";
+    const q = "SELECT postName, image, idPost, idProvince FROM `post` WHERE idPost!=? and idProvince=? ORDER by post.dateTime DESC LIMIT 3";
     db.query(q, [idPost, idProvince], (err, data) => {
     if (err) return res.json(err);
     return res.json(data);
