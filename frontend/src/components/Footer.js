@@ -56,7 +56,7 @@ export default function Footer() {
                 <Link to="/Blogs">Travel Blogs</Link>
               </li>
               <li>
-                <Link to="/Shop">Shop</Link>
+                <Link to="/CreactPost">Create Post</Link>
               </li>
               <li>
                 <Link to="/AboutUs">About us</Link>

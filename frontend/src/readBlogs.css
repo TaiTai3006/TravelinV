@@ -80,7 +80,7 @@
 .header-author img {
   width: 56px;
   height: 56px;
-  border-radius: 50%;
+  border-radius: 51% 49% 49% 51% / 59% 56% 44% 41%;
 }
 .header-author_row2 {
   flex-direction: column;

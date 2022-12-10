@@ -44,7 +44,7 @@
 .leader-img {
     width: 200px;
     height: 200px;
-    border-radius: 45% 55% 52% 48% / 49% 40% 60% 51%;
+    border-radius: 51% 49% 49% 51% / 59% 56% 44% 41%;
     position: absolute;
     top: -40%;
     right: 35%;
@@ -69,7 +69,7 @@
 .member-img {
   width: 200px;
   height: 200px;
-  border-radius: 45% 55% 52% 48% / 49% 40% 60% 51%;
+  border-radius: 51% 49% 49% 51% / 59% 56% 44% 41%;
   position: absolute;
   top: -40%;
   right: 30%;
