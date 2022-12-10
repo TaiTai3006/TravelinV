@@ -17,7 +17,7 @@ function Slider() {
       setSlide(response.data)
     }) 
   },[])
-  console.log(slide)
+  // console.log(slide)
   const [currentSlide, setCurrentSlide] = useState(0);
   const [temp, settemp] = useState([])
     useEffect(() => {
@@ -37,7 +37,8 @@ function Slider() {
       <div
         className="slideshow-slide"
         style={{ backgroundImage: `url(${slide[currentSlide].image})`,
-        transform: `translate3d(${-slide[currentSlide].index * 100}%, 0, 0)` }}
+        transform: `translate3d(${-slide[currentSlide].index * 100}%, 0, 0)` 
+      }}
       >
         <div className="slideshow-slide-text">
                 <p>{slide[currentSlide].userName}</p>

@@ -15,18 +15,18 @@ body {
   color: #353535;
 }
 .readblog-container {
-  background-color: #cccccc;
-  background-image: url("./image/search-bubbles.png"),
+  /* background-color: #cccccc; */
+  /* background-image: url("./image/search-bubbles.png"),
     url("./image/search-bubbles.png"), url("./image/search-bubbles.png"),
-    url("./image/search-bubbles.png"), url("./image/search-bubbles.png");
+    url("./image/search-bubbles.png"), url("./image/search-bubbles.png"); */
   background-position: bottom right;
   background-repeat: no-repeat;
-  height: 100vh;
+  /* height: 100vh;
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  bottom: 0;
+  bottom: 0; */
 }
 .h1-container {
   line-height: 30px;
@@ -231,11 +231,13 @@ body {
   opacity: 1;
   transition-duration: 1s;
   transform: scale(1.08);
+  filter:brightness(80%);
 }
 .featured-container img:hover {
   opacity: 1;
   transition-duration: 1s;
   transform: scale(1.08);
+  filter:brightness(80%);
 }
 .post-name-recent {
   position: absolute;

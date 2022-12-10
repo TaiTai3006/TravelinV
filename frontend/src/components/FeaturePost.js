@@ -7,6 +7,7 @@ function FeaturePost() {
 
  useEffect(() =>{
    Axios.get("http://localhost:8800/home/featuredpost").then((response)=>{
+    console.log(response.data)
       setpost(response.data)
      }
    )

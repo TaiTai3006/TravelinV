@@ -6,7 +6,7 @@ import Slider from "../components/Slider";
 import RelatedPost from "../components/RelatedPost";
 import FormBlog from "./FormBlog"; 
 import ProfileInput from "./ProfileInput";
-import Province from "./Province"
+
 
 function Home() {
   return (
