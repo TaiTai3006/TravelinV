@@ -14,9 +14,9 @@ Content-Type: application/json
     "image": "./sfgfg/sfg.png"
 }
 ###
-GET http://localhost:8800/login/taitai12345
-# Content-Type: application/json
+POST http://localhost:8800//CheckLike/taitai
+Content-Type: application/json
 
-# {
-#     "password": "12345",
-# }
+{
+    "idPost": "92392b64-77f2-493f-8a2a-a34bf9817a73",
+}

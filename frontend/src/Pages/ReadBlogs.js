@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import "../readBlogs.css";
 import { Link } from "react-router-dom";
 import { useState, useRef, useMemo } from "react";
@@ -7,12 +8,12 @@ import { IconContext } from "react-icons";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BiChevronDown } from "react-icons/bi";
 import img_province from "../image/dalat_title.png";
-import img_custom_title from "../image/img_custom_title.png";
 import img_post_author from "../image/Dalat.png";
-import img_custom from "../image/img_custom.png";
 import CommentInput from "../components/commentInput";
 import CommentReply from "../components/commentReply";
 import { CommentCard } from "../components/commentCard";
+import useReadBlog from "../components/useReadBlog";
+import removeVietnameseTones from "../components/removeVietnameseTones";
 //Chứa thông tin cơ bản của tác giả và tiêu đề bài post
 const Post = {
   authorBlog_name: "Chó thích Review",
@@ -28,25 +29,7 @@ const Post = {
   likes: 100,
   like_status: true,
 };
-//Nội dung bài post
-const contents = [
-  {
-    title: "1. Khu du lịch Fresh Garden Đà Lạt",
-    description:
-      "Địa chỉ : 90 Vạn Thành, Phường 5, TP. Đà Lạt. Giá vé Fresh Garden Đà Lạt: 100.000đ/người lớn , 60.000đ/trẻ em (1m – 1m3). Tại địa điểm du lịch Đà Lạt này sẽ cho những nàng thơ những khung hình check in siêu chất. Fresh Garden Đà Lạt xung quanh là rừng nguyên sinh rộng bạt ngàn, với view toàn cảnh do có vị trí nằm trên một ngọn đồi xinh đẹp. Khi đến địa điểm du lịch Đà Lạt mới này, bạn sẽ được thư giãn giữa thiên nhiên rộng lớn và thơ mộng với muôn hoa đua sắc.",
-    image1:
-      "https://i.pinimg.com/564x/57/56/cf/5756cf00e633d0392e974faeb819ef14.jpg",
-    image2:
-      "https://i.pinimg.com/564x/3f/d7/f6/3fd7f678e9adb8b6a2c6d3570bf9b308.jpg",
-  },
-  {
-    title: "2. Kombi Land Đà Lạt",
-    description:
-      "Địa chỉ: Mimosa, Phường 3, Thành phố Đà Lạt, Lâm Đồng. Giá vé Kombi Land Đà Lạt: 90.000đ/người (gồm một chai nước suối) Một điểm check in mới Đà Lạt đó chính là Kombi Land. Có rất nhiều bạn trẻ đã tìm đến địa điểm du lịch Đà Lạt này vì nó cực kỳ thuận tiện di chuyển do nằm ngay tại trung tâm thành phố. Kombi Land có không gian rất hoang dã với nhiều loại xương rồng khác nhau trở thành góc sống ảo cực chất. Địa điểm du lịch Đà Lạt này còn có một hồ nước êm dịu, tiệm café nhỏ rất lãng mạn và chill.",
-    image1:
-      "https://i.pinimg.com/564x/ea/60/95/ea60950ec8152eb684a50161f4e31ef3.jpg",
-  },
-];
+
 //Các bài post liên quan
 const relatedPosts = [
   {
@@ -66,57 +49,57 @@ const relatedPosts = [
   },
 ];
 
-const comment = [
-  {
-    post_key: 1,
-    name_author: "Cậu Vàng",
-    content_comment:
-      "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
-    date: "30/6/2002",
-  },
-  {
-    post_key: 2,
-    name_author: "Cậu Vàng",
-    content_comment:
-      "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
-    date: "30/6/2002",
-  },
-  {
-    post_key: 3,
-    name_author: "Cậu Vàng",
-    content_comment:
-      "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
-    date: "30/6/2002",
-  },
-  {
-    post_key: 4,
-    name_author: "Cậu Vàng",
-    content_comment:
-      "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
-    date: "30/6/2002",
-  },
-  {
-    post_key: 5,
-    name_author: "Cậu Vàng",
-    content_comment:
-      "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
-    date: "30/6/2002",
-  },
-  {
-    post_key: 6,
-    name_author: "Cậu Vàng",
-    content_comment:
-      "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
-    date: "30/6/2002",
-  },
-  {
-    post_key: 7,
-    name_author: "Cậu Vàng",
-    content_comment:
-      "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
-    date: "30/6/2002",
-  },
-];
+// const comment = [
+//   {
+//     post_key: 1,
+//     name_author: "Cậu Vàng",
+//     content_comment:
+//       "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
+//     date: "30/6/2002",
+//   },
+//   {
+//     post_key: 2,
+//     name_author: "Cậu Vàng",
+//     content_comment:
+//       "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
+//     date: "30/6/2002",
+//   },
+//   {
+//     post_key: 3,
+//     name_author: "Cậu Vàng",
+//     content_comment:
+//       "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
+//     date: "30/6/2002",
+//   },
+//   {
+//     post_key: 4,
+//     name_author: "Cậu Vàng",
+//     content_comment:
+//       "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
+//     date: "30/6/2002",
+//   },
+//   {
+//     post_key: 5,
+//     name_author: "Cậu Vàng",
+//     content_comment:
+//       "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
+//     date: "30/6/2002",
+//   },
+//   {
+//     post_key: 6,
+//     name_author: "Cậu Vàng",
+//     content_comment:
+//       "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
+//     date: "30/6/2002",
+//   },
+//   {
+//     post_key: 7,
+//     name_author: "Cậu Vàng",
+//     content_comment:
+//       "Hola! Me gustaría saber donde comprar los billetes para ir de Bali a Nusa Lembongan, y en que puerto bajar?Gracias",
+//     date: "30/6/2002",
+//   },
+// ];
 const reply = [
   {
     post_key_reply: "R01",
@@ -129,12 +112,9 @@ const reply = [
 ];
 function ReadBlogs() {
   let PageSize = 3;
+  const { province, authorPost, desPost, checkReadBlog, related, comment, handleLike } =
+    useReadBlog();
   const focustInput = useRef();
-  const [str, setStr] = useState(
-    "https://vivureviews.com/wp-content/uploads/2022/08/avatar-vo-danh-9.png"
-  );
-  const [like, setLike] = useState(Post.likes);
-  const [typeLike, setTypeLike] = useState(Post.like_status);
   const [comments, setComments] = useState(comment);
   const [content, setContent] = useState("");
   const [typeComment, setTypeComment] = useState(true);
@@ -148,23 +128,14 @@ function ReadBlogs() {
   );
   const [currentPage, setCurrentPage] = useState(0);
   const currentTableData = useMemo(() => {
-    const fistIndex = comments.length - PageSize * (currentPage + 1);
+    const fistIndex = comment.length - PageSize * (currentPage + 1);
     const fistPageIndex = fistIndex < 0 ? 0 : fistIndex;
     fistIndex < 0 ? setCheckReadMore() : setCheckReadMore(true);
-    return comments.slice(fistPageIndex, comments.length).reverse();
-  }, [currentPage, comments]);
-  console.log(comments);
-  console.log(replys);
-  console.log(typeComment, checkEdit);
-  const handleLike = () => {
-    if (typeLike) {
-      setTypeLike(false);
-      setLike(like - 1);
-    } else {
-      setTypeLike(true);
-      setLike(like + 1);
-    }
-  };
+    return comment.slice(fistPageIndex, comment.length).reverse();
+  }, [currentPage, comment]);
+  // console.log(comments);
+  // console.log(replys);
+  // console.log(typeComment, checkEdit);
   const handleReply = (idPost) => {
     var id = parseInt(postKeyReply.slice(-1));
     setPostKeyReply("R0" + String(id + 1));
@@ -253,12 +224,16 @@ function ReadBlogs() {
     setCheckEdit(false);
     setCheckReply(-1);
   };
+  console.log(currentTableData, 'hello')
   return (
     <div>
       {/* Ảnh chính của bài post */}
       <div id="img_post">
-        <img className="img_title" src={Post.img_post_author}></img>
-        {/* <img className="img_custom" src={img_custom}></img> */}
+        <img
+          className="img_title"
+          src={authorPost.image}
+          alt="img-main"
+        ></img>
       </div>
 
       {/* Phần header cho bài post */}
@@ -267,34 +242,35 @@ function ReadBlogs() {
           {/* Thanh địa chỉ */}
           <ul className="post-breadcrums_list">
             <li>
-              <Link to='/'>Home</Link>
+              <Link to="/">Home</Link>
               <IconContext.Provider value={{ className: "icon_chevRight" }}>
                 <HiChevronRight />
               </IconContext.Provider>
             </li>
             <li>
-              <Link to = '/Blogs'>Blogs</Link>
+              <Link to="/Blogs">Blogs</Link>
               <IconContext.Provider value={{ className: "icon_chevRight" }}>
                 <HiChevronRight />
               </IconContext.Provider>
             </li>
             <li>
-              <a href="">{Post.name_province}</a>
+              <Link to={`/Blogs/${province.idProvince}`}>
+                {removeVietnameseTones(province.provinceName)}
+              </Link>
               <IconContext.Provider value={{ className: "icon_chevRight" }}>
                 <HiChevronRight />
               </IconContext.Provider>
             </li>
           </ul>
-
-          {/* Phần chứa thông về tác giả */}
+          {/* Phần chứa thông về tác giả */} {console.log(authorPost)}
           <div className="header-author">
-            <a href="">
-              <img src={Post.authorBlog_img} alt="Author's avatar"></img>
-            </a>
+            <Link to={`/Personal/${authorPost.userName}`}>
+              <img src={authorPost.avatar} alt="Author's avatar"></img>
+            </Link>
             <div className="header-author_row2">
-              <div className="author-name">{Post.authorBlog_name}</div>
+              <div className="author-name">{authorPost.userName}</div>
               <div className="author-update-at">
-                Last updated {Post.date_update}
+                Last updated {authorPost.dateTime}
               </div>
             </div>
             <div className="author-like">
@@ -303,7 +279,7 @@ function ReadBlogs() {
                   handleLike();
                 }}
               >
-                {!typeLike ? (
+                {!checkReadBlog.checkLike ? (
                   <IconContext.Provider
                     value={{ className: "icon_OutlineHeart" }}
                   >
@@ -315,31 +291,30 @@ function ReadBlogs() {
                   </IconContext.Provider>
                 )}
               </button>
-              <div className="author-like-number">{like}</div>
+              <div className="author-like-number">{authorPost.like}</div>
             </div>
           </div>
-
           {/* Phần chứa tiêu đề và mô tả của bài post */}
-          <h1 className="post-cover_title">{Post.title_post}</h1>
-          <p>{Post.describe}</p>
+          <h1 className="post-cover_title">{authorPost.postName}</h1>
+          <p>{authorPost.demoDescription}</p>
         </div>
       </div>
 
       <div className="blog-container">
         {/* Phần chứa nội dung bài post */}
         <article className="blog-article">
-          {contents.map((content, index) => (
-            <div key={index}>
-              <h2>{content.title}</h2>
-              <p>{content.description}</p>
-              {content.image2 ? (
+          {desPost.map((des) => (
+            <div key={des.idDes}>
+              <h2>{des.title}</h2>
+              <p>{des.description}</p>
+              {des.image1 && des.image2 ? (
                 <div className="f-image2">
-                  <img src={content.image1} alt="image of post"></img>
-                  <img src={content.image2} alt="image of post"></img>
+                  <img src={des.image1} alt="image of post"></img>
+                  <img src={des.image2} alt="image of post"></img>
                 </div>
               ) : (
                 <div className="f-image1">
-                  <img src={content.image1} alt="image of post"></img>
+                  <img src={des.image1} alt="image of post"></img>
                 </div>
               )}
             </div>
@@ -350,13 +325,13 @@ function ReadBlogs() {
         <div className="sidebar-articles">
           <div className="sidebar-articles_title">Related Posts</div>
           <div className="sidebar-articles_container">
-            {relatedPosts.map((relatedPost, index) => (
-              <Link className="article-text-block" to="/Blogs/Dalat">
-                <div className="article-text-block_image" key={index}>
-                  <img src={relatedPost.image} alt="image of post"></img>
+            {related.map((relate) => (
+              <Link className="article-text-block" to={`/Blogs/${relate.idProvince}/${relate.idPost}`}>
+                <div className="article-text-block_image" key={relate.idPost}>
+                  <img src={relate.image} alt="image of post"></img>
                 </div>
                 <div className="article-text-block_content">
-                  <h2>{relatedPost.title}</h2>
+                  <h2>{relate.postName}</h2>
                 </div>
               </Link>
             ))}
@@ -367,10 +342,15 @@ function ReadBlogs() {
       {/* Phần chứa thẻ liên kết ra blog */}
       <div className="related-category_link">
         <div className="related-category_card">
-          <a href="">
+          <Link to={`/Blogs/${province.idProvince}`}>
             <h3>read all articles about</h3>
             <div className="related-category_title">
-              <span className="text">{Post.name_province}</span>
+              <span className="text">
+                {removeVietnameseTones(province.provinceName).replace(
+                  /\s+/g,
+                  ""
+                )}
+              </span>
             </div>
             <div className="circle-icon">
               <IconContext.Provider value={{ className: "icon_ArrowRight" }}>
@@ -379,11 +359,11 @@ function ReadBlogs() {
             </div>
             <img
               className="img_tilte_blog"
-              src={Post.img_province}
+              src={province.image}
               alt="image of province"
             ></img>
             {/* <img className="img_tilte_custom" src={img_custom_title}></img> */}
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -400,8 +380,9 @@ function ReadBlogs() {
             ></CommentInput>
             <ul className="comments-list">
               {currentTableData.map((comment) => (
-                <li key={comment.post_key} className="parent">
+                <li key={comment.idComment} className="parent">
                   <CommentCard
+                    comment={comment}
                     name_read="Tai Tai"
                     name_author={comment.name_author}
                     date={comment.date}

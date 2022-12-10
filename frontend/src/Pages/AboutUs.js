@@ -1,7 +1,7 @@
 import React from "react";
 import "../AboutUs.css";
-import Province from "./Province"
 import member1 from "../../src/image/img1.jpg";
+import Province from "../Pages/Province";
 
 function AboutUs() {
   return (

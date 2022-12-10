@@ -50,21 +50,10 @@ const Goto = () =>{
       <div className='goto-li-ctn'>
             {gotoDatas.map((gotoData, index)=>
                     <li className="goto-li">
-                    <Link className="goto-a" to = {`/Blogs/${gotoData.idProvince}`}>{gotoData.data}</Link>
+                    <Link className="goto-a" to = {`/Blogs/${gotoData.idProvince}`}>{gotoData.data} </Link>
                     </li>
             )}
         </div>
-
-        <div className="goto-li-ctn">
-          {gotoDatas.map((gotoData, index) => (
-            <li className="goto-li">
-              <a className="goto-a" href={gotoData.data}>
-                {gotoData.data}
-              </a>
-            </li>
-          ))}
-        </div>
-      
         
     </>
   );

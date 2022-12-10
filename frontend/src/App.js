@@ -50,7 +50,7 @@ function App() {
           <Route path="/Profile" element={<ProfileInput />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
-          {/* <Route path="/Aboutus" element={<Admin />} /> */}
+          <Route path="/Aboutus" element={<AboutUs  />} />
           <Route element={<ProtectedRoutes />}>
             <Route path="/Personal" element={<PersonalPage />} />
             <Route path="/Dashboard" element={<Admin />} />

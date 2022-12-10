@@ -19,10 +19,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       like: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
       demoDescription: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT('long')
       },
       status: {
         type: Sequelize.STRING

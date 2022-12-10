@@ -2,7 +2,11 @@ import { IconContext } from "react-icons";
 import { BsFillCircleFill } from "react-icons/bs";
 import { FiCornerUpLeft } from "react-icons/fi";
 import { AiOutlineMore, AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { useContext } from "react";
+import { UserContext } from "../App";
+
 export function CommentCard({
+  comment,
   focustInput,
   name_read,
   name_author,
@@ -22,6 +26,7 @@ export function CommentCard({
   comment_post_key,
  ...Children
 }) {
+  const { user } = useContext(UserContext);
   return (
     <div>
       <div
@@ -30,7 +35,7 @@ export function CommentCard({
           ...Children
         }}
       >
-        {name_read === name_author && (
+        {user.userName === comment.userName && (
           <div className="comment-more">
             <IconContext.Provider value={{ className: "icon_OulineMore" }}>
               <AiOutlineMore />
@@ -52,13 +57,13 @@ export function CommentCard({
           </div>
         )}
         <div className="comment-data">
-          {name_author}
+          {comment.userName}
           <IconContext.Provider value={{ className: "icon_FillCircleFill" }}>
             <BsFillCircleFill />
           </IconContext.Provider>
-          {date}
+          {comment.dateTime}
         </div>
-        <p>{content_comment}</p>
+        <p>{comment.description}</p>
         <div className="reply">
           <button
             className={className}

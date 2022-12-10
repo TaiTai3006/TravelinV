@@ -6,6 +6,8 @@ import homeRouter from "./routes/homeRoute.js";
 import PostRouter from "./routes/PostRouter.js";
 import routerPersonal from "./routes/PersonalRouter"
 import routerBlogs from "./routes/BlogsRouter.js";
+import ProvincePostRouter from "./routes/ProvincepPostRouter.js";
+import ReadBlogRouter from "./routes/ReadBlogRouter.js";
 import adminRoute from "./routes/adminRoute.js"
 import userRoute from "./routes/userRoute.js"
 import deletePostRouter from "./routes/deletedPostRouter"
@@ -35,6 +37,8 @@ app.use(homeRouter)
 app.use(PostRouter)
 app.use(routerPersonal);
 app.use(routerBlogs);
+app.use(ProvincePostRouter)
+app.use(ReadBlogRouter)
 app.use(adminRoute);
 app.use(userRoute);
 app.use(deletePostRouter);
