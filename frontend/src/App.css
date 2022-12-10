@@ -24,6 +24,7 @@ header {
   position: relative;
   width: 100%;
   align-items: center;
+  /* background-color: #fff; */
 }
 .nav-right {
   display: flex;
@@ -53,7 +54,7 @@ a {
   text-align: center;
   /* line-height: 60px; */
 }
-.logo {
+.logo-header  {
   width: 100px;
   margin-top: 10px;
   margin-left: 15px;
@@ -80,44 +81,7 @@ a:hover {
   width: 35px;
   height: 35px;
 }
-@media screen and (max-width: 800px) {
-  #nav {
-    display: none;
-  }
-  .nav-column {
-    display: block;
-    top: 0;
-    width: 300px;
-    position: absolute;
-  }
-  #nav-item {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    width: 300px;
-  }
-  .nav__checkbox {
-    display: none;
-  }
-  .nav__checkbox:checked ~ #nav-item {
-    width: 100%;
-    opacity: 1;
-  }
-  #nav-item {
-    z-index: 1500;
-    width: 0;
-    opacity: 0;
-  }
-  .nav__button {
-    z-index: 2000;
-    font-weight: 200;
-    font-size: 20px;
-    border-radius: 51% 49% 49% 51% / 59% 56% 44% 41%;
-    background-color: #f5f4f2;
-    width: 35px;
-    height: 35px;
-  }
-}
+
 
 #nav1 {
   line-height: 60px;
@@ -323,9 +287,10 @@ li {
     margin: 15px 0 !important;
   }
   .image-ctn {
-    margin: 0  !important;
+    margin: 10px 0  !important;
+    
     width: 100% !important;
-    height: auto !important;;
+    /* height: auto !important;; */
   }
   .profile-img span {
     font-size: 15px;
@@ -653,5 +618,43 @@ li {
   }
   .sitemap {
     width: 100% !important;
+  }
+}
+@media screen and (max-width: 800px) {
+  #nav {
+    display: none;
+  }
+  .nav-column {
+    display: block;
+    top: 0;
+    width: 300px;
+    position: absolute;
+  }
+  #nav-item {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 300px;
+  }
+  .nav__checkbox {
+    display: none;
+  }
+  .nav__checkbox:checked ~ #nav-item {
+    width: 100%;
+    opacity: 1;
+  }
+  #nav-item {
+    z-index: 1500;
+    width: 0;
+    opacity: 0;
+  }
+  .nav__button {
+    z-index: 2000;
+    font-weight: 200;
+    font-size: 20px;
+    border-radius: 51% 49% 49% 51% / 59% 56% 44% 41%;
+    background-color: #f5f4f2;
+    width: 35px;
+    height: 35px;
   }
 }

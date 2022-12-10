@@ -1,112 +1,113 @@
 import React, { useEffect, useState } from "react";
-import related1 from "../image/danang.jpg";
-
-import related2 from "../image/rl2.jpg";
-import dalat from "../image/dalat.jpg";
 import Axios, * as others from 'axios';
 function RelatedPost() {
   const [posts1, setPost1] = useState([
-    // {
-    //   id: 1,
-    //   img: { related2 },
-    //   title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
-    // },
-    // {
-    //   id: 2,
-    //   img: "../../src/image/dalat.jpg",
-    //   title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
-    // },
-    // {
-    //   id: 3,
-    //   img: "../../src/image/dalat.jpg",
-    //   title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
-    // },
-    // {
-    //   id: 4,
-    //   img: "../../src/image/dalat.jpg",
-    //   title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
-    // },
-    // {
-    //   id: 5,
-    //   img: "../../src/image/dalat.jpg",
-    //   title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
-    // },
-    // {
-    //   id: 6,
-    //   img: "../../src/image/dalat.jpg",
-    //   title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
-    // },
-    // {
-    //   id: 7,
-    //   img: "../../src/image/dalat.jpg",
-    //   title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
-    // },
-    // {
-    //   id: 8,
-    //   img: "../../src/image/dalat.jpg",
-    //   title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
-    // },
-    // {
-    //   id: 9,
-    //   img: "../../src/image/dalat.jpg",
-    //   title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
-    // },
+    {
+      id: 1,
+      img:"https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
+    },
+    {
+      id: 2,
+      img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
+    },
+    {
+      id: 3,
+      img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
+    },
+    {
+      id: 4,
+      img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
+    },
+    {
+      id: 5,
+      img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
+    },
+    {
+      id: 6,
+      img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
+    },
+    {
+      id: 7,
+      img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
+    },
+    {
+      id: 8,
+      img: "../../src/image/dalat.jpg",
+      title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
+    },
+    {
+      id: 9,
+      img: "../../src/image/dalat.jpg",
+      title: " 27 Mistakes You Wish Not To Make When Traveling Solo",
+    },
   ]);
 
   const [posts2, setPost2] = useState([
-    // {
-    //   id: 1,
-    //   img: { dalat },
-    //   provinc: " Da Nang",
-    // },
-    // {
-    //   id: 2,
-    //   img: { dalat },
-    //   provinc: " Da Nang",
-    // },
-    // {
-    //   id: 3,
-    //   img: { related1 },
-    //   provinc: " Da Nang",
-    // },
-    // {
-    //   id: 4,
-    //   img: { dalat },
-    //   provinc: " Da Nang",
-    // },
-    // {
-    //   id: 5,
-    //   img: { related1 },
-    //   provinc: " Da Nang",
-    // },
-    // {
-    //   id: 6,
-    //   img: { related1 },
-    //   provinc: " Da Nang",
-    // },
-    // {
-    //   id: 7,
-    //   img: { related1 },
-    //   provinc: " Da Nang",
-    // },
-    // {
-    //   id: 8,
-    //   img: { related1 },
-    //   provinc: " Da Nang",
-    // },
-    // {
-    //   id: 9,
-    //   img: { related1 },
-    //   provinc: " Da Nang",
-    // },
+    {
+      id: 1,
+      img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      provinc: " Da Nang",
+    },
+    {
+      id: 2,
+      img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      provinc: " Da Nang",
+    },
+    {
+      id: 3,
+      img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      provinc: " Da Nang",
+    },
+    {
+      id: 4,
+      img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      provinc: " Da Nang",
+    },
+    {
+      id: 5,
+      img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      provinc: " Da Nang",
+    },
+    {
+      id: 6,
+      img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      provinc: " Da Nang",
+    },
+    {
+      id: 7,
+      img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      provinc: " Da Nang",
+    },
+    {
+      id: 8,
+      img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      provinc: " Da Nang",
+    },
+    {
+      id: 9,
+      img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+      provinc: " Da Nang",
+    },
   ]);
-  useEffect(()=>{
-    Axios.get('http://localhost:8800/home/relatedpost').then((response) => {
-      // console.log(response.data)
-      setPost1(response.data)
-      // setPost2(response.data)
-    })
-  })
+  // useEffect(()=>{
+  //   Axios.get('http://localhost:8800/home/featuredpost').then((response) => {
+  //     console.log(response.data)
+  //     setPost1(response.data)
+  //     // setPost2(response.data)
+  //   })
+  //   Axios.get('http://localhost:8800/home/featuredpost').then((response) => {
+  //     console.log(response.data)
+  //     setPost2(response.data)
+  //     // setPost2(response.data)
+  //   })
+  // })
   return (
     <div className="related-post--container">
       <div className="related-post--content">

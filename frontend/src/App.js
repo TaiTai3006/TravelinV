@@ -41,6 +41,8 @@ function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
           <Route path="/Blogs" element={<Blogs />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
+
           <Route path="/Blogs/:idProvince" element={<ProvincePost />} />
           <Route path="/Blogs/:idProvince/:idPost" element={<ReadBlogs />} />
           {/* <Route path="/Blogs/:relatedPostID" element={<Blogs />} /> */}
