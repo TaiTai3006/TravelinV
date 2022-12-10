@@ -369,7 +369,7 @@ function ReadBlogs() {
               src={province.image}
               alt="image of province"
             ></img>
-            <img className="img_tilte_custom" src={img_custom_title}></img>
+            {/* <img className="img_tilte_custom" src={img_custom_title}></img> */}
           </Link>
         </div>
       </div>

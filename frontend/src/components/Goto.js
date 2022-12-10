@@ -46,13 +46,27 @@ const Goto = () =>{
         FecthDatas();
     },[])
     return(
-        <div className='goto-li-ctn'>
+      <>
+      <div className='goto-li-ctn'>
             {gotoDatas.map((gotoData, index)=>
                     <li className="goto-li">
                     <Link className="goto-a" to = {`/Blogs/${gotoData.idProvince}`}>{gotoData.data}</Link>
                     </li>
             )}
         </div>
-    )
-}
-export default Goto
+
+        <div className="goto-li-ctn">
+          {gotoDatas.map((gotoData, index) => (
+            <li className="goto-li">
+              <a className="goto-a" href={gotoData.data}>
+                {gotoData.data}
+              </a>
+            </li>
+          ))}
+        </div>
+      
+        
+    </>
+  );
+};
+export default Goto;

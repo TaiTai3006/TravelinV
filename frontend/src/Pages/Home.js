@@ -7,6 +7,7 @@ import RelatedPost from "../components/RelatedPost";
 import FormBlog from "./FormBlog"; 
 import ProfileInput from "./ProfileInput";
 
+
 function Home() {
   return (
     <div className="App">
@@ -18,6 +19,7 @@ function Home() {
       <GoNext />
       <Slider/>
       <RelatedPost />
+      {/* <Province/> */}
     </div>
   );
 }

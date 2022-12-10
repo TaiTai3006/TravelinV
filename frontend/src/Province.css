@@ -232,8 +232,8 @@ div a {
   color: #353535;
 }
 
-div a:hover {
-  text-decoration: underline;
+.option-board a:hover {
+  text-decoration: underline !important;
 }
 
 .province-search-container {
@@ -327,6 +327,7 @@ input:focus {
   opacity: 1;
   transition-duration: 1s;
   transform: scale(1.05);
+  filter:brightness(80%);
 }
 .title-article {
   position: absolute;

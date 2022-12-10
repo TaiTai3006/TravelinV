@@ -10,7 +10,7 @@ export default [
       },
       {
         "_id": "60eaaa6f1173335842c3565b",
-        "name": "Bà Rịa - Vũng Tàu",
+        "name": " Vũng Tàu",
         "slug": "ba-ria---vung-tau",
         "type": "tinh",
         "name_with_type": "Tỉnh Bà Rịa - Vũng Tàu",
@@ -505,7 +505,7 @@ export default [
       },
       {
         "_id": "60eaaa6f1173335842c35649",
-        "name": "Thừa Thiên Huế",
+        "name": "Huế",
         "slug": "thua-thien-hue",
         "type": "tinh",
         "name_with_type": "Tỉnh Thừa Thiên Huế",

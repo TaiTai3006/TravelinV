@@ -102,6 +102,7 @@ function RelatedPost() {
   ]);
   useEffect(()=>{
     Axios.get('http://localhost:8800/home/relatedpost').then((response) => {
+      // console.log(response.data)
       setPost1(response.data)
       // setPost2(response.data)
     })
