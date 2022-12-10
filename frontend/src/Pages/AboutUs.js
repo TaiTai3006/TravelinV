@@ -1,7 +1,7 @@
 import React from "react";
 import "../AboutUs.css";
 import member1 from "../../src/image/img1.jpg";
-import Province from "../Pages/Province";
+// import Province from "../Pages/Province";
 
 function AboutUs() {
   return (
@@ -84,7 +84,7 @@ function AboutUs() {
         </div>
       </div>
     </div>
-    <Province/>
+    {/* <Province/> */}
     </>
   );
 }

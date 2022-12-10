@@ -14,7 +14,31 @@
   --lightblue: #d8c4c3;
   --darkpink: #c0e2e2;
 }
-
+/* Hover  */
+.modal-container{
+  display:flex;
+  align-content:center;
+  justify-content:center;
+   
+}
+.modal{
+  position:relative;
+  padding:0 80px;
+}
+.modal-view{
+  position:absolute;
+  box-sizing: border-box;
+  /* overflow-y:scroll; */
+  /* max-height:150px; */
+  /* left:0%; */
+  top:50px;
+  z-index:999;
+  background:white;
+  border-radius: 10px;
+  padding:10px;
+  border:1px solid grey;
+  box-shadow: #353535 2px 2px 2px 0px;
+}
 header {
   height: 60px;
   font-family: headings;

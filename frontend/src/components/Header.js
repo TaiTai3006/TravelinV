@@ -7,6 +7,7 @@ import { UserContext } from "../App";
 import defaultAvatar from "../image/default_avatar.png";
 import { VscListSelection } from "react-icons/vsc";
 import logo from "../image/logo-removebg.png";
+import Modal from "./Modal";
 
 import "../App.css";
 const Header = () => {
@@ -34,14 +35,15 @@ const Header = () => {
         
 
         <ul id="nav1">
-          <li className="search">
+       <Modal/>
+          {/* <li className="search">
             <a href="">
               Want to go ...
               <IconContext.Provider value={{ className: "icon_chevDown" }}>
                 <HiChevronDown />
               </IconContext.Provider>
             </a>
-          </li>
+          </li> */}
           <li>
             <a href="http://localhost:3000">
               <div className="image">

@@ -127,7 +127,7 @@ body {
  
 }
 .feature_post--container {
- 
+ margin-top: 50px;
   padding: 0 30px;
   display: flex;
   justify-content: space-around;
@@ -220,15 +220,15 @@ body {
 .next_place-item p {
   margin: 0 10px;
   white-space: nowrap; 
-   width: 70px;
-  overflow: hidden;
-  text-overflow: clip;
+   /* width: 70px; */
+  /* overflow: hidden;
+  text-overflow: clip; */
 }
 .next_place-item a {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 132px;
+  /* width: 132px; */
   height: 50px;
   margin: 0 10px;
   border-radius: 40px;
