@@ -378,7 +378,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 350px;
+  width: 467px;
   color: #353535;
   font-family: "Merriweather Sans";
   font-size: 14px;
@@ -387,7 +387,7 @@ body {
   padding-right: 20px;
   border-radius: 9.8px;
 
-  margin:  10px;
+  /* margin:  10px; */
 }
 .realted-post--item-title {
   letter-spacing: -0.3px;
@@ -436,11 +436,11 @@ body {
 
 .related-post--suggestion {
   display: flex;
-  width: 800px;
+  width: 932px;
   /* position: absolute; */
   /* left: 35%; */
   /* left: 500px; */
-  /* margin-left: 20px; */
+  margin-left: 20px;
 
   overflow-x: auto;
 }
@@ -452,14 +452,9 @@ body {
   width: 261px;
   height: 433px;
 }
-.back {
-  /* transform: rotateY(180deg); */
-}
-.suggestion--item {
-  /* background-image: url("./image/danang.jpg"); */
 
-  /* width: 250px;
-  height: 400px;  */
+.suggestion--item {
+  
   width: 100%;
   height: 100%;
   border-radius: 10px;
