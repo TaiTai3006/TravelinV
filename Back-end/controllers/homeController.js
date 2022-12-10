@@ -4,13 +4,13 @@ import { db } from "../index.js";
 
 
 export const getFeatured = ((req,res)=>{
-    const sqlPost = "select * from `post` order by `like` desc limit 3;"
+    const sqlPost = "select * from `post` where post.status = 'aprroved' order by `like` desc limit 3;"
     db.query(sqlPost, (err, result) => {
       res.send(result)
     })
   })
  export const getProvince =((req,res)=>{
-    const sqlPost = "select * from `province`"
+    const sqlPost = "select provinceName, image from `province`"
     db.query(sqlPost, (err, result) => {
       res.send(result)
     })
@@ -21,9 +21,18 @@ export const getFeatured = ((req,res)=>{
       res.send(result)
     })
   })
-export const getRelatedpost = ((req,res)=>{
-    const sqlPost = "SELECT province.provinceName, post.postName, post.userName, post.demoDescription, post.image FROM province, post WHERE province.idProvince = post.idProvince "
+
+export const getRelatedpost2 = ((req,res)=>{
+    const sqlPost = "SELECT * FROM province, post WHERE province.idProvince = post.idProvince GROUP BY province.idProvince ORDER BY post.like DESC "
     db.query(sqlPost, (err, result) => {
       res.send(result)
     })
   })
+
+  export const getRelatedpost1 = ((req,res)=>{
+    const sqlPost = "SELECT * FROM post "
+    db.query(sqlPost, (err, result) => {
+      res.send(result)
+    })
+  })
+  
