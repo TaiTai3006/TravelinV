@@ -85,12 +85,14 @@ export default function Slider() {
         <HiChevronRight />
       </button>
       <div className="slider-ctn-titile">
-      <span className="slider-title">{slideImages[currentSlide].postName}</span>
+          <span className="slider-title">{slideImages[currentSlide].postName}</span>
       </div>
-      
-      <span className="slider-des">
-        {slideImages[currentSlide].demoDescription}
-      </span>
+      <div className="slider-ctn-des">
+          <span className="slider-des">
+            {slideImages[currentSlide].demoDescription}
+          </span>
+      </div>
+
       <div className="button-ctn">
         <a className="slider-button" href={slideImages.postName}>
           GO TO POST

@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   province.init({
     idProvince: DataTypes.String,
     provinceName: DataTypes.String,
+    describe: DataTypes.String,
     image: DataTypes.String
   }, {
     sequelize,

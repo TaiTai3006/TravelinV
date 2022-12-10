@@ -243,23 +243,27 @@ body {
   font-family: "Merriweather Sans";
   z-index: 1;
 }
-.slider-des {
+.slider-ctn-des{
   position: absolute;
-  top: 40%;
+  overflow: auto;
+  top: 38%;
   left: 15%;
-  width: 300px;
-  height: auto;
+  height: 140px;
+  width: 400px;
+}
+.slider-des {
   margin: 20px 0 20px 0;
   color: #ffffff;
   word-wrap: break-word;
   font-family: "Merriweather Sans";
   font-size: 20px;
   z-index: 1;
+  position: absolute;
 }
 .slider-button {
   position: absolute;
   left: 15%;
-  top: 60%;
+  top: 70%;
   color: black;
   font-size: 15px;
   background-color: #f1bc68;
