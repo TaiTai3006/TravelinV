@@ -5,7 +5,7 @@ const {
 const { FOREIGNKEYS } = require('sequelize/types/query-types');
 const province = require('./province');
 module.exports = (sequelize, DataTypes) => {
-  class post extends Model {
+  class reply extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -15,20 +15,16 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  post.init({
-    idPost: DataTypes.STRING,
-    idProvince: DataTypes.STRING,
+  reply.init({
+    idReply: DataTypes.STRING,
+    idComment: DataTypes.STRING,
+    userName: DataTypes.STRING,
+    description: DataTypes.TEXT('long'),
     dateTime: DataTypes.TIMESTAMP,
-    image: DataTypes.STRING,
-    like: DataTypes.INTEGER,
-    demoDescription: DataTypes.TEXT('long'),
-    status: DataTypes.STRING,
-    postName: DataTypes.STRING,
-    userName: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'post',
+    modelName: 'reply',
   });
 
-  return post;
+  return reply;
 };

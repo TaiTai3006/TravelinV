@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   description.init({
     idPost: DataTypes.STRING,
     idDes: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT('long'),
     image1: DataTypes.STRING,
     image2: DataTypes.STRING,
     titile: DataTypes.STRING,

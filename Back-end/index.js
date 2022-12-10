@@ -6,6 +6,8 @@ import homeRouter from "./routes/homeRoute.js";
 import PostRouter from "./routes/PostRouter.js";
 import routerPersonal from "./routes/PersonalRouter"
 import routerBlogs from "./routes/BlogsRouter.js";
+import ProvincePostRouter from "./routes/ProvincepPostRouter.js";
+import ReadBlogRouter from "./routes/ReadBlogRouter.js";
 // import "./configs/Database.js"
 const app = express();
 
@@ -28,6 +30,8 @@ app.use(homeRouter)
 app.use(PostRouter)
 app.use(routerPersonal);
 app.use(routerBlogs);
+app.use(ProvincePostRouter)
+app.use(ReadBlogRouter)
 
 
 // app.delete("/account/:userName", (req, res) => {
