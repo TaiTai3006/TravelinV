@@ -21,7 +21,7 @@ div a:hover {
 }
 
 .dashBoard {
-  width: 279px;
+  width: 342px;
   height: 100vh;
   border-right: 6px double  #989BA5;
 }
@@ -129,6 +129,7 @@ div a:hover {
 
 
 .head {
+  padding-bottom: 50px;
   position: relative;
   width: 100vw;
   height: 100px;
@@ -149,7 +150,7 @@ div a:hover {
   position: absolute;
   left: 6rem;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   /* text-decoration: none; */
 }
 
@@ -162,7 +163,7 @@ div a:hover {
 
 .text4{
   position: absolute;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   /* text-decoration: none; */
   font-family: headings;
@@ -170,19 +171,19 @@ div a:hover {
 
 .text6{
   position: absolute;
-  font-size: 2rem;
-  top:1rem;
+  font-size: 2.5rem;
   left: 2rem;
+  bottom: 48px;
   color: #2E5D9F;
   font-weight: bold;
 }
 
 .main-bar {
   position: absolute;
-  width: 80rem;
+  width: 90.5rem;
   height: 70px;
-  left: 250px;
-  top: 100px;
+  left: 240px;
+  top: 93px;
   background: #C1E2E1;
   border-radius: 10px 10px 0px 0px;
   display: flex;
@@ -203,7 +204,7 @@ div a:hover {
   display: flex;
   top: 12rem;
   left: 15.5rem;
-  width: 80rem;
+  width: 89.8rem;
   height: 30px;
   justify-content: space-around;
   font-weight: bold;
@@ -214,12 +215,9 @@ div a:hover {
 
 .info {
   position:absolute;
-  top:14rem;
+  top: 14rem;
   left: 15.5rem;
-  width: 80rem;
-  height: 28rem;
   overflow-y: scroll;
-  /* background-color: #FAF8F8; */
  
 }
 
@@ -235,8 +233,8 @@ div a:hover {
 .data-item {
   display: flex;
   flex-direction: column;
-  width: 80rem;
-  height: 32rem;
+  width: 89.8em;
+  height: 38rem;
 
   
 
@@ -244,7 +242,7 @@ div a:hover {
 
 .status-data {
   position: absolute;
-  left:67.5rem;
+  left:75.5rem;
   font-weight: bolder;
   margin-top: 10px;
   width: 6rem;
@@ -259,13 +257,13 @@ div a:hover {
 
 .createat-data {
   position: absolute;
-  left:48rem;
+  left:54.1rem;
 
 }
 
 .title-data {
   position: absolute;
-  left: 24rem;
+  left: 26rem;
   white-space: nowrap; 
   overflow: hidden;
   text-overflow: ellipsis; 
@@ -277,14 +275,14 @@ div a:hover {
 
 .usename-data {
   position: relative;
-  left: 8.2rem;
+  left: 9.3rem;
   font-family: "Merriweather Sans";
 }
 
 .avatar-data {
   position: absolute;
   width: 45px;
-  left: 4rem;
+  left: 5.5rem;
   padding-top: 8px;
   border-radius: 50%;
 
@@ -293,7 +291,7 @@ div a:hover {
 .option-data {
   position: absolute;
   font-size: 25px;
-  left: 75rem;
+  left: 84.5rem;
   top: 3px;
 }
 
@@ -305,13 +303,15 @@ div a:hover {
 }
 
 input[type=text] {
-  width: 18rem;
+  position: absolute;
+  width: 22rem;
   height: 2rem;
   font-size: 15px;;
   border-radius: 25px;
   background-color: white;
   border: 1px solid white;
   padding-left: 12px;
+  left: 2rem;
 }
 
 ::placeholder {
@@ -326,14 +326,14 @@ input:focus {
 .find-icon {
   position: absolute;
   bottom: 0.7rem;
-  left: 16.7rem;
+  left: 21.6rem;
   font-size: 44px;
 }
 
 .ad-info {
   display: flex;
   top: 1.5rem;
-  left: 65rem;
+  left: 74rem;
   gap: 40px;
   position: absolute;
 }
@@ -354,7 +354,9 @@ input:focus {
 }
 
 .admin-page {
+  position: relative;
   font-family: headings;
+  top: 20px;
 }
 
 .flex-home a {
@@ -393,12 +395,12 @@ input:focus {
 }
 
 .dropdown-option {
-  width: 50px;
+  width: 90px;
   line-height: 25px;
   height: 55px;
   position: absolute;
-  left: 73rem;
-  top: 1.5rem;
+  left: 82rem;
+  top: 2.5rem;
   z-index: 1;
   box-shadow: 0px 0px 5px 2px #d2d2d2;
   background-color: #f1f1f1;
@@ -419,12 +421,12 @@ input:focus {
 }
 
 .dropdown-option-user {
-  width: 50px;
+  width: 85px;
   line-height: 25px;
   height: 55px;
   position: absolute;
-  left: 73rem;
-  top: 1.5rem;
+  left: 82rem;
+  top: 2.5rem;
   box-shadow: 0px 0px 5px 2px #d2d2d2;
   background-color: #f1f1f1;
   z-index: 1;
@@ -450,8 +452,8 @@ div ul {
   position:absolute;
   top:14rem;
   left: 15.5rem;
-  width: 80rem;
-  height: 28rem;
+  width: 89.8rem;
+  height: 38rem;
   overflow-y: scroll;
 }
 
@@ -467,7 +469,7 @@ div ul {
 
 .avatar-user {
   position: absolute;
-  left: 40px;
+  left: 58px;
   padding-top: 8px;
   width: 45px;
   border-radius: 50%;
@@ -476,17 +478,17 @@ div ul {
 
 .account {
   position: absolute;
-  left: 70rem;
+  left: 79.5rem;
 }
 
 .phone {
   position: absolute;
-  left: 53rem;
+  left: 60rem;
 }
 
 .mail {
   position: absolute;
-  left: 36rem;
+  left: 41rem;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 15rem;
@@ -494,12 +496,12 @@ div ul {
 
 .gender {
   position: absolute;
-  left: 24rem;
+  left: 27rem;
 }
 
 .usename {
   position: relative;
-  left: 6.5rem;
+  left: 7.2rem;
   font-family: "Merriweather Sans";
 }
 

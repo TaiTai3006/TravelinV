@@ -112,6 +112,7 @@ body {
 }
 .featured-post-ctn {
   display: flex;
+  justify-content: space-between;
   width: inherit;
   height: auto;
 }
@@ -135,13 +136,14 @@ body {
   height: 280px;
   overflow: hidden;
   border-radius: 5px;
+
 }
-.image-ctn2 {
-  width: 540px;
+.image-ctn2{
+  width: 520px;
   height: 280px;
   overflow: hidden;
   border-radius: 5px;
-  margin-left: 20px;
+
 }
 /* .featured-img{
   transform: scale();
@@ -201,13 +203,14 @@ body {
   justify-content: space-between;
   gap: 5px;
   top: 70px;
+  display: flex;
+  justify-content: space-between;
 }
 .img-recent-ctn1 {
   width: 353px;
   height: 300px;
   border-radius: 5px;
   overflow: hidden;
-  margin-right: 20px;
 }
 .img-recent-ctn2 {
   width: 353px;

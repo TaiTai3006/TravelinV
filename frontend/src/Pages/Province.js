@@ -140,7 +140,7 @@ const article = [
   },
 ];
 
-function App() {
+function ProvincePost () {
   let PageSize = 9;
   const [search, setSearch] = useState(article);
   const [currentPage, setCurrentPage] = useState(1);
@@ -223,4 +223,4 @@ function App() {
   );
 }
 
-export default App;
+export default ProvincePost;

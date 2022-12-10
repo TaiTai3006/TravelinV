@@ -6,6 +6,13 @@ import homeRouter from "./routes/homeRoute.js";
 import PostRouter from "./routes/PostRouter.js";
 import routerPersonal from "./routes/PersonalRouter"
 import routerBlogs from "./routes/BlogsRouter.js";
+import adminRoute from "./routes/adminRoute.js"
+import userRoute from "./routes/userRoute.js"
+import deletePostRouter from "./routes/deletedPostRouter"
+import deleteUserRoute from "./routes/deleteUserRoute"
+import statusRoute from "./routes/statusRoute"
+import deleteLike from "./routes/deletelikeRoute.js";
+import deleteDes from "./routes/deleteDesRoute.js";
 // import "./configs/Database.js"
 const app = express();
 
@@ -13,7 +20,7 @@ export const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "travelinv",
+  database: "TravelinV",
 });
 
 db.connect((err)=>{
@@ -28,8 +35,20 @@ app.use(homeRouter)
 app.use(PostRouter)
 app.use(routerPersonal);
 app.use(routerBlogs);
+app.use(adminRoute);
+app.use(userRoute);
+app.use(deletePostRouter);
+app.use(deleteUserRoute);
+app.use(statusRoute);
+app.use(deleteLike);
+app.delete("/admin/description/delete/:idPost",(req,res)=>{
+  const IDpost = req.params.idPost;
+  const q = "delete from descriptionpost where idPost = ?";
+  db.query(q, IDpost, (err,result)=>{
 
-
+  })
+})
+// app.use(deleteDes);
 // app.delete("/account/:userName", (req, res) => {
 //     const userNameId = req.params.userName;
 //     const q = " DELETE FROM account WHERE userName = ? ";
