@@ -21,6 +21,10 @@ function App() {
 
   const [currentPage, setCurrentPage] = useState(1);
 
+  useEffect(() => {
+    window && window.scrollTo(0, 650)
+  }, [currentPage]);
+
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;

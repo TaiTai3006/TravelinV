@@ -38,9 +38,8 @@ function FormBlog() {
         {/* Thanh địa chỉ */}
         <Link to="/">Home</Link>
         <HiChevronRight />
-        <Link to="/Blogs">Blogs</Link>
-        <HiChevronRight />
         <a href="#">Create</a>
+        <HiChevronRight />
       </div>
       <div className="heading ">
         <h1>Create post </h1>

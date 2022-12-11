@@ -1,30 +1,38 @@
 import "../PersonalPage.css";
+// import { IconContext } from "react-icons";
 import { BsBookmarkHeartFill } from "react-icons/bs";
-import { BsFillHandbagFill } from "react-icons/bs";
 import { BsFillFilterSquareFill } from "react-icons/bs";
-import {useEffect, useContext} from 'react';
+import {useEffect} from 'react';
 import {useState} from 'react';
 import { FaEdit } from "react-icons/fa";
 import { BsTextRight } from "react-icons/bs";
 import { MdEdit } from "react-icons/md";
 import { MdOutlineBookmarkRemove } from "react-icons/md";
 import { RiDislikeLine } from "react-icons/ri";
+import { MdOutlinePendingActions } from "react-icons/md";
+
 import axios from "axios"
-import { UserContext } from "../App";
+// import { UserContext } from "../App";
 import { useLocation } from "react-router-dom";
+import { IconContext } from "react-icons";
 
 
-
-const tabs=[{name:'Post', style:<BsFillFilterSquareFill className='Thang_a'></BsFillFilterSquareFill>},{name:'PostLike', style: <BsBookmarkHeartFill className='Thang_'></BsBookmarkHeartFill>}]
+const tabs=[
+    {name:'Post', style:<IconContext.Provider value={{ className: 'Thang_a'}}><BsFillFilterSquareFill/></IconContext.Provider>},
+    {name:'PostLike', style: <IconContext.Provider value={{ className: 'Thang_a'}}><BsBookmarkHeartFill/></IconContext.Provider>}, 
+    {name:'Pending', style: <IconContext.Provider value={{ className: 'Thang_Icon_Pending'}}><MdOutlinePendingActions/></IconContext.Provider>}
+]
 
 export default function PersonalPage() {
-    const User = useContext(UserContext);
-    console.log(User.user)
+    // const User = useContext(UserContext);
+    // console.log(User.user)
     const [type, setType] = useState('Post')
     const [Name, setName] = useState([{}])
     const [Content, setContent] = useState([{}])
     const [CountPost, setCountPost] = useState();
     const [CountPostLike, setCountPostLike] = useState();
+    const [CountPostPending, setCountPostPending] = useState();
+
     const location = useLocation()
 
 
@@ -33,47 +41,50 @@ export default function PersonalPage() {
             try{
                 await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/PostLike`).then((response) =>{
                     setCountPostLike(response.data.length)
+                    
                 })
             } catch (err) {
                 console.log(err)
             }
         };
+        const FecthCountPostPending = async ()=>{
+            try{
+                await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/Pending`).then((response) =>{
+                    setCountPostPending(response.data.length)
+                    
+                })
+            } catch (err) {
+                console.log(err)
+            }
+        };
+        
         const FecthName = async ()=>{
             try{
                 await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}`).then((response) =>{
                     setName(response.data)
+                    console.log(response.data.length)
                 })
             } catch (err) {
                 console.log(err)
             }
         };
         FecthCountPostLike()
+        FecthCountPostPending()
         FecthName()
     },[location])
-    // console.log(PostPersonal)
-    // const FecthAllPersonal = async ()=>{
-    //     try{
-    //         await axios.get("http://localhost:8800/user").then((response) =>{
-    //             // console.log(response.data)
-    //             setPostPersonal(response.data)
-    //         })
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // };
-    // FecthAllPersonal()
-    // useEffect(() => {
-    //     FecthAllPersonal()
-    // },[])
+
     useEffect(() => {
         const FecthAllPost = async ()=>{
             try{
-                await axios.get(`http://localhost:8800/${User.user.userName}/Personal/${type}`).then((response) =>{
+                await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/${type}`).then((response) =>{
                    response.data && setContent(response.data)
                    if(type === 'Post')
                     setCountPost(response.data.length)
                     else if(type === 'PostLike')
                     setCountPostLike(response.data.length)
+                        else if(type === 'PostPending')
+                    setCountPostPending(response.data.length)
+
                 })
             } catch (err) {
                 console.log(err)
@@ -84,10 +95,10 @@ export default function PersonalPage() {
 
     const handleDeletePost = async (id) => {
         try {
-          await axios.delete(`http://localhost:8800/${User.user.userName}/Personal/DeleteLike/${id}`);
-          await axios.delete(`http://localhost:8800/${User.user.userName}/Personal/DeletePostDes/${id}`);
-          await axios.delete(`http://localhost:8800/${User.user.userName}/Personal/DeletePost/${id}`);
-          await axios.get(`http://localhost:8800/${User.user.userName}/Personal/${type}`).then((response) =>{
+          await axios.delete(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/DeleteLike/${id}`);
+          await axios.delete(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/DeletePostDes/${id}`);
+          await axios.delete(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/DeletePost/${id}`);
+          await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/${type}`).then((response) =>{
                    response.data && setContent(response.data)
                     setCountPost(response.data.length)
                 })
@@ -98,8 +109,8 @@ export default function PersonalPage() {
       };
       const handleDeletePostLike = async (id) => {
         try {
-          await axios.delete(`http://localhost:8800/${User.user.userName}/Personal/DeleteLike/${id}`);
-          await axios.get(`http://localhost:8800/${User.user.userName}/Personal/${type}`).then((response) =>{
+          await axios.delete(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/DeleteLike/${id}`);
+          await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/${type}`).then((response) =>{
                    response.data && setContent(response.data)
                     setCountPostLike(response.data.length)
                 })
@@ -135,7 +146,7 @@ function HandlCoutEvent(type, id)
     {/* {setType('Post')} */}
     {/* {console.log(PostPersonal)} */}
         <div id='Thang_avatar_child'>
-            <img src={User.user.image}/>  
+            <img src={Name[0].avatar}/>  
         </div>
         <div id='Thang_card'>
             </div>
@@ -145,10 +156,11 @@ function HandlCoutEvent(type, id)
                 <button id='Thang_setting'> <FaEdit></FaEdit></button>
                 <button id="Thang_edit">Chỉnh sửa thông tin cá nhân</button>
             </ul>
-            <p className='Thang_name'>{Name[0].name}</p>  
+            <p className='Thang_name'>{Name[0].userName}</p>  
             <div id='Thang_tab'>
                 <p className="Thang_tab_content"><span>{CountPost}</span> {tabs[0].name}</p>
                 <p className="Thang_tab_content"><span>{CountPostLike}</span> {tabs[1].name}</p>
+                <p className="Thang_tab_content"><span>{CountPostPending}</span> {tabs[2].name}</p>
             </div>
         </div>
         <div>
@@ -165,14 +177,14 @@ function HandlCoutEvent(type, id)
                         } : {}}
                     onClick={()=>setType(tab.name)}
                 > 
-                <div><span>{tab.style}</span><p>{tab.name}</p></div>
+                <div><span style={index === 2 ? {}:{}}>{tab.style}</span><p>{tab.name}</p></div>
                 </button>
             ))}
            
         </div>
         
         <div id ='Thang_content1'>
-            {console.log(Content)}
+            {/* {console.log(Content)}   */}
             {/* {console.log(PostPersonal)} */}
             {Content.map((Content0)=>(
                 <div key={Content0.idPost}>
@@ -183,7 +195,7 @@ function HandlCoutEvent(type, id)
                         </li>
                     </p>
                     <p id='Thang_CONTENT'>
-                        <p>{Content0.name}</p>
+                        <p>{Content0.userName}</p>
                         <h1 id='Thang_Content_Author'>{Content0.postName}</h1>
                         <p>{Content0.provinceName}&nbsp;&nbsp;&nbsp;&nbsp;{Content0.Day}-{Content0.Month}-{Content0.Year}</p>
                     </p>
