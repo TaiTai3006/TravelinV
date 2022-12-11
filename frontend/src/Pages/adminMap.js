@@ -6,12 +6,12 @@ import {BsThreeDots} from 'react-icons/bs'
 import {IoMdAddCircle} from 'react-icons/io'
 import Axios, * as others from 'axios';
 import axios from "axios";
-
+const reload = () =>{
+  location.reload();
+}
 const alternatingColor = [ ' #FFFFFF ', " #F4F2EE"]
 function DataPost({posts}) {
-  const reload = () =>{
-    location.reload();
-  }
+  
   const deletePost = (post)=>{
     Axios.delete(`http://localhost:8800/admin/description/delete/${post}`, posts)
     Axios.delete(`http://localhost:8800/admin/like/delete/${post}`, posts)
