@@ -8,8 +8,17 @@ import Input from "../components/Input";
 import { AiOutlineClose } from "react-icons/ai";
 import useFormPost from "../components/useFormPost";
 import { Link } from "react-router-dom";
+// notice 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function FormBlog() {
+
+ 
+const notify = () => toast("Successful post");
+
+
   const {
     handleChangeTitle,
     handleTitleImage,
@@ -34,6 +43,8 @@ function FormBlog() {
   console.log(inputList);
   return (
     <>
+    {/* <Notice/> */}
+    <ToastContainer />
       <div className="nav-container">
         {/* Thanh địa chỉ */}
         <Link to="/">Home</Link>
@@ -69,7 +80,7 @@ function FormBlog() {
               id="input-img"
               onChange={handleTitleImage}
             />
-            <input type="submit" className="submit" value="POST"></input>
+            <input type="submit" className="submit" value="POST" onClick={notify}></input>
              {/* <div className="submit">
               <input type="submit" className="submit" value="POST"></input>
             </div> */}
