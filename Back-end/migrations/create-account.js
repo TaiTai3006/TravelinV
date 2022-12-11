@@ -27,7 +27,7 @@ module.exports = {
       accountType: {
         type: Sequelize.STRING
       },
-      image: {
+      avatar: {
         type: Sequelize.STRING
       },
     });

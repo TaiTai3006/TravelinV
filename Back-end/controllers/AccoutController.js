@@ -3,9 +3,10 @@ import bcrypt from "bcrypt";
 const cloudinary = require("cloudinary").v2;
 
 export const CreateTableAccount = (req, res) => {
+  const userNameId = req.params.userName;
   const q =
-    "create table `account` (`userName` varchar(24) NOT NULL, `password` varchar(225) NOT NULL, `name` varchar(50), `gender` varchar(4), `gmail` varchar(24), `phoneNumber` varchar(10),`accountType` varchar(10), `image` varchar(225),primary key (`userName`))";
-  db.query(q, (err, data) => {
+    "SELECT `userName`, `accountType`, `avatar` FROM `account` WHERE `userName` = ?";
+  db.query(q,[userNameId], (err, data) => {
     if (err) return res.json(err);
     return res.json(data);
   });
@@ -14,7 +15,7 @@ export const CreateTableAccount = (req, res) => {
 export const getAccount = (req, res) => {
   const userNameId = req.params.userName;
   const q =
-    "SELECT `userName`, `name`, `gender`, `gmail`, `phoneNumber`, `accountType`, `image` FROM `account` WHERE `userName` = ?";
+    "SELECT `userName`, `name`, `gender`, `gmail`, `phoneNumber`, `accountType`, `avatar` FROM `account` WHERE `userName` = ?";
   db.query(q, [userNameId], (err, data) => {
     if (err) return res.json(err);
     return res.json(data);
@@ -23,7 +24,7 @@ export const getAccount = (req, res) => {
 
 export const CreateAccount = async (req, res) => {
   const q =
-    "INSERT INTO account (`userName`, `password`, `name`, `gmail`, `accountType`, `image`) VALUES (?)";
+    "INSERT INTO account (`userName`, `password`, `name`, `gmail`, `accountType`) VALUES (?)";
   const image = req.file;
   const salt = await bcrypt.genSalt(10);
   req.body.password = await bcrypt.hash(req.body.password, salt);
@@ -33,11 +34,11 @@ export const CreateAccount = async (req, res) => {
     req.body.name,
     req.body.gmail,
     req.body.accountType,
-    (req.body.image = image ? image?.path : req.body.image),
   ];
   db.query(q, [values], (err, data) => {
     if (err) {
       if (image) cloudinary.uploader.destroy(image.filename);
+      console.log(err)
       return res.json(err);
     }
     return res.json("Account has been created successfully");
@@ -72,14 +73,14 @@ export const Login = (req, res) => {
 export const upadeAccount = (req, res) => {
   const userNameId = req.params.userName;
   const q =
-    "UPDATE `account` SET `name`= ?,`gender`= ?,`gmail`= ?,`phoneNumber`= ?,`image`= ? WHERE `userName`= ?";
+    "UPDATE `account` SET `name`= ?,`gender`= ?,`gmail`= ?,`phoneNumber`= ?,`avatar`= ? WHERE `userName`= ?";
   const image = req.file;
   const values = [
     req.body.name,
     req.body.gender,
     req.body.gmail,
     req.body.phoneNumber,
-    req.body.image = image?.path ,
+    req.body.avatar = image?.path ,
   ];
 
   db.query(q, [...values, userNameId], (err, data) => {

@@ -17,6 +17,7 @@ import Admin from "./Pages/admin";
 import AboutUs from "./Pages/AboutUs";
 import ProvincePost from "./Pages/Province";
 import ScrollToTop from "./components/ScrollToTop";
+import { ProtecteDashboard } from "./components/PrivateRouter";
 export const UserContext = createContext();
 
 function App() {
@@ -53,8 +54,10 @@ function App() {
             <Route path="/Aboutus" element={<AboutUs />} />
             <Route element={<ProtectedRoutes />}>
               <Route path="/CreatePost" element={<FormBlog />} />
-              <Route path="/Personal" element={<PersonalPage />} />
-              <Route path="/Dashboard" element={<Admin />} />
+              <Route path="/Personal/:userName" element={<PersonalPage />} />
+              <Route element={<ProtecteDashboard />}>
+                <Route path="/Dashboard" element={<Admin />} />
+              </Route>
               <Route path="/Logout" element={<Logout />} />
             </Route>
           </Route>

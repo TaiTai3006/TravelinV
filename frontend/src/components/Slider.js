@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Axios, * as others from 'axios';
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 function Slider() {
+  const navigate = useNavigate()
+  const { pathname } = useLocation();
   const [slide, setSlide] = useState([{userName: '', postName: '',  demoDescription: '', image: '',}]
   //   try{
   //     const res = await Axios.get('http://localhost:8800/home/slider')
@@ -16,10 +20,9 @@ function Slider() {
     Axios.get('http://localhost:8800/home/slider').then((response) => {
       setSlide(response.data)
     }) 
-  },[])
+  },[pathname])
   // console.log(slide)
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [temp, settemp] = useState([])
     useEffect(() => {
       setTimeout(() => {
         setCurrentSlide(() => {
@@ -44,7 +47,7 @@ function Slider() {
                 <p>{slide[currentSlide].userName}</p>
                 <h3>{slide[currentSlide].postName}</h3>
                 <span>{slide[currentSlide].demoDescription}</span>
-                <button>Travel Tips</button>
+                <button onClick={()=> navigate('/Blogs')}>Travel Tips</button>
               </div>
 
       </div>

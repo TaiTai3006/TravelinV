@@ -57,13 +57,13 @@ export default function Blogs() {
     <h2>Featured Posts</h2>
     <div className="featured-post-ctn">
 
-      {FeaturedPost.map((FeaturedPosts, index)=>{
+      {FeaturedPost.map((FeaturedPosts)=>{
         return(
           <div class="image-ctn" >
-          <a href = "">
+          <Link to = {`/Blogs/${FeaturedPosts.idProvince}/${FeaturedPosts.idPost}`}>
             <span className="post-name" >{FeaturedPosts.postName}</span>
             <img className = "featured-img" src={FeaturedPosts.image} ></img>
-          </a>
+          </Link>
           </div>
         )
       })}
@@ -81,10 +81,10 @@ export default function Blogs() {
         {RecentPost.map((RecentPosts,index)=>{
           return(
             <div className="img-recent-ctn1" >
-            <a href="" >
+            <Link to=  {`/Blogs/${RecentPosts.idProvince}/${RecentPosts.idPost}`}>
               <span className="post-name-recent" >{RecentPosts.postName}</span>
               <img className="recent-img" src={RecentPosts.image} ></img>
-            </a>
+            </Link>
           </div>
           )
         })}
