@@ -34,61 +34,17 @@ function Admin() {
   console.log(search);
   const [type, settype] = useState("blog");
 
-  function handleEvent(type,posts) {
+  function handleEvent(type) {
     if (type === "blog")
       return (
         <div className="info data-item ">
-        {posts.map((posts, id) => {
-         console.log(posts)
-          return (
-            <div  className="data-post" key={posts.id} style={{backgroundColor: alternatingColor[id % 2] }}>
-                <a href=""><div class="usename-data">{posts.userName}</div></a>
-                <a href=""><div class="title-data">{posts.postName}</div></a>
-                <div className="createat-data" >{posts.dateTime}</div>
-                <a href=""><div className="province-data">{posts.provinceName}</div></a>
-                <button onClick={() => checkPost(posts.idPost)} className="status-data" style={{backgroundColor: posts.status === "pending" ? "#f1bc68" : "indianred"}} >{posts.status} </button>
-                <div className="delete-btn-div">
-                <button onClick={() => deletePost(posts.idPost)} className="delete-btn" href="#">Delete</button>
-                </div>
-                
-                {/* <div className="dropdown">
-                     <div className="option-data" ><BsThreeDots/></div>
-                     <div className="dropdown-content">
-                       <ul className="dropdown-option">
-                        <li><button onClick={() => checkPost(posts.idPost)} className="check-btn" href="#">Check</button></li>
-                        <li><button className="edit-btn">edit</button></li>
-                        <li><button onClick={() => deletePost(posts.idPost)} className="delete-btn" href="#">Delete</button></li>
-                       </ul>
-                     </div>
-                </div> */}
-            </div>
-          );
-        })}
-
+          <DataPost posts={search} />
         </div>
       );
     if (type === "user")
       return (
         <div className="info-user">
-          {/* <DataUser user = {searchUser}/> */}
-          {user.map((user, id) => {
-          return (
-           
-            <div  className='user-data' key={user.id} style={{backgroundColor: alternatingColor[id % 2] }}>
-              
-              <img className="avatar-user" src={user.avatar}/>
-              <a href='#'><div className='usename'>{user.userName}</div></a>
-              <div className='gender'>{user.gender}</div>
-              <div className='mail'>{user.gmail}</div>
-              <div className='phone'>{user.phoneNumber}</div>
-              <div className='account'>{user.accountType}</div>
-              <div className="dropdown">
-              <button onClick={()=>{deleteUser(user.userName)}} className="delete-btn" href="#">Delete</button>
-                </div>
-                
-            </div> 
-          );
-        })}
+          <DataUser user={searchUser} />
         </div>
       );
   }
@@ -209,9 +165,6 @@ function Admin() {
         {handleBar(type)}
         {handleEvent(type)}
       </div>
-
-      {handleBar(type,posts)}
-      {handleEvent(type,posts)}
     </div>
   );
 }
