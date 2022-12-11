@@ -101,9 +101,7 @@ function Admin() {
           <div className="text2" onClick={() => settype("blog")}>
             Blog
           </div>
-          <div className="icon-arrow" style={{ display: iconArrow }}>
-            <HiChevronRight />
-          </div>
+          
         </div>
         <div
           onClick={handleArrow2}
@@ -113,9 +111,7 @@ function Admin() {
           <div className="icon-user">
             <GrGroup />
           </div>
-          <div className="icon-arrow-2" style={{ display: iconArrow2 }}>
-            <HiChevronRight />
-          </div>
+          
           <div className="text3" onClick={() => settype("user")}>
             Users
           </div>

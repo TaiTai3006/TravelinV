@@ -78,14 +78,16 @@ function DataPost({posts}) {
           return (
            
             <div  className='user-data' key={user.id} style={{backgroundColor: alternatingColor[id % 2] }}>
-              
+              <div className="user-item">
               <img className="avatar-user" src={user.avatar}/>
               <a href='#'><div className='usename'>{user.userName}</div></a>
-              <div className='gender'>{user.gender}</div>
-              <div className='mail'>{user.gmail}</div>
-              <div className='phone'>{user.phoneNumber}</div>
-              <div className='account'>{user.accountType}</div>
-              <div className="dropdown">
+              </div>
+              
+              <div className='gender user-item'>{user.gender}</div>
+              <div className='mail user-item'>{user.gmail}</div>
+              <div className='phone user-item'>{user.phoneNumber}</div>
+              <div className='account user-item'>{user.accountType}</div>
+              {/* <div className="dropdown">
                      <div className="option-data" ><BsThreeDots/></div>
                      <div className="dropdown-content" >
                        <ul className="dropdown-option-user">
@@ -95,7 +97,8 @@ function DataPost({posts}) {
                         <li><button onClick={()=>{deleteUser(user.userName)}} className="delete-btn" href="#">Delete</button></li>
                        </ul>
                      </div>
-                </div>
+                </div> */}
+                <BiX/>
                 
             </div> 
           );
