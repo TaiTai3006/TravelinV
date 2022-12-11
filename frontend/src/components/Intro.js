@@ -1,8 +1,8 @@
 import React, { useState,useEffect  } from "react";
 import { HiChevronDown } from "react-icons/hi";
-import dataProvince from "../dataProvince";
 import img from "../image/Dalat.png";
 import Axios, * as others from "axios";
+import { Link } from "react-router-dom";
 
 function Intro() {
   const [places, setPlace] = useState([]);
@@ -53,9 +53,9 @@ function Intro() {
                       const { idProvince, provinceName, image } = place;
                       return (
                         <div className="next_place-item">
-                          <a href="#">
+                          <Link to={`/Blogs/${place.idProvince}`}>
                             <p>{provinceName}</p>
-                          </a>
+                          </Link>
                         </div>
                       );
                     })}

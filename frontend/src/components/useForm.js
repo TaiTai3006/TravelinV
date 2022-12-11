@@ -256,7 +256,7 @@ const useForm = (callback) => {
             name: res.data.name,
             gmail: res.data.email,
             accountType: "user",
-            image: res.data.picture,
+            avatar: res.data.picture,
           };
           await axios.post("http://localhost:8800/account", objectAccount);
           setUser((user) => {

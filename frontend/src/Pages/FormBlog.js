@@ -38,9 +38,8 @@ function FormBlog() {
         {/* Thanh địa chỉ */}
         <Link to="/">Home</Link>
         <HiChevronRight />
-        <Link to="/Blogs">Blogs</Link>
-        <HiChevronRight />
         <a href="#">Create</a>
+        <HiChevronRight />
       </div>
       <div className="heading ">
         <h1>Create post </h1>
@@ -153,7 +152,7 @@ function FormBlog() {
               </div>
             </div>
             <div className="submit">
-              <input type="submit" className="submit" value="POST"></input>
+              <input type="submit" className="submit" onClick={handleCreatePost} value="POST"></input>
             </div>
           </div>
         </div>
