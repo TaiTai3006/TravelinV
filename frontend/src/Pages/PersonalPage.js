@@ -9,14 +9,14 @@ import { BsTextRight } from "react-icons/bs";
 import { MdEdit } from "react-icons/md";
 import { MdOutlineBookmarkRemove } from "react-icons/md";
 import { RiDislikeLine } from "react-icons/ri";
-import { MdPendingActions } from "react-icons/md";
+import { MdOutlinePendingActions } from "react-icons/md";
 
 import axios from "axios"
 // import { UserContext } from "../App";
 import { useLocation } from "react-router-dom";
 
 
-const tabs=[{name:'Post', style:<BsFillFilterSquareFill className='Thang_a'></BsFillFilterSquareFill>},{name:'PostLike', style: <BsBookmarkHeartFill className='Thang_a'></BsBookmarkHeartFill>}, {name:'Pending', style: <MdPendingActions className='Thang_a'></MdPendingActions>}]
+const tabs=[{name:'Post', style:<BsFillFilterSquareFill className='Thang_a'></BsFillFilterSquareFill>},{name:'PostLike', style: <BsBookmarkHeartFill className='Thang_a'></BsBookmarkHeartFill>}, {name:'Pending', style: <MdOutlinePendingActions className='Thang_a'></MdOutlinePendingActions>}]
 
 export default function PersonalPage() {
     // const User = useContext(UserContext);
@@ -172,7 +172,7 @@ function HandlCoutEvent(type, id)
                         } : {}}
                     onClick={()=>setType(tab.name)}
                 > 
-                <div><span style={index === 2 ? {verticalAlign: '-6px', fontSize: '30px'}:{}}>{tab.style}</span><p>{tab.name}</p></div>
+                <div><span style={index === 2 ? {verticalAlign: '-3px', fontSize: '24px'}:{}}>{tab.style}</span><p>{tab.name}</p></div>
                 </button>
             ))}
            
