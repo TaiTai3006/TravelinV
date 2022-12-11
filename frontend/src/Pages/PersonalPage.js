@@ -33,7 +33,7 @@ export default function PersonalPage() {
             try{
                 await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/PostLike`).then((response) =>{
                     setCountPostLike(response.data.length)
-                    console.log(response.data.length)
+                    
                 })
             } catch (err) {
                 console.log(err)
@@ -43,6 +43,7 @@ export default function PersonalPage() {
             try{
                 await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}`).then((response) =>{
                     setName(response.data)
+                    console.log(response.data.length)
                 })
             } catch (err) {
                 console.log(err)
@@ -173,7 +174,7 @@ function HandlCoutEvent(type, id)
         </div>
         
         <div id ='Thang_content1'>
-            {console.log(Content)}
+            {/* {console.log(Content)} */}
             {/* {console.log(PostPersonal)} */}
             {Content.map((Content0)=>(
                 <div key={Content0.idPost}>

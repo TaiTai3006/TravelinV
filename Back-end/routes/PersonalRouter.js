@@ -10,7 +10,7 @@ import { DeletePost } from "../controllers/PersonalController.js";
 const routerPersonal = express.Router()
 
 // routerAccount.get('/user',getAccount);
-routerPersonal.get('/:userName/Personal',getUser);
+routerPersonal.get('/:userName',getUser);
 routerPersonal.get('/:userName/Personal/Post',getPost);
 routerPersonal.get('/:userName/Personal/PostLike',getPostLike);
 routerPersonal.delete('/:userName/Personal/DeletePost/:idPost', DeletePost)
