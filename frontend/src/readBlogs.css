@@ -227,6 +227,10 @@
   letter-spacing: -0.1px;
   line-height: 23.25px;
   margin-top: 7px;
+  white-space: nowrap;
+width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .sidebar-articles_container a:hover {
   background-color: #e6e6e6;
