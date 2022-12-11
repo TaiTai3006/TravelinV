@@ -156,7 +156,7 @@ function HandlCoutEvent(type, id)
                 <button id='Thang_setting'> <FaEdit></FaEdit></button>
                 <button id="Thang_edit">Chỉnh sửa thông tin cá nhân</button>
             </ul>
-            <p className='Thang_name'>{Name[0].name}</p>  
+            <p className='Thang_name'>{Name[0].userName}</p>  
             <div id='Thang_tab'>
                 <p className="Thang_tab_content"><span>{CountPost}</span> {tabs[0].name}</p>
                 <p className="Thang_tab_content"><span>{CountPostLike}</span> {tabs[1].name}</p>
