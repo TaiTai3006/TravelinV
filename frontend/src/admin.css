@@ -86,7 +86,7 @@
   position: absolute;
   left: 3rem;
   font-size:20px;
-  font-family: headings;
+  font-family: Merriweather Sans;
   top: 1.25px;
   padding-right: 140px;
 }
@@ -119,7 +119,7 @@
   position: absolute;
   font-size:20px;
   left: 3rem;
-  font-family: headings;
+  font-family: Merriweather Sans;
   top: 1.25px;
   padding-right: 140px;
   
@@ -166,7 +166,7 @@
   font-size: 20px;
   font-weight: bold;
   /* text-decoration: none; */
-  font-family: headings;
+  font-family: Merriweather Sans;
 }
 
 .text6{

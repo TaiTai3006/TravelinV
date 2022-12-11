@@ -3,9 +3,13 @@ import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { UserContext } from "../App";
 import { useNavigate } from "react-router-dom";
+// notice
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const useFormPost = (callback) => {
-  const navigate = useNavigate()
+  const notify = () => toast("Successful post");
+  const navigate = useNavigate();
 
   const [title, setTitle] = useState({ idPost: uuidv4() });
 
@@ -48,12 +52,13 @@ const useFormPost = (callback) => {
       uploadDataTitle.append("idProvince", title.idProvince);
       uploadDataTitle.append("demoDescription", title.demoDescription);
       uploadDataTitle.append("postName", title.postName);
-      axios.post(
-        `http://localhost:8800/Post/${user.userName}`,
-        uploadDataTitle
-      ).then((res)=>console.log(res.data))
+      axios
+        .post(`http://localhost:8800/Post/${user.userName}`, uploadDataTitle)
+        .then((res) => console.log(res.data));
     } else {
-      axios.post(`http://localhost:8800/Post/${user.userName}`, title).then((res)=>console.log(res.data))
+      axios
+        .post(`http://localhost:8800/Post/${user.userName}`, title)
+        .then((res) => console.log(res.data));
     }
 
     for (let i = 0; i < descriptions.length; i++) {
@@ -65,29 +70,35 @@ const useFormPost = (callback) => {
           uploadDataTitle.append("image2", descriptions[i].image2, "image2");
           uploadDataTitle.append("description", descriptions[i].description);
           uploadDataTitle.append("title", descriptions[i].title);
-          axios.post(
-            `http://localhost:8800/CreatePost/${title.idPost}`,
-            uploadDataTitle
-          ).then((res)=>console.log(res.data))
+          axios
+            .post(
+              `http://localhost:8800/CreatePost/${title.idPost}`,
+              uploadDataTitle
+            )
+            .then((res) => console.log(res.data));
         } else if (descriptions[i].image1) {
           const uploadDataTitle = new FormData();
           uploadDataTitle.append("image1", descriptions[i].image1, "image1");
           uploadDataTitle.append("description", descriptions[i].description);
           uploadDataTitle.append("title", descriptions[i].title);
-          axios.post(
-            `http://localhost:8800/CreatePost2\/${title.idPost}`,
-            uploadDataTitle
-          ).then((res)=>console.log(res.data))
+          axios
+            .post(
+              `http://localhost:8800/CreatePost2\/${title.idPost}`,
+              uploadDataTitle
+            )
+            .then((res) => console.log(res.data));
         } else {
-          axios.post(
-           
-            `http://localhost:8800/CreatePost/${title.idPost}`,
-            descriptions[i]
-          ).then((res)=>console.log(res.data))
+          axios
+            .post(
+              `http://localhost:8800/CreatePost/${title.idPost}`,
+              descriptions[i]
+            )
+            .then((res) => console.log(res.data));
         }
+        
       }
-      
-      navigate('/')
+      console.log(notify());
+      navigate("/");
     }
   };
 

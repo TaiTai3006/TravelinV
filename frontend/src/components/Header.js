@@ -15,7 +15,7 @@ import "../App.css";
 const Header = () => {
   const { user } = useContext(UserContext);
   const [isShow, setIsShow] = useState(false);
-
+  console.log(user.accountType)
   const handleMouseOver = () => {
     setIsShow(true);
   };
@@ -79,7 +79,8 @@ const Header = () => {
                   <li>
                     <Link to={`/Personal/${user.userName}`}>Personal</Link>
                   </li>
-                  {user.accountType === "admin" && (
+                  {user.accountType == "admin" && (
+                    
                     <li>
                       <Link to="/Dashboard">Dashboard</Link>
                     </li>

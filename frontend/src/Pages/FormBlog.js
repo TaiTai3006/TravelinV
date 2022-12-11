@@ -16,7 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function FormBlog() {
 
  
-const notify = () => toast("Successful post");
+// const notify = () => toast("Successful post");
 
 
   const {
@@ -80,7 +80,7 @@ const notify = () => toast("Successful post");
               id="input-img"
               onChange={handleTitleImage}
             />
-            <input type="submit" className="submit" value="POST" onClick={notify}></input>
+            <input type="submit" className="submit" value="POST" ></input>
              {/* <div className="submit">
               <input type="submit" className="submit" value="POST"></input>
             </div> */}

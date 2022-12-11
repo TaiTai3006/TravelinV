@@ -37,11 +37,11 @@ const Modal = () => {
         </li>
       </div>
       <div className="modal-view">
-          <div className="palace">
+          <div className="palace-modal">
             {places.map((place) => {
               const { idProvince, provinceName, image } = place;
               return (
-                <div className="next_place-item">
+                <div className="paplace-item">
                   <a href="#">
                     <p>{provinceName}</p>
                   </a>

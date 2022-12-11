@@ -51,6 +51,9 @@
     z-index: -1;
     background-color: #C1E2E1;
     border-radius: 20px;
+    background-image: url(../src/image/search-bubbles.png),url(../src/image/search-bubbles.png);
+    background-position: 0% 50%, 0% 50%, 0% 50%, 0% 50%;
+    background-size: cover, cover, cover, cover;
   }
   
   #Thang_content0{
