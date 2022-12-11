@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Axios, * as others from 'axios';
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 function RelatedPost() {
+  const { pathname } = useLocation();
   const [posts1, setPost1] = useState([
     // {
     //   id: 1,
@@ -107,14 +110,14 @@ function RelatedPost() {
       setPost2(response.data)
       // setPost2(response.data)
     })
-  },[])
+  },[pathname])
   return (
     <div className="related-post--container">
       <div className="related-post--content">
         {posts1.map((post) => {
           const { id, postName, image } = post;
           return (
-            <a href="#" className="related-post--item" key={id}>
+            <Link to = {`/Blogs/${post.idProvince}/${post.idPost}`} className="related-post--item" key={id}>
               {/* <img src={img} alt={post.title} /> */}
               
               <div className="realted-post--item-image">
@@ -124,7 +127,7 @@ function RelatedPost() {
               <div className="realted-post--item-title">
                 <p> {postName}</p>
               </div>
-            </a>
+            </Link>
           );
         })}
       </div>
@@ -134,8 +137,8 @@ function RelatedPost() {
           const { id, provinceName, image } = post;
           return (
             <>
-              <a
-                href="#"
+              <Link
+                to= {`/Blogs/${post.idProvince}/${post.idPost}`}
                 className="suggestion--item front "
                 key={id}
                 // style={{ backgroundImage:`url(${process.env.PUBLIC_URL+ img})` }}
@@ -143,7 +146,7 @@ function RelatedPost() {
                 <img src={image} />
                 {/* <img src={dalat}  width="250" height="400"/> */}
                 <div className="province">{provinceName}</div>
-              </a>
+              </Link>
               {/* <a href="#" className="suggestion--item back" key={id}>
                 <h1>John Doe</h1>
                 <p>Architect & Engineer</p>

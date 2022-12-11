@@ -11,7 +11,7 @@ export const getFeatured = ((req,res)=>{
     })
   })
  export const getProvince =((req,res)=>{
-    const sqlPost = "select provinceName, image from `province`"
+    const sqlPost = "select * from `province`"
     db.query(sqlPost, (err, result) => {
       res.send(result)
     })

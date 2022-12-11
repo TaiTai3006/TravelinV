@@ -66,8 +66,14 @@ export default function Slider() {
             }
           >
             {relatedPosts.map((relatedPost, index) => (
-              <Link className="article-text-block" to="/Blogs/Dalat">
-                <div className="article-text-block_image" key={index}>
+              <Link
+                className="article-text-block"
+                to={`/Blogs/${relatedPost.idProvince}/${relatedPost.idPost}`}
+              >
+                <div
+                  className="article-text-block_image"
+                  key={relatedPost.idPost}
+                >
                   <img src={relatedPost.image} alt="image of post"></img>
                 </div>
                 <div className="article-text-block_content">
@@ -85,23 +91,27 @@ export default function Slider() {
         <HiChevronRight />
       </button>
       <div className="slider-ctn-titile">
-          <span className="slider-title">{slideImages[currentSlide].postName}</span>
+        <span className="slider-title">
+          {slideImages[currentSlide].postName}
+        </span>
       </div>
       <div className="slider-ctn-des">
-          <span className="slider-des">
-            {slideImages[currentSlide].demoDescription}
-          </span>
+        <span className="slider-des">
+          {slideImages[currentSlide].demoDescription}
+        </span>
       </div>
 
-      <div className="button-ctn">
-        <a className="slider-button" href={slideImages.postName}>
-          GO TO POST
-        </a>
-      </div>
       {slideImages.map((slideImage, index) => (
         <div key={index} className="slide-active">
           {index === currentSlide && (
-            <img className="slider-img" src={slideImage.image}></img>
+            <>
+              <img className="slider-img" src={slideImage.image}></img>
+              <div className="button-ctn">
+                <Link className="slider-button" to={`/Blogs/${slideImage.idProvince}/${slideImage.idPost}`}>
+                  GO TO POST
+                </Link>
+              </div>
+            </>
           )}
         </div>
       ))}

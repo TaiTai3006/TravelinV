@@ -8,6 +8,7 @@ import loginImage from "../image/loginImage.png";
 import { FcGoogle } from "react-icons/fc";
 import useForm from "../components/useForm";
 import Errs from "../components/errors";
+import { Link } from "react-router-dom";
 
 function Register() {
   const {
@@ -52,7 +53,7 @@ function Register() {
         </div>
         <div class="flex1">
           <p class="A1">Already have an account?</p>
-          <p class="A2">Sign in</p>
+          <Link to = '/Login'class="A2">Login</Link>
         </div>
         <div>
           <form>

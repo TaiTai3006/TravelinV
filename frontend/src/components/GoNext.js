@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import danang from "../image/danang.jpg";
+import { Link, useLocation } from "react-router-dom";
 import Axios, * as others from 'axios';
 function GoNext() {
   const [places, setPlace] = useState([
@@ -54,12 +54,13 @@ function GoNext() {
     //   img: { danang },
     // },
   ]);
+  const location = useLocation()
   useEffect(() =>{
     Axios.get("http://localhost:8800/home/gonext").then((response)=>{
        setPlace(response.data)
       }
     )
-  },[])
+  },[location])
   return (
     <>
       <div className="next-container">
@@ -70,16 +71,15 @@ function GoNext() {
         
         <div className="next_place">
           {places.map((place) => {
-            const { idProvince, provinceName, image } = place;
             return (
-              <div className="next_place-item">
-                <a href="#">
+              <div key={place.idProvince} className="next_place-item">
+                <Link to = {`/Blogs/${place.idProvince}`}>
                   <img
-                    src={image}
+                    src={place.image}
                     alt={place.provinceName}
                   />
-                  <p>{provinceName}</p>
-                </a>
+                  <p>{place.provinceName}</p>
+                </Link>
               </div>
             );
           })}

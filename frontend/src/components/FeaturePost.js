@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import dalat from "../image/dalat.jpg";
+import { useLocation } from "react-router-dom";
 import Axios, * as others from 'axios';
 
 function FeaturePost() {
+  const { pathname } = useLocation();
   const [posts, setpost] = useState([])
 
  useEffect(() =>{
@@ -11,7 +13,7 @@ function FeaturePost() {
       setpost(response.data)
      }
    )
- },[])
+ },[pathname])
   return (
     <div className="feature_post--container">
       {posts.map((posts) => {

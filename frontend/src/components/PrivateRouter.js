@@ -11,4 +11,10 @@ const ProtectedRoutes = () => {
   
   return isAuth ? <Outlet /> : <Navigate to="/Login"  />
 };
+
+export const ProtecteDashboard = () => {
+  const {user} = useContext(UserContext)
+  
+  return (user.accountType === 'admin' || user.accountType === 'collaborator') ? <Outlet /> : <Navigate to="/"  />
+};
 export default ProtectedRoutes;

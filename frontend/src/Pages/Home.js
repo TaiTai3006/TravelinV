@@ -4,8 +4,6 @@ import FeaturePost from "../components/FeaturePost";
 import GoNext from "../components/GoNext";
 import Slider from "../components/Slider";
 import RelatedPost from "../components/RelatedPost";
-import FormBlog from "./FormBlog"; 
-import ProfileInput from "./ProfileInput";
 
 
 function Home() {
@@ -19,7 +17,6 @@ function Home() {
       <GoNext />
       <Slider/>
       <RelatedPost />
-      {/* <Province/> */}
     </div>
   );
 }

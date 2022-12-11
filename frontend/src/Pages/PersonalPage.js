@@ -11,8 +11,9 @@ import { MdOutlineBookmarkRemove } from "react-icons/md";
 import { RiDislikeLine } from "react-icons/ri";
 import axios from "axios"
 import { UserContext } from "../App";
+import { useLocation } from "react-router-dom";
 
-// const User={userName:'taitai', name:'Trần Võ Tấn Tài', image:'https://daohieu.com/wp-content/uploads/2020/05/meo-con.jpg'}
+
 
 const tabs=[{name:'Post', style:<BsFillFilterSquareFill className='Thang_a'></BsFillFilterSquareFill>},{name:'PostLike', style: <BsBookmarkHeartFill className='Thang_'></BsBookmarkHeartFill>}]
 
@@ -24,12 +25,13 @@ export default function PersonalPage() {
     const [Content, setContent] = useState([{}])
     const [CountPost, setCountPost] = useState();
     const [CountPostLike, setCountPostLike] = useState();
+    const location = useLocation()
 
 
     useEffect(()=>{
         const FecthCountPostLike = async ()=>{
             try{
-                await axios.get(`http://localhost:8800/${User.user.userName}/Personal/PostLike`).then((response) =>{
+                await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/PostLike`).then((response) =>{
                     setCountPostLike(response.data.length)
                 })
             } catch (err) {
@@ -38,7 +40,7 @@ export default function PersonalPage() {
         };
         const FecthName = async ()=>{
             try{
-                await axios.get(`http://localhost:8800/${User.user.userName}/Personal`).then((response) =>{
+                await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}`).then((response) =>{
                     setName(response.data)
                 })
             } catch (err) {
@@ -47,7 +49,7 @@ export default function PersonalPage() {
         };
         FecthCountPostLike()
         FecthName()
-    },[])
+    },[location])
     // console.log(PostPersonal)
     // const FecthAllPersonal = async ()=>{
     //     try{

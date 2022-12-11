@@ -9,7 +9,7 @@ import { getAccount } from "../controllers/AccoutController.js";
 
 const routerAccount = express.Router();
 
-routerAccount.get("/account", CreateTableAccount);
+routerAccount.get("/getAccount/:userName", CreateTableAccount);
 
 routerAccount.get("/account/:userName", getAccount)
 

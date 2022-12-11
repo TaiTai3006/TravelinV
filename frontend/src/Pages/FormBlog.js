@@ -8,8 +8,6 @@ import Input from "../components/Input";
 import { AiOutlineClose } from "react-icons/ai";
 import useFormPost from "../components/useFormPost";
 import { Link } from "react-router-dom";
-import dataProvince from "../dataProvince";
-import removeVietnameseTones from "../components/removeVietnameseTones";
 
 function FormBlog() {
   const {
@@ -21,8 +19,6 @@ function FormBlog() {
     title,
     provinces,
   } = useFormPost();
-
-  dataProvince.map((data)=> console.log(removeVietnameseTones(data.name)))
 
   const [inputList, setInputList] = useState([0]);
 

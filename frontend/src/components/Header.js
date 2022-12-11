@@ -66,7 +66,7 @@ const Header = () => {
               ) : (
                 <div>
                   <li>
-                    <Link to="/Personal">Personal</Link>
+                    <Link to={`/Personal/${user.userName}`}>Personal</Link>
                   </li>
                   {user.accountType === "admin" && (
                     <li>

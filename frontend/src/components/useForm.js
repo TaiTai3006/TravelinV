@@ -144,7 +144,7 @@ const useForm = (callback) => {
     } else setErrors(omit(errors, name));
   };
   console.log(errors);
-  
+
   const handleChange = (event) => {
     setAccount({
       ...account,
@@ -175,15 +175,15 @@ const useForm = (callback) => {
     });
   };
 
-  const handleCreateAccount =  (e) => {
+  const handleCreateAccount = async (e) => {
     e.preventDefault();
-   
+    try {
       if (
         Object.keys(errors).length === 0 &&
         Object.keys(account).length !== 0 &&
         checkBox
       ) {
-        axios.post("http://localhost:8800/account", account);
+       await axios.post("http://localhost:8800/account", account);
         setUser((user) => {
           const newSetUser = { ...user, userName: account.userName };
           const jsonUser = JSON.stringify(newSetUser);
@@ -198,36 +198,45 @@ const useForm = (callback) => {
             checkBox: "You must accepted with terms and conditions.",
           });
       }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  const handelLogin =  (e) => {
+  const handelLogin = async (e) => {
     e.preventDefault();
-   
+    try {
       if (account.userName.length !== 0 && account.password.length !== 0) {
-        axios.post(
+        const res = await axios.post(
           `http://localhost:8800/login/${account.userName}`,
           account
-        ).then((res)=>{
-          if (res.data) {
+        );
+        if (res.data) {
+          axios.get(`http://localhost:8800/getAccount/${account.userName}`).then((res)=>{
+
             setUser((user) => {
               const newSetUser = {
                 ...user,
-                userName: account.userName,
+                userName: res.data[0].userName,
                 loggedIn: true,
-                accountType: account.accountType,
+                accountType: res.data[0].accountType,
+                image: res.data[0].avatar
               };
               const jsonUser = JSON.stringify(newSetUser);
               localStorage.setItem("user", jsonUser);
               return newSetUser;
             });
-            navigate("/");
-          } else {
-            setErrors({ ...errors, login: "Incorrect username or password." });
-          }
-        })
-        
+
+          })
+          navigate("/");
+        } else {
+          setErrors({ ...errors, login: "Incorrect username or password." });
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
-}
 
   const handleLoginGoogle = useGoogleLogin({
     onSuccess: async (respose) => {
@@ -269,22 +278,19 @@ const useForm = (callback) => {
       }
     },
   });
-  const handleUpdateAccount =  (e) => {
+  const handleUpdateAccount = (e) => {
     e.preventDefault();
 
-      if (Object.keys(errors).length === 0) {
-        const uploadData = new FormData();
-        uploadData.append("image", account.image, "image");
-        uploadData.append("name",account.name)
-        uploadData.append("gmail",account.gmail)
-        uploadData.append("phoneNumber",account.phoneNumber)
-        uploadData.append("gender",account.gender)
-         axios.put(
-          `http://localhost:8800/account/${user.userName}`,
-          uploadData
-        );
-        navigate("/Login");
-      }
+    if (Object.keys(errors).length === 0) {
+      const uploadData = new FormData();
+      uploadData.append("image", account.image, "image");
+      uploadData.append("name", account.name);
+      uploadData.append("gmail", account.gmail);
+      uploadData.append("phoneNumber", account.phoneNumber);
+      uploadData.append("gender", account.gender);
+      axios.put(`http://localhost:8800/account/${user.userName}`, uploadData);
+      navigate("/Login");
+    }
   };
   return {
     checkAccounts,
