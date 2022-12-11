@@ -3,8 +3,11 @@ import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { UserContext } from "../App";
 import { useNavigate } from "react-router-dom";
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const useFormPost = (callback) => {
+  
   const navigate = useNavigate()
 
   const [title, setTitle] = useState({ idPost: uuidv4() });
@@ -87,7 +90,7 @@ const useFormPost = (callback) => {
         }
       }
       
-      navigate('/')
+      // navigate('/')
     }
   };
 

@@ -8,16 +8,12 @@ import Input from "../components/Input";
 import { AiOutlineClose } from "react-icons/ai";
 import useFormPost from "../components/useFormPost";
 import { Link } from "react-router-dom";
-// notice 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+// notice
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function FormBlog() {
-
- 
-const notify = () => toast("Successful post");
-
+  const notify = () => toast("Successful post");
 
   const {
     handleChangeTitle,
@@ -37,14 +33,14 @@ const notify = () => toast("Successful post");
     setInputList([...inputList, id + 1]);
   };
   const onRemoveBtnClick = (id) => {
-    setInputList(inputList.filter((input)=> input !== id))
-    setDescriptions(descriptions.filter((des)=> des.id !== id))
+    setInputList(inputList.filter((input) => input !== id));
+    setDescriptions(descriptions.filter((des) => des.id !== id));
   };
   console.log(inputList);
   return (
     <>
-    {/* <Notice/> */}
-    <ToastContainer />
+      {/* <Notice/> */}
+      <ToastContainer />
       <div className="nav-container">
         {/* Thanh địa chỉ */}
         <Link to="/">Home</Link>
@@ -80,8 +76,13 @@ const notify = () => toast("Successful post");
               id="input-img"
               onChange={handleTitleImage}
             />
-            <input type="submit" className="submit" value="POST" onClick={notify}></input>
-             {/* <div className="submit">
+            <input
+              type="submit"
+              className="submit"
+              value="POST"
+              onClick={handleCreatePost}
+            ></input>
+            {/* <div className="submit">
               <input type="submit" className="submit" value="POST"></input>
             </div> */}
             {/* <button className="submit">Submit</button> */}
@@ -132,7 +133,7 @@ const notify = () => toast("Successful post");
                     <div key={input}>
                       <div
                         className="remove"
-                        onClick={()=>onRemoveBtnClick(input)}
+                        onClick={() => onRemoveBtnClick(input)}
                       >
                         <AiOutlineClose className="remove-icon" /> Click here to
                         remove this description
@@ -158,7 +159,6 @@ const notify = () => toast("Successful post");
                 </button>
               </div>
             </div>
-           
           </div>
         </div>
       </div>
