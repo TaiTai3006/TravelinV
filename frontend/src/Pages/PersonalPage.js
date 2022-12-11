@@ -9,7 +9,7 @@ import { BsTextRight } from "react-icons/bs";
 import { MdEdit } from "react-icons/md";
 import { MdOutlineBookmarkRemove } from "react-icons/md";
 import { RiDislikeLine } from "react-icons/ri";
-import { MdPendingActions } from "react-icons/Md";
+import { MdPendingActions } from "react-icons/md";
 
 import axios from "axios"
 // import { UserContext } from "../App";
@@ -172,7 +172,7 @@ function HandlCoutEvent(type, id)
                         } : {}}
                     onClick={()=>setType(tab.name)}
                 > 
-                <div><span style={index === 2 ? {verticalAlign: '-3px', fontSize: '30px'}:{}}>{tab.style}</span><p>{tab.name}</p></div>
+                <div><span style={index === 2 ? {verticalAlign: '-6px', fontSize: '30px'}:{}}>{tab.style}</span><p>{tab.name}</p></div>
                 </button>
             ))}
            
