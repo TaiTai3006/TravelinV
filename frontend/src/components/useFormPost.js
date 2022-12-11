@@ -2,15 +2,18 @@ import { useState, useEffect, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { UserContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 const useFormPost = (callback) => {
+  const navigate = useNavigate()
+
   const [title, setTitle] = useState({ idPost: uuidv4() });
 
   const [provinces, setProvinces] = useState([]);
 
   const [descriptions, setDescriptions] = useState([]);
 
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     axios
@@ -48,9 +51,9 @@ const useFormPost = (callback) => {
       axios.post(
         `http://localhost:8800/Post/${user.userName}`,
         uploadDataTitle
-      );
+      ).then((res)=>console.log(res.data))
     } else {
-      axios.post(`http://localhost:8800/Post/${user.userName}`, title);
+      axios.post(`http://localhost:8800/Post/${user.userName}`, title).then((res)=>console.log(res.data))
     }
 
     for (let i = 0; i < descriptions.length; i++) {
@@ -65,7 +68,7 @@ const useFormPost = (callback) => {
           axios.post(
             `http://localhost:8800/CreatePost/${title.idPost}`,
             uploadDataTitle
-          );
+          ).then((res)=>console.log(res.data))
         } else if (descriptions[i].image1) {
           const uploadDataTitle = new FormData();
           uploadDataTitle.append("image1", descriptions[i].image1, "image1");
@@ -74,15 +77,17 @@ const useFormPost = (callback) => {
           axios.post(
             `http://localhost:8800/CreatePost2\/${title.idPost}`,
             uploadDataTitle
-          );
+          ).then((res)=>console.log(res.data))
         } else {
           axios.post(
            
             `http://localhost:8800/CreatePost/${title.idPost}`,
             descriptions[i]
-          );
+          ).then((res)=>console.log(res.data))
         }
       }
+      
+      navigate('/')
     }
   };
 

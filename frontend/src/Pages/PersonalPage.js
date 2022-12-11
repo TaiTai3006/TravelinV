@@ -1,6 +1,5 @@
 import "../PersonalPage.css";
 import { BsBookmarkHeartFill } from "react-icons/bs";
-import { BsFillHandbagFill } from "react-icons/bs";
 import { BsFillFilterSquareFill } from "react-icons/bs";
 import {useEffect} from 'react';
 import {useState} from 'react';
@@ -10,6 +9,7 @@ import { MdEdit } from "react-icons/md";
 import { MdOutlineBookmarkRemove } from "react-icons/md";
 import { RiDislikeLine } from "react-icons/ri";
 import { MdOutlinePendingActions } from "react-icons/md";
+
 
 import axios from "axios"
 // import { UserContext } from "../App";
