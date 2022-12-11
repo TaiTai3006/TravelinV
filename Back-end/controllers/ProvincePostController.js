@@ -2,7 +2,7 @@ import { db } from "../index.js";
 export const getProvincePost = (req, res) => {
   const provincePostId = req.params.idProvince;
 
-  const q = "SELECT * FROM  post WHERE idProvince = ?";
+  const q = "SELECT * FROM  post WHERE idProvince = ? and `status` = 'approved'";
 
   db.query(q, [provincePostId], (err, data) => {
     if (err) return res.json(err);
@@ -25,7 +25,7 @@ export const getDestination = (req, res) => {
   const provincePostId = req.params.idProvince;
 
   const q =
-    "SELECT province.idProvince, province.image, provinceName FROM post, province WHERE province.idProvince = post.idProvince and province.idProvince != ? GROUP by province.idProvince ORDER by COUNT(*) desc LIMIT 5";
+    "SELECT province.idProvince, province.image, provinceName FROM post, province WHERE province.idProvince = post.idProvince and province.idProvince != ? and `status` = 'approved GROUP by province.idProvince ORDER by COUNT(*) desc LIMIT 5";
 
   db.query(q, [provincePostId], (err, data) => {
     if (err) return res.json(err);
