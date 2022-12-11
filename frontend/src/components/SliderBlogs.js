@@ -79,6 +79,7 @@ export default function Slider() {
                 <div className="article-text-block_content">
                   <h2>{relatedPost.postName}</h2>
                 </div>
+                
               </Link>
             ))}
           </div>
@@ -107,12 +108,19 @@ export default function Slider() {
             <>
               <img className="slider-img" src={slideImage.image}></img>
               <div className="button-ctn">
-                <Link className="slider-button" to={`/Blogs/${slideImage.idProvince}/${slideImage.idPost}`}>
+              <Link className="slider-button" to={`/Blogs/${slideImage.idProvince}/${slideImage.idPost}`}>
                   GO TO POST
                 </Link>
               </div>
+
             </>
+            
           )}
+          <div className="button-ctn">
+            <Link className="slider-button" to={`/Blogs/${slideImage.idProvince}/${slideImage.idPost}`}>
+              GO TO POST
+            </Link>
+          </div>
         </div>
       ))}
     </div>
