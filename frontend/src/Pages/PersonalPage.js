@@ -2,20 +2,21 @@ import "../PersonalPage.css";
 import { BsBookmarkHeartFill } from "react-icons/bs";
 import { BsFillHandbagFill } from "react-icons/bs";
 import { BsFillFilterSquareFill } from "react-icons/bs";
-import {useEffect, useContext} from 'react';
+import {useEffect} from 'react';
 import {useState} from 'react';
 import { FaEdit } from "react-icons/fa";
 import { BsTextRight } from "react-icons/bs";
 import { MdEdit } from "react-icons/md";
 import { MdOutlineBookmarkRemove } from "react-icons/md";
 import { RiDislikeLine } from "react-icons/ri";
+import { MdPendingActions } from "react-icons/Md";
+
 import axios from "axios"
-import { UserContext } from "../App";
+// import { UserContext } from "../App";
 import { useLocation } from "react-router-dom";
 
 
-
-const tabs=[{name:'Post', style:<BsFillFilterSquareFill className='Thang_a'></BsFillFilterSquareFill>},{name:'PostLike', style: <BsBookmarkHeartFill className='Thang_a'></BsBookmarkHeartFill>}, {name:'PostPending', style: <BsBookmarkHeartFill className='Thang_a'></BsBookmarkHeartFill>}]
+const tabs=[{name:'Post', style:<BsFillFilterSquareFill className='Thang_a'></BsFillFilterSquareFill>},{name:'PostLike', style: <BsBookmarkHeartFill className='Thang_a'></BsBookmarkHeartFill>}, {name:'Pending', style: <MdPendingActions className='Thang_a'></MdPendingActions>}]
 
 export default function PersonalPage() {
     // const User = useContext(UserContext);
@@ -43,7 +44,7 @@ export default function PersonalPage() {
         };
         const FecthCountPostPending = async ()=>{
             try{
-                await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/PostPending`).then((response) =>{
+                await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/Pending`).then((response) =>{
                     setCountPostPending(response.data.length)
                     
                 })
@@ -66,21 +67,7 @@ export default function PersonalPage() {
         FecthCountPostPending()
         FecthName()
     },[location])
-    // console.log(PostPersonal)
-    // const FecthAllPersonal = async ()=>{
-    //     try{
-    //         await axios.get("http://localhost:8800/user").then((response) =>{
-    //             // console.log(response.data)
-    //             setPostPersonal(response.data)
-    //         })
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // };
-    // FecthAllPersonal()
-    // useEffect(() => {
-    //     FecthAllPersonal()
-    // },[])
+
     useEffect(() => {
         const FecthAllPost = async ()=>{
             try{
@@ -185,7 +172,7 @@ function HandlCoutEvent(type, id)
                         } : {}}
                     onClick={()=>setType(tab.name)}
                 > 
-                <div><span>{tab.style}</span><p>{tab.name}</p></div>
+                <div><span style={index === 2 ? {verticalAlign: '-3px', fontSize: '30px'}:{}}>{tab.style}</span><p>{tab.name}</p></div>
                 </button>
             ))}
            

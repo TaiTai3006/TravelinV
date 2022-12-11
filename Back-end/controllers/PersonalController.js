@@ -12,7 +12,7 @@ export const getUser = (req, res) => {
 export const getPost = (req, res) => {
 const userNameId = req.params.userName;
     // const userNameId = 'taitai'
-  const q = "SELECT a2.idPost, a2.postName, a2.image, day(a2.dateTime) as Day, month(a2.dateTime) as Month, year(a2.dateTime) as Year, a3.provinceName from account a1, post a2, province a3 where a1.userName = a2.userName and a2.idProvince = a3.idProvince and a1.userName = ?  ";
+  const q = "SELECT a2.idPost, a2.postName, a2.image, day(a2.dateTime) as Day, month(a2.dateTime) as Month, year(a2.dateTime) as Year, a3.provinceName from account a1, post a2, province a3 where a1.userName = a2.userName and a2.idProvince = a3.idProvince and a1.userName = ? and a2.status = 'approved'";
   db.query(q, [userNameId], (err, data) => {
     if (err) return res.json(err);
     return res.json(data);
@@ -22,7 +22,7 @@ const userNameId = req.params.userName;
 export const getPostPending = (req, res) => {
   const userNameId = req.params.userName;
       // const userNameId = 'taitai'
-    const q = "SELECT a2.idPost, a2.postName, a2.image, day(a2.dateTime) as Day, month(a2.dateTime) as Month, year(a2.dateTime) as Year, a3.provinceName from account a1, post a2, province a3 where a1.userName = a2.userName and a2.idProvince = a3.idProvince and a1.userName = ?";
+    const q = "SELECT a2.idPost, a2.postName, a2.image, day(a2.dateTime) as Day, month(a2.dateTime) as Month, year(a2.dateTime) as Year, a3.provinceName from account a1, post a2, province a3 where a1.userName = a2.userName and a2.idProvince = a3.idProvince and a1.userName = ? and a2.status = 'pending'";
     db.query(q, [userNameId], (err, data) => {
       if (err) return res.json(err);
       return res.json(data);
