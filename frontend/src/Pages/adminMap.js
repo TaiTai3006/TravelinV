@@ -6,6 +6,8 @@ import {BsThreeDots} from 'react-icons/bs'
 import {IoMdAddCircle} from 'react-icons/io'
 import Axios, * as others from 'axios';
 import axios from "axios";
+import { BiX } from "react-icons/bi";
+
 const reload = () =>{
   location.reload();
 }
@@ -37,6 +39,7 @@ function DataPost({posts}) {
                 <a href=""><div class="title-data">{posts.postName}</div></a>
                 <div className="createat-data" >{posts.dateTime}</div>
                 <div /*onClick={() => setCurrentStatus('ok')} */className="status-data" style={{backgroundColor: posts.status === "pending" ? "#f1bc68" : "indianred"}} >{posts.status} </div>
+                <BiX/>
 
                 {/* <div className="dropdown">
                      <div className="option-data" ><BsThreeDots/></div>

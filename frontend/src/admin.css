@@ -75,6 +75,7 @@ justify-content: center;
   align-items: center;
   justify-content: space-between;
   margin: 0 40px;
+  padding-right: 150px;
   
 }
 .data-post {
@@ -143,6 +144,7 @@ font-size: 18px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis ;
+  margin-left: 70px;
 }
 
 
