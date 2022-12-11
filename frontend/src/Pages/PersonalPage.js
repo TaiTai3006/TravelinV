@@ -141,7 +141,7 @@ function HandlCoutEvent(type, id)
     {/* {setType('Post')} */}
     {/* {console.log(PostPersonal)} */}
         <div id='Thang_avatar_child'>
-            <img src={Name[0].image}/>  
+            <img src={Name[0].avatar}/>  
         </div>
         <div id='Thang_card'>
             </div>

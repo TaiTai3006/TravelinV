@@ -2,7 +2,7 @@ import { db } from "../index.js";
 
 export const getUser = (req, res) => {
   const userNameId = req.params.userName;
-    const q = "SELECT userName, name,  image from account where userName = ?";
+    const q = "SELECT userName, name,  avatar from account where userName = ?";
     db.query(q, [userNameId], (err, data) => {
       if (err) return res.json(err);
       return res.json(data);
