@@ -294,6 +294,7 @@ const useForm = (callback) => {
       }else{
         axios.put(`http://localhost:8800/account/${user.userName}`, account).then((res)=>console.log(res.data));
       }
+      setAccount('')
     }
   };
   return {
