@@ -15,7 +15,7 @@ import { useLocation } from "react-router-dom";
 
 
 
-const tabs=[{name:'Post', style:<BsFillFilterSquareFill className='Thang_a'></BsFillFilterSquareFill>},{name:'PostLike', style: <BsBookmarkHeartFill className='Thang_'></BsBookmarkHeartFill>}]
+const tabs=[{name:'Post', style:<BsFillFilterSquareFill className='Thang_a'></BsFillFilterSquareFill>},{name:'PostLike', style: <BsBookmarkHeartFill className='Thang_a'></BsBookmarkHeartFill>}, {name:'PostPending', style: <BsBookmarkHeartFill className='Thang_a'></BsBookmarkHeartFill>}]
 
 export default function PersonalPage() {
     // const User = useContext(UserContext);
@@ -25,6 +25,8 @@ export default function PersonalPage() {
     const [Content, setContent] = useState([{}])
     const [CountPost, setCountPost] = useState();
     const [CountPostLike, setCountPostLike] = useState();
+    const [CountPostPending, setCountPostPending] = useState();
+
     const location = useLocation()
 
 
@@ -39,6 +41,17 @@ export default function PersonalPage() {
                 console.log(err)
             }
         };
+        const FecthCountPostPending = async ()=>{
+            try{
+                await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/PostPending`).then((response) =>{
+                    setCountPostPending(response.data.length)
+                    
+                })
+            } catch (err) {
+                console.log(err)
+            }
+        };
+        
         const FecthName = async ()=>{
             try{
                 await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}`).then((response) =>{
@@ -50,6 +63,7 @@ export default function PersonalPage() {
             }
         };
         FecthCountPostLike()
+        FecthCountPostPending()
         FecthName()
     },[location])
     // console.log(PostPersonal)
@@ -76,6 +90,9 @@ export default function PersonalPage() {
                     setCountPost(response.data.length)
                     else if(type === 'PostLike')
                     setCountPostLike(response.data.length)
+                        else if(type === 'PostPending')
+                    setCountPostPending(response.data.length)
+
                 })
             } catch (err) {
                 console.log(err)
@@ -151,6 +168,7 @@ function HandlCoutEvent(type, id)
             <div id='Thang_tab'>
                 <p className="Thang_tab_content"><span>{CountPost}</span> {tabs[0].name}</p>
                 <p className="Thang_tab_content"><span>{CountPostLike}</span> {tabs[1].name}</p>
+                <p className="Thang_tab_content"><span>{CountPostPending}</span> {tabs[2].name}</p>
             </div>
         </div>
         <div>
@@ -174,7 +192,7 @@ function HandlCoutEvent(type, id)
         </div>
         
         <div id ='Thang_content1'>
-            {/* {console.log(Content)} */}
+            {/* {console.log(Content)}   */}
             {/* {console.log(PostPersonal)} */}
             {Content.map((Content0)=>(
                 <div key={Content0.idPost}>
