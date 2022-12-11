@@ -322,6 +322,11 @@ body {
   letter-spacing: 0.42px;
   line-height: 23.1px;
   white-space: break-spaces;
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   margin: 5px;
 }
 .slideshow-slide-text button {

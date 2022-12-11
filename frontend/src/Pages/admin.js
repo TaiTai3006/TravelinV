@@ -181,8 +181,8 @@ function Admin() {
       setuser(response.data);
       setSearchUser(response.data);
     });
-  }, []);
-
+  },[]);
+  console.log(search)
   const [type, settype] = useState("blog");
 
   function handleEvent(type) {
@@ -195,7 +195,7 @@ function Admin() {
     if (type === "user")
       return (
         <div className="info-user">
-          <DataUser user={searchUser} />
+          <DataUser user = {searchUser}/>
         </div>
       );
   }

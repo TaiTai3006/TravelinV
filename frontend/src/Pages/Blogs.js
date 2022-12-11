@@ -39,10 +39,11 @@ export default function Blogs() {
 },[])
 
   return ( 
-  <div>
+  <div className='container-blog'>
     {/* {console.log(FeaturedPost)} */}
+    <div className='background-bubble'></div>
     <div class=" h1-container">
-      <h1>Travel Tips</h1>
+      <h1>Travel Blogs </h1>
     </div>
     <nav class="goto-container">
     <ul>

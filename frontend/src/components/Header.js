@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import { useContext , useState} from "react";
+import { useContext, useState } from "react";
 import { RiShoppingBasket2Line } from "react-icons/ri";
 import { HiChevronDown } from "react-icons/hi";
 import { MdOutlineCreate } from "react-icons/md";
@@ -10,12 +10,11 @@ import { VscListSelection } from "react-icons/vsc";
 import logo from "../image/logo-removebg.png";
 import Modal from "./Modal";
 
-
 import "../App.css";
 const Header = () => {
   const { user } = useContext(UserContext);
   const [isShow, setIsShow] = useState(false);
-  console.log(user.accountType)
+  console.log(user.accountType);
   const handleMouseOver = () => {
     setIsShow(true);
   };
@@ -80,7 +79,6 @@ const Header = () => {
                     <Link to={`/Personal/${user.userName}`}>Personal</Link>
                   </li>
                   {user.accountType == "admin" && (
-                    
                     <li>
                       <Link to="/Dashboard">Dashboard</Link>
                     </li>
@@ -104,23 +102,22 @@ const Header = () => {
             <VscListSelection />
           </div>
           {/* <div class="nav__background"></div> */}
- {isShow && (
-        <div className="modal-view">
-           <div id="nav-item">
-            <Link to="/">logo</Link>
-            <Link to="/">Home</Link>
-            <Link to="/Blogs">Blogs</Link>
-            <Link to="/Shop">
-              Shop
-              <IconContext.Provider value={{ className: "icon_shop" }}>
-                <RiShoppingBasket2Line />
-              </IconContext.Provider>
-            </Link>
-            <Link to="/AboutUs">About us</Link>
-          </div>
-        </div>
-      )}
-         
+          {isShow && (
+            <div className="modal-view">
+              <div id="nav-item">
+                <Link to="/">logo</Link>
+                <Link to="/">Home</Link>
+                <Link to="/Blogs">Blogs</Link>
+                <Link to="/Shop">
+                  Shop
+                  <IconContext.Provider value={{ className: "icon_shop" }}>
+                    <RiShoppingBasket2Line />
+                  </IconContext.Provider>
+                </Link>
+                <Link to="/AboutUs">About us</Link>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
       <Outlet />

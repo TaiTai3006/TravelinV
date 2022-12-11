@@ -5,26 +5,28 @@ import {BsThreeDots} from 'react-icons/bs'
 //import { red } from "@mui/material/colors";
 import {IoMdAddCircle} from 'react-icons/io'
 import Axios, * as others from 'axios';
+import axios from "axios";
 
 const alternatingColor = [ ' #FFFFFF ', " #F4F2EE"]
 function DataPost({posts}) {
-  //console.log(posts[0].status)
-  // const [currentStatus, setCurrentStatus] = useState()
-
+  const reload = () =>{
+    location.reload();
+  }
   const deletePost = (post)=>{
-    alert('do you want to delete this post')
     Axios.delete(`http://localhost:8800/admin/description/delete/${post}`, posts)
     Axios.delete(`http://localhost:8800/admin/like/delete/${post}`, posts)
     Axios.delete(`http://localhost:8800/admin/delete/${post}`, posts)
+
+    reload()
   }
   const checkPost = (post)=>{
     Axios.put(`http://localhost:8800/admin/user/update/${post}`, posts)
+    reload()
   }
-  console.log(posts)
     return (
       <>
         {posts.map((posts, id) => {
-         
+         console.log(posts)
           return (
             <div  className="data-post" key={posts.id} style={{backgroundColor: alternatingColor[id % 2] }}>
                 <a href=""><div class="usename-data">{posts.userName}</div></a>
@@ -53,14 +55,14 @@ function DataPost({posts}) {
   export default DataPost;
 
  export function DataUser ({user}) {
+
   
   const deleteUser = (u)=>{
-   
-    //Axios.delete(`http://localhost:8800/admin/delete/${u}`, user)
     // Axios.delete(`http://localhost:8800/admin/description/delete/${p}`, posts)
     // Axios.delete(`http://localhost:8800/admin/like/delete/${p}`, posts)
-    //Axios.delete(`http://localhost:8800/admin/delete/${u}`,user)
+    // Axios.delete(`http://localhost:8800/admin/delete/${p}`,posts)
     Axios.delete(`http://localhost:8800/admin/user/delete/${u}`, user)
+    reload()
     
   }
     return (
