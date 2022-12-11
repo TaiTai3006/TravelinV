@@ -242,6 +242,10 @@ body {
   word-wrap: break-word;
   font-family: "Merriweather Sans";
   z-index: 1;
+  white-space: nowrap; 
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .slider-ctn-des{
   position: absolute;
@@ -259,6 +263,10 @@ body {
   font-size: 20px;
   z-index: 1;
   position: absolute;
+  white-space: nowrap; 
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .slider-button {
   position: absolute;
