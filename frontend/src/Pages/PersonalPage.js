@@ -1,7 +1,6 @@
 import "../PersonalPage.css";
 // import { IconContext } from "react-icons";
 import { BsBookmarkHeartFill } from "react-icons/bs";
-import { BsFillHandbagFill } from "react-icons/bs";
 import { BsFillFilterSquareFill } from "react-icons/bs";
 import {useEffect} from 'react';
 import {useState} from 'react';
@@ -20,7 +19,7 @@ import { IconContext } from "react-icons";
 
 const tabs=[
     {name:'Post', style:<IconContext.Provider value={{ className: 'Thang_a'}}><BsFillFilterSquareFill/></IconContext.Provider>},
-    {name:'PostLike', style: <IconContext.Provider value={{ className: 'Thang_a'}}><BsBookThang_Icon_PendingmarkHeartFill/></IconContext.Provider>}, 
+    {name:'PostLike', style: <IconContext.Provider value={{ className: 'Thang_a'}}><BsBookmarkHeartFill/></IconContext.Provider>}, 
     {name:'Pending', style: <IconContext.Provider value={{ className: 'Thang_Icon_Pending'}}><MdOutlinePendingActions/></IconContext.Provider>}
 ]
 
