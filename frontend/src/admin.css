@@ -21,11 +21,11 @@
 }
 
 .dashBoard {
-  width: 342px;
-  height: 100vh;
+  width: 300px;
+  height: 820px;
   border-right: 6px double  #989BA5;
+  position: relative;
 }
-
 .logo {
   position: absolute;
   width: 150px;
@@ -137,6 +137,7 @@
 
 .admin-page {
   display: flex;
+  position: absolute;
 }
 
 .flex-home{
@@ -182,7 +183,7 @@
   position: absolute;
   width: 90.5rem;
   height: 70px;
-  left: 240px;
+  left: 260px;
   top: 93px;
   background: #C1E2E1;
   border-radius: 10px 10px 0px 0px;
@@ -203,8 +204,8 @@
   position: absolute;
   display: flex;
   top: 12rem;
-  left: 15.5rem;
-  width: 89.8rem;
+  left: 260px;
+  width: 80rem;
   height: 30px;
   justify-content: space-around;
   font-weight: bold;
@@ -236,7 +237,7 @@
   width: 89.8em;
   height: 38rem;
 
-  
+  left: 260px;
 
 }
 
@@ -397,7 +398,7 @@
 .dropdown-option {
   width: 90px;
   line-height: 25px;
-  height: 55px;
+  height: auto;
   position: absolute;
   left: 82rem;
   top: 2.5rem;
@@ -451,7 +452,7 @@ div ul {
 .info-user {
   position:absolute;
   top:14rem;
-  left: 15.5rem;
+  left: 260px;
   width: 89.8rem;
   height: 38rem;
   overflow-y: scroll;
@@ -526,5 +527,33 @@ div ul {
   color: #807e7e;
   background-color: transparent;
   font-weight: bold;
+}
+.check-btn{
+  color: #353535;
+  background-color: rgb(158, 243, 158);
+  border-radius: 5px;
+  width: 50px;
+  height: 25px;
+  text-align: center;
+  font-family: headings;
+}
+.delete-btn{
+  color: #353535;
+  background-color: rgb(243, 84, 105);
+  border-radius: 5px;
+  width: 50px;
+  height: 25px;
+  text-align: center;
+  font-family: headings;
+}
+.edit-btn{
+  color: #353535;
+  background-color: rgb(242, 114, 247);
+  border-radius: 5px;
+  width: 50px;
+  height: 25px;
+  text-align: center;
+  font-family: headings;
+  margin: 2px 0 2px 0;
 }
 

@@ -5,18 +5,17 @@ import { BiChevronRight } from "react-icons/bi";
 import "../ProfileInput.css";
 import useForm from "../components/useForm";
 import Errs from "../components/errors";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function ProfileInput() {
   const {
     handleChange,
     account,
     handleImage,
-    user,
-    setAccount,
     errors,
     handleUpdateAccount,
   } = useForm();
+  const navigate = useNavigate()
   // useEffect(()=>{
   //   const fecthGetAccount = async () => {
   //     try {
@@ -37,7 +36,9 @@ function ProfileInput() {
       <div className="profile-header">
         <h1 className="profile-title">Profile</h1>
         
-          <button type="button" className="profile-nextbtn">Next
+          <button onClick={()=>{
+            navigate('/Login')
+          }} type="button" className="profile-nextbtn">Next
           <BiChevronRight/>
           </button>
         
@@ -63,7 +64,7 @@ function ProfileInput() {
             type="file"
             hidden
             id="input-profileimg"
-            name="image"
+            name="avatar"
             onChange={handleImage}
           />
         </div>

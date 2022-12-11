@@ -4,7 +4,8 @@ import { omit } from "lodash";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
-import defaultAvatar from "../image/default_avatar.png";
+
+
 
 const useForm = (callback) => {
   const navigate = useNavigate();
@@ -14,8 +15,7 @@ const useForm = (callback) => {
   const [checkConfirmPw, setCheckConfirmPw] = useState();
 
   const [account, setAccount] = useState({
-    accountType: "user",
-    image: defaultAvatar,
+    accountType: "user"
   });
 
   const [errors, setErrors] = useState({});
@@ -183,14 +183,14 @@ const useForm = (callback) => {
         Object.keys(account).length !== 0 &&
         checkBox
       ) {
-       await axios.post("http://localhost:8800/account", account);
+        await axios.post("http://localhost:8800/account", account);
         setUser((user) => {
           const newSetUser = { ...user, userName: account.userName };
           const jsonUser = JSON.stringify(newSetUser);
           localStorage.setItem("user", jsonUser);
           return newSetUser;
         });
-        navigate("/Profile");
+        navigate("/Register/Profile");
       } else {
         !checkBox &&
           setErrors({
@@ -212,22 +212,22 @@ const useForm = (callback) => {
           account
         );
         if (res.data) {
-          axios.get(`http://localhost:8800/getAccount/${account.userName}`).then((res)=>{
-
-            setUser((user) => {
-              const newSetUser = {
-                ...user,
-                userName: res.data[0].userName,
-                loggedIn: true,
-                accountType: res.data[0].accountType,
-                image: res.data[0].avatar
-              };
-              const jsonUser = JSON.stringify(newSetUser);
-              localStorage.setItem("user", jsonUser);
-              return newSetUser;
+          axios
+            .get(`http://localhost:8800/getAccount/${account.userName}`)
+            .then((res) => {
+              setUser((user) => {
+                const newSetUser = {
+                  ...user,
+                  userName: res.data[0].userName,
+                  loggedIn: true,
+                  accountType: res.data[0].accountType,
+                  image: res.data[0].avatar,
+                };
+                const jsonUser = JSON.stringify(newSetUser);
+                localStorage.setItem("user", jsonUser);
+                return newSetUser;
+              });
             });
-
-          })
           navigate("/");
         } else {
           setErrors({ ...errors, login: "Incorrect username or password." });
@@ -282,14 +282,18 @@ const useForm = (callback) => {
     e.preventDefault();
 
     if (Object.keys(errors).length === 0) {
-      const uploadData = new FormData();
-      uploadData.append("image", account.image, "image");
-      uploadData.append("name", account.name);
-      uploadData.append("gmail", account.gmail);
-      uploadData.append("phoneNumber", account.phoneNumber);
-      uploadData.append("gender", account.gender);
-      axios.put(`http://localhost:8800/account/${user.userName}`, uploadData);
-      navigate("/Login");
+      if (account.avatar) {
+        const uploadData = new FormData();
+        uploadData.append("image", account.avatar, "image");
+        uploadData.append("name", account.name);
+        uploadData.append("gmail", account.gmail);
+        uploadData.append("phoneNumber", account.phoneNumber);
+        uploadData.append("gender", account.gender);
+        axios.put(`http://localhost:8800/account/${user.userName}`, uploadData).then((res)=>console.log(res.data));
+        navigate("/Login");
+      }else{
+        axios.put(`http://localhost:8800/account/${user.userName}`, account).then((res)=>console.log(res.data));
+      }
     }
   };
   return {

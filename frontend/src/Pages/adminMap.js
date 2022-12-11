@@ -20,13 +20,14 @@ function DataPost({posts}) {
   const checkPost = (post)=>{
     Axios.put(`http://localhost:8800/admin/user/update/${post}`, posts)
   }
+  console.log(posts)
     return (
       <>
         {posts.map((posts, id) => {
          
           return (
             <div  className="data-post" key={posts.id} style={{backgroundColor: alternatingColor[id % 2] }}>
-                <a href=""><div class="usename-data">{posts.name}</div></a>
+                <a href=""><div class="usename-data">{posts.userName}</div></a>
                 <img class="avatar-data" src={posts.image}/>
                 <a href=""><div class="title-data">{posts.postName}</div></a>
                 <div className="createat-data" >{posts.dateTime}</div>
@@ -36,9 +37,9 @@ function DataPost({posts}) {
                      <div className="option-data" ><BsThreeDots/></div>
                      <div className="dropdown-content">
                        <ul className="dropdown-option">
-                        <li><button onClick={() => checkPost(posts.idPost)} className="text-check" href="#">Check</button></li>
-                        <li><button>edit</button></li>
-                        <li><button onClick={() => deletePost(posts.idPost)} className="text-delete" href="#">Delete</button></li>
+                        <li><button onClick={() => checkPost(posts.idPost)} className="check-btn" href="#">Check</button></li>
+                        <li><button className="edit-btn">edit</button></li>
+                        <li><button onClick={() => deletePost(posts.idPost)} className="delete-btn" href="#">Delete</button></li>
                        </ul>
                      </div>
                 </div>
@@ -51,23 +52,27 @@ function DataPost({posts}) {
   
   export default DataPost;
 
- export function DataUser ({user,posts}) {
-   console.log(posts)
-  const deleteUser = (u,p)=>{
-
+ export function DataUser ({user}) {
+  
+  const deleteUser = (u)=>{
+   
     //Axios.delete(`http://localhost:8800/admin/delete/${u}`, user)
     // Axios.delete(`http://localhost:8800/admin/description/delete/${p}`, posts)
     // Axios.delete(`http://localhost:8800/admin/like/delete/${p}`, posts)
-    Axios.delete(`http://localhost:8800/admin/delete/${p}`, posts)
+    //Axios.delete(`http://localhost:8800/admin/delete/${u}`,user)
     Axios.delete(`http://localhost:8800/admin/user/delete/${u}`, user)
+    
   }
     return (
       <>
+     
         {user.map((user, id) => {
           return (
+           
             <div  className='user-data' key={user.id} style={{backgroundColor: alternatingColor[id % 2] }}>
+              
               <img className="avatar-user" src={user.avatar}/>
-              <a href='#'><div className='usename'>{user.name}</div></a>
+              <a href='#'><div className='usename'>{user.userName}</div></a>
               <div className='gender'>{user.gender}</div>
               <div className='mail'>{user.gmail}</div>
               <div className='phone'>{user.phoneNumber}</div>
@@ -77,10 +82,9 @@ function DataPost({posts}) {
                      <div className="dropdown-content" >
                        <ul className="dropdown-option-user">
                         <div className='add-mod'>
-                        <div className="addmod-icon"><IoMdAddCircle/></div>
-                        <li><button className="text-add-mod">Mod</button></li>
+                        <li><button className="edit-btn" >Edit</button></li>
                         </div>
-                        <li><button onClick={()=>{deleteUser(user.userName,posts.idPost)}} className="text-delete-user" href="#">Delete</button></li>
+                        <li><button onClick={()=>{deleteUser(user.userName)}} className="delete-btn" href="#">Delete</button></li>
                        </ul>
                      </div>
                 </div>
