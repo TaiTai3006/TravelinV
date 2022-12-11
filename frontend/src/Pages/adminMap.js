@@ -24,7 +24,6 @@ function DataPost({posts}) {
     return (
       <>
      
-
       </>
     );
   }
