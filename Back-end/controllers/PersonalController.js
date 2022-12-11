@@ -2,7 +2,7 @@ import { db } from "../index.js";
 
 export const getUser = (req, res) => {
   const userNameId = req.params.userName;
-    const q = "SELECT userName, name, image from account where userName = ?";
+    const q = "SELECT userName, name,  image from account where userName = ?";
     db.query(q, [userNameId], (err, data) => {
       if (err) return res.json(err);
       return res.json(data);
@@ -22,7 +22,7 @@ const userNameId = req.params.userName;
 export const getPostLike = (req, res) => {
     const userNameId = req.params.userName;
         // const userNameId = 'taitai'
-      const q = "SELECT post.idPost, post.postName,post.image, day(post.dateTime) as Day, month(post.dateTime) as Month, year(post.dateTime) as Year, province.provinceName, account.name from post, province, `like`, account where post.idPost = `like`.`idPost` and post.idProvince = province.idProvince and account.userName = post.userName and `like`.`userName`=? and account.userName !=`like`.`userName`";
+      const q = "SELECT post.idPost, post.postName,post.image, day(post.dateTime) as Day, month(post.dateTime) as Month, year(post.dateTime) as Year, province.provinceName, account.userName from post, province, `like`, account where post.idPost = `like`.`idPost` and post.idProvince = province.idProvince and account.userName = post.userName and `like`.`userName`=? and account.userName !=`like`.`userName`";
       db.query(q, [userNameId], (err, data) => {
         if (err) return res.json(err);
         return res.json(data);

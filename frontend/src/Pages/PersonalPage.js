@@ -18,8 +18,8 @@ import { useLocation } from "react-router-dom";
 const tabs=[{name:'Post', style:<BsFillFilterSquareFill className='Thang_a'></BsFillFilterSquareFill>},{name:'PostLike', style: <BsBookmarkHeartFill className='Thang_'></BsBookmarkHeartFill>}]
 
 export default function PersonalPage() {
-    const User = useContext(UserContext);
-    console.log(User.user)
+    // const User = useContext(UserContext);
+    // console.log(User.user)
     const [type, setType] = useState('Post')
     const [Name, setName] = useState([{}])
     const [Content, setContent] = useState([{}])
@@ -33,6 +33,7 @@ export default function PersonalPage() {
             try{
                 await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/PostLike`).then((response) =>{
                     setCountPostLike(response.data.length)
+                    console.log(response.data.length)
                 })
             } catch (err) {
                 console.log(err)
@@ -68,7 +69,7 @@ export default function PersonalPage() {
     useEffect(() => {
         const FecthAllPost = async ()=>{
             try{
-                await axios.get(`http://localhost:8800/${User.user.userName}/Personal/${type}`).then((response) =>{
+                await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/${type}`).then((response) =>{
                    response.data && setContent(response.data)
                    if(type === 'Post')
                     setCountPost(response.data.length)
@@ -84,10 +85,10 @@ export default function PersonalPage() {
 
     const handleDeletePost = async (id) => {
         try {
-          await axios.delete(`http://localhost:8800/${User.user.userName}/Personal/DeleteLike/${id}`);
-          await axios.delete(`http://localhost:8800/${User.user.userName}/Personal/DeletePostDes/${id}`);
-          await axios.delete(`http://localhost:8800/${User.user.userName}/Personal/DeletePost/${id}`);
-          await axios.get(`http://localhost:8800/${User.user.userName}/Personal/${type}`).then((response) =>{
+          await axios.delete(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/DeleteLike/${id}`);
+          await axios.delete(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/DeletePostDes/${id}`);
+          await axios.delete(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/DeletePost/${id}`);
+          await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/${type}`).then((response) =>{
                    response.data && setContent(response.data)
                     setCountPost(response.data.length)
                 })
@@ -98,8 +99,8 @@ export default function PersonalPage() {
       };
       const handleDeletePostLike = async (id) => {
         try {
-          await axios.delete(`http://localhost:8800/${User.user.userName}/Personal/DeleteLike/${id}`);
-          await axios.get(`http://localhost:8800/${User.user.userName}/Personal/${type}`).then((response) =>{
+          await axios.delete(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/DeleteLike/${id}`);
+          await axios.get(`http://localhost:8800/${location.pathname.split("/")[2]}/Personal/${type}`).then((response) =>{
                    response.data && setContent(response.data)
                     setCountPostLike(response.data.length)
                 })
@@ -135,7 +136,7 @@ function HandlCoutEvent(type, id)
     {/* {setType('Post')} */}
     {/* {console.log(PostPersonal)} */}
         <div id='Thang_avatar_child'>
-            <img src={User.user.image}/>  
+            <img src={Name[0].image}/>  
         </div>
         <div id='Thang_card'>
             </div>
