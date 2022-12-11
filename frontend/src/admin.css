@@ -9,550 +9,150 @@
     url(https://static.saltinourhair.com/build/fonts/SaltHeading.woff)
       format("woff");
 }
+.admin-page {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-around;
+}
 
 .flex-home a {
   text-decoration: none;
   color: #353535;
+  padding: 10px;
 }
 .flex-home a:hover {
   color: #807e7e;
   background-color: transparent;
   font-weight: bold;
 }
-
 .dashBoard {
   width: 300px;
-  height: 820px;
+  height: 280px;
   border-right: 6px double  #989BA5;
-  position: relative;
-}
-.logo {
-  position: absolute;
-  width: 150px;
-  height: 50px;
-  background-color: pink;
-  border: 5px sodid black;
-  margin-top: 20px;
-}
-
-
-.text1 {
-  width:13rem;
-  position: absolute;
-  margin-top: 6rem;
-  margin-left: 1rem;
-  color:gray;
-  border-top: 0.4px solid #989BA5;
-  font-size: 18px;
-}
-
-.flex-blog {
-  display:flex;
-  position: absolute;
-  top: 10rem;
-  height: 35px;
-  width: 14.25rem;
- 
-
-}
-
-.flex-blog:hover {
-  background-color: #F4F2EE;
-  border-radius: 5px;
-}
-
-.icon-blog {
-  position: absolute;
-  left: 1rem;
-  font-size:20px;
-  top: 5px;
-}
-
-.icon-arrow {
-  position: absolute;
-  left: 13rem;
-  font-size:26px;
-  top: 0px;
-}
-
-.icon-arrow-2 {
-  position: absolute;
-  left: 13rem;
-  font-size: 26px;
-  top: -0.75px;
-}
-
-.text2  {
-  position: absolute;
-  left: 3rem;
-  font-size:20px;
-  font-family: Merriweather Sans;
-  top: 1.25px;
-  padding-right: 140px;
-}
-
-
-
-.flex-user {
   display: flex;
-  position: absolute;
-  top: 12rem;
-  height: 35px;
-  width: 14.25rem;
+  /* align-items: center; */
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 50px;
+
 }
-
-.flex-user:hover {
-  background-color: #F4F2EE;
-  border-radius: 5px;
-}
-
-
-
-.icon-user {
-  position: absolute;
-  font-size: 20px;
-  left: 1rem;
-  top: 5px; 
-}
-
-.text3 {
-  position: absolute;
-  font-size:20px;
-  left: 3rem;
-  font-family: Merriweather Sans;
-  top: 1.25px;
-  padding-right: 140px;
-  
-}
-
-
-
-
-.head {
-  padding-bottom: 50px;
-  position: relative;
-  width: 100vw;
-  height: 100px;
-}
-
-.admin-page {
-  display: flex;
-  position: absolute;
-}
-
-.flex-home{
-  position: absolute;
-  display:flex;
-  top: 4rem;
-  left: 2rem;
-}
-
-.text5 {
-  position: absolute;
-  left: 6rem;
-  font-weight: bold;
-  font-size: 20px;
-  /* text-decoration: none; */
-}
-
-.icon-home {
-  position: absolute;
-  left: 4rem;
-  font-size: 20px;
-  top: -3px;
-}
-
-.text4{
-  position: absolute;
-  font-size: 20px;
-  font-weight: bold;
-  /* text-decoration: none; */
-  font-family: Merriweather Sans;
-}
-
-.text6{
-  position: absolute;
-  font-size: 2.5rem;
-  left: 2rem;
-  bottom: 48px;
-  color: #2E5D9F;
-  font-weight: bold;
-}
-
 .main-bar {
-  position: absolute;
-  width: 90.5rem;
-  height: 70px;
-  left: 260px;
-  top: 93px;
-  background: #C1E2E1;
-  border-radius: 10px 10px 0px 0px;
   display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+  /* justify-content: center; */
+  width: 100%;
+  margin: 0 50px;
 }
-
-.text-tour {
-  position: absolute;
-  color: gray;
-  font-size: 18px;
-  top: 1.5rem;
-  left: 1rem;
-  width: 10rem;
-  border-right: 0.2px solid #6B6E7F;
+.text1 {
+  /* width:13rem; */
+margin: 0 auto;
+font-size: 20px;
 }
-
+.flex-user {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.flex-blog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.flex-home {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .info-bar {
-  position: absolute;
   display: flex;
-  top: 12rem;
-  left: 260px;
-  width: 80rem;
-  height: 30px;
-  justify-content: space-around;
-  font-weight: bold;
-  font-style: italic;
-  border-bottom: 0.4px solid #989BA5;
-
-}
-
-.info {
-  position:absolute;
-  top: 14rem;
-  left: 15.5rem;
-  overflow-y: scroll;
- 
-}
-
-.info::-webkit-scrollbar {
-  display: none;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 40px;
+  
 }
 .data-post {
   display: flex;
-  line-height: 60px;
-  border-radius: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
 }
-
-.data-item {
-  display: flex;
-  flex-direction: column;
-  width: 89.8em;
-  height: 38rem;
-
-  left: 260px;
-
+.data-post img {
+  /* width: 100%;
+  height: 100%; */
+  object-fit: cover;
+  border-radius: 50%;
 }
-
+.avatar-data{
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+}
 .status-data {
-  position: absolute;
-  left:75.5rem;
   font-weight: bolder;
   margin-top: 10px;
   width: 6rem;
   height: 2.5rem;
   text-align: center;
   line-height: 40px;
-  /* background-color: gold; */
+  background-color: gold; 
   border-radius: 25px;
   font-style: italic;
   font-family: "Merriweather Sans";
 }
-
-.createat-data {
-  position: absolute;
-  left:54.1rem;
-
+.nav-container {
+  margin: 15px 0 !important;
 }
-
-.title-data {
-  position: absolute;
-  left: 26rem;
-  white-space: nowrap; 
-  overflow: hidden;
-  text-overflow: ellipsis; 
-  width: 22rem;
-  font-family: "Merriweather Sans"
-}
-
-
-
-.usename-data {
-  position: relative;
-  left: 9.3rem;
-  font-family: "Merriweather Sans";
-}
-
-.avatar-data {
-  position: absolute;
-  width: 45px;
-  left: 5.5rem;
-  padding-top: 8px;
-  border-radius: 50%;
-
-}
-
-.option-data {
-  position: absolute;
-  font-size: 25px;
-  left: 84.5rem;
-  top: 3px;
-}
-
-.search-bar {
-  position: absolute;
-  left: 15rem;
-  top: 1.2rem; 
-  height: 100%;
-}
-
-.main-bar input[type=text] {
-  position: absolute;
-  width: 22rem;
-  height: 2rem;
-  font-size: 15px;;
-  border-radius: 25px;
-  background-color: white;
-  border: 1px solid white;
-  padding-left: 12px;
-  left: 2rem;
-}
-
-.main-bar input[type=text]::placeholder {
-  font-weight: bold;
-  padding-left: 5px;
-}
-
-.main-bar input:focus {
-  outline:none;
-}
-
-.find-icon {
-  position: absolute;
-  bottom: 0.7rem;
-  left: 21.6rem;
-  font-size: 44px;
-}
-
-.ad-info {
-  display: flex;
-  top: 1.5rem;
-  left: 74rem;
-  gap: 40px;
-  position: absolute;
-}
-
-.ad-img {
-  position: absolute;
-  width: 50px;
-  border-radius: 50%;
-  top: -10px;
-  left: 1.2rem;
-}
-
-.ad-name {
-  position: absolute;
-  left: 5rem; 
-  width: 100px;
-
-}
-
-.admin-page {
-  position: relative;
-  font-family: headings;
-  top: 20px;
-}
-
-.flex-home a {
-  background-image: linear-gradient(
-      transparent calc(100% - 0.45em),
-      var(--darkpink) 0
-    ),
-    linear-gradient(transparent calc(100% - 0.45em), var(--lightblue) 0);
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: 1.1px;
-  line-height: 19.5px;
-  text-transform: uppercase;
-}
-.flex-home a:hover {
-  background-image: linear-gradient(
-      transparent calc(100% - 0.45em),
-      var(--lightblue) 0
-    ),
-    linear-gradient(transparent calc(100% - 0.45em), var(--darkpink) 0);
-}
-
-:root {
-  --lightblue: #d8c4c3;
-  --darkpink: #c0e2e2;
-}
-
-.dropdown {
-  position: absolute;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display:none;
-  position: absolute;
-}
-
-.dropdown-option {
-  width: 90px;
-  line-height: 25px;
-  height: auto;
-  position: absolute;
-  left: 82rem;
-  top: 2.5rem;
-  z-index: 1;
-  box-shadow: 0px 0px 5px 2px #d2d2d2;
-  background-color: #f1f1f1;
-  border-radius: 10px;
-  padding-right: 20px;
-  padding-left: 20px;
+.head {
  
-  color: #353535;
-
+margin-top: 30px;
 }
-
-.dropdown-option li:hover {
-  transform: scale(1.1);
-}
-
-.dropdown-option-user li:hover {
-  transform: scale(1.1);
-}
-
-.dropdown-option-user {
-  width: 85px;
-  line-height: 25px;
-  height: 55px;
-  position: absolute;
-  left: 82rem;
-  top: 2.5rem;
-  box-shadow: 0px 0px 5px 2px #d2d2d2;
-  background-color: #f1f1f1;
-  z-index: 1;
-  border-radius: 10px;
-  padding-right: 20px;
-  padding-left: 20px;
-  color: #353535;
-  
-}
-
-
-
-
-
-
-div ul {
-  list-style: none;
-}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-.info-user {
-  position:absolute;
-  top:14rem;
-  left: 260px;
-  width: 89.8rem;
-  height: 38rem;
-  overflow-y: scroll;
-}
-
-.info-user::-webkit-scrollbar {
-  display: none;
-}
-
-.user-data {
+.search-container {
   display: flex;
-  line-height: 60px;
-  border-radius: 10px;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #C1E2E1;
+  border-radius: 10px ;
+  padding: 20px 0 ;
+  background-image: url(../src/image/search-bubbles.png),url(../src/image/search-bubbles.png);
+  background-position: top right;
+  background-size: cover, cover;
 }
-
-.avatar-user {
-  position: absolute;
-  left: 58px;
-  padding-top: 8px;
-  width: 45px;
-  border-radius: 50%;
-
+.text-tour {
+ 
+  font-size: 25px;
+  
+  width: 10rem;
 }
-
-.account {
-  position: absolute;
-  left: 79.5rem;
+.search-bar {
+position: relative;
 }
-
-.phone {
-  position: absolute;
-  left: 60rem;
+.find-icon {
+position: absolute;
+right: 10%;
+font-size: 18px;
 }
-
-.mail {
-  position: absolute;
-  left: 41rem;
+.title-data {
+  width: 150px;
+  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
-  width: 15rem;
-}
-
-.gender {
-  position: absolute;
-  left: 27rem;
-}
-
-.usename {
-  position: relative;
-  left: 7.2rem;
-  font-family: "Merriweather Sans";
-}
-
-.addmod-icon {
-  position: absolute;
-  left: 15px;
-  top: 3px;
-}
-
-.text-add-mod {
-  position: relative;
-  left: 15px;
+  text-overflow: ellipsis ;
 }
 
 
 
-.add-mod {
-  width: 100px;
-}
 
-.add-mod:hover {
-  color: #807e7e;
-  background-color: transparent;
-  font-weight: bold;
-}
-.check-btn{
-  color: #353535;
-  background-color: rgb(158, 243, 158);
-  border-radius: 5px;
-  width: 50px;
-  height: 25px;
-  text-align: center;
-  font-family: headings;
-}
-.delete-btn{
-  color: #353535;
-  background-color: rgb(243, 84, 105);
-  border-radius: 5px;
-  width: 50px;
-  height: 25px;
-  text-align: center;
-  font-family: headings;
-}
-.edit-btn{
-  color: #353535;
-  background-color: rgb(242, 114, 247);
-  border-radius: 5px;
-  width: 50px;
-  height: 25px;
-  text-align: center;
-  font-family: headings;
-  margin: 2px 0 2px 0;
+
+
+
+.user-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

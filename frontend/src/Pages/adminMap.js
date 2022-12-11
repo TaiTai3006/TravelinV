@@ -29,13 +29,16 @@ function DataPost({posts}) {
          console.log(posts)
           return (
             <div  className="data-post" key={posts.id} style={{backgroundColor: alternatingColor[id % 2] }}>
+              <div className="user-name">
+              <img class="avatar-data" src={posts.image}/>
                 <a href=""><div class="usename-data">{posts.userName}</div></a>
-                <img class="avatar-data" src={posts.image}/>
+              </div>
+               
                 <a href=""><div class="title-data">{posts.postName}</div></a>
                 <div className="createat-data" >{posts.dateTime}</div>
                 <div /*onClick={() => setCurrentStatus('ok')} */className="status-data" style={{backgroundColor: posts.status === "pending" ? "#f1bc68" : "indianred"}} >{posts.status} </div>
 
-                <div className="dropdown">
+                {/* <div className="dropdown">
                      <div className="option-data" ><BsThreeDots/></div>
                      <div className="dropdown-content">
                        <ul className="dropdown-option">
@@ -44,7 +47,7 @@ function DataPost({posts}) {
                         <li><button onClick={() => deletePost(posts.idPost)} className="delete-btn" href="#">Delete</button></li>
                        </ul>
                      </div>
-                </div>
+                </div> */}
             </div>
           );
         })}

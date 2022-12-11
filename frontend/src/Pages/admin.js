@@ -4,10 +4,10 @@ import { AiFillCaretRight } from "react-icons/ai";
 import { GrGroup } from "react-icons/gr";
 import DataPost from "./adminMap";
 import { React, useState, useEffect } from "react";
-import { BiSearch } from "react-icons/bi";
+import { BiSearchAlt2 } from "react-icons/bi";
 import { GrUserAdmin } from "react-icons/gr";
 import { BsPersonCircle } from "react-icons/bs";
-import { BsThreeDots } from "react-icons/bs";
+import { BiSearch } from "react-icons/bi";
 import { HiChevronRight } from "react-icons/hi";
 import { DataUser } from "./adminMap";
 import { IoSearchCircle } from "react-icons/io5";
@@ -130,43 +130,44 @@ function Admin() {
             <a href="#">Dashboard</a>
             <HiChevronRight />
           </div>
+          <div className="search-container"> 
           <div className="text-tour">Post</div>
-        <div className="search-bar">
-          <input
-            type="text"
-            onChange={(text) => {
-              setSearch(
-                posts.filter((post) => {
-                  return (
-                    post.postName
+          <div className="search-bar">
+            <input
+              type="text"
+              onChange={(text) => {
+                setSearch(
+                  posts.filter((post) => {
+                    return (
+                      post.postName
+                        .toLowerCase()
+                        .includes(text.target.value.toLowerCase()) ||
+                      post.postName
+                        .toLowerCase()
+                        .includes(text.target.value.toLowerCase())
+                    );
+                  })
+                );
+                setSearchUser(
+                  user.filter((users) => {
+                    return users.userName
                       .toLowerCase()
-                      .includes(text.target.value.toLowerCase()) ||
-                    post.postName
-                      .toLowerCase()
-                      .includes(text.target.value.toLowerCase())
-                  );
-                })
-              );
-              setSearchUser(
-                user.filter((users) => {
-                  return users.userName
-                    .toLowerCase()
-                    .includes(text.target.value.toLowerCase());
-                })
-              );
-            }}
-            placeholder="Search.."
-          />
-          <div className="find-icon">
-            <IoSearchCircle color="#48D10C" />
+                      .includes(text.target.value.toLowerCase());
+                  })
+                );
+              }}
+              placeholder="Search.."
+            />
+            
+              <BiSearchAlt2 className="find-icon" />
+            
           </div>
-        </div>
+          </div>
+          
         </div>
         {handleBar(type)}
-      {handleEvent(type)}
+        {handleEvent(type)}
       </div>
-
-     
     </div>
   );
 }
