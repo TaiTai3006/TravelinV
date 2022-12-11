@@ -70,13 +70,9 @@ function FormBlog() {
               id="input-img"
               onChange={handleTitleImage}
             />
-            {/* <div className="submit">
-              <input
-                type="submit"
-                className="submit"
-                value="POST"
-                onClick={handleCreatePost}
-              ></input>
+            <input type="submit" className="submit" value="POST"></input>
+             {/* <div className="submit">
+              <input type="submit" className="submit" value="POST"></input>
             </div> */}
             {/* <button className="submit">Submit</button> */}
           </div>
@@ -152,9 +148,7 @@ function FormBlog() {
                 </button>
               </div>
             </div>
-            <div className="submit">
-              <input type="submit" className="submit" value="POST"></input>
-            </div>
+           
           </div>
         </div>
       </div>

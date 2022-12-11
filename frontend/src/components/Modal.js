@@ -5,14 +5,14 @@ import { HiChevronDown } from "react-icons/hi";
 import { IconContext } from "react-icons";
 import { UserContext } from "../App";
 const Modal = () => {
-  // const [isHovering, setIsHovering] = useState(false);
+  // const [isShow, setIsShow] = useState(false);
 
   // const handleMouseOver = () => {
-  //   setIsHovering(true);
+  //   setIsShow(true);
   // };
 
   // const handleMouseOut = () => {
-  //   setIsHovering(false);
+  //   setIsShow(false);
   // };
   const [places, setPlace] = useState([]);
   useEffect(() => {
@@ -30,9 +30,9 @@ const Modal = () => {
         <li className="search">
           <a href="">
             Want to go ...
-            {/* <IconContext.Provider value={{ className: "icon_chevDown" }}> */}
+            <IconContext.Provider value={{ className: "icon_chevDown" }}>
             <HiChevronDown />
-            {/* </Ico</li>nContext.Provider> */}
+            </IconContext.Provider>
           </a>
         </li>
       </div>
@@ -50,7 +50,7 @@ const Modal = () => {
             })}
           </div>
         </div>
-      {/* {isHovering && (
+      {/* {isShow && (
         <div className="modal-view">
           <div className="palace">
             {places.map((place) => {

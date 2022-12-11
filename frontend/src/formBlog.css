@@ -284,14 +284,18 @@
   padding: 10px;
   margin: 10px;
 }
+.submit {
+  width: 200px;
+  margin: 0 auto;
 
-.input-container input[type="submit"] {
+}
+.container-image input[type="submit"] {
   font-family: headings;
 
   width: 150px;
   border: none;
   outline: none;
-  margin: 0 auto;
+  margin: 25px 50px;
   cursor: pointer;
   color: black;
   font-size: 20px;
@@ -300,8 +304,9 @@
   border-radius: 30px;
   text-align: center;
   font-style: normal;
+  
 }
-.input-container input[type="submit"]:hover{
+.container-image input[type="submit"]:hover{
   opacity: 1;
   transition-duration: 1s;
   transform: scale(1.08);

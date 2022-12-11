@@ -9,16 +9,18 @@ function Input({ id, descriptions, setDescriptions }) {
   const [description, setDescription] = useState({ id: id });
 
   const [images, setImages] = React.useState([]);
+  const [showAddBtn, setShowAddBtn] = useState(true);
 
   const maxNumber = 2;
 
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
     if (imageList.length === 2) {
-      const addImgBtns = document.querySelectorAll(".add-img-btn");
-      addImgBtns.forEach((addBtn) => {
-        addBtn.classList.add("hidden");
-      });
+      // const addImgBtns = document.querySelectorAll(".add-img-btn");
+      // addImgBtns.forEach((addBtn) => {
+      //   addBtn.classList.add("hidden");
+      // });
+      setShowAddBtn(false)
     }
 
     setImages(imageList);
@@ -86,10 +88,13 @@ function Input({ id, descriptions, setDescriptions }) {
                   <img src={image.data_url} alt="" width="100" />
                 </div>
               ))}
-              <button className="add-img-btn" onClick={onImageUpload}>
+              {showAddBtn && (
+                <button className="add-img-btn" onClick={onImageUpload}>
                 <BiPlus className="preview_des--icon" />
                 Upload photo
               </button>
+              )}
+              
             </div>
           )}
         </ImageUploading>

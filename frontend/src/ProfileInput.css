@@ -1,18 +1,47 @@
 .profile-form {
   display: flex;
   justify-content: space-around;
-  margin: 0 150px;
+  margin: 0 100px;
 }
 .profile-title {
   /* text-align: center; */
   font-size: 55px;
-  margin-left: 555px;
+  /* margin-left: 555px; */
 }
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 100px;
+  padding-right: 50px;
+}
+
+.profile-nextbtn {
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-family: headings;
+  font-size: 20px;
+  /* width: 70px; */
+  /* height: 40px; */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0 7px;
+  
+}
+.profile-nextbtn:hover{
+  scale: 1.08;
+  transition: 0.3s;
+  background-color: #d2d2d2;
+  
+}
+
 .profile-image {
   border: 2px dashed #353535;
   width: 250px;
   height: 350px;
-  font-size: 20px;
+  font-size: 18px;
   position: relative;
   border-radius: 6px;
   /* overflow: hidden; */
@@ -29,7 +58,6 @@
   width: 250px;
   height: 350px;
   cursor: pointer;
-
 }
 .profile-img img {
   width: 100%;
@@ -47,6 +75,7 @@
 }
 .profile-input input {
   margin: 10px 0;
+  font-family: "Merriweather Sans";
 }
 .choice-gender-container {
   display: flex;

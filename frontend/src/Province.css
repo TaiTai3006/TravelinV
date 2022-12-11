@@ -261,10 +261,10 @@ div a {
   position: relative;
 }
 .province-input-container input::placeholder {
-  /* font-weight: bold;
+  font-weight: bold;
   opacity: 0.5;
   color: #353535;
-  font-size: 25px; */
+  font-size: 25px;
 }
 .province-input-container input:focus {
   outline: none;
