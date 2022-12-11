@@ -39,6 +39,7 @@ function Admin() {
       return (
         <div className="info data-item ">
           <DataPost posts={search} />
+          <button onClick={()=>{deletePost(posts.idPost)}} ><BiX/></button>
         </div>
       );
     if (type === "user")

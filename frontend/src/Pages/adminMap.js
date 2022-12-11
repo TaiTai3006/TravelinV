@@ -39,7 +39,7 @@ function DataPost({posts}) {
                 <a href=""><div class="title-data">{posts.postName}</div></a>
                 <div className="createat-data" >{posts.dateTime}</div>
                 <button onClick={() => checkPost(posts.idPost)} className="status-data" style={{backgroundColor: posts.status === "pending" ? "#f1bc68" : "indianred"}} >{posts.status} </button>
-                <button onClick={()=>{deleteUser(posts.idPost)}} ><BiX/></button>
+                
 
                 {/* <div className="dropdown">
                      <div className="option-data" ><BsThreeDots/></div>
