@@ -9,11 +9,6 @@
     url(https://static.saltinourhair.com/build/fonts/SaltHeading.woff)
       format("woff");
 }
-.admin-page {
-  display: flex;
-  /* align-items: center; */
-  justify-content: space-around;
-}
 
 .flex-home a {
   text-decoration: none;
@@ -24,86 +19,21 @@
   background-color: transparent;
   font-weight: bold;
 }
-.dashBoard {
-  width: 300px;
-  height: 280px;
-  border-right: 6px double  #989BA5;
-  display: flex;
-  /* align-items: center; */
-  flex-direction: column;
-  justify-content: center;
 
-}
-.main-bar {
-  display: flex;
-  /* align-items: center; */
-  flex-direction: column;
-  justify-content: center;
-  width: 60%;
-}
-.text1 {
-  /* width:13rem; */
-margin: 0 auto;
-font-size: 20px;
-}
-.flex-user {
-display: flex;
-align-items: center;
-justify-content: center;
-}
-.flex-blog {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.flex-home {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.search-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.info-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.data-post {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.data-post img {
-  /* width: 100%;
-  height: 100%; */
-  object-fit: cover;
-  border-radius: 50%;
-}
-.avatar-data{
-  width: 50px;height: 50px;
-}
-.status-data {
-  font-weight: bolder;
-  margin-top: 10px;
-  width: 6rem;
-  height: 2.5rem;
-  text-align: center;
-  line-height: 40px;
-  background-color: gold; 
-  border-radius: 25px;
-  font-style: italic;
-  font-family: "Merriweather Sans";
-}
-/* .dashBoard {
+.dashBoard {
   width: 300px;
   height: 820px;
   border-right: 6px double  #989BA5;
   position: relative;
 }
-
+.logo {
+  position: absolute;
+  width: 150px;
+  height: 50px;
+  background-color: pink;
+  border: 5px sodid black;
+  margin-top: 20px;
+}
 
 
 .text1 {
@@ -143,9 +73,9 @@ justify-content: center;
   left: 13rem;
   font-size:26px;
   top: 0px;
-} */
+}
 
-/* .icon-arrow-2 {
+.icon-arrow-2 {
   position: absolute;
   left: 13rem;
   font-size: 26px;
@@ -161,9 +91,9 @@ justify-content: center;
   padding-right: 140px;
 }
 
- */
 
-/* .flex-user {
+
+.flex-user {
   display: flex;
   position: absolute;
   top: 12rem;
@@ -174,18 +104,18 @@ justify-content: center;
 .flex-user:hover {
   background-color: #F4F2EE;
   border-radius: 5px;
-} */
+}
 
 
-/* 
+
 .icon-user {
   position: absolute;
   font-size: 20px;
   left: 1rem;
   top: 5px; 
-} */
+}
 
-/* .text3 {
+.text3 {
   position: absolute;
   font-size:20px;
   left: 3rem;
@@ -193,19 +123,19 @@ justify-content: center;
   top: 1.25px;
   padding-right: 140px;
   
-} */
+}
 
 
 
 
-/* .head {
+.head {
   padding-bottom: 50px;
   position: relative;
   width: 100vw;
   height: 100px;
-} */
+}
 
-/* .admin-page {
+.admin-page {
   display: flex;
   position: absolute;
 }
@@ -215,41 +145,41 @@ justify-content: center;
   display:flex;
   top: 4rem;
   left: 2rem;
-} */
+}
 
 .text5 {
-  /* position: absolute;
+  position: absolute;
   left: 6rem;
   font-weight: bold;
-  font-size: 20px; */
+  font-size: 20px;
   /* text-decoration: none; */
 }
 
-/* .icon-home {
+.icon-home {
   position: absolute;
   left: 4rem;
   font-size: 20px;
   top: -3px;
-} */
+}
 
 .text4{
-  /* position: absolute;
+  position: absolute;
   font-size: 20px;
-  font-weight: bold; */
+  font-weight: bold;
   /* text-decoration: none; */
   font-family: Merriweather Sans;
 }
 
 .text6{
-  /* position: absolute;
+  position: absolute;
   font-size: 2.5rem;
   left: 2rem;
   bottom: 48px;
   color: #2E5D9F;
-  font-weight: bold; */
+  font-weight: bold;
 }
 
-/* .main-bar {
+.main-bar {
   position: absolute;
   width: 90.5rem;
   height: 70px;
@@ -268,9 +198,9 @@ justify-content: center;
   left: 1rem;
   width: 10rem;
   border-right: 0.2px solid #6B6E7F;
-} */
+}
 
-/* .info-bar {
+.info-bar {
   position: absolute;
   display: flex;
   top: 12rem;
@@ -299,8 +229,8 @@ justify-content: center;
   display: flex;
   line-height: 60px;
   border-radius: 10px;
-} */
-/* 
+}
+
 .data-item {
   display: flex;
   flex-direction: column;
@@ -309,9 +239,9 @@ justify-content: center;
 
   left: 260px;
 
-} */
+}
 
-/* .status-data {
+.status-data {
   position: absolute;
   left:75.5rem;
   font-weight: bolder;
@@ -320,13 +250,13 @@ justify-content: center;
   height: 2.5rem;
   text-align: center;
   line-height: 40px;
-  background-color: gold; 
+  /* background-color: gold; */
   border-radius: 25px;
   font-style: italic;
-  font-family: "Merriweather Sans"; 
-} */
+  font-family: "Merriweather Sans";
+}
 
-/* .createat-data {
+.createat-data {
   position: absolute;
   left:54.1rem;
 
@@ -341,10 +271,10 @@ justify-content: center;
   width: 22rem;
   font-family: "Merriweather Sans"
 }
- */
 
 
-/* .usename-data {
+
+.usename-data {
   position: relative;
   left: 9.3rem;
   font-family: "Merriweather Sans";
@@ -371,9 +301,9 @@ justify-content: center;
   left: 15rem;
   top: 1.2rem; 
   height: 100%;
-} */
+}
 
-/* .main-bar input[type=text] {
+.main-bar input[type=text] {
   position: absolute;
   width: 22rem;
   height: 2rem;
@@ -388,9 +318,9 @@ justify-content: center;
 .main-bar input[type=text]::placeholder {
   font-weight: bold;
   padding-left: 5px;
-} */
+}
 
-/* .main-bar input:focus {
+.main-bar input:focus {
   outline:none;
 }
 
@@ -399,9 +329,9 @@ justify-content: center;
   bottom: 0.7rem;
   left: 21.6rem;
   font-size: 44px;
-} */
+}
 
-/* .ad-info {
+.ad-info {
   display: flex;
   top: 1.5rem;
   left: 74rem;
@@ -415,9 +345,9 @@ justify-content: center;
   border-radius: 50%;
   top: -10px;
   left: 1.2rem;
-} */
+}
 
-/* .ad-name {
+.ad-name {
   position: absolute;
   left: 5rem; 
   width: 100px;
@@ -428,9 +358,9 @@ justify-content: center;
   position: relative;
   font-family: headings;
   top: 20px;
-} */
+}
 
-/* .flex-home a {
+.flex-home a {
   background-image: linear-gradient(
       transparent calc(100% - 0.45em),
       var(--darkpink) 0
@@ -449,19 +379,23 @@ justify-content: center;
     ),
     linear-gradient(transparent calc(100% - 0.45em), var(--darkpink) 0);
 }
- */
 
- .dropdown {
-  /* position: absolute; */
-  /* display: inline-block; */
+:root {
+  --lightblue: #d8c4c3;
+  --darkpink: #c0e2e2;
 }
+
+.dropdown {
+  position: absolute;
+  display: inline-block;
+}
+
 .dropdown-content {
   display:none;
   position: absolute;
-} 
+}
 
-
- .dropdown-option {
+.dropdown-option {
   width: 90px;
   line-height: 25px;
   height: auto;
@@ -481,7 +415,7 @@ justify-content: center;
 
 .dropdown-option li:hover {
   transform: scale(1.1);
-} 
+}
 
 .dropdown-option-user li:hover {
   transform: scale(1.1);
@@ -502,7 +436,7 @@ justify-content: center;
   padding-left: 20px;
   color: #353535;
   
-} 
+}
 
 
 
@@ -524,7 +458,7 @@ div ul {
   overflow-y: scroll;
 }
 
-/* .info-user::-webkit-scrollbar {
+.info-user::-webkit-scrollbar {
   display: none;
 }
 
@@ -532,9 +466,9 @@ div ul {
   display: flex;
   line-height: 60px;
   border-radius: 10px;
-} */
+}
 
-/* .avatar-user {
+.avatar-user {
   position: absolute;
   left: 58px;
   padding-top: 8px;
@@ -546,9 +480,9 @@ div ul {
 .account {
   position: absolute;
   left: 79.5rem;
-} */
+}
 
-/* .phone {
+.phone {
   position: absolute;
   left: 60rem;
 }
@@ -564,9 +498,9 @@ div ul {
 .gender {
   position: absolute;
   left: 27rem;
-} */
+}
 
-/* .usename {
+.usename {
   position: relative;
   left: 7.2rem;
   font-family: "Merriweather Sans";
@@ -581,11 +515,11 @@ div ul {
 .text-add-mod {
   position: relative;
   left: 15px;
-} */
+}
 
 
 
-/* .add-mod {
+.add-mod {
   width: 100px;
 }
 
@@ -593,8 +527,8 @@ div ul {
   color: #807e7e;
   background-color: transparent;
   font-weight: bold;
-} */
-/* .check-btn{
+}
+.check-btn{
   color: #353535;
   background-color: rgb(158, 243, 158);
   border-radius: 5px;
@@ -622,4 +556,3 @@ div ul {
   font-family: headings;
   margin: 2px 0 2px 0;
 }
- */
