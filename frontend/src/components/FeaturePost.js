@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import dalat from "../image/dalat.jpg";
 import { useLocation } from "react-router-dom";
 import Axios, * as others from 'axios';
+import { Link } from "react-router-dom";
 
 function FeaturePost() {
   const { pathname } = useLocation();
@@ -19,12 +20,12 @@ function FeaturePost() {
       {posts.map((posts) => {
         const { idPost, postName, image } = posts;
         return (
-          <a href="#" className="feature_post" >
+          <Link to = {`/Blogs/${posts.idProvince}/${posts.idPost}`} className="feature_post" >
             <h2 className="feature_post--title">{postName} </h2>
             <div className="feature_post--img">
               <img src={image} alt={postName} />
             </div>
-          </a>
+          </Link>
         );
       })}
     </div>

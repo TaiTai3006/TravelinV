@@ -40,26 +40,16 @@ function App() {
       <GoogleOAuthProvider clientId="840620172422-p0ioib0pk0ebu85k45f0jap5fmmvnukn.apps.googleusercontent.com">
         <ScrollToTop />
         <Routes>
-<<<<<<< Updated upstream
-        <Route path="/Login" element={<Login />} />
-            <Route path="/Register" element={<Register />} />
-=======
->>>>>>> Stashed changes
           <Route path="/" element={<Header />}>
             <Route index element={<Home />} />
             <Route path="/Blogs" element={<Blogs />} />
             <Route path="/AboutUs" element={<AboutUs />} />
             <Route path="/Blogs/:idProvince" element={<ProvincePost />} />
             <Route path="/Blogs/:idProvince/:idPost" element={<ReadBlogs />} />
-<<<<<<< Updated upstream
-            <Route path="/Shop" element={<ReadBlogs />} />
-            
-=======
             <Route element={<ProtectLoginout />}>
               <Route path="/Login" element={<Login />} />
               <Route path="/Register" element={<Register />} />
             </Route>
->>>>>>> Stashed changes
             <Route path="/Register/Profile" element={<ProfileInput />} />
             <Route path="/Profile/:userName" element={<ProfileInput />} />
             <Route path="/Aboutus" element={<AboutUs />} />

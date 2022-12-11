@@ -1,10 +1,15 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../App";
+
 export default function CommentInput({
   checkReadBlog,
   focustInput,
   commentInput, 
   setCommentInput,
   handleComments
-}) {
+}) { const {user} = useContext(UserContext)
+const navigate = useNavigate()
   return (
     <div>
       {checkReadBlog.replyInput && (
@@ -21,7 +26,7 @@ export default function CommentInput({
             ></textarea>
             <button
               onClick={() => {
-                commentInput.description && handleComments();
+               user.loggedIn ? commentInput.description && handleComments() : navigate('/Login')
               }}
             >
               Send comment

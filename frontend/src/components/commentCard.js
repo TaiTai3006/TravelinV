@@ -4,7 +4,8 @@ import { FiCornerUpLeft } from "react-icons/fi";
 import { AiOutlineMore, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { useContext } from "react";
 import { UserContext } from "../App";
-import { omit } from "lodash";
+import { useNavigate } from "react-router-dom";
+
 
 export function CommentCard({
   setCheckReadBlog,
@@ -17,6 +18,7 @@ export function CommentCard({
   handleEditComment,
   ...Children
 }) {
+const navigate = useNavigate()
   const { user } = useContext(UserContext);
   return (
     <div>
@@ -81,11 +83,11 @@ export function CommentCard({
                     ? `@${comment.userName} `
                     : "",
               });
-              setCheckReadBlog({
+              user.loggedIn ? setCheckReadBlog({
                 ...checkReadBlog,
                 keyReply: comment.idComment,
                 replyInput: false,
-              });
+              }) : navigate('/Login')
             }}
           >
             <FiCornerUpLeft /> Reply

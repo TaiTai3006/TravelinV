@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import "../readBlogs.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef, useMemo } from "react";
 import { HiChevronRight } from "react-icons/hi";
 import { FiArrowRight } from "react-icons/fi";
@@ -15,8 +15,10 @@ import removeVietnameseTones from "../components/removeVietnameseTones";
 //Chứa thông tin cơ bản của tác giả và tiêu đề bài post
 
 function ReadBlogs() {
+  const navigate = useNavigate()
   let PageSize = 3;
   const {
+    user,
     province,
     authorPost,
     desPost,
@@ -96,7 +98,7 @@ function ReadBlogs() {
             <div className="author-like">
               <button
                 onClick={() => {
-                  handleLike();
+                user.loggedIn ?  handleLike() : navigate('/Login')
                 }}
               >
                 {!checkReadBlog.checkLike ? (
@@ -127,7 +129,7 @@ function ReadBlogs() {
             <div key={des.idDes}>
               <h2>{des.title}</h2>
               <p>{des.description}</p>
-              {des.image1 && des.image2 ? (
+              {des.image1 && (des.image2 ? (
                 <div className="f-image2">
                   <img src={des.image1} alt="image of post"></img>
                   <img src={des.image2} alt="image of post"></img>
@@ -136,7 +138,7 @@ function ReadBlogs() {
                 <div className="f-image1">
                   <img src={des.image1} alt="image of post"></img>
                 </div>
-              )}
+              ))}
             </div>
           ))}
         </article>

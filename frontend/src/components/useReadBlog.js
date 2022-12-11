@@ -192,6 +192,7 @@ const useReadBlog = (callback) => {
   console.log(commentInput);
 
   return {
+    user,
     province,
     authorPost,
     desPost,
