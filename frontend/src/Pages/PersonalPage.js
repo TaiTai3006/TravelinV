@@ -1,6 +1,7 @@
 import "../PersonalPage.css";
 // import { IconContext } from "react-icons";
 import { BsBookmarkHeartFill } from "react-icons/bs";
+import { BsFillHandbagFill } from "react-icons/bs";
 import { BsFillFilterSquareFill } from "react-icons/bs";
 import {useEffect} from 'react';
 import {useState} from 'react';
@@ -11,7 +12,6 @@ import { MdOutlineBookmarkRemove } from "react-icons/md";
 import { RiDislikeLine } from "react-icons/ri";
 import { MdOutlinePendingActions } from "react-icons/md";
 
-
 import axios from "axios"
 // import { UserContext } from "../App";
 import { useLocation } from "react-router-dom";
@@ -19,9 +19,9 @@ import { IconContext } from "react-icons";
 
 
 const tabs=[
-    {name:'Post', style:<BsFillFilterSquareFill className='Thang_a'></BsFillFilterSquareFill>},
-    {name:'PostLike', style: <BsBookmarkHeartFill className='Thang_a'></BsBookmarkHeartFill>}, 
-    {name:'Pending', style: <MdOutlinePendingActions className='Thang_a'></MdOutlinePendingActions>}
+    {name:'Post', style:<IconContext.Provider value={{ className: 'Thang_a'}}><BsFillFilterSquareFill/></IconContext.Provider>},
+    {name:'PostLike', style: <IconContext.Provider value={{ className: 'Thang_a'}}><BsBookThang_Icon_PendingmarkHeartFill/></IconContext.Provider>}, 
+    {name:'Pending', style: <IconContext.Provider value={{ className: 'Thang_Icon_Pending'}}><MdOutlinePendingActions/></IconContext.Provider>}
 ]
 
 export default function PersonalPage() {
