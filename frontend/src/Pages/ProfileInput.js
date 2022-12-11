@@ -1,47 +1,71 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BsFileImage } from "react-icons/bs";
 import { BiChevronRight } from "react-icons/bi";
+import axios from "axios";
 
 import "../ProfileInput.css";
 import useForm from "../components/useForm";
 import Errs from "../components/errors";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function ProfileInput() {
+  const location = useLocation();
   const {
+    user,
     handleChange,
     account,
+    setErrors,
     handleImage,
     errors,
     handleUpdateAccount,
+    setAccount,
+    
   } = useForm();
-  const navigate = useNavigate()
-  // useEffect(()=>{
-  //   const fecthGetAccount = async () => {
-  //     try {
-  //       const res = await axios.get(
-  //         "http://localhost:8800/account/" + user.userName
-  //       );
-  //       setAccount(res.data);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   fecthGetAccount()
-  // },[])
+  const navigate = useNavigate();
+  useEffect(() => {
+    const fecthGetAccount = () => {
+      axios
+        .get(`http://localhost:8800/account/${location.pathname.split("/")[2]}`)
+        .then((res) =>
+         { setAccount({
+            ...account,
+            name: res.data[0].name,
+            imagePreview: res.data[0].avatar,
+            avatar: res.data[0].avatar,
+            gender: res.data[0].gender,
+            phoneNumber: res.data[0].phoneNumber,
+            gmail: res.data[0].gmail,
+          })
+          const newSetUser = {
+            ...user,
+            accountType: res.data[0].accountType,
+            image: res.data[0].avatar,
+          };
+          const jsonUser = JSON.stringify(newSetUser);
+          localStorage.setItem("user", jsonUser);
+          setErrors('')
+        }
+        );
+    };
+    location.pathname.split("/")[2] && fecthGetAccount();
+  }, [location]);
 
   console.log(account);
   return (
     <div className="profile-container">
       <div className="profile-header">
         <h1 className="profile-title">Profile</h1>
-        
-          <button onClick={()=>{
-            navigate('/Login')
-          }} type="button" className="profile-nextbtn">Next
-          <BiChevronRight/>
-          </button>
-        
+
+        <button
+          onClick={() => {
+            navigate("/Login");
+          }}
+          type="button"
+          className="profile-nextbtn"
+        >
+          Next
+          <BiChevronRight />
+        </button>
       </div>
       <form className="profile-form">
         <div className="profile-image">
@@ -75,7 +99,7 @@ function ProfileInput() {
             type="text"
             placeholder="Enter your Name "
             name="name"
-            defaultValue={account.name}
+            value={account.name}
             onChange={handleChange}
             required
           ></input>
@@ -85,6 +109,7 @@ function ProfileInput() {
             type="text"
             placeholder="Enter your email "
             name="gmail"
+            value={account.gmail}
             onChange={handleChange}
             required
           ></input>
@@ -95,6 +120,7 @@ function ProfileInput() {
             placeholder="Enter your phone "
             name="phoneNumber"
             onChange={handleChange}
+            value={account.phoneNumber}
             required
           ></input>
           {errors.phoneNumber && <Errs err={errors.phoneNumber} />}

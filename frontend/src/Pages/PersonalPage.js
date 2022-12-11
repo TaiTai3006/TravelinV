@@ -10,11 +10,11 @@ import { MdEdit } from "react-icons/md";
 import { MdOutlineBookmarkRemove } from "react-icons/md";
 import { RiDislikeLine } from "react-icons/ri";
 import { MdOutlinePendingActions } from "react-icons/md";
-
+import default_avatar from "../image/default_avatar.png"
 import axios from "axios";
 import { useContext } from "react";
 import { UserContext } from "../App";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IconContext } from "react-icons";
 
 const tabs = [
@@ -45,6 +45,7 @@ const tabs = [
 ];
 
 export default function PersonalPage() {
+  const navigate = useNavigate();
   const { user } = useContext(UserContext);
   // console.log(User.user)
   const [type, setType] = useState("Post");
@@ -115,12 +116,13 @@ export default function PersonalPage() {
             }/Personal/${type}`
           )
           .then((response) => {
-            if(response.data){
-                console.log(type)
-                if(type === "Pending"){
-                    if(user.userName === location.pathname.split("/")[2]) setContent(response.data)
-                }else setContent(response.data)
-            } 
+            if (response.data) {
+              console.log(type);
+              if (type === "Pending") {
+                if (user.userName === location.pathname.split("/")[2])
+                  setContent(response.data);
+              } else setContent(response.data);
+            }
             if (type === "Post") {
               setCountPost(response.data.length);
               setContent(response.data);
@@ -240,7 +242,7 @@ export default function PersonalPage() {
       {/* {setType('Post')} */}
       {/* {console.log(PostPersonal)} */}
       <div id="Thang_avatar_child">
-        <img src={Name[0].avatar} />
+        <img src={Name[0].avatar ? Name[0].avatar :default_avatar} />
       </div>
       <div id="Thang_card"></div>
 
@@ -250,7 +252,14 @@ export default function PersonalPage() {
             {" "}
             <FaEdit></FaEdit>
           </button>
-          <button id="Thang_edit">Chỉnh sửa thông tin cá nhân</button>
+          <button
+            onClick={() =>
+              navigate(`/Profile/${location.pathname.split("/")[2]}`)
+            }
+            id="Thang_edit"
+          >
+            Edit Profile
+          </button>
         </ul>
         <p className="Thang_name">{Name[0].userName}</p>
         <div id="Thang_tab">

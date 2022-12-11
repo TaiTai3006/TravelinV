@@ -4,6 +4,7 @@ import Axios, * as others from "axios";
 import { HiChevronDown } from "react-icons/hi";
 import { IconContext } from "react-icons";
 import { UserContext } from "../App";
+import { Link } from "react-router-dom";
 const Modal = () => {
   // const [isShow, setIsShow] = useState(false);
 
@@ -39,13 +40,15 @@ const Modal = () => {
       <div className="modal-view">
           <div className="palace-modal">
             {places.map((place) => {
-              const { idProvince, provinceName, image } = place;
+
               return (
+                
+                  <Link to = {`/Blogs/${place.idProvince}`}>
                 <div className="paplace-item">
-                  <a href="#">
-                    <p>{provinceName}</p>
-                  </a>
+                    <p>{place.provinceName}</p>
                 </div>
+                    </Link>
+               
               );
             })}
           </div>

@@ -5,7 +5,7 @@ const cloudinary = require("cloudinary").v2;
 export const CreateTableAccount = (req, res) => {
   const userNameId = req.params.userName;
   const q =
-    "SELECT `userName`, `accountType`, `avatar` FROM `account` WHERE `userName` = ?";
+    "SELECT `userName`, `name`, `gender`, `gmail`, `phoneNumber`, `accountType`, `avatar` FROM `account` WHERE `userName` = ?";
   db.query(q,[userNameId], (err, data) => {
     if (err) return res.json(err);
     return res.json(data);
