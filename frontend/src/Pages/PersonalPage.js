@@ -1,4 +1,5 @@
 import "../PersonalPage.css";
+// import { IconContext } from "react-icons";
 import { BsBookmarkHeartFill } from "react-icons/bs";
 import { BsFillHandbagFill } from "react-icons/bs";
 import { BsFillFilterSquareFill } from "react-icons/bs";
@@ -14,9 +15,14 @@ import { MdOutlinePendingActions } from "react-icons/md";
 import axios from "axios"
 // import { UserContext } from "../App";
 import { useLocation } from "react-router-dom";
+import { IconContext } from "react-icons";
 
 
-const tabs=[{name:'Post', style:<BsFillFilterSquareFill className='Thang_a'></BsFillFilterSquareFill>},{name:'PostLike', style: <BsBookmarkHeartFill className='Thang_a'></BsBookmarkHeartFill>}, {name:'Pending', style: <MdOutlinePendingActions className='Thang_a'></MdOutlinePendingActions>}]
+const tabs=[
+    {name:'Post', style:<BsFillFilterSquareFill className='Thang_a'></BsFillFilterSquareFill>},
+    {name:'PostLike', style: <BsBookmarkHeartFill className='Thang_a'></BsBookmarkHeartFill>}, 
+    {name:'Pending', style: <MdOutlinePendingActions className='Thang_a'></MdOutlinePendingActions>}
+]
 
 export default function PersonalPage() {
     // const User = useContext(UserContext);
@@ -172,7 +178,7 @@ function HandlCoutEvent(type, id)
                         } : {}}
                     onClick={()=>setType(tab.name)}
                 > 
-                <div><span style={index === 2 ? {verticalAlign: '-3px', fontSize: '24px'}:{}}>{tab.style}</span><p>{tab.name}</p></div>
+                <div><span style={index === 2 ? {}:{}}>{tab.style}</span><p>{tab.name}</p></div>
                 </button>
             ))}
            
@@ -190,7 +196,7 @@ function HandlCoutEvent(type, id)
                         </li>
                     </p>
                     <p id='Thang_CONTENT'>
-                        <p>{Content0.name}</p>
+                        <p>{Content0.userName}</p>
                         <h1 id='Thang_Content_Author'>{Content0.postName}</h1>
                         <p>{Content0.provinceName}&nbsp;&nbsp;&nbsp;&nbsp;{Content0.Day}-{Content0.Month}-{Content0.Year}</p>
                     </p>
