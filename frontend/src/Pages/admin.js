@@ -215,21 +215,20 @@ function Admin() {
     })
   },[])
 
-
+console.log(searchUser[5]);
   
   const [type, settype] = useState('blog')
   
   function handleEvent (type) {
     if (type==='blog')
     return  <div className="info data-item ">
-      {/* <DataPost posts={search}/>  */}
+      <DataPost posts={search}/> 
       </div>
     if (type==="user") return <div className='info-user' >
-      <DataUser user={searchUser} posts ={posts}/>
+      <DataUser user={searchUser}/>
     </div>
 
   }   
-
   function handleBar (type) {
     if (type==='blog')
     return (
@@ -288,7 +287,6 @@ function Admin() {
         <div className="text3" onClick={()=>settype('user')}>Users</div>
         </div> 
       </div>
-
       <div className="head">
         <div className="text6">Admin</div>
         <div className="flex-home">
@@ -303,15 +301,17 @@ function Admin() {
         <div className="search-bar">
         <input type="text" onChange={(text) => {
       setSearch(posts.filter((post)=>{
+        
       return post.postName.toLowerCase().includes(text.target.value.toLowerCase()) ||  post.postName.toLowerCase().includes(text.target.value.toLowerCase())
     }
     ))
-    setSearchUser(user.filter((user)=>{
-      return user.name.toLowerCase().includes(text.target.value.toLowerCase())
+    setSearchUser(user.filter((users)=>{
+      return users.userName.toLowerCase().includes(text.target.value.toLowerCase())
+
     }
     ))
-      
-      
+ 
+ 
         }} placeholder="Search.."/>
         <div className="find-icon"><IoSearchCircle color='#48D10C'/></div>
         </div>
