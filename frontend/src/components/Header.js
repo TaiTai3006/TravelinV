@@ -2,6 +2,7 @@ import { Outlet, Link } from "react-router-dom";
 import { useContext } from "react";
 import { RiShoppingBasket2Line } from "react-icons/ri";
 import { HiChevronDown } from "react-icons/hi";
+import { MdOutlineCreate } from "react-icons/md";
 import { IconContext } from "react-icons";
 import { UserContext } from "../App";
 import defaultAvatar from "../image/default_avatar.png";
@@ -18,15 +19,15 @@ const Header = () => {
       <header>
         <div className="nav-right">
         <Link to="/">
-          <img className="logo-header " src={logo}></img>
+          <img className="logo-header " alt="logo" src={logo}></img>
         </Link>
         <div id="nav">
           <Link to="/">Home</Link>
           <Link to="/Blogs">Blogs</Link>
-          <Link to="/Shop">
-            Shop
+          <Link to="/CreatePost">
+            Create Post
             <IconContext.Provider value={{ className: "icon_shop" }}>
-              <RiShoppingBasket2Line />
+              <MdOutlineCreate />
             </IconContext.Provider>
           </Link>
           <Link to="/AboutUs">About us</Link>

@@ -92,7 +92,7 @@ footer {
   font-weight: 200;
   text-transform: none;
 }
-.contact a:hover {
+.contact > a:hover {
   text-decoration: underline;
 }
 .link-gmail {
