@@ -17,4 +17,11 @@ export const ProtecteDashboard = () => {
   
   return (user.accountType === 'admin' || user.accountType === 'collaborator') ? <Outlet /> : <Navigate to="/"  />
 };
+
+export const ProtectLoginout = () => {
+  const isAuth = useAuth();
+  
+  return !isAuth ? <Outlet /> : <Navigate to="/"  />
+};
+
 export default ProtectedRoutes;

@@ -4,7 +4,8 @@ import { FiCornerUpLeft } from "react-icons/fi";
 import { AiOutlineMore, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { useContext } from "react";
 import { UserContext } from "../App";
-import { omit } from "lodash";
+import { useNavigate } from "react-router-dom";
+
 
 export function CommentCard({
   setCheckReadBlog,
@@ -16,7 +17,8 @@ export function CommentCard({
   handleDeleteComment,
   handleEditComment,
   ...Children
-}) { 
+}) {
+const navigate = useNavigate()
   const { user } = useContext(UserContext);
   return (
     <div>
@@ -26,20 +28,32 @@ export function CommentCard({
           ...Children,
         }}
       >
-        {user.userName === comment.userName && (
+        {(user.userName === comment.userName ||
+          user.accountType === "admin") && (
           <div className="comment-more">
             <IconContext.Provider value={{ className: "icon_OulineMore" }}>
               <AiOutlineMore />
             </IconContext.Provider>
             <div className="comment-edit-delete">
-              <button
-                onClick={() => {
-                  setCheckReadBlog({...checkReadBlog, checkEdit: true, checkReply: comment.idComment, replyInput: false})
-                  setCommentInput({...commentInput,description: comment.description, idReply: comment.idReply})
-                }}
-              >
-                <AiFillEdit /> Edit
-              </button>
+              {user.userName === comment.userName && (
+                <button
+                  onClick={() => {
+                    setCheckReadBlog({
+                      ...checkReadBlog,
+                      checkEdit: true,
+                      checkReply: comment.idComment,
+                      replyInput: false,
+                    });
+                    setCommentInput({
+                      ...commentInput,
+                      description: comment.description,
+                      idReply: comment.idReply,
+                    });
+                  }}
+                >
+                  <AiFillEdit /> Edit
+                </button>
+              )}
               <button
                 onClick={() => {
                   handleDeleteComment(className, comment.idComment);
@@ -62,52 +76,71 @@ export function CommentCard({
           <button
             className={className}
             onClick={() => {
-              setCommentInput({...commentInput, description: user.userName !== comment.userName ?  `@${comment.userName} ` : ""})
-              setCheckReadBlog({
+              setCommentInput({
+                ...commentInput,
+                description:
+                  user.userName !== comment.userName
+                    ? `@${comment.userName} `
+                    : "",
+              });
+              user.loggedIn ? setCheckReadBlog({
                 ...checkReadBlog,
                 keyReply: comment.idComment,
                 replyInput: false,
-              });
+              }) : navigate('/Login')
             }}
           >
             <FiCornerUpLeft /> Reply
           </button>
         </div>
       </div>
-      {checkReadBlog.checkEdit && comment.idComment === checkReadBlog.checkReply && (
-        <div className="comments-reply">
-          <div className="comments-reply-title">Write a comment</div>
-          <div className="comments-form">
-            <label>Edit comment</label>
-            <div>
+      {checkReadBlog.checkEdit &&
+        comment.idComment === checkReadBlog.checkReply && (
+          <div className="comments-reply">
+            <div className="comments-reply-title">Write a comment</div>
+            <div className="comments-form">
+              <label>Edit comment</label>
+              <div>
+                <button
+                  className="cancel"
+                  onClick={() => {
+                    setCommentInput({ ...commentInput, description: "" });
+                    setCheckReadBlog({
+                      ...checkReadBlog,
+                      checkEdit: false,
+                      checkReply: "",
+                      replyInput: true,
+                    });
+                  }}
+                >
+                  Click here to cancel edit.
+                </button>
+              </div>
+              <textarea
+                value={commentInput.description}
+                onChange={(e) => {
+                  setCommentInput({
+                    ...commentInput,
+                    description: e.target.value,
+                  });
+                }}
+              ></textarea>
               <button
-                className="cancel"
                 onClick={() => {
-                  setCommentInput({...commentInput, description: ''})
-                  setCheckReadBlog({...checkReadBlog, checkEdit: false, checkReply: '', replyInput: true})
+                  commentInput.description &&
+                    comment.description !== commentInput.description &&
+                    handleEditComment(
+                      className,
+                      comment.idComment,
+                      commentInput.idReply
+                    );
                 }}
               >
-                Click here to cancel edit.
+                Send comment
               </button>
             </div>
-            <textarea
-              value={commentInput.description}
-              onChange={(e) => {
-                setCommentInput({...commentInput, description: e.target.value})
-              }}
-            ></textarea>
-            <button
-              onClick={() => {
-                commentInput.description &&
-                  comment.description !== commentInput.description &&
-                  handleEditComment(className, comment.idComment, commentInput.idReply)
-              }}
-            >
-              Send comment
-            </button>
           </div>
-        </div>
-      )}
+        )}
     </div>
   );
 }

@@ -15,7 +15,9 @@ import "react-toastify/dist/ReactToastify.css";
 function FormBlog() {
 
  
-// const notify = () => toast("Successful post");
+const notify = () => toast.success('Posted successfully, awaiting moderation!!!', {
+  position: toast.POSITION.TOP_RIGHT
+});
 
 
   const {
@@ -79,7 +81,7 @@ function FormBlog() {
               id="input-img"
               onChange={handleTitleImage}
             />
-            <input type="submit" className="submit" value="POST" ></input>
+            <input type="submit" onClick={(e)=> handleCreatePost(e, notify())}  className="submit" value="POST" ></input>
              {/* <div className="submit">
               <input type="submit" className="submit" value="POST"></input>
             </div> */}
