@@ -21,6 +21,10 @@ function App() {
 
   const [currentPage, setCurrentPage] = useState(1);
 
+  useEffect(() => {
+    window && window.scrollTo(0, 650)
+  }, [currentPage]);
+
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
@@ -91,7 +95,7 @@ function App() {
       </div>
       <div className="province-search-container">
         <div className="waylf">What are you looking for?</div>
-        <div className="input-container">
+        <div className="province-input-container">
           <input
             type="text"
             onChange={(text) => {

@@ -305,7 +305,7 @@
   height: 100%;
 }
 
-input[type=text] {
+.main-bar input[type=text] {
   position: absolute;
   width: 22rem;
   height: 2rem;
@@ -317,12 +317,12 @@ input[type=text] {
   left: 2rem;
 }
 
-::placeholder {
+.main-bar input[type=text]::placeholder {
   font-weight: bold;
   padding-left: 5px;
 }
 
-input:focus {
+.main-bar input:focus {
   outline:none;
 }
 

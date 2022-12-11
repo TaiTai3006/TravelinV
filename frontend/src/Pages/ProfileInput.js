@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { BsFileImage } from "react-icons/bs";
+import { BiChevronRight } from "react-icons/bi";
+
 import "../ProfileInput.css";
 import useForm from "../components/useForm";
 import Errs from "../components/errors";
 import axios from "axios";
 
 function ProfileInput() {
-  const { handleChange, account, handleImage, user, setAccount, errors, handleUpdateAccount} = useForm();
+  const {
+    handleChange,
+    account,
+    handleImage,
+    user,
+    setAccount,
+    errors,
+    handleUpdateAccount,
+  } = useForm();
   // useEffect(()=>{
   //   const fecthGetAccount = async () => {
   //     try {
@@ -21,16 +31,23 @@ function ProfileInput() {
   //   fecthGetAccount()
   // },[])
 
-  console.log(account)
+  console.log(account);
   return (
     <div className="profile-container">
-      <h1 className="profile-title">Profile</h1>
+      <div className="profile-header">
+        <h1 className="profile-title">Profile</h1>
+        
+          <button type="button" className="profile-nextbtn">Next
+          <BiChevronRight/>
+          </button>
+        
+      </div>
       <form className="profile-form">
         <div className="profile-image">
           <label for="input-profileimg" className="profile-img">
             <BsFileImage className="preview--icon" />
 
-            {account.imagePreview  && (
+            {account.imagePreview && (
               <div>
                 <img
                   alt="not fount"
@@ -61,9 +78,7 @@ function ProfileInput() {
             onChange={handleChange}
             required
           ></input>
-          {errors.name && (
-            <Errs err={errors.name}/>
-          )}
+          {errors.name && <Errs err={errors.name} />}
           <span> Email </span>
           <input
             type="text"
@@ -72,9 +87,7 @@ function ProfileInput() {
             onChange={handleChange}
             required
           ></input>
-          {errors.gmail && (
-            <Errs err={errors.gmail}/>
-          )}
+          {errors.gmail && <Errs err={errors.gmail} />}
           <span> Phone </span>
           <input
             type="text"
@@ -83,9 +96,7 @@ function ProfileInput() {
             onChange={handleChange}
             required
           ></input>
-          {errors.phoneNumber && (
-            <Errs err={errors.phoneNumber}/>
-          )}
+          {errors.phoneNumber && <Errs err={errors.phoneNumber} />}
           <span> Gender </span>
           <div className="choice-gender-container">
             <div className="choice-gender">
@@ -112,7 +123,12 @@ function ProfileInput() {
             </div>
           </div>
           <div className="submit-profile">
-            <input type="submit" className="submit" value="SUBMIT" onClick={handleUpdateAccount}></input>
+            <input
+              type="submit"
+              className="submit"
+              value="SUBMIT"
+              onClick={handleUpdateAccount}
+            ></input>
           </div>
         </div>
       </form>

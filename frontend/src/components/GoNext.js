@@ -3,56 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import Axios, * as others from 'axios';
 function GoNext() {
   const [places, setPlace] = useState([
-    // {
-    //   id: 1,
-    //   province: "Da Nang",
-    //   img: { danang },
-    // },
-    // {
-    //   id: 2,
-    //   province: "Da Nang",
-    //   img: { danang },
-    // },
-    // {
-    //   id: 3,
-    //   province: "Da Nang",
-    //   img: { danang },
-    // },
-    // {
-    //   id: 4,
-    //   province: "Da Nang",
-    //   img: { danang },
-    // },
-    // {
-    //   id: 5,
-    //   province: "Da Nang",
-    //   img: { danang },
-    // },
-    // {
-    //   id: 6,
-    //   province: "Da Nang",
-    //   img: { danang },
-    // },
-    // {
-    //   id: 7,
-    //   province: "Da Nang",
-    //   img: { danang },
-    // },
-    // {
-    //   id: 8,
-    //   province: "Da Nang",
-    //   img: { danang },
-    // },
-    // {
-    //   id: 9,
-    //   province: "Da Nang",
-    //   img: { danang },
-    // },
-    // {
-    //   id: 10,
-    //   province: "Da Nang",
-    //   img: { danang },
-    // },
+    
   ]);
   const location = useLocation()
   useEffect(() =>{

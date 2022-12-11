@@ -31,7 +31,7 @@ function DataPost({posts}) {
                 <img class="avatar-data" src={posts.image}/>
                 <a href=""><div class="title-data">{posts.postName}</div></a>
                 <div className="createat-data" >{posts.dateTime}</div>
-                <div /*onClick={() => setCurrentStatus('ok')} */className="status-data" style={{backgroundColor: posts.status === "Pending" ? "#f1bc68" : "indianred"}} >{posts.status} </div>
+                <div /*onClick={() => setCurrentStatus('ok')} */className="status-data" style={{backgroundColor: posts.status === "pending" ? "#f1bc68" : "indianred"}} >{posts.status} </div>
 
                 <div className="dropdown">
                      <div className="option-data" ><BsThreeDots/></div>

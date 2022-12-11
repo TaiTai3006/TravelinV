@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState,useEffect  } from "react";
 import { HiChevronDown } from "react-icons/hi";
-import dataProvince from "../dataProvince";
 import img from "../image/Dalat.png";
+import Axios, * as others from "axios";
+import { Link } from "react-router-dom";
 
 function Intro() {
-  const [provinces, setProvinces] = useState(dataProvince);
+  const [places, setPlace] = useState([]);
+  useEffect(() => {
+    Axios.get("http://localhost:8800/home/gonext").then((response) => {
+      setPlace(response.data);
+    });
+  }, []);
   const [showOverlay, toggleOverlay] = useState(false);
   return (
     <>
@@ -43,11 +49,14 @@ function Intro() {
                       e.stopPropagation();
                     }}
                   >
-                    {provinces.map((province) => {
+                    {places.map((place) => {
+                      const { idProvince, provinceName, image } = place;
                       return (
-                        <>
-                          <span className="province-name">{province.name}</span>
-                        </>
+                        <div className="next_place-item">
+                          <Link to={`/Blogs/${place.idProvince}`}>
+                            <p>{provinceName}</p>
+                          </Link>
+                        </div>
                       );
                     })}
                   </div>

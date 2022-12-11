@@ -14,7 +14,33 @@
   --lightblue: #d8c4c3;
   --darkpink: #c0e2e2;
 }
-
+/* Hover  */
+.modal-container {
+  display: inline-flex;
+  align-content: center;
+  /* justify-content: center; */
+  flex-direction: column;
+}
+.modal {
+  position: relative;
+  padding: 0 20px;
+  text-align: right;
+}
+.modal-container:hover .modal-view {
+  display: inline-block;
+}
+.modal-view {
+  text-align: center;
+  line-height: 30px;
+  padding:10px;
+  display: none;
+  box-shadow: 0px 0px 5px 2px #d2d2d2;
+  border-radius: 10px;
+  position: relative;
+  top: 10%;
+  right: 0;
+  background-color: #fff;
+}
 header {
   height: 60px;
   font-family: headings;
@@ -32,7 +58,6 @@ header {
   align-items: center;
   position: absolute;
   top: 0;
-
 }
 #nav {
   display: flex;
@@ -54,7 +79,7 @@ a {
   text-align: center;
   /* line-height: 60px; */
 }
-.logo-header  {
+.logo-header {
   width: 100px;
   margin-top: 10px;
   margin-left: 15px;
@@ -74,14 +99,6 @@ a:hover {
 .nav-column {
   display: none;
 }
-.icon-checkbox {
-  font-size: 20px;
-  border-radius: 51% 49% 49% 51% / 59% 56% 44% 41%;
-  background-color: #f5f4f2;
-  width: 35px;
-  height: 35px;
-}
-
 
 #nav1 {
   line-height: 60px;
@@ -145,6 +162,11 @@ li {
   bottom: -4px;
   right: -10px;
 }
+.overlay-content {
+  position: absolute;
+  top: 10% !important;
+  display: block;
+}
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   /* Header */
@@ -190,7 +212,6 @@ li {
   .palace-list {
     text-align: right;
     margin-right: 20px !important;
-
   }
   .profile-form {
     flex-direction: column;
@@ -209,7 +230,6 @@ li {
   .welcome_text {
     width: 100%;
     text-align: center;
-    
   }
   .overlayContent {
     width: 80% !important;
@@ -267,9 +287,7 @@ li {
     font-size: 60px !important;
   }
   .goto-container {
-    
-    
-    margin:   0 15px !important;
+    margin: 0 15px !important;
   }
   /*
   .goto-container::-webkit-scrollbar {
@@ -279,16 +297,15 @@ li {
     margin-left: 50px !important;
   }
   .body-ctn {
-    margin:  15px !important;
-
+    margin: 15px !important;
   }
   .featured-post-ctn {
     flex-direction: column;
     margin: 15px 0 !important;
   }
   .image-ctn {
-    margin: 10px 0  !important;
-    
+    margin: 10px 0 !important;
+
     width: 100% !important;
     /* height: auto !important;; */
   }
@@ -298,11 +315,10 @@ li {
   .recent-post-ctn {
     flex-direction: column;
     margin: 15px 0 !important;
-
   }
   .img-recent-ctn {
     width: 100% !important;
-    margin:  15px 0 !important;
+    margin: 15px 0 !important;
   }
   .realated-post-ctn {
     bottom: 0 !important;
@@ -311,15 +327,12 @@ li {
   }
   .sidebar-articles {
     margin-bottom: 50px !important;
-
   }
   .slider-ctn {
     width: 100% !important;
     height: 500px !important;
     margin: 5px !important;
     overflow: visible !important;
-
-
   }
   .recent h2 {
     font-size: 1.5rem !important;
@@ -327,14 +340,11 @@ li {
 
   .slider-container {
     flex-direction: column;
-   
-
   }
-  .slider-des{
+  .slider-des {
     left: 5% !important;
     font-size: 15px !important;
     width: 200px !important;
-
   }
   .slider-img {
     height: 500px !important;
@@ -347,7 +357,7 @@ li {
   }
   .slider-button {
     padding: 8px 12px !important;
-    top: 70% !important; 
+    top: 70% !important;
   }
   .slider-title {
     left: 5% !important;
@@ -360,11 +370,10 @@ li {
   .comments-contain {
     width: 100%;
   }
-  .comments-area{
+  .comments-area {
     width: 100% !important;
-
   }
-  .comments-respond{
+  .comments-respond {
     width: 100%;
   }
   .img_post {
@@ -403,7 +412,6 @@ li {
     font-size: 25px !important;
     right: -2px !important;
     bottom: 0px !important;
-    
   }
   .img_tilte_custom {
     top: -212px !important;
@@ -424,19 +432,17 @@ li {
   .comments-area {
     /* margin: 15px !important; */
   }
-  .comments-reply-title{
+  .comments-reply-title {
     margin: 20px !important;
   }
   .comments-form {
     margin: 20px !important;
-
   }
   .related-category_card {
     width: 90%;
-   
   }
   .img_tilte_blog {
-    border-radius: 69% 0% 38% 70% / 68% 100% 0% 85% ;
+    border-radius: 69% 0% 38% 70% / 68% 100% 0% 85%;
   }
   .sitemap {
     width: 100% !important;
@@ -478,9 +484,8 @@ li {
   .welcome_text {
     width: 100%;
     text-align: center;
-    
   }
-  
+
   .intro_text--cover {
     width: 70% !important;
     left: 40px !important;
@@ -488,12 +493,10 @@ li {
   }
   .intro_image {
     border-radius: 0% 0% 73% 70% / 0% 72% 83% 20%;
-    
   }
   .intro_container img {
-   width: 150% !important;
-   height: 70% !important;
-
+    width: 150% !important;
+    height: 70% !important;
   }
   .destination_text span {
     opacity: 0.5;
@@ -533,8 +536,8 @@ li {
   #img_post .img_title {
     width: 820px !important;
     height: 650px !important;
-    top:-30% !important;
-  right: 30% !important;
+    top: -30% !important;
+    right: 30% !important;
   }
   #img_post .img_custom {
     width: 820px !important;
@@ -543,11 +546,10 @@ li {
   .comments-contain {
     width: 100%;
   }
-  .comments-area{
+  .comments-area {
     width: 100% !important;
-
   }
-  .comments-respond{
+  .comments-respond {
     width: 100%;
   }
   .img_post {
@@ -605,16 +607,14 @@ li {
   .comments-area {
     /* margin: 15px !important; */
   }
-  .comments-reply-title{
+  .comments-reply-title {
     margin: 20px !important;
   }
   .comments-form {
     margin: 20px !important;
-
   }
   .related-category_card {
     width: 90% !important;
-   
   }
   .sitemap {
     width: 100% !important;
@@ -632,22 +632,41 @@ li {
   }
   #nav-item {
     display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    width: 300px;
+    /* flex-direction: column; */
+    
+    /* width: 300px; */
+    z-index: 1000;
   }
-  .nav__checkbox {
-    display: none;
+  #nav-item a {
+    background-color: #e8e7e5 !important;
+    color: #353535;
+    align-items: center;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 9px !important;
+    font-family: Merriweather Sans;
+    width: 117px;
+    height: 37px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* width: 132px; */
+    height: 50px;
+    margin: 0 10px;
+    border-radius: 40px;
+    background-color: #f5f4f2;
+    border-radius: 40px;
+    color: #353535;
+    
+    
   }
+  
   .nav__checkbox:checked ~ #nav-item {
     width: 100%;
     opacity: 1;
   }
-  #nav-item {
-    z-index: 1500;
-    width: 0;
-    opacity: 0;
-  }
+ 
   .nav__button {
     z-index: 2000;
     font-weight: 200;

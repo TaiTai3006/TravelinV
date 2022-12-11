@@ -1,6 +1,12 @@
 import React from "react";
 import "../AboutUs.css";
 import member1 from "../../src/image/img1.jpg";
+import tai from "../../src/image/Tai.jpg";
+import phusy from "../../src/image/phusy.jpg";
+import thang from "../../src/image/thang.jpg";
+import son from "../../src/image/son.jpg";
+
+// import Province from "../Pages/Province";
 
 function AboutUs() {
   return (
@@ -18,7 +24,7 @@ function AboutUs() {
         </span>
       </div>
       <div className="member-container--leader">
-        <img src={member1} className="leader-img" alt="member-img" />
+        <img src={tai} className="leader-img" alt="member-img" />
         <h2 className="member-name"> Who's leader?</h2>
         <h3> Trần Võ Tấn Tài - 20521863</h3>
         <div className="member-description">
@@ -33,8 +39,8 @@ function AboutUs() {
       <div className="about-member-container">
         <div className="member-container">
           <div className="member-intro">
-            <img src={member1} className="member-img" alt="member-img" />
-            <h3 className="member-name"> Trần Võ Tấn Tài - 20521863</h3>
+            <img src={thang} className="member-img" alt="member-img" />
+            <h3 className="member-name"> Nguyễn Ngọc Thắng </h3>
             <span className="member-description">
              
               Hmmm... Let's see. I would probably describe myself as a girl who
@@ -46,8 +52,8 @@ function AboutUs() {
           </div>
         </div>
         <div className="member-container">
-          <img src={member1} className="member-img" alt="member-img" />
-          <h3 className="member-name"> Trần Võ Tấn Tài - 20521863</h3>
+          <img src={phusy} className="member-img" alt="member-img" />
+          <h3 className="member-name"> Nguyễn Hoàng Phú Sỹ </h3>
           <span className="member-description">
         
             Hmmm... Let's see. I would probably describe myself as a girl who
@@ -58,8 +64,8 @@ function AboutUs() {
           </span>
         </div>
         <div className="member-container">
-          <img src={member1} className="member-img" alt="member-img" />
-          <h3 className="member-name"> Trần Võ Tấn Tài - 20521863</h3>
+          <img src={son} className="member-img" alt="member-img" />
+          <h3 className="member-name"> Trần Văn Sơn </h3>
           <span className="member-description">
             
             Hmmm... Let's see. I would probably describe myself as a girl who
@@ -71,7 +77,7 @@ function AboutUs() {
         </div>
         <div className="member-container">
           <img src={member1} className="member-img" alt="member-img" />
-          <h3 className="member-name"> Trần Võ Tấn Tài - 20521863</h3>
+          <h3 className="member-name"> Lê Thị Thiệp </h3>
           <span className="member-description">
             <span> </span>
             Hmmm... Let's see. I would probably describe myself as a girl who
@@ -83,6 +89,7 @@ function AboutUs() {
         </div>
       </div>
     </div>
+    {/* <Province/> */}
     </>
   );
 }

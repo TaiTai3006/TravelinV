@@ -1,6 +1,8 @@
 import express from "express";
 // import { getAccount } from "../controllers/AccoutController.js";
 import { getPost } from "../controllers/PersonalController";
+import { getPostPending } from "../controllers/PersonalController";
+
 import { getPostLike } from "../controllers/PersonalController.js";
 import { getUser } from "../controllers/PersonalController.js";
 import { DeletePostDes } from "../controllers/PersonalController.js";
@@ -10,8 +12,9 @@ import { DeletePost } from "../controllers/PersonalController.js";
 const routerPersonal = express.Router()
 
 // routerAccount.get('/user',getAccount);
-routerPersonal.get('/:userName/Personal',getUser);
+routerPersonal.get('/:userName',getUser);
 routerPersonal.get('/:userName/Personal/Post',getPost);
+routerPersonal.get('/:userName/Personal/Pending',getPostPending);
 routerPersonal.get('/:userName/Personal/PostLike',getPostLike);
 routerPersonal.delete('/:userName/Personal/DeletePost/:idPost', DeletePost)
 routerPersonal.delete('/:userName/Personal/DeleteLike/:idPost', DeleteLike)

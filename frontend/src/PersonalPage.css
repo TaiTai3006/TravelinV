@@ -69,7 +69,7 @@
   #Thang_content0 button:hover {
     color:black;
   }
-  
+
   .Thang_name {
     display: block;
     font-size: 35px;
@@ -139,7 +139,7 @@
   }
   
   .Thang_tab_content {
-    margin: 30px 100px;
+    margin: 30px 40px;
     font-size: 23px;
     font-family: headings;
   }
@@ -160,13 +160,13 @@
   }
   
   #Thang_content button {
-    width: 250px;
+    width: 190px;
     height: 60px;
     display: inline;
     font-size: 27px;
     border:none;
     background-color: inherit;
-    margin: 0 95px;
+    margin: 0 90px;
     color: rgb(117, 115, 115);
     text-align: center;
     font-family: headings;
@@ -174,6 +174,11 @@
 
   #Thang_content span{
     font-size: 24px;
+    vertical-align: -3px;
+  }
+
+  .Thang_Icon_Pending{
+    font-size: 30px;
     vertical-align: -3px;
   }
   

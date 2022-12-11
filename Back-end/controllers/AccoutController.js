@@ -24,7 +24,7 @@ export const getAccount = (req, res) => {
 
 export const CreateAccount = async (req, res) => {
   const q =
-    "INSERT INTO account (`userName`, `password`, `name`, `gmail`, `accountType`) VALUES (?)";
+    "INSERT INTO account (`userName`, `password`, `name`, `gmail`, `accountType`, `avatar`) VALUES (?)";
   const image = req.file;
   const salt = await bcrypt.genSalt(10);
   req.body.password = await bcrypt.hash(req.body.password, salt);
@@ -34,6 +34,7 @@ export const CreateAccount = async (req, res) => {
     req.body.name,
     req.body.gmail,
     req.body.accountType,
+    req.body.avatar
   ];
   db.query(q, [values], (err, data) => {
     if (err) {

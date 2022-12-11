@@ -11,7 +11,7 @@ footer {
   background-color: #f0e7e8;
 }
 .page-foot_container {
-  width: 60%;
+  width: 80%;
  
   margin: 0 auto;
   position: relative;
@@ -87,6 +87,10 @@ footer {
 .contact {
   position: relative;
 }
+.contact:hover {
+  text-decoration: none !important;
+
+}
 .contact > ul a {
   font-family: "Merriweather Sans";
   font-weight: 200;
@@ -131,7 +135,8 @@ footer {
     float:right;
     position: absolute;
     bottom: 80px;
-    left: 610px;
+    /* left: 610px; */
+    right: 0;
     -webkit-mask-image: url('./image/download.svg');
 }
 .img_ins_custom{

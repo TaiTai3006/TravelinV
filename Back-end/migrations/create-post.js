@@ -26,7 +26,8 @@ module.exports = {
         type: Sequelize.TEXT('long')
       },
       status: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue: 'pending'
       },
       postName: {
         type: Sequelize.STRING

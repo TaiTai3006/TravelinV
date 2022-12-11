@@ -2,14 +2,23 @@ import React from "react";
 import "../formBlog.css";
 import { useState } from "react";
 import { HiChevronRight } from "react-icons/hi";
-import { BsFileImage,} from "react-icons/bs";
+import { BsFileImage, BsInputCursor } from "react-icons/bs";
 import { BiPlus } from "react-icons/bi";
 import Input from "../components/Input";
 import { AiOutlineClose } from "react-icons/ai";
 import useFormPost from "../components/useFormPost";
 import { Link } from "react-router-dom";
+// notice 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function FormBlog() {
+
+ 
+const notify = () => toast("Successful post");
+
+
   const {
     handleChangeTitle,
     handleTitleImage,
@@ -21,7 +30,6 @@ function FormBlog() {
   } = useFormPost();
 
   const [inputList, setInputList] = useState([0]);
-
   const [id, setId] = useState(0);
 
   const onAddBtnClick = (event) => {
@@ -35,13 +43,14 @@ function FormBlog() {
   console.log(inputList);
   return (
     <>
+    {/* <Notice/> */}
+    <ToastContainer />
       <div className="nav-container">
         {/* Thanh địa chỉ */}
         <Link to="/">Home</Link>
         <HiChevronRight />
-        <Link to="/Blogs">Blogs</Link>
-        <HiChevronRight />
         <a href="#">Create</a>
+        <HiChevronRight />
       </div>
       <div className="heading ">
         <h1>Create post </h1>
@@ -71,14 +80,10 @@ function FormBlog() {
               id="input-img"
               onChange={handleTitleImage}
             />
-            <div className="submit">
-              <input
-                type="submit"
-                className="submit"
-                value="POST"
-                onClick={handleCreatePost}
-              ></input>
-            </div>
+            <input type="submit" className="submit" value="POST" onClick={notify}></input>
+             {/* <div className="submit">
+              <input type="submit" className="submit" value="POST"></input>
+            </div> */}
             {/* <button className="submit">Submit</button> */}
           </div>
           <div className="input-container">
@@ -153,9 +158,7 @@ function FormBlog() {
                 </button>
               </div>
             </div>
-            <div className="submit">
-              <input type="submit" className="submit" value="POST"></input>
-            </div>
+           
           </div>
         </div>
       </div>

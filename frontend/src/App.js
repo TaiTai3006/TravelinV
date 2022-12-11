@@ -39,6 +39,7 @@ function App() {
       <GoogleOAuthProvider clientId="840620172422-p0ioib0pk0ebu85k45f0jap5fmmvnukn.apps.googleusercontent.com">
         <ScrollToTop />
         <Routes>
+          
           <Route path="/" element={<Header />}>
             <Route index element={<Home />} />
             <Route path="/Blogs" element={<Blogs />} />
