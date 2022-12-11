@@ -7,3 +7,10 @@ export const deleteUser = ((req,res) =>{
     db.query(q,[userNameId], (err,result)=>{
     })
 })
+export const getUserIdPost = (()=>{
+    const usename = req.params.userName
+    const IdPost = "select idPost from post, `account` where `account`.userName = post.userName and userName = ? "
+    db.query(IdPost,usename,(err,result)=>{
+        
+    })
+})

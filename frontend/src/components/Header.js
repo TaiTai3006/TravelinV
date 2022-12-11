@@ -83,6 +83,11 @@ const Header = () => {
                       <Link to="/Dashboard">Dashboard</Link>
                     </li>
                   )}
+                  {user.accountType == "collaborator" && (
+                    <li>
+                      <Link to="/Dashboard/Coll">Collaborator</Link>
+                    </li>
+                  )}
                   <li>
                     <Link to="/Logout">Logout</Link>
                   </li>

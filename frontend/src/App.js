@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./Pages/Home";
 import ReadBlogs from "./Pages/ReadBlogs";
-import ProtectedRoutes from "./components/PrivateRouter";
+import ProtectedRoutes, { ProtecteDashboardColl } from "./components/PrivateRouter";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Blogs from "./Pages/Blogs";
@@ -19,6 +19,8 @@ import ProvincePost from "./Pages/Province";
 import ScrollToTop from "./components/ScrollToTop";
 import { ProtecteDashboard } from "./components/PrivateRouter";
 import { ProtectLoginout } from "./components/PrivateRouter";
+
+import Collaborator from "./Pages/collaborator";
 export const UserContext = createContext();
 
 function App() {
@@ -58,6 +60,9 @@ function App() {
               <Route path="/Personal/:userName" element={<PersonalPage />} />
               <Route element={<ProtecteDashboard />}>
                 <Route path="/Dashboard" element={<Admin />} />
+              </Route>
+              <Route element={<ProtecteDashboardColl/>}>
+                <Route path="/Dashboard/Coll" element={<Collaborator/>} />
               </Route>
               <Route path="/Logout" element={<Logout />} />
             </Route>

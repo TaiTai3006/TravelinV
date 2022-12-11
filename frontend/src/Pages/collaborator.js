@@ -3,7 +3,7 @@ import { MdOutlineArticle } from "react-icons/md";
 import { AiFillCaretRight } from "react-icons/ai";
 import { GrGroup } from "react-icons/gr";
 import DataPost from "./adminMap";
-import { React, useState, useEffect, createContext, useContext } from "react";
+import { React, useState, useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
 import { GrUserAdmin } from "react-icons/gr";
 import { BsPersonCircle } from "react-icons/bs";
@@ -12,8 +12,8 @@ import { HiChevronRight } from "react-icons/hi";
 import { DataUser } from "./adminMap";
 import { IoSearchCircle } from "react-icons/io5";
 import Axios, * as others from "axios";
-export const postsContext = createContext()
-function Admin() {
+
+function Collaborator() {
   const [search, setSearch] = useState([]);
   const [searchUser, setSearchUser] = useState([]);
   const [posts, setpost] = useState([
@@ -171,19 +171,8 @@ function Admin() {
     //   account: "Admin",
     // },
   ]);
-  
-const alternatingColor = [ ' #FFFFFF ', " #F4F2EE"]
-useEffect(() => {
-  Axios.get("http://localhost:8800/admin/post").then((response) => {
-    setpost(response.data);
-    setSearch(response.data);
-  });
-  Axios.get("http://localhost:8800/admin/user").then((response) => {
-    setuser(response.data);
-    setSearchUser(response.data);
-  });
-},[]);
-const a = () =>{ useEffect(() => {
+
+  useEffect(() => {
     Axios.get("http://localhost:8800/admin/post").then((response) => {
       setpost(response.data);
       setSearch(response.data);
@@ -193,87 +182,22 @@ const a = () =>{ useEffect(() => {
       setSearchUser(response.data);
     });
   },[]);
-}
-  const deleteUser = (u)=>{
-    // Axios.delete(`http://localhost:8800/admin/description/delete/${p}`, posts)
-    // Axios.delete(`http://localhost:8800/admin/like/delete/${p}`, posts)
-    // Axios.delete(`http://localhost:8800/admin/delete/${p}`,posts)
-    Axios.delete(`http://localhost:8800/admin/user/delete/${u}`, user)
-   
-    setSearchUser(user)
-    console.log(user)
-  } 
-  const deletePost = (post)=>{
-    Axios.delete(`http://localhost:8800/admin/description/delete/${post}`, posts)
-    Axios.delete(`http://localhost:8800/admin/like/delete/${post}`, posts)
-    Axios.delete(`http://localhost:8800/admin/delete/${post}`, posts)
-    setSearch(posts)
-    a()
-  }
-  const checkPost = (post)=>{
-    Axios.put(`http://localhost:8800/admin/user/update/${post}`, posts)
-    setSearch(posts)
-    a()
-  }
+  console.log(search)
   const [type, settype] = useState("blog");
 
-  function handleEvent(type,posts) {
+  function handleEvent(type) {
     if (type === "blog")
       return (
         <div className="info data-item ">
-        {posts.map((posts, id) => {
-         console.log(posts)
-          return (
-            <div  className="data-post" key={posts.id} style={{backgroundColor: alternatingColor[id % 2] }}>
-                <a href=""><div class="usename-data">{posts.userName}</div></a>
-                <a href=""><div class="title-data">{posts.postName}</div></a>
-                <div className="createat-data" >{posts.dateTime}</div>
-                <a href=""><div className="province-data">{posts.provinceName}</div></a>
-                <button onClick={() => checkPost(posts.idPost)} className="status-data" style={{backgroundColor: posts.status === "pending" ? "#f1bc68" : "indianred"}} >{posts.status} </button>
-                <div className="delete-btn-div">
-                <button onClick={() => deletePost(posts.idPost)} className="delete-btn" href="#">Delete</button>
-                </div>
-                
-                {/* <div className="dropdown">
-                     <div className="option-data" ><BsThreeDots/></div>
-                     <div className="dropdown-content">
-                       <ul className="dropdown-option">
-                        <li><button onClick={() => checkPost(posts.idPost)} className="check-btn" href="#">Check</button></li>
-                        <li><button className="edit-btn">edit</button></li>
-                        <li><button onClick={() => deletePost(posts.idPost)} className="delete-btn" href="#">Delete</button></li>
-                       </ul>
-                     </div>
-                </div> */}
-            </div>
-          );
-        })}
-
+          <DataPost posts={search} />
         </div>
       );
-    if (type === "user")
-      return (
-        <div className="info-user">
-          {/* <DataUser user = {searchUser}/> */}
-          {user.map((user, id) => {
-          return (
-           
-            <div  className='user-data' key={user.id} style={{backgroundColor: alternatingColor[id % 2] }}>
-              
-              <img className="avatar-user" src={user.avatar}/>
-              <a href='#'><div className='usename'>{user.userName}</div></a>
-              <div className='gender'>{user.gender}</div>
-              <div className='mail'>{user.gmail}</div>
-              <div className='phone'>{user.phoneNumber}</div>
-              <div className='account'>{user.accountType}</div>
-              <div className="dropdown">
-              <button onClick={()=>{deleteUser(user.userName)}} className="delete-btn" href="#">Delete</button>
-                </div>
-                
-            </div> 
-          );
-        })}
-        </div>
-      );
+    // if (type === "user")
+    //   return (
+    //     <div className="info-user">
+    //       <DataUser user = {searchUser}/>
+    //     </div>
+    //   );
   }
   function handleBar(type) {
     if (type === "blog")
@@ -285,16 +209,16 @@ const a = () =>{ useEffect(() => {
           <div className="status">Status</div>
         </div>
       );
-    if (type === "user")
-      return (
-        <div className="info-bar">
-          <div className="username">Username</div>
-          <div className="title">Gender</div>
-          <div className="username">Mail</div>
-          <div className="create-at">Phone</div>
-          <div className="status">Account</div>
-        </div>
-      );
+    // if (type === "user")
+    //   return (
+    //     <div className="info-bar">
+    //       <div className="username">Username</div>
+    //       <div className="title">Gender</div>
+    //       <div className="username">Mail</div>
+    //       <div className="create-at">Phone</div>
+    //       <div className="status">Account</div>
+    //     </div>
+    //   );
   }
   const [iconArrow, seticonArrow] = useState("inline");
   const [blogColor, setblogColor] = useState("#F4F2EE");
@@ -333,7 +257,7 @@ const a = () =>{ useEffect(() => {
             <HiChevronRight />
           </div>
         </div>
-        <div
+        {/* <div
           onClick={handleArrow2}
           style={{ backgroundColor: userColor }}
           className="flex-user"
@@ -347,10 +271,10 @@ const a = () =>{ useEffect(() => {
           <div className="text3" onClick={() => settype("user")}>
             Users
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="head">
-        <div className="text6">Admin</div>
+        <div className="text6">Collaborator</div>
         <div className="flex-home">
           <a href="" className="text4">
             Home
@@ -359,7 +283,7 @@ const a = () =>{ useEffect(() => {
             <HiChevronRight />
           </div>
           <a href="" className="text5">
-            Dashboard
+            Collaborator
           </a>
         </div>
       </div>
@@ -405,10 +329,10 @@ const a = () =>{ useEffect(() => {
         </div>
       </div>
 
-      {handleBar(type,posts)}
-      {handleEvent(type,posts)}
+      {handleBar(type)}
+      {handleEvent(type)}
     </div>
   );
 }
 
-export default Admin;
+export default Collaborator;
