@@ -280,6 +280,7 @@ const useForm = (callback) => {
   });
   const handleUpdateAccount = (e) => {
     e.preventDefault();
+
     if (Object.keys(errors).length === 0) {
       if (account.avatar) {
         const uploadData = new FormData();
@@ -289,10 +290,10 @@ const useForm = (callback) => {
         uploadData.append("phoneNumber", account.phoneNumber);
         uploadData.append("gender", account.gender);
         axios.put(`http://localhost:8800/account/${user.userName}`, uploadData).then((res)=>console.log(res.data));
+        navigate("/Login");
       }else{
         axios.put(`http://localhost:8800/account/${user.userName}`, account).then((res)=>console.log(res.data));
       }
-      navigate("/Login");
     }
   };
   return {
@@ -300,7 +301,6 @@ const useForm = (callback) => {
     user,
     account,
     errors,
-    setErrors,
     setAccount,
     handleChange,
     handleCreateAccount,
