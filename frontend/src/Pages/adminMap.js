@@ -27,7 +27,7 @@ function DataPost({posts}) {
          
           return (
             <div  className="data-post" key={posts.id} style={{backgroundColor: alternatingColor[id % 2] }}>
-                <a href=""><div class="usename-data">{posts.name}</div></a>
+                <a href=""><div class="usename-data">{posts.userName}</div></a>
                 <img class="avatar-data" src={posts.image}/>
                 <a href=""><div class="title-data">{posts.postName}</div></a>
                 <div className="createat-data" >{posts.dateTime}</div>
@@ -61,6 +61,7 @@ function DataPost({posts}) {
     // Axios.delete(`http://localhost:8800/admin/like/delete/${p}`, posts)
     //Axios.delete(`http://localhost:8800/admin/delete/${u}`,user)
     Axios.delete(`http://localhost:8800/admin/user/delete/${u}`, user)
+    
   }
     return (
       <>
@@ -69,9 +70,9 @@ function DataPost({posts}) {
           return (
            
             <div  className='user-data' key={user.id} style={{backgroundColor: alternatingColor[id % 2] }}>
-               { console.log(user.userName)}
+              
               <img className="avatar-user" src={user.avatar}/>
-              <a href='#'><div className='usename'>{user.name}</div></a>
+              <a href='#'><div className='usename'>{user.userName}</div></a>
               <div className='gender'>{user.gender}</div>
               <div className='mail'>{user.gmail}</div>
               <div className='phone'>{user.phoneNumber}</div>
