@@ -255,18 +255,18 @@ div a {
   /* top: 54rem;
  left: 34.5rem; */
 }
-.input-container {
+.province-input-container {
   width: 600px;
   height: 50px;
   position: relative;
 }
-input::placeholder {
-  font-weight: bold;
+.province-input-container input::placeholder {
+  /* font-weight: bold;
   opacity: 0.5;
   color: #353535;
-  font-size: 25px;
+  font-size: 25px; */
 }
-input:focus {
+.province-input-container input:focus {
   outline: none;
 }
 

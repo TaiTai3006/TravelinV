@@ -91,7 +91,7 @@ function App() {
       </div>
       <div className="province-search-container">
         <div className="waylf">What are you looking for?</div>
-        <div className="input-container">
+        <div className="province-input-container">
           <input
             type="text"
             onChange={(text) => {
