@@ -9,15 +9,24 @@
     url(https://static.saltinourhair.com/build/fonts/SaltHeading.woff)
       format("woff");
 }
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.login-container img {
+    filter: brightness(100%) !important;
+}
 .signin {
     line-height: 2.5rem;
-    position:absolute;
+    /* position:absolute;
     left: 64rem;
-    top: 12rem;
+    top: 12rem; */
     font-weight: bold;
     font-style:italic;
     font-family: "Merriweather Sans";
     color: #353535;
+    margin-right: 150px;
 
 }
 
@@ -43,6 +52,10 @@ p{
 .flex1 {
     display: flex;
 }
+.flex1 a:hover{
+    scale: 1.08;
+    transition: 0.5;
+}
 .A1{
     color: #8fbc8f !important;
     flex-grow:3;
@@ -61,6 +74,10 @@ p{
 
 .flex2 {
     display: flex;
+}
+.flex2:hover{
+    cursor: pointer;
+    
 }
 .A3{
     font-size:0.8rem;
@@ -86,6 +103,13 @@ input[type=text], input[type=submit] {
     border: 1px solid ;
     font-style: italic;
 }
+.Input {
+    /* display: flex;
+    align-items: center;
+    justify-content: space-between; */
+    position: relative;
+
+}
 .Input Input{
     width: 100%;
     padding:0.5rem;
@@ -96,7 +120,7 @@ input[type=text], input[type=submit] {
 
 .icons-span{
     position: absolute;
-    right: 1.25rem;
+    right: 10px;
     padding-top: 0.5rem; 
     font-size: 20px
     
@@ -108,10 +132,19 @@ input[type=text], input[type=submit] {
   color: white;
   font-family: "Merriweather Sans"
 }
+.IP1:hover{
+    scale: 1.08;
+    transition: 0.5s;
+}
+.IP2:hover{
+    scale: 1.08;
+    transition: 0.5s;
+}
 
 .passDis {
     margin-top: 15px;
 }
+
 
 
 
@@ -127,9 +160,15 @@ input[type=text], input[type=submit] {
 }
 
 .icon1 {
-    position:absolute;
-    bottom: -5px;
-    left: 3rem;
+    position:relative;
+    /* bottom: -5px;
+    left: 3rem; */
+    right: 10px;
     font-size: 20px;
+  }
+  .icon-gg {
+position: absolute;
+right: 10px;
+top: 10px;
   }
 

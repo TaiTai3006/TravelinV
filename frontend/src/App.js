@@ -39,7 +39,8 @@ function App() {
       <GoogleOAuthProvider clientId="840620172422-p0ioib0pk0ebu85k45f0jap5fmmvnukn.apps.googleusercontent.com">
         <ScrollToTop />
         <Routes>
-        
+        <Route path="/Login" element={<Login />} />
+            <Route path="/Register" element={<Register />} />
           <Route path="/" element={<Header />}>
             <Route index element={<Home />} />
             <Route path="/Blogs" element={<Blogs />} />
@@ -47,8 +48,7 @@ function App() {
             <Route path="/Blogs/:idProvince" element={<ProvincePost />} />
             <Route path="/Blogs/:idProvince/:idPost" element={<ReadBlogs />} />
             <Route path="/Shop" element={<ReadBlogs />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/Register" element={<Register />} />
+            
             <Route path="/Register/Profile" element={<ProfileInput />} />
             <Route path="/Aboutus" element={<AboutUs />} />
             <Route element={<ProtectedRoutes />}>

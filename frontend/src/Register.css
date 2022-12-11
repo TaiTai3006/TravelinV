@@ -1,12 +1,21 @@
 .register {
     line-height: 2.5rem;
-    position:absolute;
+    /* position:absolute;
     left: 62rem;
-    top: 10rem;
+    top: 10rem; */
     font-weight: bold;
     font-style:italic;
     font-family: "Merriweather Sans";
     color: #353535;
+    margin-right: 150px;
+}
+.register-container img {
+    filter: brightness(100%) !important;
+}
+.register-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .Info {
@@ -80,19 +89,22 @@ input[type=text], input[type=submit] {
     border: 1px solid ;
     font-style: italic;
 }
+.InputCon {
+position: relative;
+}
 
 
 
 .icons-span-1{
     position:absolute;
-    right: 1.25rem;
+    right: 1rem;
     padding-top:0.5rem;
     font-size:20px;
 }
   
 .icons-span-2{
     position: absolute;
-    right: 1.25rem;
+    right: 12px;
     padding-top:0.5rem;
     font-size:20px;
 }

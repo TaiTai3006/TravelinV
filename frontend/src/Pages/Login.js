@@ -8,13 +8,20 @@ import Errs from "../components/errors";
 import { Link } from "react-router-dom";
 
 function Login() {
-  const { user, handleChangeLogin, errors, account, setAccount, handelLogin, handleLoginGoogle } =
-    useForm();
+  const {
+    user,
+    handleChangeLogin,
+    errors,
+    account,
+    setAccount,
+    handelLogin,
+    handleLoginGoogle,
+  } = useForm();
 
-    useEffect(()=>{
-      setAccount({...account, userName: user.userName})
-    },[])
-    
+  useEffect(() => {
+    setAccount({ ...account, userName: user.userName });
+  }, []);
+
   const [passwordType, setPasswordType] = useState("password");
   const [passwordIcon, setPasswordIcon] = useState(<FaEyeSlash />);
   const handelToggle = () => {
@@ -26,22 +33,24 @@ function Login() {
       setPasswordIcon(FaEyeSlash);
     }
   };
-console.log(account)
+  console.log(account);
   return (
-    <div>
+    <div className="login-container">
       <img src={loginImage} height="auto" />
-      <div class="signin">
+      <div className="signin">
         <div>
-          <h1 class="A0">Welcome Back</h1>
+          <h1 className="A0">Welcome Back</h1>
         </div>
-        <div class="flex1">
-          <p class="A1">Don't have account?</p>
-          <Link to = '/Register'class="A2">Register</Link>
+        <div className="flex1">
+          <p className="A1">Don't have account?</p>
+          <Link to="/Register" className="A2">
+            Register
+          </Link>
         </div>
         <div>
           <form>
-            <div class="Info">
-              <p class="useDis">Usename</p>
+            <div className="Info">
+              <p className="useDis">Usename</p>
               <input
                 type="text"
                 placeholder="Enter your usename"
@@ -50,8 +59,8 @@ console.log(account)
                 onChange={handleChangeLogin}
                 required
               ></input>
-              <p class="passDis">Password</p>
-              <div class="Input">
+              <p className="passDis">Password</p>
+              <div className="Input">
                 <input
                   type={passwordType}
                   placeholder="Enter your password"
@@ -77,16 +86,17 @@ console.log(account)
               onClick={handelLogin}
             ></input>
             <p class="A5">Or</p>
-            <div class="icon1">
-              <FcGoogle />
-            </div>
           </form>
-          <input
-            type="submit"
-            value="Sign in with Google"
-            class="IP2"
-            onClick={handleLoginGoogle}
-          ></input>
+
+          <div class="icon1">
+            <input
+              type="submit"
+              value="Sign in with Google"
+              class="IP2"
+              onClick={handleLoginGoogle}
+            ></input>
+            <FcGoogle  className="icon-gg"/>
+          </div>
         </div>
       </div>
     </div>

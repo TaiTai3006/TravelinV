@@ -207,6 +207,12 @@ li {
 }
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
+  /* signin  */
+  
+  .signin{
+    position: absolute;
+    left: 20%;
+  }
   /* Header */
   header {
     width: 100% !important;

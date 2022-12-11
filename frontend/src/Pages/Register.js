@@ -45,7 +45,7 @@ function Register() {
   };
 
   return (
-    <div>
+    <div className="register-container">
       <img src={loginImage} height="auto" />
       <div class="register">
         <div>
