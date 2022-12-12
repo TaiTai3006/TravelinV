@@ -18,13 +18,12 @@
 }
 #img_post .img_title {
   position: absolute;
-  top:-10% ;
+  top: -10%;
   right: -10%;
   z-index: -1;
   width: 975px;
   height: 750px;
-  -webkit-mask-image: url('./image/readblog.svg');
-
+  -webkit-mask-image: url("./image/readblog.svg");
 }
 #img_post .img_custom {
   position: absolute;
@@ -123,6 +122,10 @@
   width: 45%;
   margin: 0 0 8px -2px;
   padding: 0 40px;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 200px;
 }
 .post-cover_content-container > p {
   font-family: "Merriweather";
@@ -156,6 +159,9 @@
   letter-spacing: -0.5px;
   line-height: 46px;
   width: 95%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 94px;
 }
 .blog-article p {
   font-family: "Merriweather";
@@ -194,7 +200,7 @@
   text-transform: uppercase;
 }
 .sidebar-articles_container {
-  width: 350px;
+  width: 430px;
   /* height: 225px; */
   background-color: #f5f5f5;
   border-radius: 15px;
@@ -228,7 +234,7 @@
   line-height: 23.25px;
   margin-top: 7px;
   white-space: nowrap;
-width: 280px;
+  width: 280px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -251,7 +257,8 @@ width: 280px;
   background-color: #f2f2f2;
   margin: 0 auto;
   box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
-  background-image: url(../src/image/search-bubbles.png),url(../src/image/search-bubbles.png),url(../src/image/search-bubbles.png);
+  background-image: url(../src/image/search-bubbles.png),
+    url(../src/image/search-bubbles.png), url(../src/image/search-bubbles.png);
   background-position: top right;
   background-size: cover, cover, cover, cover;
   background-color: #f0e8e7;
@@ -306,7 +313,7 @@ width: 280px;
   float: right;
   width: 50%;
   height: 350px;
-  border-radius:38% 0% 17% 42% / 87% 100% 0% 89%  ;
+  border-radius: 38% 0% 17% 42% / 87% 100% 0% 89%;
 }
 .img_tilte_custom {
   float: right;
@@ -521,5 +528,3 @@ width: 280px;
   color: #ffff;
   transition: 0.5s;
 }
-
-

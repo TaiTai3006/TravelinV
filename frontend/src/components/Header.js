@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { RiShoppingBasket2Line } from "react-icons/ri";
 import { HiChevronDown } from "react-icons/hi";
 import { MdOutlineCreate } from "react-icons/md";
@@ -8,6 +8,7 @@ import { UserContext } from "../App";
 import defaultAvatar from "../image/default_avatar.png";
 import { VscListSelection } from "react-icons/vsc";
 import logo from "../image/logo-removebg.png";
+import logoGray from "../image/logo-gray-removebg-preview.png";
 import Modal from "./Modal";
 
 import "../App.css";
@@ -22,29 +23,90 @@ const Header = () => {
   const handleMouseOut = () => {
     setIsShow(false);
   };
+  const [Logo, setLogo] = useState(logo);
+  
 
+  const [navTop, setnavTop] = useState("0");
+  const [navBGColor, setnavBGColor] = useState("0");
+  const [navColor, setnavColor] = useState("transparent");
+  const listenScrollEvent = () => {
+    window.scrollY > 10
+      ? setnavBGColor("#353535")
+      : setnavBGColor("transparent");
+    window.scrollY > 10 ? setnavColor("#fcfcfc") : setnavColor("#353535");
+    window.scrollY > 10 ? setnavTop("0") : setnavTop("0");
+    window.scrollY > 10 ? setLogo(logoGray) : setLogo(logo);
+    console.log(Logo)
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", listenScrollEvent);
+    return () => {
+      window.removeEventListener("scroll", listenScrollEvent);
+    };
+  }, []);
   return (
     <>
-      <header>
+      <header
+        style={{
+          backgroundColor: navBGColor,
+          top: navTop,
+          color: navColor,
+          transition: "all 1s",
+        }}
+      >
         <div className="nav-right">
           <Link to="/">
-            <img className="logo-header " alt="logo" src={logo}></img>
+            <img className="logo-header " alt="logo" src={Logo}></img>
           </Link>
           <div id="nav">
-            <Link to="/">Home</Link>
-            <Link to="/Blogs">Blogs</Link>
-            <Link to="/CreatePost">
+            <Link
+              to="/"
+              style={{
+                color: navColor,
+              }}
+            >
+              Home
+            </Link>
+            <Link
+              to="/Blogs"
+              style={{
+                color: navColor,
+              }}
+            >
+              Blogs
+            </Link>
+            <Link
+              to="/CreatePost"
+              style={{
+                color: navColor,
+              }}
+            >
               Create Post
               <IconContext.Provider value={{ className: "icon_shop" }}>
-                <MdOutlineCreate />
+                <MdOutlineCreate
+                  style={{
+                    color: navColor,
+                  }}
+                />
               </IconContext.Provider>
             </Link>
-            <Link to="/AboutUs">About us</Link>
+            <Link
+              to="/AboutUs"
+              style={{
+                color: navColor,
+              }}
+            >
+              About us
+            </Link>
           </div>
         </div>
 
         <ul id="nav1">
-          <Modal />
+          <Modal
+            style={{
+              color: navColor,
+            }}
+          />
           {/* <li className="search">
             <a href="">
               Want to go ...
@@ -60,23 +122,42 @@ const Header = () => {
                   src={user.image ? user.image : defaultAvatar}
                   alt="avatar"
                 ></img>
-                <HiChevronDown />
+                <HiChevronDown
+                  style={{
+                    color: navColor,
+                  }}
+                />
               </div>
             </a>
             <ul className="avatar">
               {!user.loggedIn ? (
                 <div>
                   <li>
-                    <Link to="/Login">Login</Link>
+                    <Link
+                      to="/Login"
+                     
+                    >
+                      Login
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/Register">Register</Link>
+                    <Link
+                      to="/Register"
+                      
+                    >
+                      Register
+                    </Link>
                   </li>
                 </div>
               ) : (
                 <div>
                   <li>
-                    <Link to={`/Personal/${user.userName}`}>Personal</Link>
+                    <Link
+                      to={`/Personal/${user.userName}`}
+                      
+                    >
+                      Personal
+                    </Link>
                   </li>
                   {user.accountType == "admin" && (
                     <li>

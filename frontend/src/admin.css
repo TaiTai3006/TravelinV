@@ -42,19 +42,35 @@
   flex-direction: column;
   /* justify-content: center; */
   width: 100%;
-  margin: 0 50px;
+  margin: 10px 50px;
 }
 .text1 {
   /* width:13rem; */
 margin: 15px auto;
 font-size: 30px;
+padding: 15px;
 }
+.text2 {
+  /* width:13rem; */
+/* margin: 15px auto; */
+font-size: 20px;
+padding: 15px;
+}
+.text3 {
+  /* width:13rem; */
+/* margin: 15px auto; */
+font-size: 20px;
+padding: 15px;
+}
+
 .flex-user {
 display: flex;
 align-items: center;
 justify-content: center;
-padding: 10px;
-}.icon-blog,.icon-user {
+/* padding: 10px; */
+cursor: pointer;
+}
+.icon-blog,.icon-user {
   padding: 10px;
 
 }
@@ -68,8 +84,8 @@ padding: 10px;
 .flex-blog {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 10px;
+  justify-content: center; cursor: pointer;
+ 
 }
 .flex-home {
   display: flex;
@@ -88,12 +104,14 @@ padding: 10px;
   margin: 0 40px;
   padding-right: 150px;
   
+  
 }
 .data-post {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
+  
 }
 .data-post img {
   /* width: 100%;
@@ -107,9 +125,17 @@ padding: 10px;
   object-fit: cover;
   border-radius: 50%;
 }
+.listdata-container {
+  height: 400px;
+  overflow-y: scroll;
+}
+.listdata-container::-webkit-scrollbar{
+  display: none;
+}
 .user-data {
   padding: 0 30px;
   margin: 10px 0;
+  
 }
 .user-item {
   width: 200px !important;
@@ -121,8 +147,8 @@ padding: 10px;
   text-overflow: ellipsis ;
 }
 .avatar-data{
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   margin-right: 10px;
 }
 .status-data {
@@ -137,7 +163,7 @@ padding: 10px;
   font-style: italic;
   font-family: "Merriweather Sans";
 }
-.nav-container {
+.admin-nav{
   margin: 15px 0 !important;
 }
 .head {
@@ -185,7 +211,9 @@ font-size: 18px;
 
 
 
-
+.mail {
+  width: 150px !important;
+}
 
 .user-name {
   display: flex;
@@ -198,7 +226,7 @@ font-size: 18px;
   justify-content: space-between;
 }
 .avatar-user {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   margin-right: 10px;
 }

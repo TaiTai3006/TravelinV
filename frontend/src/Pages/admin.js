@@ -1,17 +1,14 @@
 import "../admin.css";
 import { MdOutlineArticle } from "react-icons/md";
-import { AiFillCaretRight } from "react-icons/ai";
+
 import { GrGroup } from "react-icons/gr";
 import DataPost from "./adminMap";
 import { React, useState, useEffect } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 
-import { GrUserAdmin } from "react-icons/gr";
-import { BsPersonCircle } from "react-icons/bs";
-import { BiSearch } from "react-icons/bi";
 import { HiChevronRight } from "react-icons/hi";
 import { DataUser } from "./adminMap";
-import { IoSearchCircle } from "react-icons/io5";
+
 import Axios, * as others from "axios";
 import { Link } from "react-router-dom";
 
@@ -120,7 +117,7 @@ function Admin() {
 
       <div className="main-bar">
         <div className="head">
-          <div className="nav-container">
+          <div className="nav-container admin-nav">
             {/* Thanh địa chỉ */}
             <Link to="/">Home</Link>
             <HiChevronRight />
@@ -128,7 +125,7 @@ function Admin() {
             <HiChevronRight />
           </div>
           <div className="search-container"> 
-          <div className="text-tour">Post</div>
+          <div className="text-tour">Admin</div>
           <div className="search-bar">
             <input
               type="text"
@@ -162,8 +159,10 @@ function Admin() {
           </div>
           
         </div>
-        {handleBar(type)}
-        {handleEvent(type)}
+        {handleBar(type)} 
+        <div className="listdata-container">{handleEvent(type)} </div>
+        
+        
       </div>
     </div>
   );

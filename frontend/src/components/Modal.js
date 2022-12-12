@@ -16,6 +16,18 @@ const Modal = () => {
   //   setIsShow(false);
   // };
   const [places, setPlace] = useState([]);
+  const [navColor, setnavColor] = useState("transparent");
+  const listenScrollEvent = () => {
+    
+    window.scrollY > 10 ? setnavColor("#ffffff") : setnavColor("#353535");
+    
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", listenScrollEvent);
+    return () => {
+      window.removeEventListener("scroll", listenScrollEvent);
+    };
+  }, []);
   useEffect(() => {
     Axios.get("http://localhost:8800/home/gonext").then((response) => {
       setPlace(response.data);
@@ -29,10 +41,14 @@ const Modal = () => {
         className="modal"
       >
         <li className="search">
-          <a href="">
+          <a href="" style={{
+                color: navColor,
+              }}>
             Want to go ...
             <IconContext.Provider value={{ className: "icon_chevDown" }}>
-            <HiChevronDown />
+            <HiChevronDown style={{
+                color: navColor,
+              }}/>
             </IconContext.Provider>
           </a>
         </li>
