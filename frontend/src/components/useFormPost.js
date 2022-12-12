@@ -98,7 +98,9 @@ const useFormPost = (callback) => {
       
       // navigate('/')
     }
-    window.location.reload(false)
+    setTimeout(() => {
+      window.location.reload(false)
+    }, 4000);
   };
   return {
     title,
