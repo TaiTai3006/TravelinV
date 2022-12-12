@@ -4,8 +4,7 @@ import { FiCornerUpLeft } from "react-icons/fi";
 import { AiOutlineMore, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { useContext } from "react";
 import { UserContext } from "../App";
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 
 export function CommentCard({
   setCheckReadBlog,
@@ -18,7 +17,7 @@ export function CommentCard({
   handleEditComment,
   ...Children
 }) {
-const navigate = useNavigate()
+  const navigate = useNavigate();
   const { user } = useContext(UserContext);
   return (
     <div>
@@ -65,7 +64,7 @@ const navigate = useNavigate()
           </div>
         )}
         <div className="comment-data">
-          {comment.userName}
+          <Link to={`/Personal/${comment.userName}`}>{comment.userName}</Link>
           <IconContext.Provider value={{ className: "icon_FillCircleFill" }}>
             <BsFillCircleFill />
           </IconContext.Provider>
@@ -83,11 +82,13 @@ const navigate = useNavigate()
                     ? `@${comment.userName} `
                     : "",
               });
-              user.loggedIn ? setCheckReadBlog({
-                ...checkReadBlog,
-                keyReply: comment.idComment,
-                replyInput: false,
-              }) : navigate('/Login')
+              user.loggedIn
+                ? setCheckReadBlog({
+                    ...checkReadBlog,
+                    keyReply: comment.idComment,
+                    replyInput: false,
+                  })
+                : navigate("/Login");
             }}
           >
             <FiCornerUpLeft /> Reply
