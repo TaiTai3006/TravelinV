@@ -78,12 +78,12 @@ const Header = () => {
                   <li>
                     <Link to={`/Personal/${user.userName}`}>Personal</Link>
                   </li>
-                  {user.accountType == "admin" && (
+                  {user.accountType === "admin" && (
                     <li>
                       <Link to="/Dashboard">Dashboard</Link>
                     </li>
                   )}
-                  {user.accountType == "collaborator" && (
+                  {user.accountType === "collaborator" && (
                     <li>
                       <Link to="/Dashboard/Coll">Collaborator</Link>
                     </li>

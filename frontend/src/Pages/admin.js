@@ -1,17 +1,12 @@
 import "../admin.css";
 import { MdOutlineArticle } from "react-icons/md";
-import { AiFillCaretRight } from "react-icons/ai";
 import { GrGroup } from "react-icons/gr";
 import DataPost from "./adminMap";
 import { React, useState, useEffect } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 
-import { GrUserAdmin } from "react-icons/gr";
-import { BsPersonCircle } from "react-icons/bs";
-import { BiSearch } from "react-icons/bi";
 import { HiChevronRight } from "react-icons/hi";
 import { DataUser } from "./adminMap";
-import { IoSearchCircle } from "react-icons/io5";
 import Axios, * as others from "axios";
 import { Link } from "react-router-dom";
 
@@ -39,7 +34,6 @@ function Admin() {
       return (
         <div className="info data-item ">
           <DataPost posts={search} />
-          <button onClick={()=>{deletePost(posts.idPost)}} ><BiX/></button>
         </div>
       );
     if (type === "user")

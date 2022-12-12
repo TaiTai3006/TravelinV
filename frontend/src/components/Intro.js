@@ -1,8 +1,8 @@
-import React, { useState,useEffect  } from "react";
+import React, { useState,useEffect, useContext  } from "react";
 import { HiChevronDown } from "react-icons/hi";
-import img from "../image/Dalat.png";
 import Axios, * as others from "axios";
 import { Link } from "react-router-dom";
+import { UserContext } from "../App";
 
 function Intro() {
   const [places, setPlace] = useState([]);

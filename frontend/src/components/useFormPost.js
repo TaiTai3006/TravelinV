@@ -29,7 +29,7 @@ const useFormPost = (callback) => {
   };
 
   useEffect(() => {
-    return () => {
+    return() => {
       URL.revokeObjectURL(title.imagePreview);
     };
   }, [title.image]);
@@ -94,16 +94,12 @@ const useFormPost = (callback) => {
             )
             .then((res) => console.log(res.data));
         }
-        
       }
       
       // navigate('/')
     }
+    window.location.reload(false)
   };
-
-  console.log(provinces);
-  console.log(title);
-
   return {
     title,
     provinces,

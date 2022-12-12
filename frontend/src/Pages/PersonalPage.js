@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { BsTextRight } from "react-icons/bs";
-import { MdEdit } from "react-icons/md";
 import { MdOutlineBookmarkRemove } from "react-icons/md";
 import { RiDislikeLine } from "react-icons/ri";
 import { MdOutlinePendingActions } from "react-icons/md";
@@ -46,7 +45,7 @@ const tabs = [
 
 export default function PersonalPage() {
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   // console.log(User.user)
   const [type, setType] = useState("Post");
   const [Name, setName] = useState([{}]);
@@ -101,6 +100,9 @@ export default function PersonalPage() {
         console.log(err);
       }
     };
+    axios.get(`http://localhost:8800/${user.userName}`).then((res)=>{
+      setUser({...user, image: res?.data[0]?.avatar})
+    })
     FecthCountPostLike();
     FecthCountPostPending();
     FecthName();
