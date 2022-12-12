@@ -16,7 +16,7 @@ const Modal = () => {
   //   setIsShow(false);
   // };
   const [places, setPlace] = useState([]);
-  const [navColor, setnavColor] = useState("transparent");
+  const [navColor, setnavColor] = useState("#353535");
   const listenScrollEvent = () => {
     
     window.scrollY > 10 ? setnavColor("#ffffff") : setnavColor("#353535");
