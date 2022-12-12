@@ -178,8 +178,8 @@
   /* left: 66.5rem; */
   right: 10px;
   font-size: 35px;
-  padding-left: 10px;
-  padding-top: 5px;
+  padding-left: 8px;
+  padding-top: 2px;
   width: 50px;
   height: 50px;
   border-radius: 60% 60% 50% 50%;
@@ -192,9 +192,10 @@
   flex-wrap: wrap;
   /* top: 60rem;
   left: 17.9rem; */
-  /* width: 1110px; */
-  margin: 50px 150px;
-  /* gap: 40px; */
+  width: 1220px;
+  margin: 50px 130px;
+
+  /* gap: 5px; */
   justify-content: flex-start;
 }
 .article-item {
@@ -223,7 +224,7 @@
 }
 .title-article {
   position: absolute;
-  /* width: 340px; */
+  width: 330px;
   top: 22rem;
   left: 10px;
   font-size: 25px;
@@ -233,7 +234,7 @@
 
   line-height: 30px;
   height: 60px;
-  overflow: hidden;
+  /* overflow: hidden; */
   text-overflow: ellipsis;
 }
 

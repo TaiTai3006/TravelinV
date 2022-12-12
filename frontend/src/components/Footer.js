@@ -62,7 +62,7 @@ export default function Footer() {
                 <Link to="/AboutUs">About us</Link>
               </li>
               <li className="contact">
-                Contact
+                <div className="contact-text">Contact</div>
                 <ul>
                   <li className="link-gmail">
                     <a href="mailto:TravelinV@gmail.com">TravelinV@gmail.com</a>

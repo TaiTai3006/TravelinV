@@ -88,6 +88,12 @@ footer {
 }
 .contact {
   position: relative;
+  left: 3px;
+ 
+}
+
+.contact-text {
+  padding-left: 9px;
 }
 .contact:hover {
   text-decoration: none !important;

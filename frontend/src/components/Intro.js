@@ -31,7 +31,7 @@ function Intro() {
           <p className="destination_text">
             {" "}
             Choose a
-            <span onClick={() => toggleOverlay(true)}>
+            <span className="dh-distance" onClick={() => toggleOverlay(true)}>
               destination here <HiChevronDown />
             </span>
             {showOverlay && (

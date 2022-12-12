@@ -103,6 +103,12 @@ body {
   line-height: 1.5rem;
   position: relative;
 }
+
+.dh-distance {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
 .destination_text span {
   background-color: #e0f0f0;
   border-radius: 30px;
