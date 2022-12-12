@@ -197,15 +197,15 @@ export default function PersonalPage() {
   };
 
   function HandlCoutEvent(type, id) {
-    if (type === "Post")
+    if (type === "Post" || type === "Pending")
       return (
         <ul className="Thang_edit_remove">
-          <li id="Thang_li1">
+          {/* <li id="Thang_li1">
             <span className="Thang_span">
               <MdEdit id="mdedit"></MdEdit>
             </span>{" "}
             Edit
-          </li>
+          </li> */}
           <li
             id="Thang_li2"
             onClick={() => {
