@@ -132,6 +132,7 @@ function ProfileInput() {
                 id="genderChoice1"
                 name="gender"
                 value="male"
+                checked = {account.gender === 'male' ? 'true' : 'false'}
                 onChange={handleChange}
                 required
               />
