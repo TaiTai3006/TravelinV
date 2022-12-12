@@ -4,7 +4,9 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./Pages/Home";
 import ReadBlogs from "./Pages/ReadBlogs";
-import ProtectedRoutes, { ProtecteDashboardColl } from "./components/PrivateRouter";
+import ProtectedRoutes, {
+  ProtecteDashboardColl,
+} from "./components/PrivateRouter";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Blogs from "./Pages/Blogs";
@@ -53,16 +55,16 @@ function App() {
               <Route path="/Register" element={<Register />} />
             </Route>
             <Route path="/Register/Profile" element={<ProfileInput />} />
-            <Route path="/Profile/:userName" element={<ProfileInput />} />
             <Route path="/Aboutus" element={<AboutUs />} />
             <Route element={<ProtectedRoutes />}>
               <Route path="/CreatePost" element={<FormBlog />} />
               <Route path="/Personal/:userName" element={<PersonalPage />} />
+              <Route path="/Profile/:userName" element={<ProfileInput />} />
               <Route element={<ProtecteDashboard />}>
                 <Route path="/Dashboard" element={<Admin />} />
               </Route>
-              <Route element={<ProtecteDashboardColl/>}>
-                <Route path="/Dashboard/Coll" element={<Collaborator/>} />
+              <Route element={<ProtecteDashboardColl />}>
+                <Route path="/Dashboard/Coll" element={<Collaborator />} />
               </Route>
               <Route path="/Logout" element={<Logout />} />
             </Route>

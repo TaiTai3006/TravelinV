@@ -6,6 +6,7 @@ import { CreateTableAccount } from "../controllers/AccoutController.js";
 import uploadCloud from "../configs/cloudinary.js";
 import { upadeAccount } from "../controllers/AccoutController.js";
 import { getAccount } from "../controllers/AccoutController.js";
+import { updateAccountType } from "../controllers/AccoutController.js";
 
 const routerAccount = express.Router();
 
@@ -24,5 +25,8 @@ routerAccount.put(
 routerAccount.get("/register/:userName", FindAccount);
 
 routerAccount.post("/login/:userName", Login);
+
+routerAccount.put('/accountType/:userName', updateAccountType)
+
 
 export default routerAccount;

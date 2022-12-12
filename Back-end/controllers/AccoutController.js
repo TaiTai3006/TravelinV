@@ -92,3 +92,17 @@ export const upadeAccount = (req, res) => {
     return res.json(data);
   });
 };
+
+export const updateAccountType = (req, res)=>{
+  const userNameId = req.params.userName
+  console.log(req.body)
+  const q = "UPDATE `account` SET `accountType`= ? WHERE userName = ?"
+  const value = [req.body.accountType]
+  db.query(q,[...value, userNameId], (err, data) => {
+      if(err){
+          console.log(err)
+          return res.json(err)
+      }
+      return res.json(data)
+  })
+}
