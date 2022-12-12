@@ -115,7 +115,7 @@
   border: none;
   outline: none;
   font-size: 15px;
-  width: 100px;
+  width: 120px;
   background-color: #f1bc68;
   padding: 8px 20px;
   border-radius: 30px;
@@ -156,7 +156,7 @@
   border-radius: 50%;
 }
 .listdata-container {
-  height: 400px;
+  height: 480px;
   overflow-y: scroll;
 }
 .listdata-container::-webkit-scrollbar {
@@ -248,15 +248,16 @@
   font-size: 18px;
 }
 .title-data {
-  /* width: 150px; */
-  /* white-space: nowrap;
+  width: 150px;
+  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis ; */
-  /* margin-left: 70px; */
+  text-overflow: ellipsis ; 
+   /* margin-left: 70px; */
+  font-family: Merriweather Sans;
 }
-.infobar-user {
+/* .infobar-user {
   margin-right: 50px !important;
-}
+} */
 
 /* .mail {
   width: 150px !important;

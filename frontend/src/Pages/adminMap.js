@@ -60,8 +60,9 @@ function DataPost({ posts }) {
                 onClick={() => {
                   deletePost(posts.idPost);
                 }}
-              >
-                <BiX />
+                className="deleteBtn"
+                >
+                  <BiX style={{ fontSize: 15 }} />
               </button>
             )}
 

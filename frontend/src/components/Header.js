@@ -27,8 +27,8 @@ const Header = () => {
   
 
   const [navTop, setnavTop] = useState("0");
-  const [navBGColor, setnavBGColor] = useState("0");
-  const [navColor, setnavColor] = useState("transparent");
+  const [navBGColor, setnavBGColor] = useState("#transparent");
+  const [navColor, setnavColor] = useState("#353535");
   const listenScrollEvent = () => {
     window.scrollY > 10
       ? setnavBGColor("#353535")
