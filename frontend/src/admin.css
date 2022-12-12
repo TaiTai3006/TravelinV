@@ -111,6 +111,17 @@
   padding-right: 45px;
 
 }
+.account button {
+  border: none;
+  outline: none;
+  font-size: 15px;
+  width: 100px;
+  background-color: #f1bc68;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-family: headings;
+
+}
 /* .info-user{
   display: flex;
   align-items: center;
