@@ -159,9 +159,14 @@ const Header = () => {
                       Personal
                     </Link>
                   </li>
-                  {user.accountType == "admin" && (
+                  {user.accountType === "admin" && (
                     <li>
                       <Link to="/Dashboard">Dashboard</Link>
+                    </li>
+                  )}
+                  {user.accountType === "collaborator" && (
+                    <li>
+                      <Link to="/Dashboard/Coll">Collaborator</Link>
                     </li>
                   )}
                   <li>

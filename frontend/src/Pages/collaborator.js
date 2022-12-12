@@ -1,12 +1,9 @@
 import "../admin.css";
 import { MdOutlineArticle } from "react-icons/md";
-import { GrGroup } from "react-icons/gr";
 import DataPost from "./adminMap";
 import { React, useState, useEffect } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
-
 import { HiChevronRight } from "react-icons/hi";
-import { DataUser } from "./adminMap";
 import Axios, * as others from "axios";
 import { Link } from "react-router-dom";
 
@@ -36,37 +33,33 @@ function Admin() {
           <DataPost posts={search} />
         </div>
       );
-    if (type === "user")
-      return (
-        <div className="info-user">
-          <DataUser user={searchUser} />
-        </div>
-      );
+    // if (type === "user")
+    //   return (
+    //     <div className="info-user">
+    //       <DataUser user={searchUser} />
+    //     </div>
+    //   );
   }
   function handleBar(type) {
     if (type === "blog")
       return (
-        <div className="info-bar-blog">
-          <div className="username user-item">Username</div>
-          <div className="title user-item">Title</div>
-          <div className="create-at user-item">Create at</div>
-          
-          
-          <div className="status user-item">Status</div>
-          
+        <div className="info-bar">
+          <div className="username">Username</div>
+          <div className="title">Title</div>
+          <div className="create-at">Create at</div>
+          <div className="status">Status</div>
         </div>
       );
-    if (type === "user")
-      return (
-        <div className="info-bar ">
-          <div className="username user-item">Username</div>
-          <div className="title user-item">Gender</div>
-          <div className="username user-item">Mail</div>
-          <div className="create-at user-item">Phone</div>
-          <div className="status user-item">Account</div>
-           {/* <div className=" user-item">Account</div> */}
-        </div>
-      );
+    // if (type === "user")
+    //   return (
+    //     <div className="info-bar">
+    //       <div className="username">Username</div>
+    //       <div className="title">Gender</div>
+    //       <div className="username">Mail</div>
+    //       <div className="create-at">Phone</div>
+    //       <div className="status">Account</div>
+    //     </div>
+    //   );
   }
   const [iconArrow, seticonArrow] = useState("inline");
   const [blogColor, setblogColor] = useState("#F4F2EE");
@@ -102,7 +95,7 @@ function Admin() {
           </div>
           
         </div>
-        <div
+        {/* <div
           onClick={handleArrow2}
           style={{ backgroundColor: userColor }}
           className="flex-user"
@@ -114,12 +107,12 @@ function Admin() {
           <div className="text3" onClick={() => settype("user")}>
             Users
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="main-bar">
         <div className="head">
-          <div className="nav-container admin-nav">
+          <div className="nav-container">
             {/* Thanh địa chỉ */}
             <Link to="/">Home</Link>
             <HiChevronRight />
@@ -127,7 +120,7 @@ function Admin() {
             <HiChevronRight />
           </div>
           <div className="search-container"> 
-          <div className="text-tour">Admin</div>
+          <div className="text-tour">Post</div>
           <div className="search-bar">
             <input
               type="text"
@@ -161,10 +154,8 @@ function Admin() {
           </div>
           
         </div>
-        {handleBar(type)} 
-        <div className="listdata-container">{handleEvent(type)} </div>
-        
-        
+        {handleBar(type)}
+        {handleEvent(type)}
       </div>
     </div>
   );

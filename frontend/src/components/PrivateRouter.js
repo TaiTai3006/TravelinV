@@ -14,9 +14,12 @@ const ProtectedRoutes = () => {
 
 export const ProtecteDashboard = () => {
   const {user} = useContext(UserContext)
-  
-  return (user.accountType === 'admin' || user.accountType === 'collaborator') ? <Outlet /> : <Navigate to="/"  />
+  return (user.accountType === 'admin' /*|| user.accountType === 'collaborator'*/) ? <Outlet /> : <Navigate to="/"  />
 };
+export const ProtecteDashboardColl = () =>{
+  const {user} = useContext(UserContext)
+  return ( user.accountType === 'collaborator') ? <Outlet /> : <Navigate to="/"  />
+}
 
 export const ProtectLoginout = () => {
   const isAuth = useAuth();

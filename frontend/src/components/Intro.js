@@ -1,8 +1,8 @@
-import React, { useState,useEffect  } from "react";
+import React, { useState,useEffect, useContext  } from "react";
 import { HiChevronDown } from "react-icons/hi";
-import img from "../image/Dalat.png";
 import Axios, * as others from "axios";
 import { Link } from "react-router-dom";
+import { UserContext } from "../App";
 
 function Intro() {
   const [places, setPlace] = useState([]);
@@ -17,7 +17,7 @@ function Intro() {
       <div className="intro_container">
         <img
           className="intro_image"
-          src={img}
+          src='https://images.pexels.com/photos/3935702/pexels-photo-3935702.jpeg?auto=compress&cs=tinysrgb&w=1600'
           alt="image_main"
         />
         <div className="intro_text--cover">

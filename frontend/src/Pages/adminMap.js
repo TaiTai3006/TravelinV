@@ -1,16 +1,11 @@
-import React, { useState,useEffect } from "react";
+
 import '../admin.css';
-import {BsPersonCircle} from 'react-icons/bs'
-import {BsThreeDots} from 'react-icons/bs'
 //import { red } from "@mui/material/colors";
-import {IoMdAddCircle} from 'react-icons/io'
 import Axios, * as others from 'axios';
 import axios from "axios";
 import { BiX } from "react-icons/bi";
 
-const reload = () =>{
-  location.reload();
-}
+
 const alternatingColor = [ ' #FFFFFF ', " #F4F2EE"]
 function DataPost({posts}) {
   
@@ -19,11 +14,11 @@ function DataPost({posts}) {
     Axios.delete(`http://localhost:8800/admin/like/delete/${post}`, posts)
     Axios.delete(`http://localhost:8800/admin/delete/${post}`, posts)
 
-    reload()
+    window.location.reload(false)
   }
   const checkPost = (post)=>{
     Axios.put(`http://localhost:8800/admin/user/update/${post}`, posts)
-    reload()
+    window.location.reload(false)
   }
     return (
       <>
@@ -38,8 +33,8 @@ function DataPost({posts}) {
                
                 <a href=""><div class="title-data">{posts.postName}</div></a>
                 <div className="createat-data" >{posts.dateTime}</div>
-                <div /*onClick={() => setCurrentStatus('ok')} */className="status-data" style={{backgroundColor: posts.status === "pending" ? "#f1bc68" : "indianred"}} >{posts.status} </div>
-                <BiX/>
+                <button onClick={() => checkPost(posts.idPost)} className="status-data" style={{backgroundColor: posts.status === "pending" ? "#f1bc68" : "indianred"}} >{posts.status} </button>
+                <button onClick={()=>{deletePost(posts.idPost)}} ><BiX/></button>
 
                 {/* <div className="dropdown">
                      <div className="option-data" ><BsThreeDots/></div>
@@ -61,14 +56,13 @@ function DataPost({posts}) {
   export default DataPost;
 
  export function DataUser ({user}) {
-
-  
   const deleteUser = (u)=>{
-    // Axios.delete(`http://localhost:8800/admin/description/delete/${p}`, posts)
-    // Axios.delete(`http://localhost:8800/admin/like/delete/${p}`, posts)
-    // Axios.delete(`http://localhost:8800/admin/delete/${p}`,posts)
+    // Axios.delete(http://localhost:8800/admin/description/delete/${p}, posts)
+    // Axios.delete(http://localhost:8800/admin/like/delete/${p}, posts)
+    // Axios.delete(http://localhost:8800/admin/delete/${p},posts)
     Axios.delete(`http://localhost:8800/admin/user/delete/${u}`, user)
-    reload()
+    
+    window.location.reload(false)
     
   }
     return (
@@ -98,7 +92,8 @@ function DataPost({posts}) {
                        </ul>
                      </div>
                 </div> */}
-                <BiX/>
+                
+                <button onClick={()=>{deleteUser(user.userName)}} ><BiX/></button>
                 
             </div> 
           );
@@ -106,8 +101,3 @@ function DataPost({posts}) {
       </>
     );
   }
-
-
-  
-   
-  

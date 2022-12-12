@@ -290,12 +290,11 @@ const useForm = (callback) => {
         uploadData.append("phoneNumber", account.phoneNumber);
         uploadData.append("gender", account.gender);
         axios.put(`http://localhost:8800/account/${user.userName}`, uploadData).then((res)=>console.log(res.data));
-        navigate("/Login");
       }else{
         axios.put(`http://localhost:8800/account/${user.userName}`, account).then((res)=>console.log(res.data));
       }
-      setAccount('')
     }
+    navigate("/Login");
   };
   return {
     checkAccounts,
