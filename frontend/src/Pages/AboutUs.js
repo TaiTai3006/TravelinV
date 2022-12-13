@@ -1,6 +1,6 @@
 import React from "react";
 import "../AboutUs.css";
-import member1 from "../../src/image/img1.jpg";
+import thiep from "../../src/image/thiep.jpg";
 import tai from "../../src/image/Tai.jpg";
 import phusy from "../../src/image/phusy.jpg";
 import thang from "../../src/image/thang.jpg";
@@ -76,7 +76,7 @@ function AboutUs() {
           </span>
         </div>
         <div className="member-container">
-          <img src={member1} className="member-img" alt="member-img" />
+          <img src={thiep} className="member-img" alt="member-img" />
           <h3 className="member-name"> Lê Thị Thiệp </h3>
           <span className="member-description">
             <span> </span>
