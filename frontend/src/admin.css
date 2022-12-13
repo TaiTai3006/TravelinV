@@ -26,40 +26,47 @@
   font-weight: bold;
 }
 .dashBoard {
-  width: 300px;
-  height: 280px;
+  width: 250px;
+  height: 672px;
   border-right: 6px double #989ba5;
   display: flex;
   /* align-items: center; */
   flex-direction: column;
-  justify-content: flex-start;
+  /* justify-content: left; */
   margin-top: 50px;
+  margin-right: 30px;
 }
 .main-bar {
   display: flex;
   /* align-items: center; */
   flex-direction: column;
   /* justify-content: center; */
-  width: 100%;
-  margin: 10px 50px;
+  width: 1000px;
+ margin-top: 10px;
+ margin-right: 40px;
+
 }
 .text1 {
-  /* width:13rem; */
   margin: 15px auto;
   font-size: 30px;
   padding: 15px;
+  margin-right: 135px;
+  margin-bottom: 30px;
+
 }
 .text2 {
-  /* width:13rem; */
   /* margin: 15px auto; */
   font-size: 20px;
-  padding: 15px;
+  /* padding: 15px; */
+  margin-right: 140px;
+
 }
 .text3 {
   /* width:13rem; */
   /* margin: 15px auto; */
   font-size: 20px;
-  padding: 15px;
+  /* padding: 15px; */
+  margin-right: 130px;
 }
 
 .flex-user {
@@ -118,6 +125,7 @@
   width: 120px;
   background-color: #f1bc68;
   padding: 8px 20px;
+  margin-left: 35px;
   border-radius: 30px;
   font-family: headings;
 
@@ -134,7 +142,17 @@
   justify-content: space-between;
   padding: 0 40px;
   margin: 10px 0;
+
 }
+
+/* .info {
+  height: 480px;
+  overflow-y: scroll;
+}
+
+.info::-webkit-scrollbar {
+  display: none;
+} */
 .user-data {
   margin: 10px 0;
   display: flex;
@@ -162,18 +180,15 @@
 .listdata-container::-webkit-scrollbar {
   display: none;
 }
-.usename, .mail {
+
+
+.usename {
   width: 160px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.mail.user-item {
-  width: 180px !important;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+
 
 .user-item {
   width: 200px !important;
@@ -193,6 +208,7 @@
 .status-data {
   font-weight: bolder;
   margin: 10px;
+  margin-left: 100px;
   width: 6rem;
   height: 2.5rem;
   padding: 0 15px;
@@ -232,7 +248,7 @@
   padding: 10px 20px;
 }
 .search-bar {
-  margin-right: 150px;
+  margin-right: 80px;
 }
 .text-tour {
   font-size: 35px;
@@ -241,19 +257,23 @@
 }
 .search-bar {
   position: relative;
+  width: 250px;
+}
+
+.search-bar input[type='text'] {
+  border-radius: 20px;
 }
 .find-icon {
   position: absolute;
-  right: 10%;
+  right: 5%;
   font-size: 18px;
 }
 .title-data {
-  width: 150px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis ; 
-   /* margin-left: 70px; */
+  width: 300px !important;
   font-family: Merriweather Sans;
+  text-overflow: ellipsis;
+  white-space: nowrap ;
+  overflow: hidden;
 }
 /* .infobar-user {
   margin-right: 50px !important;
@@ -283,3 +303,74 @@
   height: 35px;
   margin-right: 10px;
 }
+
+.title {
+  position: relative;
+  left: 65px;
+}
+
+ .create-at {
+  position: relative;
+  left: 110px;
+} 
+
+ .createat-data {
+  position: relative;
+  left: 50px;
+} 
+
+.status{
+  position: relative;
+  left: 105px;
+} 
+
+.username {
+  position: relative;
+  left: 5px;
+}
+
+/* .account {
+  position: relative;
+  left: 40px;
+} */
+
+.account-t {
+  position: relative;
+  left: 70px;
+}
+
+.phone {
+  position: relative;
+  left: 10px;
+}
+
+.phone-t {
+  position: relative;
+  left: 42px;
+}
+
+.mail {
+  position: relative;
+  right: 50px;
+  width: 250px !important;
+}
+
+.gender-t {
+  position: relative;
+  right: 11px;
+
+}
+
+.info {
+  height: 480px;
+  overflow-y: scroll;
+}
+.info::-webkit-scrollbar {
+  display: none;
+}
+
+.info-bar .status {
+  position: relative;
+  margin-right: 125px;
+}
+

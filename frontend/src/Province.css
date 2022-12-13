@@ -68,6 +68,7 @@
   font-family: "Oooh Baby", cursive;
   font-weight: bold;
   font-size: 30px;
+  margin-left: 25px;
 }
 
 .prode {
@@ -75,6 +76,7 @@
 #parent {
 }
 .pick-destination {
+  margin-right: 24px;
 }
 .option-board {
   width: 16rem;
@@ -129,7 +131,8 @@
 }
 
 .province-search-container {
-  margin: 0 auto;
+  margin: 0px auto;
+  margin-top: 100px;
   width: 500px;
   display: flex;
   flex-direction: column;
@@ -170,6 +173,7 @@
   font-family: headings;
   text-align: center;
   margin-bottom: 15px;
+  margin-top: 20px;
 }
 
 .search-icon {
@@ -193,8 +197,8 @@
   /* top: 60rem;
   left: 17.9rem; */
   /* width: 1220px; */
-  margin: 50px 150px;
-  /* width: 100%; */
+  margin: 50px 110px;
+  width: 100%;
 
   /* gap: 5px; */
   justify-content: flex-start;
