@@ -60,10 +60,10 @@ function Admin() {
       return (
         <div className="info-bar ">
           <div className="username user-item">Username</div>
-          <div className="title user-item">Gender</div>
-          <div className="username user-item">Mail</div>
-          <div className="create-at user-item">Phone</div>
-          <div className="status user-item">Account</div>
+          <div className="gender-t user-item">Gender</div>
+          <div className="mail-t user-item">Mail</div>
+          <div className="phone-t user-item">Phone</div>
+          <div className="account-t user-item">Account</div>
            {/* <div className=" user-item">Account</div> */}
         </div>
       );
