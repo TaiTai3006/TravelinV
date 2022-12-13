@@ -282,7 +282,7 @@ const useForm = (callback) => {
     e.preventDefault();
 
     if (Object.keys(errors).length === 0) {
-      if (account.avatar) {
+      if ( String(account.avatar) !== String(user.image)) {
         const uploadData = new FormData();
         uploadData.append("image", account.avatar, "image");
         uploadData.append("name", account.name);

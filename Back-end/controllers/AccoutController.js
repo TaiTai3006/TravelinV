@@ -81,7 +81,7 @@ export const upadeAccount = (req, res) => {
     req.body.gender,
     req.body.gmail,
     req.body.phoneNumber,
-    req.body.avatar = image?.path ,
+    req.body.avatar = image?.path ?  image?.path : req.body.avatar,
   ];
 
   db.query(q, [...values, userNameId], (err, data) => {
@@ -94,15 +94,15 @@ export const upadeAccount = (req, res) => {
 };
 
 export const updateAccountType = (req, res)=>{
-  const userNameId = req.params.userName
-  console.log(req.body)
-  const q = "UPDATE `account` SET `accountType`= ? WHERE userName = ?"
-  const value = [req.body.accountType]
-  db.query(q,[...value, userNameId], (err, data) => {
-      if(err){
-          console.log(err)
-          return res.json(err)
-      }
-      return res.json(data)
-  })
+    const userNameId = req.params.userName
+    console.log(req.body)
+    const q = "UPDATE `account` SET `accountType`= ? WHERE userName = ?"
+    const value = [req.body.accountType]
+    db.query(q,[...value, userNameId], (err, data) => {
+        if(err){
+            console.log(err)
+            return res.json(err)
+        }
+        return res.json(data)
+    })
 }

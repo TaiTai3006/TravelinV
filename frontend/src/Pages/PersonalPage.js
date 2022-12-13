@@ -9,7 +9,7 @@ import { BsTextRight } from "react-icons/bs";
 import { MdOutlineBookmarkRemove } from "react-icons/md";
 import { RiDislikeLine } from "react-icons/ri";
 import { MdOutlinePendingActions } from "react-icons/md";
-import default_avatar from "../image/default_avatar.png"
+import default_avatar from "../image/default_avatar.png";
 import axios from "axios";
 import { useContext } from "react";
 import { UserContext } from "../App";
@@ -100,9 +100,9 @@ export default function PersonalPage() {
         console.log(err);
       }
     };
-    axios.get(`http://localhost:8800/${user.userName}`).then((res)=>{
-      setUser({...user, image: res?.data[0]?.avatar})
-    })
+    axios.get(`http://localhost:8800/${user.userName}`).then((res) => {
+      setUser({ ...user, image: res?.data[0]?.avatar });
+    });
     FecthCountPostLike();
     FecthCountPostPending();
     FecthName();
@@ -143,37 +143,33 @@ export default function PersonalPage() {
     FecthAllPost();
   }, [type]);
 
-  const handleDeletePost = async (id) => {
-    try {
-      await axios.delete(
+  const handleDeletePost =  (id) => {
+    axios.delete(
+      `http://localhost:8800/${
+        location.pathname.split("/")[2]
+      }/Personal/DeleteLike/${id}`
+    );
+    axios.delete(
+      `http://localhost:8800/${
+        location.pathname.split("/")[2]
+      }/Personal/DeletePostDes/${id}`
+    );
+    axios.delete(
+      `http://localhost:8800/${
+        location.pathname.split("/")[2]
+      }/Personal/DeletePost/${id}`
+    );
+    axios
+      .get(
         `http://localhost:8800/${
           location.pathname.split("/")[2]
-        }/Personal/DeleteLike/${id}`
-      );
-      await axios.delete(
-        `http://localhost:8800/${
-          location.pathname.split("/")[2]
-        }/Personal/DeletePostDes/${id}`
-      );
-      await axios.delete(
-        `http://localhost:8800/${
-          location.pathname.split("/")[2]
-        }/Personal/DeletePost/${id}`
-      );
-      await axios
-        .get(
-          `http://localhost:8800/${
-            location.pathname.split("/")[2]
-          }/Personal/${type}`
-        )
-        .then((response) => {
-          response.data && setContent(response.data);
-          setCountPost(response.data.length);
-        });
-      //   window.location.reload()
-    } catch (err) {
-      console.log(err);
-    }
+        }/Personal/${type}`
+      )
+      .then((response) => {
+        response.data && setContent(response.data);
+        setCountPost(response.data.length);
+      });
+    //   window.location.reload()
   };
   const handleDeletePostLike = async (id) => {
     try {
@@ -244,7 +240,7 @@ export default function PersonalPage() {
       {/* {setType('Post')} */}
       {/* {console.log(PostPersonal)} */}
       <div id="Thang_avatar_child">
-        <img src={Name[0].avatar ? Name[0].avatar :default_avatar} />
+        <img src={Name[0].avatar ? Name[0].avatar : default_avatar} />
       </div>
       <div id="Thang_card"></div>
 
@@ -309,6 +305,7 @@ export default function PersonalPage() {
           <div key={Content0.idPost}>
             <Link to={`/Blogs/${Content0.idProvince}/${Content0.idPost}`}>
               <img src={Content0.image} />
+              </Link>
               {user.userName === location.pathname.split("/")[2] && (
                 <p id="Thang_CONTENT_mokuji">
                   <li className="Thang_li">
@@ -327,7 +324,6 @@ export default function PersonalPage() {
                   {Content0.Month}-{Content0.Year}
                 </p>
               </p>
-            </Link>
           </div>
         ))}
       </div>

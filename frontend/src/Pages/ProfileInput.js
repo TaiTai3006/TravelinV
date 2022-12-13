@@ -132,7 +132,7 @@ function ProfileInput() {
                 id="genderChoice1"
                 name="gender"
                 value="male"
-                checked = {account.gender === 'male' ? 'true' : 'false'}
+                checked = {account.gender === 'male' && 'false'}
                 onChange={handleChange}
                 required
               />
@@ -145,6 +145,7 @@ function ProfileInput() {
                 name="gender"
                 value="female"
                 onChange={handleChange}
+                checked = {account.gender === 'female' && 'false'}
                 required
               />
               <label for="genderChoice2">Female</label>
