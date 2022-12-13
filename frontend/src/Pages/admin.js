@@ -58,7 +58,7 @@ function Admin() {
       );
     if (type === "user")
       return (
-        <div className="info-bar ">
+        <div className="info-bar">
           <div className="username user-item">Username</div>
           <div className="gender-t user-item">Gender</div>
           <div className="mail-t user-item">Mail</div>

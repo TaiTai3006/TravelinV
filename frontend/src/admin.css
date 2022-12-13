@@ -44,6 +44,7 @@
   width: 1000px;
  margin-top: 10px;
  margin-right: 40px;
+
 }
 .text1 {
   margin: 15px auto;
@@ -141,7 +142,17 @@
   justify-content: space-between;
   padding: 0 40px;
   margin: 10px 0;
+
 }
+
+/* .info {
+  height: 480px;
+  overflow-y: scroll;
+}
+
+.info::-webkit-scrollbar {
+  display: none;
+} */
 .user-data {
   margin: 10px 0;
   display: flex;
@@ -169,6 +180,8 @@
 .listdata-container::-webkit-scrollbar {
   display: none;
 }
+
+
 .usename {
   width: 160px;
   white-space: nowrap;
@@ -308,7 +321,7 @@
 
 .status{
   position: relative;
-  left: 95px;
+  left: 105px;
 } 
 
 .username {
@@ -323,7 +336,7 @@
 
 .account-t {
   position: relative;
-  left: 75px;
+  left: 70px;
 }
 
 .phone {
@@ -348,4 +361,16 @@
 
 }
 
+.info {
+  height: 480px;
+  overflow-y: scroll;
+}
+.info::-webkit-scrollbar {
+  display: none;
+}
+
+.info-bar .status {
+  position: relative;
+  margin-right: 125px;
+}
 
