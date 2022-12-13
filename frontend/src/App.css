@@ -212,7 +212,13 @@ li {
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   /* signin  */
-  
+  .profile-image{
+    margin: 0 auto !important;
+  }
+  .profile-header {
+    margin: 50px auto !important;
+
+  }
   .signin{
     position: absolute;
     left: 20%;
@@ -271,6 +277,8 @@ li {
   }
   .profile-input {
     width: 350px !important;
+    margin: 0 auto !important;
+
   }
   .intro_container {
     color: #fff !important;
@@ -340,11 +348,17 @@ li {
   }
   .goto-container {
     margin: 0 15px !important;
+    overflow: scroll;
+    align-items: center;
   }
-  /*
+  .goto-container ul {
+    display: flex;
+    align-items: center;
+  }
+  
   .goto-container::-webkit-scrollbar {
     display: none;
-  } */
+  }
   .goto-li-ctn {
     margin-left: 50px !important;
   }
