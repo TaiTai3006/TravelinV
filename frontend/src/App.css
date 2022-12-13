@@ -232,6 +232,40 @@ li {
 }
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
+  #Thang_card {
+    width:100% !important;
+    margin: 0 20px !important;
+    padding: 0 10px !important;
+  }
+  #Thang_content0 {
+    width: 350px !important;
+  }
+  .Thang_name {
+  font-size: 23px !important;
+  /* margin: 0 20px !important; */
+  }
+  #Thang_tab {
+    font-size: 18px !important;
+  }
+  #Thang_hr  {
+    width: 100% !important;
+  }
+  .head-page {
+    flex-direction: column;
+   margin-top: 400px !important;
+   position: relative;
+  }
+  .pick-destination {
+position: absolute;
+bottom: -18%;
+
+  }
+  .option-board {
+    background-color: #fcfcfc !important;
+  }
+  .province-search-container {
+    margin-top: 275px !important;
+  }
   .modal-container:hover .nav-modal {
     display: block;
     position: absolute;
@@ -239,6 +273,16 @@ li {
     justify-content: center;
     top: 0;
    
+  }
+  .article {
+    margin: 15px 30px !important;
+  }
+  .pagination-container {
+    left: 35% !important;
+  }
+  .province-input-container {
+    width: 400px !important;
+    margin: 0 20px !important;
   }
   .nav-modal a {
     
