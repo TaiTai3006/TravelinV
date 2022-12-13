@@ -9,7 +9,51 @@ function RelatedPost() {
   ]);
 
   const [posts2, setPost2] = useState([
-    
+    // {
+    //   id: 1,
+    //   img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+    //   provinc: " Da Nang",
+    // },
+    // {
+    //   id: 2,
+    //   img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+    //   provinc: " Da Nang",
+    // },
+    // {
+    //   id: 3,
+    //   img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+    //   provinc: " Da Nang",
+    // },
+    // {
+    //   id: 4,
+    //   img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+    //   provinc: " Da Nang",
+    // },
+    // {
+    //   id: 5,
+    //   img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+    //   provinc: " Da Nang",
+    // },
+    // {
+    //   id: 6,
+    //   img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+    //   provinc: " Da Nang",
+    // },
+    // {
+    //   id: 7,
+    //   img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+    //   provinc: " Da Nang",
+    // },
+    // {
+    //   id: 8,
+    //   img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+    //   provinc: " Da Nang",
+    // },
+    // {
+    //   id: 9,
+    //   img: "https://static.saltinourhair.com/wp-content/uploads/2022/09/27205421/theth-albania-10-480x600.jpg",
+    //   provinc: " Da Nang",
+    // },
   ]);
   useEffect(()=>{
     Axios.get('http://localhost:8800/home/relatedpost1').then((response) => {
