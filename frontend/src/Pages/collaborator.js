@@ -112,7 +112,7 @@ function Admin() {
 
       <div className="main-bar">
         <div className="head">
-          <div className="nav-container">
+          <div className="admin-nav">
             {/* Thanh địa chỉ */}
             <Link to="/">Home</Link>
             <HiChevronRight />
