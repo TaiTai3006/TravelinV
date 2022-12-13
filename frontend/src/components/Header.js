@@ -178,34 +178,7 @@ const Header = () => {
           </li>
         </ul>
       </header>
-      <nav>
-        <div class="nav-column">
-          <div
-            class="nav__button"
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
-          >
-            <VscListSelection />
-          </div>
-          {/* <div class="nav__background"></div> */}
-          {isShow && (
-            <div className="modal-view">
-              <div id="nav-item">
-                <Link to="/">logo</Link>
-                <Link to="/">Home</Link>
-                <Link to="/Blogs">Blogs</Link>
-                <Link to="/Shop">
-                  Shop
-                  <IconContext.Provider value={{ className: "icon_shop" }}>
-                    <RiShoppingBasket2Line />
-                  </IconContext.Provider>
-                </Link>
-                <Link to="/AboutUs">About us</Link>
-              </div>
-            </div>
-          )}
-        </div>
-      </nav>
+    
       <Outlet />
     </>
   );

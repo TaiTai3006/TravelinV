@@ -103,12 +103,9 @@ function RelatedPost() {
                 {/* <img src={dalat}  width="250" height="400"/> */}
                 <div className="province">{provinceName}</div>
               </Link>
-              {/* <a href="#" className="suggestion--item back" key={id}>
-                <h1>John Doe</h1>
-                <p>Architect & Engineer</p>
-                <p>We love that guy</p>
-              </a> */}
+              
             </>
+            
           );
         })}
       </div>

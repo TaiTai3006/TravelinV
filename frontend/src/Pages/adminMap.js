@@ -16,7 +16,7 @@ function DataPost({ posts }) {
       posts
     );
     Axios.delete(`http://localhost:8800/admin/like/delete/${post}`, posts);
-    Axios.delete(`http://localhost:8800/admin/delete/${post}`, posts);
+    Axios.delete(`http://localhost:8800/admin/delete/post/${post}`, posts);
 
     window.location.reload(false);
   };
@@ -89,7 +89,7 @@ export function DataUser({ user }) {
   const deleteUser = (u) => {
     // Axios.delete(http://localhost:8800/admin/description/delete/${p}, posts)
     // Axios.delete(http://localhost:8800/admin/like/delete/${p}, posts)
-    // Axios.delete(http://localhost:8800/admin/delete/${p},posts)
+    Axios.delete(`http://localhost:8800/admin/delete/${u}`,user )
     Axios.delete(`http://localhost:8800/admin/user/delete/${u}`, user);
 
     window.location.reload(false);
