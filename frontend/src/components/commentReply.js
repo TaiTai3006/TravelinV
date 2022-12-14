@@ -10,7 +10,7 @@ export default function CommentReply({
   return (
     <div>
       {!checkReadBlog.replyInput &&
-        comment.idComment === checkReadBlog.keyReply && (
+       ( comment.idReply ? comment.idReply : comment.idComment) === checkReadBlog.keyReply && (
           <div className="comments-reply">
             <div className="comments-reply-title">Write a comment</div>
             <div className="comments-form">

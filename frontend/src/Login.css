@@ -16,6 +16,7 @@
 }
 .login-container img {
     filter: brightness(100%) !important;
+    height: 100vh;
 }
 .signin {
     line-height: 2.5rem;

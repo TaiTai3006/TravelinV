@@ -22,9 +22,11 @@ function FeaturePost() {
         return (
           <Link to = {`/Blogs/${posts.idProvince}/${posts.idPost}`} className="feature_post" >
             <h2 className="feature_post--title">{postName} </h2>
+            <abbr title={postName}>
             <div className="feature_post--img">
               <img src={image} alt={postName} />
             </div>
+            </abbr>     
           </Link>
         );
       })}

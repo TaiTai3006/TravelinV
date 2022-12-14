@@ -114,7 +114,7 @@ const notify = () => toast.success('Posted successfully, awaiting moderation!!!'
               <h3>Title </h3>
               <input
                 type="text"
-                class="title"
+                class="title-input"
                 name="postName"
                 placeholder="Write the title of your blog ....."
                 onChange={handleChangeTitle}

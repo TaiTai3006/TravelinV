@@ -11,6 +11,7 @@
 }
 .register-container img {
     filter: brightness(100%) !important;
+    height: 100vh;
 }
 .register-container{
     display: flex;

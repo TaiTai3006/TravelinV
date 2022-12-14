@@ -16,7 +16,8 @@ export function CommentCard({
   handleDeleteComment,
   handleEditComment,
   ...Children
-}) {
+}) { console.log(comment.idComment === checkReadBlog.checkReply,comment.idComment, checkReadBlog.checkReply)
+  console.log(checkReadBlog)
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   return (
@@ -40,7 +41,7 @@ export function CommentCard({
                     setCheckReadBlog({
                       ...checkReadBlog,
                       checkEdit: true,
-                      checkReply: comment.idComment,
+                      checkReply: comment.idReply ? comment.idReply : comment.idComment,
                       replyInput: false,
                     });
                     setCommentInput({
@@ -85,7 +86,7 @@ export function CommentCard({
               user.loggedIn
                 ? setCheckReadBlog({
                     ...checkReadBlog,
-                    keyReply: comment.idComment,
+                    keyReply: comment.idReply ? comment.idReply : comment.idComment,
                     replyInput: false,
                   })
                 : navigate("/Login");
@@ -96,7 +97,7 @@ export function CommentCard({
         </div>
       </div>
       {checkReadBlog.checkEdit &&
-        comment.idComment === checkReadBlog.checkReply && (
+       (comment.idReply ? comment.idReply : comment.idComment) === checkReadBlog.checkReply && (
           <div className="comments-reply">
             <div className="comments-reply-title">Write a comment</div>
             <div className="comments-form">
