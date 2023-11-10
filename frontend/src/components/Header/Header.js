@@ -4,18 +4,22 @@ import { RiShoppingBasket2Line } from "react-icons/ri";
 import { HiChevronDown } from "react-icons/hi";
 import { MdOutlineCreate } from "react-icons/md";
 import { IconContext } from "react-icons";
-import { UserContext } from "../App";
-import defaultAvatar from "../image/default_avatar.png";
+import { UserContext } from "../../App";
+import defaultAvatar from "../../image/default_avatar.png";
 import { VscListSelection } from "react-icons/vsc";
-import logo from "../image/logo-removebg.png";
-import logoGray from "../image/logo-gray-removebg-preview.png";
-import Modal from "./Modal";
-
-import "../App.css";
-const Header = () => {
+import logo from "../../image/logo-removebg.png";
+import logoGray from "../../image/logo-gray-removebg-preview.png";
+import Modal from "../Modal";
+import { Autocomplete } from "@react-google-maps/api";
+import { AppBar, Toolbar, Typography, InputBase, Box } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
+import { useLocation } from "react-router-dom";
+import "../../App.css";
+import useStyles from "./styles.js";
+const Header = ({ setCoordinates }) => {
   const { user } = useContext(UserContext);
   const [isShow, setIsShow] = useState(false);
-  console.log(user.accountType);
+
   const handleMouseOver = () => {
     setIsShow(true);
   };
@@ -24,7 +28,7 @@ const Header = () => {
     setIsShow(false);
   };
   const [Logo, setLogo] = useState(logo);
-  
+  const location = useLocation().pathname.split("/")[1];
 
   const [navTop, setnavTop] = useState("0");
   const [navBGColor, setnavBGColor] = useState("#transparent");
@@ -36,7 +40,6 @@ const Header = () => {
     window.scrollY > 10 ? setnavColor("#fcfcfc") : setnavColor("#353535");
     window.scrollY > 10 ? setnavTop("0") : setnavTop("0");
     window.scrollY > 10 ? setLogo(logoGray) : setLogo(logo);
-    console.log(Logo)
   };
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
@@ -44,6 +47,14 @@ const Header = () => {
       window.removeEventListener("scroll", listenScrollEvent);
     };
   }, []);
+  const classes = useStyles();
+  const [autoComplete, setAutocomplete] = useState(null);
+  const onLoad = (autoC) => setAutocomplete(autoC);
+  const onPlaceChanged = () => {
+    const lat = autoComplete.getPlace().geometry.location.lat();
+    const lng = autoComplete.getPlace().geometry.location.lng();
+    setCoordinates(lat, lng);
+  };
   return (
     <>
       <header
@@ -98,15 +109,42 @@ const Header = () => {
             >
               About us
             </Link>
+            <Link
+              to="/Map"
+              style={{
+                color: navColor,
+              }}
+            >
+              Map
+            </Link>
           </div>
         </div>
 
         <ul id="nav1">
-          <Modal
-            style={{
-              color: navColor,
-            }}
-          />
+          {location !== "Map" ? (
+            <Modal
+              style={{
+                color: navColor,
+              }}
+            />
+          ) : (
+            <Box style={{ color: navColor }}>
+              <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
+                <div className={classes.search}>
+                  <div className={classes.searchIcon}>
+                    <SearchIcon />
+                  </div>
+                  <InputBase
+                    placeholder="Search…"
+                    classes={{
+                      root: classes.inputRoot,
+                      input: classes.inputInput,
+                    }}
+                  />
+                </div>
+              </Autocomplete>
+            </Box>
+          )}
           {/* <li className="search">
             <a href="">
               Want to go ...
@@ -133,31 +171,16 @@ const Header = () => {
               {!user.loggedIn ? (
                 <div>
                   <li>
-                    <Link
-                      to="/Login"
-                     
-                    >
-                      Login
-                    </Link>
+                    <Link to="/Login">Login</Link>
                   </li>
                   <li>
-                    <Link
-                      to="/Register"
-                      
-                    >
-                      Register
-                    </Link>
+                    <Link to="/Register">Register</Link>
                   </li>
                 </div>
               ) : (
                 <div>
                   <li>
-                    <Link
-                      to={`/Personal/${user.userName}`}
-                      
-                    >
-                      Personal
-                    </Link>
+                    <Link to={`/Personal/${user.userName}`}>Personal</Link>
                   </li>
                   {user.accountType === "admin" && (
                     <li>
@@ -178,7 +201,7 @@ const Header = () => {
           </li>
         </ul>
       </header>
-    
+
       <Outlet />
     </>
   );
