@@ -6,49 +6,83 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPlacesData } from "../../redux/actions/places.action";
 import Header from "../../components/Header/Header";
 import { getWeatherData } from "../../redux/actions/weather.action";
-
-
+import axios from "axios";
 const MapScreen = () => {
   // const [places, setPlaces] = useState([]);
   const places = useSelector((state) => state.places.placesData);
-  console.log(useSelector(state=>state.weather.weatherData))
+  console.log(useSelector((state) => state.weather.weatherData));
   const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
   const [bounds, setBounds] = useState({});
-  const [filteredPlaces, setFillteredPlaces] = useState([])
+  const [filteredPlaces, setFillteredPlaces] = useState([]);
   const [chidClicked, setChildCliked] = useState(null);
   const dispatch = useDispatch();
   const [type, setType] = useState("restaurants");
   const [rating, setRating] = useState(0);
+
+  const getLocationByCityName = async (name) => {
+    try {
+      const res = await axios.get(
+        `https://api.api-ninjas.com/v1/city?name=${name}`,
+        {
+          headers: {
+            "X-Api-Key": "sycEOmug3GpUajiEHTFeUw==pSeXtHtQGiOYhBHS",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      console.log(res.data);
+      setCoordinates({ lat: res.data[0].latitude, lng: res.data[0].longitude });
+    } catch (error) {
+      console.error("Error:", error.response.data);
+    }
+  };
+  const getLocationByIP = async () => {
+    try {
+      const response = await axios.get("https://api.db-ip.com/v2/free/self");
+      console.log(response.data.city);
+      getLocationByCityName(response.data.city);
+    } catch (error) {
+      console.error("Error fetching IP address:", error);
+    }
+  };
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
-        console.log({ lat: latitude, lng: longitude });
         setCoordinates({ lat: latitude, lng: longitude });
+      },
+      (error) => {
+       getLocationByIP();
       }
     );
-  });
+  }, []);
 
-  useEffect(()=>{
-    const filteredPlaces = places.filter((place)=> place.rating > rating)
-    setFillteredPlaces(filteredPlaces)
-  },[rating])
-  
+  useEffect(() => {
+    const filteredPlaces = places.filter((place) => place.rating > rating);
+    setFillteredPlaces(filteredPlaces);
+  }, [rating]);
+
   useEffect(() => {
     // dispatch(getWeatherData(coordinates.lat, coordinates.lng))
-    // console.log(coordinates, bounds);
+    console.log(bounds);
     // getPlacesData(bounds.sw, bounds.ne).then((data) => {
     //  console.log(data)
     //   setPlaces(data);
     // });
     // dispatch(getPlacesData(type,bounds.sw, bounds.ne))
-    setFillteredPlaces([])
-    
-  }, [type,coordinates, bounds, dispatch]);
+    setFillteredPlaces([]);
+  
+  }, [type, coordinates, bounds, dispatch]);
   return (
     <>
       <CssBaseline />
-      <Header setCoordinates={setCoordinates}/>
-      <Grid container spacing={3} style={{ width: "100%", marginTop: "50px" }}>
+      <Header setCoordinates={setCoordinates} />
+      <Grid
+        container
+        spacing={3}
+        style={{ width: "100%", marginTop: "50px", backgroundColor: "#f5f4f2" }}
+      >
         <Grid item xs={12} md={4}>
           <List
             chidClicked={chidClicked}
@@ -60,13 +94,14 @@ const MapScreen = () => {
           />
         </Grid>
         <Grid item xs={12} md={8}>
-          {/* <Map
+          <Map
             setCoordinates={setCoordinates}
             setBounds={setBounds}
             coordinates={coordinates}
             setChildCliked={setChildCliked}
-           filteredPlaces={filteredPlaces}
-          /> */}
+            filteredPlaces={filteredPlaces}
+            style={{ width: "100%", height: "100%" }}
+          />
         </Grid>
       </Grid>
     </>

@@ -2,6 +2,8 @@ import { Outlet, Link } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { RiShoppingBasket2Line } from "react-icons/ri";
 import { HiChevronDown } from "react-icons/hi";
+import { AiOutlineMenu } from "react-icons/ai";
+
 import { MdOutlineCreate } from "react-icons/md";
 import { IconContext } from "react-icons";
 import { UserContext } from "../../App";
@@ -102,14 +104,6 @@ const Header = ({ setCoordinates }) => {
               </IconContext.Provider>
             </Link>
             <Link
-              to="/AboutUs"
-              style={{
-                color: navColor,
-              }}
-            >
-              About us
-            </Link>
-            <Link
               to="/Map"
               style={{
                 color: navColor,
@@ -117,7 +111,20 @@ const Header = ({ setCoordinates }) => {
             >
               Map
             </Link>
+            <Link
+              to="/AboutUs"
+              style={{
+                color: navColor,
+              }}
+            >
+              About us
+            </Link>
+            
           </div>
+        </div>
+        <div className="nav-mobile">
+        <AiOutlineMenu />
+
         </div>
 
         <ul id="nav1">

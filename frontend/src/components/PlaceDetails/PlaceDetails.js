@@ -18,8 +18,9 @@ const PlaceDetails = ({ place, selected, refProp }) => {
   if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   const classes = useStyles();
   return (
-    <Card elevation={6}>
+    <Card elevation={6} className={classes.cardContainer}>
       <CardMedia
+      className={classes.cardImage}
         style={{ height: 350 }}
         image={
           place.photo
@@ -29,24 +30,24 @@ const PlaceDetails = ({ place, selected, refProp }) => {
         title={place.name}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5">
+        <Typography gutterBottom variant="h5" className={classes.headerText}>
           {place.name}
         </Typography>
         <Box display="flex" justifyContent="space-between">
-          <Rating value={Number(place.rating)} readOnly />
-          <Typography gutterBottom variant="subtitle1">
+          <Rating value={Number(place.rating)} className={classes.iconRating} readOnly />
+          <Typography gutterBottom variant="subtitle1" className={classes.reviewText}>
             out of {place.num_reviews} reviews
           </Typography>
         </Box>
         <Box display="flex" justifyContent="space-between">
-          <Typography variant="subtitle1">Price</Typography>
-          <Typography gutterBottom variant="subtitle1">
+          <Typography variant="subtitle1" className={classes.titleText}>Price</Typography>
+          <Typography gutterBottom variant="subtitle1" className={classes.normalText}>
             {place.price_level}
           </Typography>
         </Box>
         <Box display="flex" justifyContent="space-between">
-          <Typography variant="subtitle1">Ranking</Typography>
-          <Typography gutterBottom variant="subtitle1">
+          <Typography variant="subtitle1"className={classes.titleText}>Ranking</Typography>
+          <Typography gutterBottom variant="subtitle1" className={classes.normalText}>
             {place.ranking}
           </Typography>
         </Box>
@@ -73,7 +74,8 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             color="textSecondary"
             className={classes.subtitle}
           >
-            <LocationOnIcon />
+            <LocationOnIcon className={classes.iconImg}/>
+            {/* <img  className={classes.iconImg} src={locationIcon} alt={""} /> */}
             {place.address}
           </Typography>
         )}
@@ -83,15 +85,17 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             color="textSecondary"
             className={classes.spacing}
           >
-            <PhoneIcon /> {place.phone}
+            <PhoneIcon className={classes.iconImg}/> {place.phone}
           </Typography>
         )}
       </CardContent>
-      <CardActions>
+      <CardActions className={classes.buttonGroup}>
+        <div>
         <Button
           size="small"
           color="primary"
           onClick={() => window.open(place.web_url, "_blank")}
+          className={classes.buttonText}
         >
           Trip Advisor
         </Button>
@@ -99,8 +103,18 @@ const PlaceDetails = ({ place, selected, refProp }) => {
           size="small"
           color="primary"
           onClick={() => window.open(place.website, "_blank")}
+          className={classes.buttonText}
         >
           Website
+        </Button> </div>
+        
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => window.open(place.website, "_blank")}
+          className={classes.buttonGoTo}
+        >
+          Go to Blog
         </Button>
       </CardActions>
     </Card>

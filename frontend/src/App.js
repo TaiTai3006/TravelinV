@@ -46,7 +46,7 @@ function App() {
       <GoogleOAuthProvider clientId="840620172422-p0ioib0pk0ebu85k45f0jap5fmmvnukn.apps.googleusercontent.com">
         <ScrollToTop />
         <Routes>
-          {/* <Route path="/" element={<Header />}> */}
+          <Route path="/" element={<Header />}>
             <Route index element={<Home />} />
             <Route path="/Blogs" element={<Blogs />} />
             <Route path="/AboutUs" element={<AboutUs />} />
@@ -71,7 +71,7 @@ function App() {
               </Route>
               <Route path="/Logout" element={<Logout />} />
             </Route>
-          {/* </Route> */}
+          </Route>
         </Routes>
         {/* <Footer /> */}
       </GoogleOAuthProvider>

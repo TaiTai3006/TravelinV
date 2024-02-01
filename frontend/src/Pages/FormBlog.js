@@ -54,7 +54,7 @@ const notify = () => toast.success('Posted successfully, awaiting moderation!!!'
         <HiChevronRight />
       </div>
       <div className="heading ">
-        <h1>Create post </h1>
+        Create post 
       </div>
       {/* {inputList} */}
       <div>

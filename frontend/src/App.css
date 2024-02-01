@@ -233,6 +233,11 @@ li {
 }
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
+  .nav-mobile{
+    margin-left: 15px;
+    font-size: 20px;
+    font-weight: bold;
+  }
   .register-container img {
     display: none;
   }
@@ -366,41 +371,51 @@ bottom: -18%;
     padding: 0 12px;
   }
   .nav-container {
-    margin: 70px 50px !important;
+    margin: 50px 0px 15px 15px !important;
   }
   .heading {
-    margin: 20px 30px !important;
+    margin: 10px 15px !important;
+    font-size: 30px !important;
+    display: none;
   }
   .form {
     flex-direction: column;
-    margin: 50px 15px !important ;
+    margin: 0px 15px !important ;
+    
+  }
+  .logo-header {
+    text-align: right;
+    margin-left: 210px !important;
   }
   .input {
-    width: 350px;
+    width: 280px;
+  }
+   input[type="submit"] {
+   top: 0;
   }
   .input input[type="text"] {
-    width: 350px !important;
+    width: 280px !important;
   }
   .input textarea {
-    width: 350px !important;
+    width: 280px !important;
   }
   .container-image {
-    margin: 0 30px !important;
+    margin: 0 2px !important;
   }
   .addDesc--icon {
-    width: 350px !important;
+    width: 280px !important;
   }
 
   .palace-list {
     text-align: right;
-    margin-right: 20px !important;
+    margin-right: 110px !important;
   }
   .profile-form {
     flex-direction: column;
     margin: 0 15px !important;
   }
   .profile-input {
-    width: 350px !important;
+    width: 280px !important;
     margin: 0 auto !important;
   }
   .intro_container {

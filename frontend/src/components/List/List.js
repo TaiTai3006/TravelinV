@@ -35,20 +35,20 @@ const List = ({
 
   return (
     <div className={classes.container}>
-      <Typography variant="h4">
+      <Typography variant="h4" className={classes.headerText}>
         Restaurants, Hotels & Attractions around you.
       </Typography>
       <FormControl className={classes.formControl}>
-        <InputLabel>Type</InputLabel>
-        <Select value={type} onChange={(e) => setType(e.target.value)}>
+        <InputLabel className={classes.inputText}>Type</InputLabel>
+        <Select className={classes.selectText} value={type} onChange={(e) => setType(e.target.value)}>
           <MenuItem value="restaurants">Restaurants</MenuItem>
           <MenuItem value="hotels">Hotels</MenuItem>
           <MenuItem value="attractions">Attractions</MenuItem>
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>
-        <InputLabel>Rating</InputLabel>
-        <Select value={rating} onChange={(e) => setRating(e.target.value)}>
+        <InputLabel className={classes.inputText}>Rating</InputLabel>
+        <Select className={classes.selectText} value={rating} onChange={(e) => setRating(e.target.value)}>
           <MenuItem value={0}>All</MenuItem>
           <MenuItem value={3}>Above 3.0</MenuItem>
           <MenuItem value={4}>Above 4.0</MenuItem>
