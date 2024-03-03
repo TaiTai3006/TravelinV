@@ -33,7 +33,6 @@ function Login() {
       setPasswordIcon(FaEyeSlash);
     }
   };
-  console.log(account);
   return (
     <div className="login-container">
       <img src={loginImage} height="auto" />

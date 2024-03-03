@@ -21,12 +21,10 @@ function Slider() {
       setSlide(response.data)
     }) 
   },[pathname])
-  // console.log(slide)
   const [currentSlide, setCurrentSlide] = useState(0);
     useEffect(() => {
       setTimeout(() => {
         setCurrentSlide(() => {
-          // console.log(currentSlide);
           if (currentSlide + 1 > slide.length - 1) {
             return 0;
           } else {

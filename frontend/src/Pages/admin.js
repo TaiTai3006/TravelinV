@@ -26,7 +26,6 @@ function Admin() {
       setSearchUser(response.data);
     });
   }, []);
-  console.log(search);
   const [type, settype] = useState("blog");
 
   function handleEvent(type) {

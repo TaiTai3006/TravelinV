@@ -25,7 +25,6 @@ export default function Slider() {
           .get(`http://localhost:8800/SliderBlogs/SlideImages`)
           .then((response) => {
             setSlideImages(response.data);
-            console.log(response.data);
           });
       } catch (err) {
         console.log(err);
@@ -39,7 +38,6 @@ export default function Slider() {
           )
           .then((response) => {
             setRelatePosts(response.data);
-            console.log(response.data);
           });
       } catch (err) {
         console.log(err);

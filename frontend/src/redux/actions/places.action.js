@@ -20,7 +20,6 @@ export const getPlacesData = (type,sw,ne) =>  async (dispatch) =>{
             }
           };
         const {data: {data}} = await axios.get(URL, options)
-        console.log(data, sw, ne)
         dispatch({
             type: SELECTED_PLACES_SUCCES,
             payload: data.filter((place)=> place.name && place.num_reviews > 0)

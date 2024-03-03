@@ -41,7 +41,6 @@ const notify = () => toast.success('Posted successfully, awaiting moderation!!!'
     setInputList(inputList.filter((input) => input !== id));
     setDescriptions(descriptions.filter((des) => des.id !== id));
   };
-  console.log(inputList);
   return (
     <>
       {/* <Notice/> */}
@@ -99,7 +98,6 @@ const notify = () => toast.success('Posted successfully, awaiting moderation!!!'
               >
                 <option value="">None</option>
                 {provinces.map((province) => {
-                  // console.log(province)
                   return (
                     <>
                       <option value={province.idProvince}>

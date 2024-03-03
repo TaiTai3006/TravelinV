@@ -17,7 +17,6 @@ export function CommentCard({
   handleEditComment,
   ...Children
 }) { console.log(comment.idComment === checkReadBlog.checkReply,comment.idComment, checkReadBlog.checkReply)
-  console.log(checkReadBlog)
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   return (

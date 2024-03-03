@@ -94,7 +94,6 @@ export default function PersonalPage() {
           .get(`http://localhost:8800/${location.pathname.split("/")[2]}`)
           .then((response) => {
             setName(response.data);
-            console.log(response.data.length);
           });
       } catch (err) {
         console.log(err);
@@ -119,7 +118,6 @@ export default function PersonalPage() {
           )
           .then((response) => {
             if (response.data) {
-              console.log(type);
               if (type === "Pending") {
                 if (user.userName === location.pathname.split("/")[2])
                   setContent(response.data);
@@ -237,8 +235,6 @@ export default function PersonalPage() {
 
   return (
     <div className="Thang_avatar">
-      {/* {setType('Post')} */}
-      {/* {console.log(PostPersonal)} */}
       <div id="Thang_avatar_child">
         <img src={Name[0].avatar ? Name[0].avatar : default_avatar} />
       </div>
@@ -298,8 +294,6 @@ export default function PersonalPage() {
       </div>
 
       <div id="Thang_content1">
-        {/* {console.log(Content)}   */}
-        {/* {console.log(PostPersonal)} */}
 
         {Content.map((Content0) => (
           <div key={Content0.idPost}>

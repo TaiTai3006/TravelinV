@@ -50,7 +50,6 @@ function ProfileInput() {
     location.pathname.split("/")[2] && fecthGetAccount();
   }, [location]);
 
-  console.log(account);
   return (
     <div className="profile-container">
       <div className="profile-header">

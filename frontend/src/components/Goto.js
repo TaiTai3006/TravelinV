@@ -37,7 +37,6 @@ const Goto = () =>{
             try{
                 await axios.get(`http://localhost:8800/SliderBlogs/Goto`).then((response) =>{
                     setgotoDatas(response.data)
-                    console.log(response.data)
                 })
             } catch (err) {
                 console.log(err)

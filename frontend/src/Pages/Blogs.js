@@ -18,7 +18,6 @@ export default function Blogs() {
         try{
             await axios.get(`http://localhost:8800/Blogs/FeaturedPost`).then((response) =>{
                 setFeaturePost(response.data)
-                // console.log(response.data)
             })
         } catch (err) {
             console.log(err)

@@ -62,7 +62,6 @@ const useFormPost = (callback) => {
 
     for (let i = 0; i < descriptions.length; i++) {
       if (descriptions[i]) {
-        console.log(descriptions[i]);
         if (descriptions[i].image1 && descriptions[i].image2) {
           const uploadDataTitle = new FormData();
           uploadDataTitle.append("image1", descriptions[i].image1, "image1");

@@ -21,7 +21,6 @@ export const createPost = (req, res) => {
     today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
   const q =
     "INSERT INTO `post`(`idPost`, `idProvince`, `image`, `demoDescription`, `status`, `postName`, `userName`) VALUES (?)";
-  console.log(req.body);
   const values = [
     req.body.idPost,
     req.body.idProvince,
@@ -46,8 +45,6 @@ export const createDes = (req, res) => {
   const image = req.files;
   const q =
     "INSERT INTO `description`(`idDes`, `idPost`, `image1`, `image2`, `description`, `title`) VALUES (?)";
-  console.log(req.body)
-  console.log(image)
   const values = [
     (req.body.idDes = uuidv4()),
     (req.body.idPost = idPostId),
@@ -70,8 +67,6 @@ export const createDes2 = (req, res) => {
     const image = req.file;
     const q =
       "INSERT INTO `description`(`idDes`, `idPost`, `image1`, `description`, `title`) VALUES (?)";
-    console.log(req.body)
-    console.log(image)
     const values = [
       (req.body.idDes = uuidv4()),
       (req.body.idPost = idPostId),

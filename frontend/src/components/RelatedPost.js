@@ -57,14 +57,10 @@ function RelatedPost() {
   ]);
   useEffect(()=>{
     Axios.get('http://localhost:8800/home/relatedpost1').then((response) => {
-      // console.log(response.data)
       setPost1(response.data)
-      // setPost2(response.data)
     })
     Axios.get('http://localhost:8800/home/relatedpost2').then((response) => {
-      // console.log(response.data)
       setPost2(response.data)
-      // setPost2(response.data)
     })
   },[pathname])
   return (

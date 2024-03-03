@@ -10,7 +10,6 @@ import axios from "axios";
 const MapScreen = () => {
   // const [places, setPlaces] = useState([]);
   const places = useSelector((state) => state.places.placesData);
-  console.log(useSelector((state) => state.weather.weatherData));
   const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
   const [bounds, setBounds] = useState({});
   const [filteredPlaces, setFillteredPlaces] = useState([]);
@@ -31,7 +30,6 @@ const MapScreen = () => {
         }
       );
 
-      console.log(res.data);
       setCoordinates({ lat: res.data[0].latitude, lng: res.data[0].longitude });
     } catch (error) {
       console.error("Error:", error.response.data);
@@ -40,7 +38,6 @@ const MapScreen = () => {
   const getLocationByIP = async () => {
     try {
       const response = await axios.get("https://api.db-ip.com/v2/free/self");
-      console.log(response.data.city);
       getLocationByCityName(response.data.city);
     } catch (error) {
       console.error("Error fetching IP address:", error);
@@ -65,7 +62,6 @@ const MapScreen = () => {
 
   useEffect(() => {
     // dispatch(getWeatherData(coordinates.lat, coordinates.lng))
-    console.log(bounds);
     // getPlacesData(bounds.sw, bounds.ne).then((data) => {
     //  console.log(data)
     //   setPlaces(data);

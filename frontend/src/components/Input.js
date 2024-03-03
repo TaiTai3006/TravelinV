@@ -43,13 +43,11 @@ function Input({ id, descriptions, setDescriptions }) {
   };
 
   const handleChangeDes = (e) => {
-    console.log("handle");
     setDescription({ ...description, [e.target.name]: e.target.value });
     descriptions[id] = { ...description, [e.target.name]: e.target.value };
     setDescriptions(descriptions);
   };
 
-  console.log(descriptions, "hello");
 
   return (
     <div className="input-container ">
@@ -82,7 +80,6 @@ function Input({ id, descriptions, setDescriptions }) {
           {({ imageList, onImageUpload }) => (
             // write your building UI
             <div className="upload__image-wrapper">
-              {console.log(imageList)}
               {imageList.map((image, index) => (
                 <div key={index} className="image-item">
                   <img src={image.data_url} alt="" width="100" />

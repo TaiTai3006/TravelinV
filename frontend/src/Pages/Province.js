@@ -27,7 +27,6 @@ function App() {
     return search.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, search]);
 
-  console.log(search, "hello");
 
   useEffect(() => {
     axios
@@ -58,7 +57,6 @@ function App() {
       .then((res) => getDestination(res.data));
   }, [location]);
 
-  console.log(provincePost, province, destination);
 
   return (
     <div className="province-container">
