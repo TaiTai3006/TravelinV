@@ -16,17 +16,19 @@ This will start the frontend development server and you can access the applicati
 
 ## Backend
 
-To run the backend, follow these steps:
+To run the backend, follow these steps: 
 
-1. Install Sequelize CLI globally:
+1. Run sql query "CREATE DATABASE TravelinV" in your database
+
+2. Install Sequelize CLI globally:
 
     npm install -g sequelize-cli
 
-2. Run migrations to set up the database:
+3. Run migrations to set up the database:
 
     sequelize db:migrate
 
-3. Start the backend server:
+4. Start the backend server:
 
     nodemon index.js
 
