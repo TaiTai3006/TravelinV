@@ -1,6 +1,6 @@
 import express, { Router } from "express";
 
-import { getProvincePost, getProvince, getDestination } from "../controllers/ProvincePostController";
+import { getProvincePost, getProvince, getDestination } from "../controllers/ProvincePostController.js";
 
 const ProvincePostRouter = express.Router()
 

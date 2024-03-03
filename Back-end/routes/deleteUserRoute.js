@@ -1,5 +1,5 @@
 import express,{Router} from 'express'
-import {deletepostUser, deleteUser, getUserIdPost} from "../controllers/deleteUserController"
+import {deletepostUser, deleteUser} from "../controllers/deleteUserController.js"
 const deleteUserRoute = express.Router()
 
 deleteUserRoute.delete("/admin/user/delete/:userName", deleteUser)

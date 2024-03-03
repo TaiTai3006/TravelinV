@@ -2,7 +2,7 @@ import { db } from "../index.js";
 
 import { v4 as uuidv4 } from "uuid";
 
-const cloudinary = require("cloudinary").v2;
+import { v2 as cloudinary } from "cloudinary";
 
 export const getProvince = (req, res) => {
   const q = "SELECT * FROM `province`";

@@ -14,7 +14,7 @@ import {
   deleteReply,
   editComment,
   editReply
-} from "../controllers/ReadBlogController";
+} from "../controllers/ReadBlogController.js";
 
 const ReadBlogRouter = express.Router();
 

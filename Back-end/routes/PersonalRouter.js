@@ -1,7 +1,7 @@
 import express from "express";
 // import { getAccount } from "../controllers/AccoutController.js";
-import { getPost } from "../controllers/PersonalController";
-import { getPostPending } from "../controllers/PersonalController";
+import { getPost } from "../controllers/PersonalController.js";
+import { getPostPending } from "../controllers/PersonalController.js";
 
 import { getPostLike } from "../controllers/PersonalController.js";
 import { getUser } from "../controllers/PersonalController.js";

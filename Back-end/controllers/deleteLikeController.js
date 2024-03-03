@@ -1,4 +1,4 @@
-import { db } from "../index";
+import { db } from "../index.js";
 
 export const deletelike = ((req,res) =>{
     const userNameId = req.params.idPost;

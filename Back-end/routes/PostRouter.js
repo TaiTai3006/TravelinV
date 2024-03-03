@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import { getProvince, createPost, createDes, createDes2 } from "../controllers/PostController";
+import { getProvince, createPost, createDes, createDes2 } from "../controllers/PostController.js";
 import uploadCloud from "../configs/cloudinary.js";
 
 const PostRouter = express.Router()

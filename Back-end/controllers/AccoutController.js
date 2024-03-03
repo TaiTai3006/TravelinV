@@ -1,6 +1,6 @@
 import { db } from "../index.js";
 import bcrypt from "bcrypt";
-const cloudinary = require("cloudinary").v2;
+import { v2 as cloudinary } from "cloudinary";
 
 export const CreateTableAccount = (req, res) => {
   const userNameId = req.params.userName;

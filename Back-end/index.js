@@ -4,17 +4,16 @@ import cors from "cors";
 import routerAccount from "./routes/AccountRouter.js";
 import homeRouter from "./routes/homeRoute.js";
 import PostRouter from "./routes/PostRouter.js";
-import routerPersonal from "./routes/PersonalRouter"
+import routerPersonal from "./routes/PersonalRouter.js"
 import routerBlogs from "./routes/BlogsRouter.js";
 import ProvincePostRouter from "./routes/ProvincepPostRouter.js";
 import ReadBlogRouter from "./routes/ReadBlogRouter.js";
 import adminRoute from "./routes/adminRoute.js"
 import userRoute from "./routes/userRoute.js"
-import deletePostRouter from "./routes/deletedPostRouter"
-import deleteUserRoute from "./routes/deleteUserRoute"
-import statusRoute from "./routes/statusRoute"
+import deletePostRouter from "./routes/deletedPostRouter.js"
+import deleteUserRoute from "./routes/deleteUserRoute.js"
+import statusRoute from "./routes/statusRoute.js"
 import deleteLike from "./routes/deletelikeRoute.js";
-import deleteDes from "./routes/deleteDesRoute.js";
 // import "./configs/Database.js"
 const app = express();
 

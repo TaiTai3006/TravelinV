@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import { getFeatured, getProvince, getRelatedpost1, getRelatedpost2, getSlider } from "../controllers/homeController";
+import { getFeatured, getProvince, getRelatedpost1, getRelatedpost2, getSlider } from "../controllers/homeController.js";
 
 
 

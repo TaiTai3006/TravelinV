@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import {getpost_user, getpost_user_coba} from "../controllers/adminController"
+import {getpost_user, getpost_user_coba} from "../controllers/adminController.js"
 
 const adminRoute = express.Router()
 adminRoute.get("/admin/post",getpost_user)

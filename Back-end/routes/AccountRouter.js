@@ -3,6 +3,7 @@ import { CreateAccount } from "../controllers/AccoutController.js";
 import { FindAccount } from "../controllers/AccoutController.js";
 import { Login } from "../controllers/AccoutController.js";
 import { CreateTableAccount } from "../controllers/AccoutController.js";
+// import {uploadCloud} from "../configs/cloudinary.js";
 import uploadCloud from "../configs/cloudinary.js";
 import { upadeAccount } from "../controllers/AccoutController.js";
 import { getAccount } from "../controllers/AccoutController.js";
