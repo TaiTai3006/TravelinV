@@ -64,9 +64,11 @@ const notify = () => toast.success('Posted successfully, awaiting moderation!!!'
 
               <span>Upload your image for post here </span>
               {title.imagePreview && (
+
                 <div>
+                  {console.log(title.imagePreview)}
                   <img
-                    alt="not fount"
+                    alt="not found"
                     width={"100%"}
                     src={title.imagePreview}
                   />
@@ -100,8 +102,8 @@ const notify = () => toast.success('Posted successfully, awaiting moderation!!!'
                 {provinces.map((province) => {
                   return (
                     <>
-                      <option value={province.idProvince}>
-                        {province.provinceName}
+                      <option value={province.id_province}>
+                        {province.province_name}
                       </option>
                     </>
                   );
@@ -113,14 +115,14 @@ const notify = () => toast.success('Posted successfully, awaiting moderation!!!'
               <input
                 type="text"
                 class="title-input"
-                name="postName"
+                name="title"
                 placeholder="Write the title of your blog ....."
                 onChange={handleChangeTitle}
                 required
               ></input>
               <textarea
                 id="message"
-                name="demoDescription"
+                name="demo_description"
                 placeholder="Write the title of your blog ....."
                 onChange={handleChangeTitle}
                 required

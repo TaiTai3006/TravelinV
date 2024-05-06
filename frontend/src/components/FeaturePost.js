@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Axios, * as others from 'axios';
 import { Link } from "react-router-dom";
-
+const baseURL = process.env.REACT_APP_API_BASE_URL 
 function FeaturePost() {
   const { pathname } = useLocation();
   const [posts, setpost] = useState([])
 
  useEffect(() =>{
-   Axios.get("http://localhost:8800/home/featuredpost").then((response)=>{
+   Axios.get(`${baseURL}/post/public/getFeaturedPost`).then((response)=>{
+    console.log(response.data)
       setpost(response.data)
      }
    )
@@ -16,16 +17,16 @@ function FeaturePost() {
   return (
     <div className="feature_post--container">
       {posts.map((posts) => {
-        const { postName, image } = posts;
         return (
-          <Link to = {`/Blogs/${posts.idProvince}/${posts.idPost}`} className="feature_post" >
-            <h2 className="feature_post--title">{postName} </h2>
-            <abbr title={postName}>
+          <Link to = {`/Blogs/${posts.id_province}/${posts.id_post}`} className="feature_post" key={posts.id_post}>
+            <h2 className="feature_post--title">{posts.post_name} </h2>
+            <abbr title={posts.post_name}>
             <div className="feature_post--img">
-              <img src={image} alt={postName} />
+              <img src={posts.image} alt={posts.post_name} />
             </div>
             </abbr>     
           </Link>
+          
         );
       })}
     </div>

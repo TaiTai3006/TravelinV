@@ -24,7 +24,7 @@ const useReadBlog = (callback) => {
   const [comment, setComment] = useState([]);
 
   const [reply, setReply] = useState([]);
-
+  const baseURL = process.env.REACT_APP_API_BASE_URL
   const [commentInput, setCommentInput] = useState({
     userName: user.userName,
     idPost: location.pathname.split("/")[3],
@@ -32,7 +32,7 @@ const useReadBlog = (callback) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8800/Province/${location.pathname.split("/")[2]}`)
+      .get(`${baseURL}/public/province/${location.pathname.split("/")[2]}`)
       .then((res) =>
         setProvince(
           res.data.reduce((t, v) => {
@@ -45,7 +45,7 @@ const useReadBlog = (callback) => {
 
     axios
       .get(
-        `http://localhost:8800/AuthorPost/${location.pathname.split("/")[3]}`
+        `${baseURL}/post/author/${location.pathname.split("/")[3]}`
       )
       .then((res) =>
         setAuthorPost(
@@ -58,7 +58,7 @@ const useReadBlog = (callback) => {
       );
 
     axios
-      .get(`http://localhost:8800/DesPost/${location.pathname.split("/")[3]}`)
+      .get(`${baseURL}/description/public/${location.pathname.split("/")[3]}`)
       .then((res) => setDesPost(res.data));
 
     axios
@@ -68,18 +68,16 @@ const useReadBlog = (callback) => {
       .then((res) =>
         setCheckReadBlog({ ...checkReadBlog, checkLike: res.data })
       );
-
+      console.log(location.pathname.split("/")[2])
     axios
-      .post(
-        `http://localhost:8800/RelatedPots/${location.pathname.split("/")[3]}`,
-        {
-          idProvince: location.pathname.split("/")[2],
-        }
+      .get(
+        `${baseURL}/post/public/getFeaturedPost`
+        
       )
       .then((res) => setRelated(res.data));
 
     axios
-      .get(`http://localhost:8800/Comment/${location.pathname.split("/")[3]}`)
+      .get(`${baseURL}/comment/post/${location.pathname.split("/")[3]}`)
       .then((res) => setComment(res.data));
 
     axios
@@ -90,7 +88,7 @@ const useReadBlog = (callback) => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8800/AuthorPost/${location.pathname.split("/")[3]}`
+        `${baseURL}/post/author/${location.pathname.split("/")[3]}`
       )
       .then((res) =>
         setAuthorPost(

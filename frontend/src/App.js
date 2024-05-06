@@ -21,7 +21,6 @@ import ProvincePost from "./Pages/Province";
 import ScrollToTop from "./components/ScrollToTop";
 import { ProtecteDashboard } from "./components/PrivateRouter";
 import { ProtectLoginout } from "./components/PrivateRouter";
-
 import Collaborator from "./Pages/collaborator";
 
 import MapScreen from "./Pages/Map/MapScreen";
@@ -32,10 +31,11 @@ function App() {
     const storageAccount = JSON.parse(localStorage.getItem("user"));
     return (
       storageAccount ?? {
-        userName: "",
+        username: "",
         loggedIn: false,
         accountType: "",
         image: "",
+        token:""
       }
     );
   });

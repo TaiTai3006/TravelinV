@@ -14,12 +14,15 @@ const ProtectedRoutes = () => {
 
 export const ProtecteDashboard = () => {
   const {user} = useContext(UserContext)
-  return (user.accountType === 'admin' /*|| user.accountType === 'collaborator'*/) ? <Outlet /> : <Navigate to="/"  />
+  // const user = localStorage.getItem('user')
+
+  console.log(user);
+  return (user.accountType === "ROLE_ADMIN" /*|| user.accountType === 'collaborator'*/) ? <Outlet /> : <Navigate to="/"  />
 };
 
 export const ProtecteDashboardColl = () =>{
   const {user} = useContext(UserContext)
-  return ( user.accountType === 'collaborator') ? <Outlet /> : <Navigate to="/"  />
+  return ( user.accountType === 'ROLE_COLLABORATOR') ? <Outlet /> : <Navigate to="/"  />
 }
 
 export const ProtectLoginout = () => {

@@ -18,7 +18,7 @@ import { IconContext } from "react-icons";
 
 const tabs = [
   {
-    name: "Post",
+    name: "Approved",
     style: (
       <IconContext.Provider value={{ className: "Thang_a" }}>
         <BsFillFilterSquareFill />
@@ -47,13 +47,13 @@ export default function PersonalPage() {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
   // console.log(User.user)
-  const [type, setType] = useState("Post");
+  const [type, setType] = useState("Approved");
   const [Name, setName] = useState([{}]);
   const [Content, setContent] = useState([{}]);
   const [CountPost, setCountPost] = useState();
   const [CountPostLike, setCountPostLike] = useState();
   const [CountPostPending, setCountPostPending] = useState();
-
+  const baseURL = process.env.REACT_APP_API_BASE_URL
   const location = useLocation();
 
   useEffect(() => {
@@ -61,9 +61,9 @@ export default function PersonalPage() {
       try {
         await axios
           .get(
-            `http://localhost:8800/${
+            `${baseURL}/post/public/getPostUserPostLike/${
               location.pathname.split("/")[2]
-            }/Personal/PostLike`
+            }`
           )
           .then((response) => {
             setCountPostLike(response.data.length);
@@ -76,9 +76,9 @@ export default function PersonalPage() {
       try {
         await axios
           .get(
-            `http://localhost:8800/${
+            `${baseURL}/post/public/getPostUserPending/${
               location.pathname.split("/")[2]
-            }/Personal/Pending`
+            }`
           )
           .then((response) => {
             setCountPostPending(response.data.length);
@@ -91,16 +91,17 @@ export default function PersonalPage() {
     const FecthName = async () => {
       try {
         await axios
-          .get(`http://localhost:8800/${location.pathname.split("/")[2]}`)
+        .get(`${baseURL}/user/info`, { headers: {"Authorization" : `Bearer ${user.token}`} })
           .then((response) => {
+            console.log(response.data)
             setName(response.data);
           });
       } catch (err) {
         console.log(err);
       }
     };
-    axios.get(`http://localhost:8800/${user.userName}`).then((res) => {
-      setUser({ ...user, image: res?.data[0]?.avatar });
+    axios .get(`${baseURL}/user/info`, { headers: {"Authorization" : `Bearer ${user.token}`} }).then((res) => {
+      setUser({ ...user, image: res?.data?.avatar });
     });
     FecthCountPostLike();
     FecthCountPostPending();
@@ -112,9 +113,9 @@ export default function PersonalPage() {
       try {
         await axios
           .get(
-            `http://localhost:8800/${
+            `${baseURL}/post/public/getPostUser${type}/${
               location.pathname.split("/")[2]
-            }/Personal/${type}`
+            }`
           )
           .then((response) => {
             if (response.data) {
@@ -123,13 +124,13 @@ export default function PersonalPage() {
                   setContent(response.data);
               } else setContent(response.data);
             }
-            if (type === "Post") {
+            if (type === "Approved") {
               setCountPost(response.data.length);
               setContent(response.data);
             } else if (type === "PostLike") {
               setCountPostLike(response.data.length);
               setContent(response.data);
-            } else if (type === "PostPending") {
+            } else if (type === "Pending") {
               setCountPostPending(response.data.length);
               setContent(response.data);
             }
@@ -193,7 +194,7 @@ export default function PersonalPage() {
   };
 
   function HandlCoutEvent(type, id) {
-    if (type === "Post" || type === "Pending")
+    if (type === "Approved" || type === "Pending")
       return (
         <ul className="Thang_edit_remove">
           {/* <li id="Thang_li1">
@@ -236,7 +237,7 @@ export default function PersonalPage() {
   return (
     <div className="Thang_avatar">
       <div id="Thang_avatar_child">
-        <img src={Name[0].avatar ? Name[0].avatar : default_avatar} />
+        <img src={Name.avatar ? Name.avatar : default_avatar} />
       </div>
       <div id="Thang_card"></div>
 
@@ -255,7 +256,7 @@ export default function PersonalPage() {
             Edit Profile
           </button>
         </ul>
-        <p className="Thang_name">{Name[0].userName}</p>
+        <p className="Thang_name">{Name.username}</p>
         <div id="Thang_tab">
           <p className="Thang_tab_content">
             <span>{CountPost}</span> {tabs[0].name}
@@ -296,8 +297,8 @@ export default function PersonalPage() {
       <div id="Thang_content1">
 
         {Content.map((Content0) => (
-          <div key={Content0.idPost}>
-            <Link to={`/Blogs/${Content0.idProvince}/${Content0.idPost}`}>
+          <div key={Content0.id_post}>
+            <Link to={`/Blogs/${Content0.id_province}/${Content0.id_post}`}>
               <img src={Content0.image} />
               </Link>
               {user.userName === location.pathname.split("/")[2] && (
@@ -306,16 +307,17 @@ export default function PersonalPage() {
                     <a id="Thang_text_right">
                       <BsTextRight id="Thang_bstextright"></BsTextRight>
                     </a>
-                    {HandlCoutEvent(type, Content0.idPost)}
+                    {HandlCoutEvent(type, Content0.id_post)}
                   </li>
                 </p>
               )}
               <p id="Thang_CONTENT">
-                <p>{Content0.userName}</p>
-                <h1 id="Thang_Content_Author">{Content0.postName}</h1>
+                <p>{Content0.username}</p>
+                <h1 id="Thang_Content_Author">{Content0.post_name}</h1>
                 <p>
-                  {Content0.provinceName}&nbsp;&nbsp;&nbsp;&nbsp;{Content0.Day}-
-                  {Content0.Month}-{Content0.Year}
+                  {Content0.province_name}
+                    {/* &nbsp;&nbsp;&nbsp;&nbsp;{Content0.Day}-
+                    {Content0.Month}-{Content0.Year} */}
                 </p>
               </p>
           </div>

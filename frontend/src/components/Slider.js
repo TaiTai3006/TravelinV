@@ -3,6 +3,8 @@ import Axios, * as others from 'axios';
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+const baseURL = process.env.REACT_APP_API_BASE_URL 
+
 
 function Slider() {
   const navigate = useNavigate()
@@ -17,7 +19,7 @@ function Slider() {
   //   }
   )
   useEffect(()=>{
-    Axios.get('http://localhost:8800/home/slider').then((response) => {
+    Axios.get(`${baseURL}/post/public/getAllPost`).then((response) => {
       setSlide(response.data)
     }) 
   },[pathname])
@@ -43,8 +45,8 @@ function Slider() {
       >
         <div className="slideshow-slide-text">
                 <p>{slide[currentSlide].userName}</p>
-                <h3>{slide[currentSlide].postName}</h3>
-                <span>{slide[currentSlide].demoDescription}</span>
+                <h3>{slide[currentSlide].post_name}</h3>
+                <span>{slide[currentSlide].demo_description}</span>
                 <button onClick={()=> navigate('/Blogs')}>Travel Tips</button>
               </div>
 

@@ -103,22 +103,22 @@ const Header = ({ setCoordinates }) => {
                 />
               </IconContext.Provider>
             </Link>
-            <Link
+            {/* <Link
               to="/Map"
               style={{
                 color: navColor,
               }}
             >
               Map
-            </Link>
-            <Link
+            </Link> */}
+            {/* <Link
               to="/AboutUs"
               style={{
                 color: navColor,
               }}
             >
               About us
-            </Link>
+            </Link> */}
             
           </div>
         </div>
@@ -189,12 +189,12 @@ const Header = ({ setCoordinates }) => {
                   <li>
                     <Link to={`/Personal/${user.userName}`}>Personal</Link>
                   </li>
-                  {user.accountType === "admin" && (
+                  {user.accountType === "ROLE_ADMIN" && (
                     <li>
                       <Link to="/Dashboard">Dashboard</Link>
                     </li>
                   )}
-                  {user.accountType === "collaborator" && (
+                  {user.accountType === "ROLE_COLLABORATOR" && (
                     <li>
                       <Link to="/Dashboard/Coll">Collaborator</Link>
                     </li>

@@ -3,11 +3,12 @@ import { HiChevronDown } from "react-icons/hi";
 import Axios, * as others from "axios";
 import { Link } from "react-router-dom";
 import { UserContext } from "../App";
-
+const baseURL = process.env.REACT_APP_API_BASE_URL
 function Intro() {
   const [places, setPlace] = useState([]);
   useEffect(() => {
-    Axios.get("http://localhost:8800/home/gonext").then((response) => {
+    Axios.get(`${baseURL}/post/public/getGoToProvince`).then((response) => {
+      console.log(response.data)
       setPlace(response.data);
     });
   }, []);
@@ -54,7 +55,7 @@ function Intro() {
                       return (
                         <div className="next_place-item">
                           <Link to={`/Blogs/${place.idProvince}`}>
-                            <p>{provinceName}</p>
+                            <p>{place.province_name}</p>
                           </Link>
                         </div>
                       );

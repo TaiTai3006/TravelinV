@@ -7,6 +7,7 @@ import { UserContext } from "../App";
 import { MdOutlineCreate } from "react-icons/md";
 
 import { Link } from "react-router-dom";
+const baseURL = process.env.REACT_APP_API_BASE_URL
 const Modal = () => {
   // const [isShow, setIsShow] = useState(false);
 
@@ -29,7 +30,7 @@ const Modal = () => {
     };
   }, []);
   useEffect(() => {
-    Axios.get("http://localhost:8800/home/gonext").then((response) => {
+    Axios.get(`${baseURL}/post/public/getGoToProvince`).then((response) => {
       setPlace(response.data);
     });
   }, []);
@@ -75,9 +76,9 @@ const Modal = () => {
         <div className="palace-modal">
           {places.map((place) => {
             return (
-              <Link to={`/Blogs/${place.idProvince}`}>
+              <Link to={`/Blogs/${place.id_province}`} key={place.id_province}>
                 <div className="paplace-item">
-                  <p>{place.provinceName}</p>
+                  <p>{place.province_name}</p>
                 </div>
               </Link>
             );

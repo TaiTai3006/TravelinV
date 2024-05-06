@@ -64,6 +64,7 @@ function Login() {
                   type={passwordType}
                   placeholder="Enter your password"
                   name="password"
+                  defaultValue={account.password}
                   onChange={handleChangeLogin}
                   required
                 ></input>
@@ -77,6 +78,7 @@ function Login() {
               <p class="A3">Remember me</p>
               <p class="A4">Forgot Password</p>
             </div>
+            {console.log(errors.login)}
             {errors.login && <Errs err={errors.login} />}
             <input
               type="submit"
