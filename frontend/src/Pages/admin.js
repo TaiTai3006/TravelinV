@@ -22,10 +22,10 @@ function Admin() {
       setpost(response.data);
       setSearch(response.data);
     });
-    // Axios.get("http://localhost:8800/admin/user").then((response) => {
-    //   setuser(response.data);
-    //   setSearchUser(response.data);
-    // });
+    Axios.get(`${baseURL}/user/getAllUser`).then((response) => {
+      setuser(response.data);
+      setSearchUser(response.data);
+    });
   }, []);
   const [type, settype] = useState("blog");
 
@@ -135,10 +135,10 @@ function Admin() {
                   setSearch(
                     posts.filter((post) => {
                       return (
-                          removeVietnameseTones(post.post_name)
+                        removeVietnameseTones(post.post_name)
                           .toLowerCase()
                           .includes(text.target.value.toLowerCase()) ||
-                          post.post_name
+                        post.post_name
                           .toLowerCase()
                           .includes(text.target.value.toLowerCase())
                       );
@@ -146,9 +146,12 @@ function Admin() {
                   );
                   setSearchUser(
                     user.filter((users) => {
-                      return users.userName
+                      return removeVietnameseTones(users.username)
                         .toLowerCase()
-                        .includes(text.target.value.toLowerCase());
+                        .includes(text.target.value.toLowerCase()) ||
+                        user.username
+                          .toLowerCase()
+                          .includes(text.target.value.toLowerCase())
                     })
                   );
                 }}

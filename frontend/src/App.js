@@ -35,7 +35,8 @@ function App() {
         loggedIn: false,
         accountType: "",
         image: "",
-        token:""
+        token:"",
+        id_user: 0
       }
     );
   });

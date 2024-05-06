@@ -61,8 +61,7 @@ export default function PersonalPage() {
       try {
         await axios
           .get(
-            `${baseURL}/post/public/getPostUserPostLike/${
-              location.pathname.split("/")[2]
+            `${baseURL}/post/public/getPostUserPostLike/${location.pathname.split("/")[2]
             }`
           )
           .then((response) => {
@@ -76,8 +75,7 @@ export default function PersonalPage() {
       try {
         await axios
           .get(
-            `${baseURL}/post/public/getPostUserPending/${
-              location.pathname.split("/")[2]
+            `${baseURL}/post/public/getPostUserPending/${location.pathname.split("/")[2]
             }`
           )
           .then((response) => {
@@ -91,7 +89,7 @@ export default function PersonalPage() {
     const FecthName = async () => {
       try {
         await axios
-        .get(`${baseURL}/user/info`, { headers: {"Authorization" : `Bearer ${user.token}`} })
+          .get(`${baseURL}/user/info`, { headers: { "Authorization": `Bearer ${user.token}` } })
           .then((response) => {
             console.log(response.data)
             setName(response.data);
@@ -100,7 +98,7 @@ export default function PersonalPage() {
         console.log(err);
       }
     };
-    axios .get(`${baseURL}/user/info`, { headers: {"Authorization" : `Bearer ${user.token}`} }).then((res) => {
+    axios.get(`${baseURL}/user/info`, { headers: { "Authorization": `Bearer ${user.token}` } }).then((res) => {
       setUser({ ...user, image: res?.data?.avatar });
     });
     FecthCountPostLike();
@@ -110,11 +108,11 @@ export default function PersonalPage() {
 
   useEffect(() => {
     const FecthAllPost = async () => {
+      console.log(type)
       try {
         await axios
           .get(
-            `${baseURL}/post/public/getPostUser${type}/${
-              location.pathname.split("/")[2]
+            `${baseURL}/post/public/getPostUser${type}/${location.pathname.split("/")[2]
             }`
           )
           .then((response) => {
@@ -128,6 +126,7 @@ export default function PersonalPage() {
               setCountPost(response.data.length);
               setContent(response.data);
             } else if (type === "PostLike") {
+              console.log(type)
               setCountPostLike(response.data.length);
               setContent(response.data);
             } else if (type === "Pending") {
@@ -142,27 +141,24 @@ export default function PersonalPage() {
     FecthAllPost();
   }, [type]);
 
-  const handleDeletePost =  (id) => {
+  const handleDeletePost = (id) => {
     axios.delete(
-      `http://localhost:8800/${
-        location.pathname.split("/")[2]
-      }/Personal/DeleteLike/${id}`
+      `${baseURL}/post/delete/${id}`,{headers: { "Authorization": `Bearer ${user.token}` }}
     );
-    axios.delete(
-      `http://localhost:8800/${
-        location.pathname.split("/")[2]
-      }/Personal/DeletePostDes/${id}`
-    );
-    axios.delete(
-      `http://localhost:8800/${
-        location.pathname.split("/")[2]
-      }/Personal/DeletePost/${id}`
-    );
+    // axios.delete(
+    //   `http://localhost:8800/${
+    //     location.pathname.split("/")[2]
+    //   }/Personal/DeletePostDes/${id}`
+    // );
+    // axios.delete(
+    //   `http://localhost:8800/${
+    //     location.pathname.split("/")[2]
+    //   }/Personal/DeletePost/${id}`
+    // );
     axios
       .get(
-        `http://localhost:8800/${
-          location.pathname.split("/")[2]
-        }/Personal/${type}`
+        `${baseURL}/post/public/getPostUser${type}/${location.pathname.split("/")[2]
+        }`
       )
       .then((response) => {
         response.data && setContent(response.data);
@@ -173,15 +169,20 @@ export default function PersonalPage() {
   const handleDeletePostLike = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:8800/${
-          location.pathname.split("/")[2]
-        }/Personal/DeleteLike/${id}`
+        `${baseURL}/like/delete`,
+        {
+          headers: { "Authorization": `Bearer ${user.token}` },
+          data: {
+            id_post: id,
+            id_user: user.id_user
+          }
+        }
       );
+
       await axios
         .get(
-          `http://localhost:8800/${
-            location.pathname.split("/")[2]
-          }/Personal/${type}`
+          `${baseURL}/post/public/getPostUser${type}/${location.pathname.split("/")[2]
+          }`
         )
         .then((response) => {
           response.data && setContent(response.data);
@@ -279,9 +280,9 @@ export default function PersonalPage() {
             style={
               type === tab.name
                 ? {
-                    color: "black",
-                    borderTop: "2px outset #5f5f5f",
-                  }
+                  color: "black",
+                  borderTop: "2px outset #5f5f5f",
+                }
                 : {}
             }
             onClick={() => setType(tab.name)}
@@ -300,26 +301,26 @@ export default function PersonalPage() {
           <div key={Content0.id_post}>
             <Link to={`/Blogs/${Content0.id_province}/${Content0.id_post}`}>
               <img src={Content0.image} />
-              </Link>
-              {user.userName === location.pathname.split("/")[2] && (
-                <p id="Thang_CONTENT_mokuji">
-                  <li className="Thang_li">
-                    <a id="Thang_text_right">
-                      <BsTextRight id="Thang_bstextright"></BsTextRight>
-                    </a>
-                    {HandlCoutEvent(type, Content0.id_post)}
-                  </li>
-                </p>
-              )}
-              <p id="Thang_CONTENT">
-                <p>{Content0.username}</p>
-                <h1 id="Thang_Content_Author">{Content0.post_name}</h1>
-                <p>
-                  {Content0.province_name}
-                    {/* &nbsp;&nbsp;&nbsp;&nbsp;{Content0.Day}-
-                    {Content0.Month}-{Content0.Year} */}
-                </p>
+            </Link>
+            {user.userName === location.pathname.split("/")[2] && (
+              <p id="Thang_CONTENT_mokuji">
+                <li className="Thang_li">
+                  <a id="Thang_text_right">
+                    <BsTextRight id="Thang_bstextright"></BsTextRight>
+                  </a>
+                  {HandlCoutEvent(type, Content0.id_post)}
+                </li>
               </p>
+            )}
+            <p id="Thang_CONTENT">
+              <p>{Content0.username}</p>
+              <h1 id="Thang_Content_Author">{Content0.post_name}</h1>
+              <p>
+                {Content0.province_name}
+                {/* &nbsp;&nbsp;&nbsp;&nbsp;{Content0.Day}-
+                    {Content0.Month}-{Content0.Year} */}
+              </p>
+            </p>
           </div>
         ))}
       </div>

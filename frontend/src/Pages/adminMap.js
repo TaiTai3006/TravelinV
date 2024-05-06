@@ -90,20 +90,23 @@ export function DataUser({ user }) {
   const deleteUser = (u) => {
     // Axios.delete(http://localhost:8800/admin/description/delete/${p}, posts)
     // Axios.delete(http://localhost:8800/admin/like/delete/${p}, posts)
-    Axios.delete(`http://localhost:8800/admin/delete/${u}`, user)
-    Axios.delete(`http://localhost:8800/admin/user/delete/${u}`, user);
+    // Axios.delete(`http://localhost:8800/admin/delete/${u}`, user)
+    // Axios.delete(`http://localhost:8800/admin/user/delete/${u}`, user);
 
-    window.location.reload(false);
+    // window.location.reload(false);
   };
   const handleUpdateAccount = (accountType, userName) => {
-    if (accountType === "user") {
-      Axios.put(`http://localhost:8800/accountType/${userName}`, {
-        accountType: "collaborator",
+    console.log(accountType, userName);
+    if (accountType === "ROLE_USER") {
+      Axios.put(`${baseURL}/user/Role`, {
+        accountType: "ROLE_COLLABORATOR",
+        username: userName
       }).then((res) => console.log(res))
       window.location.reload(false);
-    } else if (accountType === "collaborator") {
-      Axios.put(`http://localhost:8800/accountType/${userName}`, {
-        accountType: "user",
+    } else if (accountType === "ROLE_COLLABORATOR") {
+      Axios.put(`${baseURL}/user/Role`, {
+        accountType: "ROLE_USER",
+        username: userName
       }).then((res) => console.log(res))
       window.location.reload(false);
     }
@@ -119,22 +122,22 @@ export function DataUser({ user }) {
           >
             <div className="user-item">
               <img className="avatar-user" src={user.avatar} />
-              <Link to={`/Personal/${user.userName}`} className="usename">
-                {user.userName}
+              <Link to={`/Personal/${user.username}`} className="usename">
+                {user.username}
               </Link>
             </div>
 
             <div className="gender user-item">{user.gender}</div>
-            <div className="mail user-item">{user.gmail}</div>
-            <div className="phone user-item">{user.phoneNumber}</div>
+            <div className="mail user-item">{user.email}</div>
+            <div className="phone user-item">{user.phone_number}</div>
             <div className="account user-item">
               <button
                 onClick={() => {
-                  handleUpdateAccount(user.accountType, user.userName);
+                  handleUpdateAccount(user.role, user.username);
                 }}
               >
-                {" "}
-                {user.accountType}
+                {/* {" "} */}
+                {user.role}
               </button>
             </div>
             {/* <div className="dropdown">

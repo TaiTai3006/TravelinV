@@ -232,6 +232,7 @@ const useForm = (callback) => {
                   loggedIn: true,
                   accountType: res.data.role,
                   image: res.data.avatar,
+                  id_user: res.data.id_user
                 };
                 console.log(user.accountType)
                 const jsonUser = JSON.stringify(newSetUser);

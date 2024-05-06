@@ -4,7 +4,7 @@ import { HiChevronRight } from "react-icons/hi";
 import { HiChevronLeft } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+const baseURL = process.env.REACT_APP_API_BASE_URL
 export default function Slider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slideImages, setSlideImages] = useState([{}]);
@@ -22,7 +22,7 @@ export default function Slider() {
     const FecthSlideImages = async () => {
       try {
         await axios
-          .get(`http://localhost:8800/SliderBlogs/SlideImages`)
+          .get(`${baseURL}/post/public/getAllPost`)
           .then((response) => {
             setSlideImages(response.data);
           });
@@ -34,7 +34,7 @@ export default function Slider() {
       try {
         await axios
           .get(
-            `http://localhost:8800/SliderBlogs/RelatedPosts/${slideImages[currentSlide].idProvince}/${slideImages[currentSlide].idPost}`
+            `${baseURL}/post/public/getRelatedPost/${slideImages[currentSlide].id_province}/${slideImages[currentSlide].id_post}`
           )
           .then((response) => {
             setRelatePosts(response.data);
@@ -58,26 +58,30 @@ export default function Slider() {
               relatedPosts.length === 0
                 ? {}
                 : {
-                    backgroundColor: "#f5f5f5",
-                    padding: "20px",
-                  }
+                  backgroundColor: "#f5f5f5",
+                  padding: "20px",
+                }
             }
           >
             {relatedPosts.map((relatedPost, index) => (
               <Link
                 className="article-text-block"
-                to={`/Blogs/${relatedPost.idProvince}/${relatedPost.idPost}`}
+                to={`/Blogs/${relatedPost.id_province}/${relatedPost.id_post}`}
               >
-                <div
-                  className="article-text-block_image"
-                  key={relatedPost.idPost}
-                >
-                  <img src={relatedPost.image} alt="image of post"></img>
-                </div>
-                <div className="article-text-block_content">
-                  <h2>{relatedPost.postName}</h2>
-                </div>
-                
+                {relatedPost.image !== null && (
+                  <div>
+                    <div
+                      className="article-text-block_image"
+                      key={relatedPost.id_post}
+                    >
+                      <img src={relatedPost.image} alt="image of post" />
+
+                    </div>
+                    <div className="article-text-block_content">
+                      <h2>{relatedPost.post_name}</h2>
+                    </div>
+                  </div>
+                )}
               </Link>
             ))}
           </div>
@@ -91,12 +95,12 @@ export default function Slider() {
       </button>
       <div className="slider-ctn-titile">
         <span className="slider-title">
-          {slideImages[currentSlide].postName}
+          {slideImages[currentSlide].post_name}
         </span>
       </div>
       <div className="slider-ctn-des">
         <span className="slider-des">
-          {slideImages[currentSlide].demoDescription}
+          {slideImages[currentSlide].demo_description}
         </span>
       </div>
 
@@ -106,16 +110,16 @@ export default function Slider() {
             <>
               <img className="slider-img" src={slideImage.image}></img>
               <div className="button-ctn">
-              <Link className="slider-button" to={`/Blogs/${slideImage.idProvince}/${slideImage.idPost}`}>
+                <Link className="slider-button" to={`/Blogs/${slideImage.id_province}/${slideImage.id_post}`}>
                   GO TO POST
                 </Link>
               </div>
 
             </>
-            
+
           )}
           <div className="button-ctn">
-            <Link className="slider-button" to={`/Blogs/${slideImage.idProvince}/${slideImage.idPost}`}>
+            <Link className="slider-button" to={`/Blogs/${slideImage.id_province}/${slideImage.id_post}`}>
               GO TO POST
             </Link>
           </div>
