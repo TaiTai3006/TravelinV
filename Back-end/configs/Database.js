@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize("TravelinV", "root", "", {
-  host: "localhost",
+const sequelize = new Sequelize("travelinv", "azure_admin", "Baitaplonso7", {
+  host: "travelinv-mysql.mysql.database.azure.com",
   dialect: "mysql",
   logging: false
 });

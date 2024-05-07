@@ -18,10 +18,11 @@ import deleteLike from "./routes/deletelikeRoute.js";
 const app = express();
 
 export const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "TravelinV",
+  host: "travelinv-mysql.mysql.database.azure.com",
+  user: "azure_admin",
+  password: "Baitaplonso7",
+  database: "travelinv",
+  port:3306
 });
 
 db.connect((err)=>{
