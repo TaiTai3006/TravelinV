@@ -15,8 +15,6 @@ const ProtectedRoutes = () => {
 export const ProtecteDashboard = () => {
   const {user} = useContext(UserContext)
   // const user = localStorage.getItem('user')
-
-  console.log(user);
   return (user.accountType === "ROLE_ADMIN" /*|| user.accountType === 'collaborator'*/) ? <Outlet /> : <Navigate to="/"  />
 };
 

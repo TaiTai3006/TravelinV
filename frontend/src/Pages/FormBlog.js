@@ -66,7 +66,6 @@ const notify = () => toast.success('Posted successfully, awaiting moderation!!!'
               {title.imagePreview && (
 
                 <div>
-                  {console.log(title.imagePreview)}
                   <img
                     alt="not found"
                     width={"100%"}

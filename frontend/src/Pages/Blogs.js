@@ -18,7 +18,6 @@ export default function Blogs() {
     const FecthFeaturePost = async ()=>{
         try{
             await axios.get(`${baseURL}/post/public/getFeaturedPost`).then((response) =>{
-              console.log(response.data)
                 setFeaturePost(response.data)
             })
         } catch (err) {
@@ -29,7 +28,6 @@ export default function Blogs() {
         try{
             await axios.get(`${baseURL}/post/public/getRecentPost`).then((response) =>{
                 setRecentPost(response.data)
-                // console.log(response.data)
             })
         } catch (err) {
             console.log(err)
@@ -41,7 +39,6 @@ export default function Blogs() {
 
   return ( 
   <div className='container-blog'>
-    {/* {console.log(FeaturedPost)} */}
     <div className='background-bubble'></div>
     <div class=" h1-container">
       <h1>Travel Blogs </h1>

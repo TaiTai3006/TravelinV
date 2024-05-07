@@ -147,7 +147,6 @@ const useForm = (callback) => {
   console.log(errors);
 
   const handleChange = (event) => {
-    console.log("value " , event.target.value);
     setAccount({
       ...account,
       [event.target.name]: event.target.value,
@@ -164,7 +163,6 @@ const useForm = (callback) => {
     
     setErrors(omit(errors, "login"));
   };
-  console.log("account ", account);
   useEffect(() => {
     return () => {
       URL.revokeObjectURL(account.imagePreview);
@@ -234,22 +232,18 @@ const useForm = (callback) => {
                   image: res.data.avatar,
                   id_user: res.data.id_user
                 };
-                console.log(user.accountType)
                 const jsonUser = JSON.stringify(newSetUser);
                 localStorage.setItem("user", jsonUser);
-                console.log(localStorage.getItem("user"))
                 return newSetUser;
               });
             });
           navigate("/");
         } else {
-          console.log("erororo")
           setErrors({ ...errors, login: "Incorrect username or password." });
         }
       }
     } catch (err) {
       console.log(err);
-      console.log("erororo")
       setErrors({ ...errors, login: "Incorrect username or password." });
     }
   };

@@ -68,7 +68,6 @@ const useReadBlog = (callback) => {
       .then((res) =>
         setCheckReadBlog({ ...checkReadBlog, checkLike: res.data })
       );
-      console.log(location.pathname.split("/")[2])
     axios
       .get(
         `${baseURL}/post/public/getFeaturedPost`
@@ -77,7 +76,7 @@ const useReadBlog = (callback) => {
       .then((res) => setRelated(res.data));
 
     axios
-      .get(`${baseURL}/comment/post/${location.pathname.split("/")[3]}`)
+      .get(`http://localhost:8800/Comment/${location.pathname.split("/")[3]}`)
       .then((res) => setComment(res.data));
 
     axios

@@ -38,7 +38,6 @@ const useFormPost = (callback) => {
   }, [title.image]);
 
   const handleTitleImage = (e) => {
-    console.log();
     setTitle({
       ...title,
       [e.target.name]: e.target.files[0],
@@ -71,7 +70,7 @@ const useFormPost = (callback) => {
             "Content-Type": "multipart/form-data"
           }
         })
-        .then((res) => {id = res.data; console.log(res.data)})
+        .then((res) => {id = res.data})
         .catch((error) => console.error(error));
     } else {
       const json = JSON.stringify(obj);
@@ -88,7 +87,6 @@ const useFormPost = (callback) => {
         }
       }).then((res) =>
         id = res.data
-        // console.log(res.data)
       )
         .catch((error) => console.error(error));
     }
@@ -96,7 +94,6 @@ const useFormPost = (callback) => {
     for (let i = 0; i < descriptions.length; i++) {
       if (descriptions[i]) {
         if (descriptions[i].image1 || descriptions[i].image2) {
-          console.log(id)
           const obj = {
 
             "description": descriptions[i].description,
@@ -112,7 +109,6 @@ const useFormPost = (callback) => {
           uploadDataTitle.append("DesImage1", descriptions[i].image1);
           uploadDataTitle.append("DesImage2", descriptions[i].image2);
           uploadDataTitle.append("description", blob);
-          console.log([...uploadDataTitle]);
           await axios
             .post(
               `${baseURL}/description/createDes`,

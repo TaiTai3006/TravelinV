@@ -27,7 +27,7 @@ function ProfileInput() {
       axios
         .get(`${baseURL}/user/info`, { headers: { "Authorization": `Bearer ${user.token}` } })
         .then((res) =>
-         {console.log(res.data) 
+         {
           setAccount({
             ...account,
             name: res.data.name,

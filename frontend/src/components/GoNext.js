@@ -9,7 +9,6 @@ function GoNext() {
   const location = useLocation()
   useEffect(() =>{
     Axios.get(`${baseURL}/public/province`).then((response)=>{
-      console.log(response.data);
        setPlace(response.data)
       }
     )

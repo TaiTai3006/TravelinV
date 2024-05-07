@@ -91,7 +91,6 @@ export default function PersonalPage() {
         await axios
           .get(`${baseURL}/user/info`, { headers: { "Authorization": `Bearer ${user.token}` } })
           .then((response) => {
-            console.log(response.data)
             setName(response.data);
           });
       } catch (err) {
@@ -126,7 +125,6 @@ export default function PersonalPage() {
               setCountPost(response.data.length);
               setContent(response.data);
             } else if (type === "PostLike") {
-              console.log(type)
               setCountPostLike(response.data.length);
               setContent(response.data);
             } else if (type === "Pending") {

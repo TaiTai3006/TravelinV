@@ -8,7 +8,6 @@ function Intro() {
   const [places, setPlace] = useState([]);
   useEffect(() => {
     Axios.get(`${baseURL}/post/public/getGoToProvince`).then((response) => {
-      console.log(response.data)
       setPlace(response.data);
     });
   }, []);

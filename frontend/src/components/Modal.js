@@ -76,7 +76,7 @@ const Modal = () => {
         <div className="palace-modal">
           {places.map((place) => {
             return (
-              <Link to={`/Blogs/${place.id_province}`} key={place.id_province}>
+              <Link to={`/Blogs/${place.id_province}`} key={place.id_province} >
                 <div className="paplace-item">
                   <p>{place.province_name}</p>
                 </div>

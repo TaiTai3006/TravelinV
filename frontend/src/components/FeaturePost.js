@@ -9,7 +9,6 @@ function FeaturePost() {
 
  useEffect(() =>{
    Axios.get(`${baseURL}/post/public/getFeaturedPost`).then((response)=>{
-    console.log(response.data)
       setpost(response.data)
      }
    )
