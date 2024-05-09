@@ -25,6 +25,7 @@ const useReadBlog = (callback) => {
 
   const [reply, setReply] = useState([]);
   const baseURL = process.env.REACT_APP_API_BASE_URL
+  const baseURL_NODE = process.env.REACT_APP_API_BASE_URL_NODE
   const [commentInput, setCommentInput] = useState({
     userName: user.userName,
     idPost: location.pathname.split("/")[3],
@@ -62,7 +63,7 @@ const useReadBlog = (callback) => {
       .then((res) => setDesPost(res.data));
 
     axios
-      .post(`http://localhost:8800/CheckLike/${user.userName}`, {
+      .post(`${baseURL_NODE}/CheckLike/${user.userName}`, {
         idPost: location.pathname.split("/")[3],
       })
       .then((res) =>
@@ -76,11 +77,11 @@ const useReadBlog = (callback) => {
       .then((res) => setRelated(res.data));
 
     axios
-      .get(`http://localhost:8800/Comment/${location.pathname.split("/")[3]}`)
+      .get(`${baseURL_NODE}/Comment/${location.pathname.split("/")[3]}`)
       .then((res) => setComment(res.data));
 
     axios
-      .get(`http://localhost:8800/Reply/${location.pathname.split("/")[3]}`)
+      .get(`${baseURL_NODE}/Reply/${location.pathname.split("/")[3]}`)
       .then((res) => setReply(res.data));
   }, [location]);
 
@@ -103,7 +104,7 @@ const useReadBlog = (callback) => {
   const handleComments = () => {
     axios
       .post(
-        `http://localhost:8800/CreateComment/${
+        `${baseURL_NODE}/CreateComment/${
           location.pathname.split("/")[3]
         }`,
         commentInput
@@ -115,13 +116,13 @@ const useReadBlog = (callback) => {
     focustInput.current.focus();
 
     axios
-      .get(`http://localhost:8800/Comment/${location.pathname.split("/")[3]}`)
+      .get(`${baseURL_NODE}/Comment/${location.pathname.split("/")[3]}`)
       .then((res) => setComment(res.data));
   };
 
   const handleReplys = (idComment) => {
     axios
-      .post(`http://localhost:8800/CreateReply/${idComment}`, commentInput)
+      .post(`${baseURL_NODE}/CreateReply/${idComment}`, commentInput)
       .then((res) => console.log(res.data));
 
     setCheckReadBlog({
@@ -133,39 +134,39 @@ const useReadBlog = (callback) => {
     setCommentInput({ ...commentInput, description: "" });
 
     axios
-      .get(`http://localhost:8800/Reply/${location.pathname.split("/")[3]}`)
+      .get(`${baseURL_NODE}/Reply/${location.pathname.split("/")[3]}`)
       .then((res) => setReply(res.data));
   };
 
   const handleDeleteComment = (type, idComment) => {
     if (type === "comment-reply") {
-      axios.delete(`http://localhost:8800/DeleteReply/${idComment}`);
+      axios.delete(`${baseURL_NODE}/DeleteReply/${idComment}`);
 
-      axios.delete(`http://localhost:8800/DeleteComment/${idComment}`);
+      axios.delete(`${baseURL_NODE}/DeleteComment/${idComment}`);
 
       axios
-        .get(`http://localhost:8800/Comment/${location.pathname.split("/")[3]}`)
+        .get(`${baseURL_NODE}/Comment/${location.pathname.split("/")[3]}`)
         .then((res) => setComment(res.data));
     } else {
-      axios.delete(`http://localhost:8800/DeleteReply/${idComment}`);
+      axios.delete(`${baseURL_NODE}/DeleteReply/${idComment}`);
     }
     axios
-      .get(`http://localhost:8800/Reply/${location.pathname.split("/")[3]}`)
+      .get(`${baseURL_NODE}/Reply/${location.pathname.split("/")[3]}`)
       .then((res) => setReply(res.data));
   };
 
   const handleEditComment = (type, idComment, idReply) => {
     if (type === "comment-reply") {
-      axios.put(`http://localhost:8800/EditComment/${idComment}`, commentInput).then((res) => console.log(res.data));
+      axios.put(`${baseURL_NODE}/EditComment/${idComment}`, commentInput).then((res) => console.log(res.data));
 
       axios
-        .get(`http://localhost:8800/Comment/${location.pathname.split("/")[3]}`)
+        .get(`${baseURL_NODE}/Comment/${location.pathname.split("/")[3]}`)
         .then((res) => setComment(res.data));
     } else {
-      axios.put(`http://localhost:8800/EditReply/${idReply}`, commentInput).then((res) => console.log(res.data));
+      axios.put(`${baseURL_NODE}/EditReply/${idReply}`, commentInput).then((res) => console.log(res.data));
 
       axios
-        .get(`http://localhost:8800/Reply/${location.pathname.split("/")[3]}`)
+        .get(`${baseURL_NODE}/Reply/${location.pathname.split("/")[3]}`)
         .then((res) => setReply(res.data));
     }
     setCommentInput({...commentInput, description: ''})
@@ -174,12 +175,12 @@ const useReadBlog = (callback) => {
 
   const handleLike = () => {
     if (checkReadBlog.checkLike) {
-      axios.post(`http://localhost:8800/Unlike/${user.userName}`, {
+      axios.post(`${baseURL_NODE}/Unlike/${user.userName}`, {
         idPost: location.pathname.split("/")[3],
       });
       setCheckReadBlog({ ...checkReadBlog, checkLike: false });
     } else {
-      axios.post(`http://localhost:8800/Like/${user.userName}`, {
+      axios.post(`${baseURL_NODE}/Like/${user.userName}`, {
         idPost: location.pathname.split("/")[3],
       });
       setCheckReadBlog({ ...checkReadBlog, checkLike: true });

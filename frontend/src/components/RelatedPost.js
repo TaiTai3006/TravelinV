@@ -70,10 +70,10 @@ const baseURL = process.env.REACT_APP_API_BASE_URL
           return (
             <Link to = {`/Blogs/${post.id_province}/${post.id_post}`} className="related-post--item" key={post.id_post}>
 
-              <div className="realted-post--item-image">
+              <div className="realted-post--item-image" key={post.id_post}>
               <img src={post.image} ></img>
               </div>
-              <div className="realted-post--item-title">
+              <div className="realted-post--item-title" >
                 <p> {post.post_name}</p>
               </div>
             </Link>
