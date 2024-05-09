@@ -7,7 +7,7 @@ function RelatedPost() {
   const [posts1, setPost1] = useState([
     
   ]);
-
+const baseURL = process.env.REACT_APP_API_BASE_URL
   const [posts2, setPost2] = useState([
     // {
     //   id: 1,
@@ -56,10 +56,10 @@ function RelatedPost() {
     // },
   ]);
   useEffect(()=>{
-    Axios.get('http://localhost:8800/home/relatedpost1').then((response) => {
+    Axios.get(`${baseURL}/post/public/getAllPost`).then((response) => {
       setPost1(response.data)
     })
-    Axios.get('http://localhost:8800/home/relatedpost2').then((response) => {
+    Axios.get(`${baseURL}/post/public/getPostAndProvince`).then((response) => {
       setPost2(response.data)
     })
   },[pathname])
@@ -67,17 +67,14 @@ function RelatedPost() {
     <div className="related-post--container">
       <div className="related-post--content">
         {posts1.map((post) => {
-          const { id, postName, image } = post;
           return (
-            <Link to = {`/Blogs/${post.idProvince}/${post.idPost}`} className="related-post--item" key={id}>
-              {/* <img src={img} alt={post.title} /> */}
-              
-              <div className="realted-post--item-image">
-                {/* <img src={window.location.origin + related2} /> */}
-              <img src={image} ></img>
+            <Link to = {`/Blogs/${post.id_province}/${post.id_post}`} className="related-post--item" key={post.id_post}>
+
+              <div className="realted-post--item-image" key={post.id_post}>
+              <img src={post.image} ></img>
               </div>
-              <div className="realted-post--item-title">
-                <p> {postName}</p>
+              <div className="realted-post--item-title" >
+                <p> {post.post_name}</p>
               </div>
             </Link>
           );
@@ -86,18 +83,17 @@ function RelatedPost() {
 
       <div className="related-post--suggestion">
         {posts2.map((post) => {
-          const { id, provinceName, image } = post;
           return (
             <>
               <Link
-                to= {`/Blogs/${post.idProvince}/${post.idPost}`}
+                to= {`/Blogs/${post.id_province}/${post.id_post}`}
                 className="suggestion--item front "
-                key={id}
+                key={post.id_post}
                 // style={{ backgroundImage:`url(${process.env.PUBLIC_URL+ img})` }}
               >
-                <img src={image} />
+                <img src={post.image} />
                 {/* <img src={dalat}  width="250" height="400"/> */}
-                <div className="province">{provinceName}</div>
+                <div className="province">{post.province_name}</div>
               </Link>
               
             </>

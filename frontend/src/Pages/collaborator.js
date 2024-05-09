@@ -6,7 +6,9 @@ import { BiSearchAlt2 } from "react-icons/bi";
 import { HiChevronRight } from "react-icons/hi";
 import Axios, * as others from "axios";
 import { Link } from "react-router-dom";
-
+import removeVietnameseTones from "../components/removeVietnameseTones";
+const baseURL = process.env.REACT_APP_API_BASE_URL
+const token = localStorage.getItem("accessToken")
 function Admin() {
   const [search, setSearch] = useState([]);
   const [searchUser, setSearchUser] = useState([]);
@@ -14,14 +16,14 @@ function Admin() {
   const [user, setuser] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:8800/admin/post").then((response) => {
+    Axios.get(`${baseURL}/post/sortbystatus`, { headers: { "Authorization": `Bearer ${token}` } }).then((response) => {
       setpost(response.data);
       setSearch(response.data);
     });
-    Axios.get("http://localhost:8800/admin/user").then((response) => {
-      setuser(response.data);
-      setSearchUser(response.data);
-    });
+    // Axios.get("http://localhost:8800/admin/user").then((response) => {
+    //   setuser(response.data);
+    //   setSearchUser(response.data);
+    // });
   }, []);
   const [type, settype] = useState("blog");
 
@@ -92,7 +94,7 @@ function Admin() {
           <div className="text2" onClick={() => settype("blog")}>
             Blog
           </div>
-          
+
         </div>
         {/* <div
           onClick={handleArrow2}
@@ -118,40 +120,40 @@ function Admin() {
             <a href="#">Dashboard</a>
             <HiChevronRight />
           </div>
-          <div className="search-container"> 
-          <div className="text-tour">Post</div>
-          <div className="search-bar">
-            <input
-              type="text"
-              onChange={(text) => {
-                setSearch(
-                  posts.filter((post) => {
-                    return (
-                      post.postName
+          <div className="search-container">
+            <div className="text-tour">Post</div>
+            <div className="search-bar">
+              <input
+                type="text"
+                onChange={(text) => {
+                  setSearch(
+                    posts.filter((post) => {
+                      return (
+                        removeVietnameseTones(post.post_name)
+                          .toLowerCase()
+                          .includes(text.target.value.toLowerCase()) ||
+                        post.post_name
+                          .toLowerCase()
+                          .includes(text.target.value.toLowerCase())
+                      );
+                    })
+                  );
+                  setSearchUser(
+                    user.filter((users) => {
+                      return users.username
                         .toLowerCase()
-                        .includes(text.target.value.toLowerCase()) ||
-                      post.postName
-                        .toLowerCase()
-                        .includes(text.target.value.toLowerCase())
-                    );
-                  })
-                );
-                setSearchUser(
-                  user.filter((users) => {
-                    return users.userName
-                      .toLowerCase()
-                      .includes(text.target.value.toLowerCase());
-                  })
-                );
-              }}
-              placeholder="Search.."
-            />
-            
+                        .includes(text.target.value.toLowerCase());
+                    })
+                  );
+                }}
+                placeholder="Search.."
+              />
+
               <BiSearchAlt2 className="find-icon" />
-            
+
+            </div>
           </div>
-          </div>
-          
+
         </div>
         {handleBar(type)}
         {handleEvent(type)}

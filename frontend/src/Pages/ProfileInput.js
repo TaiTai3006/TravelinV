@@ -7,7 +7,7 @@ import "../ProfileInput.css";
 import useForm from "../components/useForm";
 import Errs from "../components/errors";
 import { useLocation, useNavigate } from "react-router-dom";
-
+const baseURL = process.env.REACT_APP_API_BASE_URL 
 function ProfileInput() {
   const location = useLocation();
   const {
@@ -25,21 +25,22 @@ function ProfileInput() {
   useEffect(() => {
     const fecthGetAccount = () => {
       axios
-        .get(`http://localhost:8800/account/${location.pathname.split("/")[2]}`)
+        .get(`${baseURL}/user/info`, { headers: { "Authorization": `Bearer ${user.token}` } })
         .then((res) =>
-         { setAccount({
+         {
+          setAccount({
             ...account,
-            name: res.data[0].name,
-            imagePreview: res.data[0].avatar,
-            avatar: res.data[0].avatar,
-            gender: res.data[0].gender,
-            phoneNumber: res.data[0].phoneNumber,
-            gmail: res.data[0].gmail,
+            name: res.data.name,
+            imagePreview: res.data.avatar,
+            avatar: res.data.avatar,
+            gender: res.data.gender,
+            phoneNumber: res.data.phone_number,
+            gmail: res.data.email,
           })
           const newSetUser = {
             ...user,
-            accountType: res.data[0].accountType,
-            image: res.data[0].avatar,
+            accountType: res.data.role,
+            image: res.data.avatar,
           };
           const jsonUser = JSON.stringify(newSetUser);
           localStorage.setItem("user", jsonUser);

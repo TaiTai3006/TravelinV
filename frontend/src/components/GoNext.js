@@ -1,13 +1,14 @@
 import React, { useState,useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Axios, * as others from 'axios';
+const baseURL = process.env.REACT_APP_API_BASE_URL
 function GoNext() {
   const [places, setPlace] = useState([
     
   ]);
   const location = useLocation()
   useEffect(() =>{
-    Axios.get("http://localhost:8800/home/gonext").then((response)=>{
+    Axios.get(`${baseURL}/public/province`).then((response)=>{
        setPlace(response.data)
       }
     )
@@ -23,13 +24,13 @@ function GoNext() {
         <div className="next_place">
           {places.map((place) => {
             return (
-              <div key={place.idProvince} className="next_place-item">
-                <Link to = {`/Blogs/${place.idProvince}`}>
+              <div key={place.id_province} className="next_place-item">
+                <Link to = {`/Blogs/${place.id_province}`}>
                   <img
                     src={place.image}
-                    alt={place.provinceName}
+                    alt={place.province_name}
                   />
-                  <p>{place.provinceName}</p>
+                  <p>{place.province_name}</p>
                 </Link>
               </div>
             );

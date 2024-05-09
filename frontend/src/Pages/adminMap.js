@@ -5,29 +5,30 @@ import { useContext } from "react";
 import { UserContext } from "../App";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
 const alternatingColor = [" #FFFFFF ", " #F4F2EE"];
+const baseURL = process.env.REACT_APP_API_BASE_URL
 
 function DataPost({ posts }) {
   const { user } = useContext(UserContext);
-  const deletePost = (post) => {
-    Axios.delete(
-      `http://localhost:8800/admin/description/delete/${post}`,
-      posts
-    );
-    Axios.delete(`http://localhost:8800/admin/like/delete/${post}`, posts);
-    Axios.delete(`http://localhost:8800/admin/delete/post/${post}`, posts);
-
+  console.log(user);
+  const deletePost = (id) => {
+    Axios.delete(`${baseURL}/post/delete/${id}`, { headers: { "Authorization": `Bearer ${user.token}` } })
+      .then((res) => console.log(res.data))
+      .catch((e) => console.log(e))
     window.location.reload(false);
   };
-  const checkPost = (post) => {
-    Axios.put(`http://localhost:8800/admin/user/update/${post}`, posts);
-    window.location.reload(false);
-  };
+  const checkPost = (id) => {
+    console.log(id);
+    Axios.put(`${baseURL}/post/updatePostStatus/${id}`, {}, { headers: { "Authorization": `Bearer ${user.token}` } })
+      .then((res) => {
+        console.log(res.data);
+        window.location.reload(false); // Move the reload inside the 'then' block
+      })
+      .catch((error) => console.log(error));
+  }
   return (
     <>
       {posts.map((posts, id) => {
-        console.log(posts);
         return (
           <div
             className="data-post"
@@ -36,33 +37,33 @@ function DataPost({ posts }) {
           >
             <div className="user-name user-item">
               <img class="avatar-data" src={posts.image} />
-              <Link to={`/Personal/${posts.userName}`}>
-                <div class="usename-data">{posts.userName}</div>
+              <Link to={`/Personal/${posts.username}`}>
+                <div class="usename-data">{posts.username}</div>
               </Link>
             </div>
 
-            <Link to={`/Blogs/${posts.idProvince}/${posts.idPost}`}>
-              <div class="title-data user-item">{posts.postName}</div>
+            <Link to={`/Blogs/${posts.id_province}/${posts.id_post}`}>
+              <div class="title-data user-item">{posts.post_name}</div>
             </Link>
-            <div className="createat-data user-item">{posts.dateTime}</div>
+            <div className="createat-data user-item">{posts.date_time}</div>
             <button
-              onClick={() => checkPost(posts.idPost)}
+              onClick={() => checkPost(posts.id_post)}
               className="status-data user-item"
               style={{
                 backgroundColor:
-                  posts.status === "pending" ? "#f1bc68" : "indianred",
+                  posts.status === "Pending" ? "#f1bc68" : "indianred",
               }}
             >
               {posts.status}{" "}
             </button>
-            {user.accountType === "admin" && (
+            {user.accountType === "ROLE_ADMIN" && (
               <button
                 onClick={() => {
-                  deletePost(posts.idPost);
+                  deletePost(posts.id_post);
                 }}
                 className="deleteBtn"
-                >
-                  <BiX style={{ fontSize: 15 }} />
+              >
+                <BiX style={{ fontSize: 15 }} />
               </button>
             )}
 
@@ -89,21 +90,24 @@ export function DataUser({ user }) {
   const deleteUser = (u) => {
     // Axios.delete(http://localhost:8800/admin/description/delete/${p}, posts)
     // Axios.delete(http://localhost:8800/admin/like/delete/${p}, posts)
-    Axios.delete(`http://localhost:8800/admin/delete/${u}`,user )
-    Axios.delete(`http://localhost:8800/admin/user/delete/${u}`, user);
+    // Axios.delete(`http://localhost:8800/admin/delete/${u}`, user)
+    // Axios.delete(`http://localhost:8800/admin/user/delete/${u}`, user);
 
-    window.location.reload(false);
+    // window.location.reload(false);
   };
   const handleUpdateAccount = (accountType, userName) => {
-    if (accountType === "user") {
-      Axios.put(`http://localhost:8800/accountType/${userName}`, {
-        accountType: "collaborator",
-      }).then((res)=> console.log(res))
+    console.log(accountType, userName);
+    if (accountType === "ROLE_USER") {
+      Axios.put(`${baseURL}/user/Role`, {
+        accountType: "ROLE_COLLABORATOR",
+        username: userName
+      }).then((res) => console.log(res))
       window.location.reload(false);
-    } else if (accountType === "collaborator") {
-      Axios.put(`http://localhost:8800/accountType/${userName}`, {
-        accountType: "user",
-      }).then((res)=> console.log(res))
+    } else if (accountType === "ROLE_COLLABORATOR") {
+      Axios.put(`${baseURL}/user/Role`, {
+        accountType: "ROLE_USER",
+        username: userName
+      }).then((res) => console.log(res))
       window.location.reload(false);
     }
   };
@@ -118,22 +122,22 @@ export function DataUser({ user }) {
           >
             <div className="user-item">
               <img className="avatar-user" src={user.avatar} />
-              <Link to={`/Personal/${user.userName}`}  className="usename">
-                {user.userName}
+              <Link to={`/Personal/${user.username}`} className="usename">
+                {user.username}
               </Link>
             </div>
 
             <div className="gender user-item">{user.gender}</div>
-            <div className="mail user-item">{user.gmail}</div>
-            <div className="phone user-item">{user.phoneNumber}</div>
+            <div className="mail user-item">{user.email}</div>
+            <div className="phone user-item">{user.phone_number}</div>
             <div className="account user-item">
               <button
                 onClick={() => {
-                  handleUpdateAccount(user.accountType, user.userName);
+                  handleUpdateAccount(user.role, user.username);
                 }}
               >
-                {" "}
-                {user.accountType}
+                {/* {" "} */}
+                {user.role}
               </button>
             </div>
             {/* <div className="dropdown">

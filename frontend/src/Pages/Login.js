@@ -64,6 +64,7 @@ function Login() {
                   type={passwordType}
                   placeholder="Enter your password"
                   name="password"
+                  defaultValue={account.password}
                   onChange={handleChangeLogin}
                   required
                 ></input>

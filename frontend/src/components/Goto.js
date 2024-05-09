@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios"
 import { Link } from "react-router-dom";
-
+const baseURL = process.env.REACT_APP_API_BASE_URL
 const Goto = () =>{
 // const gotoDatas = [
 //     {
@@ -35,7 +35,7 @@ const Goto = () =>{
     useEffect(()=>{
         const FecthDatas= async ()=>{
             try{
-                await axios.get(`http://localhost:8800/SliderBlogs/Goto`).then((response) =>{
+                await axios.get(`${baseURL}/post/public/getGoToProvince`).then((response) =>{
                     setgotoDatas(response.data)
                 })
             } catch (err) {
@@ -49,7 +49,7 @@ const Goto = () =>{
       <div className='goto-li-ctn'>
             {gotoDatas.map((gotoData, index)=>
                     <li className="goto-li">
-                    <Link className="goto-a" to = {`/Blogs/${gotoData.idProvince}`}>{gotoData.data} </Link>
+                    <Link className="goto-a" to = {`/Blogs/${gotoData.id_province}`}>{gotoData.province_name} </Link>
                     </li>
             )}
         </div>

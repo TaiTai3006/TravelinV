@@ -58,9 +58,9 @@ export default function Footer() {
               <li>
                 <Link to="/CreatePost">Create Post</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/AboutUs">About us</Link>
-              </li>
+              </li> */}
               <li className="contact">
                 <div className="contact-text">Contact</div>
                 <ul>

@@ -9,6 +9,7 @@ import Goto from "../components/Goto"
 
 // const USERNAME = 'taitai'
 // hello
+const baseURL = process.env.REACT_APP_API_BASE_URL
 export default function Blogs() {
   const [FeaturedPost, setFeaturePost] = useState([{}])
   const [RecentPost, setRecentPost] = useState([{}])
@@ -16,7 +17,7 @@ export default function Blogs() {
   useEffect(()=>{
     const FecthFeaturePost = async ()=>{
         try{
-            await axios.get(`http://localhost:8800/Blogs/FeaturedPost`).then((response) =>{
+            await axios.get(`${baseURL}/post/public/getFeaturedPost`).then((response) =>{
                 setFeaturePost(response.data)
             })
         } catch (err) {
@@ -25,9 +26,8 @@ export default function Blogs() {
     };
     const FecthRecentPost = async ()=>{
         try{
-            await axios.get(`http://localhost:8800/Blogs/RecentPost`).then((response) =>{
+            await axios.get(`${baseURL}/post/public/getRecentPost`).then((response) =>{
                 setRecentPost(response.data)
-                // console.log(response.data)
             })
         } catch (err) {
             console.log(err)
@@ -39,7 +39,6 @@ export default function Blogs() {
 
   return ( 
   <div className='container-blog'>
-    {/* {console.log(FeaturedPost)} */}
     <div className='background-bubble'></div>
     <div class=" h1-container">
       <h1>Travel Blogs </h1>
@@ -60,8 +59,8 @@ export default function Blogs() {
       {FeaturedPost.map((FeaturedPosts)=>{
         return(
           <div class="image-ctn" >
-          <Link to = {`/Blogs/${FeaturedPosts.idProvince}/${FeaturedPosts.idPost}`}>
-            <span className="post-name" >{FeaturedPosts.postName}</span>
+          <Link to = {`/Blogs/${FeaturedPosts.id_province}/${FeaturedPosts.id_post}`}>
+            <span className="post-name" >{FeaturedPosts.post_name}</span>
             <img className = "featured-img" src={FeaturedPosts.image} ></img>
           </Link>
           </div>
@@ -81,8 +80,8 @@ export default function Blogs() {
         {RecentPost.map((RecentPosts,index)=>{
           return(
             <div className="img-recent-ctn1" >
-            <Link to=  {`/Blogs/${RecentPosts.idProvince}/${RecentPosts.idPost}`}>
-              <span className="post-name-recent" >{RecentPosts.postName}</span>
+            <Link to=  {`/Blogs/${RecentPosts.id_province}/${RecentPosts.id_post}`}>
+              <span className="post-name-recent" >{RecentPosts.post_name}</span>
               <img className="recent-img" src={RecentPosts.image} ></img>
             </Link>
           </div>

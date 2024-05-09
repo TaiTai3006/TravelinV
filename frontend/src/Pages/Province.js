@@ -7,6 +7,7 @@ import removeVietnameseTones from "../components/removeVietnameseTones";
 import axios from "axios";
 
 function App() {
+  const baseURL = process.env.REACT_APP_API_BASE_URL 
   const location = useLocation();
 
   const [provincePost, setProvincePost] = useState([]);
@@ -30,7 +31,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8800/Province/${location.pathname.split("/")[2]}`)
+      .get(`${baseURL}/public/province/${location.pathname.split("/")[2]}`)
       .then((res) =>
         setProvince(
           res.data.reduce((t, v) => {
@@ -43,7 +44,7 @@ function App() {
 
     axios
       .get(
-        `http://localhost:8800/ProvincePost/${location.pathname.split("/")[2]}`
+        `${baseURL}/public/province/post/${location.pathname.split("/")[2]}`
       )
       .then((res) => {
         setProvincePost(res.data);
@@ -52,7 +53,7 @@ function App() {
 
     axios
       .get(
-        `http://localhost:8800/Destination/${location.pathname.split("/")[2]}`
+        `${baseURL}/public/province/destination/${location.pathname.split("/")[2]}`
       )
       .then((res) => getDestination(res.data));
   }, [location]);
@@ -77,10 +78,10 @@ function App() {
           <div className="pickade">Pick a destination</div>
           <div className="option-board">
             {destination.map((des) => (
-              <Link to={`/Blogs/${des.idProvince}`}>
-                <div key={des.idProvince} className="option-item">
+              <Link to={`/Blogs/${des.id_province}`}>
+                <div key={des.id_province} className="option-item">
                   <img className="img-item" src={des.image} />
-                  <div className="name">{des.provinceName}</div>
+                  <div className="name">{des.province_name}</div>
                 </div>
               </Link>
             ))}

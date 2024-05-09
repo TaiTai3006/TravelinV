@@ -117,8 +117,8 @@ function ReadBlogs() {
             </div>
           </div>
           {/* Phần chứa tiêu đề và mô tả của bài post */}
-          <h1 className="post-cover_title">{authorPost.postName}</h1>
-          <p>{authorPost.demoDescription}</p>
+          <h1 className="post-cover_title">{authorPost.post_name}</h1>
+          <p>{authorPost.demo_description}</p>
         </div>
       </div>
 
@@ -150,13 +150,13 @@ function ReadBlogs() {
             {related.map((relate) => (
               <Link
                 className="article-text-block"
-                to={`/Blogs/${relate.idProvince}/${relate.idPost}`}
+                to={`/Blogs/${relate.id_province}/${relate.id_post}`}
               >
-                <div className="article-text-block_image" key={relate.idPost}>
+                <div className="article-text-block_image" key={relate.id_post}>
                   <img src={relate.image} alt="image of post"></img>
                 </div>
                 <div className="article-text-block_content">
-                  <h2>{relate.postName}</h2>
+                  <h2>{relate.post_name}</h2>
                 </div>
               </Link>
             ))}

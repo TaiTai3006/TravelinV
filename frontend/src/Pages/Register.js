@@ -62,7 +62,7 @@ function Register() {
               <input
                 type="text"
                 placeholder="Enter your usename"
-                name="userName"
+                name="username"
                 onChange={handleChange}
                 required
               ></input>
