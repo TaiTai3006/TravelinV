@@ -51,10 +51,10 @@ To run the backend, follow these steps:
 This will start the backend server, and it will be accessible for API requests.
 
 ## Detail
-+ Frontend: ReactJS, Material.
-+ Backend: ExpressJS.
-+ Database: Firebase, MySQL.
-+ API: Maps Javascript, Travel Advisor, Cloudinary, db-ip, ninjas.
++ **Frontend:** ReactJS, Material.
++ **Backend:** ExpressJS.
++ **Database:** Firebase, MySQL.
++ **API:** Maps Javascript, Travel Advisor, Cloudinary, db-ip, ninjas.
 
 ## Feature
 
