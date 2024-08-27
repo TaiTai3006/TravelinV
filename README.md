@@ -70,14 +70,17 @@ This will start the backend server, and it will be accessible for API requests.
 
 + **Interaction:** Users can like, comment on, and archive other people's posts.
 
-
+<div align="center">
 <img align="center" width="966" alt="Ảnh màn hình 2024-08-27 lúc 21 40 02" src="https://github.com/user-attachments/assets/2ef9756f-85f0-4261-a667-8bc3895136ff">
-
+</div>
 
 
 + **Map:** Provides users with information about nearby restaurants, hotels, and notable places.
 
-<img width="829" alt="Ảnh màn hình 2024-08-27 lúc 21 43 01" src="https://github.com/user-attachments/assets/5ad7afba-77d2-4246-b698-d980fc5a7bad">
+<div align="center">
+  <img  width="829" alt="Ảnh màn hình 2024-08-27 lúc 21 43 01" src="https://github.com/user-attachments/assets/5ad7afba-77d2-4246-b698-d980fc5a7bad">
+</div>
+
 
 **If the user does not grant permission to use their location in the browser, the system will use two APIs, db-ip and ninjas, to determine the user's approximate location based on their IP address**.
 
